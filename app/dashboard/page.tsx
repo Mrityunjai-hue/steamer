@@ -7,36 +7,45 @@ import {
   ShieldCheck,
   Clock,
   RefreshCw,
-  WifiOff,
   Gamepad2,
-  Laptop,
   CheckCircle2,
-  ExternalLink,
   BookOpen,
-  Download,
-  Key,
-  HardDrive,
-  Users,
   MessageSquare,
+  ZoomIn,
+  X,
+  MousePointerClick,
+  Shield,
+  ExternalLink,
 } from "lucide-react";
+import { GuideConfig, DEFAULT_GUIDE_CONFIG, GuideStep } from "@/lib/guide";
 
 export default function DashboardPage() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [groupConsent, setGroupConsent] = useState(false);
+  const [guide, setGuide] = useState<GuideConfig>(DEFAULT_GUIDE_CONFIG);
   const [requestingWindow, setRequestingWindow] = useState(false);
   const [windowMsg, setWindowMsg] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/api/auth/me")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data?.user) {
-          setUser(data.user);
-        } else {
-          window.location.href = "/auth/login";
-        }
-      })
+    Promise.all([
+      fetch("/api/auth/me")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data?.user) {
+            setUser(data.user);
+          } else {
+            window.location.href = "/auth/login";
+          }
+        }),
+      fetch("/api/guide")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data?.guide) {
+            setGuide(data.guide);
+          }
+        }),
+    ])
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);
@@ -72,9 +81,20 @@ export default function DashboardPage() {
   }
 
   const activeSub = user?.activeSubscription;
+  const isProtected = guide.protection?.disableCopy ?? true;
+  const showWatermark = guide.protection?.watermark ?? true;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div
+      className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 ${
+        isProtected ? "select-none" : ""
+      }`}
+      onContextMenu={(e) => {
+        if (guide.protection?.disableRightClick) {
+          e.preventDefault();
+        }
+      }}
+    >
       {/* Top Welcome Banner */}
       <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-panelGlow">
         <div className="space-y-1">
@@ -97,19 +117,36 @@ export default function DashboardPage() {
       </div>
 
       {activeSub ? (
-        /* UNLOCKED VIEW: THE COMPLETE CLICK-BY-CLICK SETUP GUIDE */
-        <div className="space-y-8">
-          {/* Status Bar */}
+        /* UNLOCKED VIEW: THE COMPLETE DYNAMIC VISUAL SETUP GUIDE */
+        <div className="space-y-8 relative">
+          {/* Anti-Leak Diagonal Watermark Overlay */}
+          {showWatermark && (
+            <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden select-none opacity-[0.04] sm:opacity-[0.06] flex flex-wrap gap-24 p-8 items-center justify-around transform -rotate-12">
+              {Array.from({ length: 24 }).map((_, i) => (
+                <div key={i} className="text-white font-mono text-sm tracking-widest whitespace-nowrap">
+                  CONFIDENTIAL • {user?.email} • STEAMER PASS
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Guide Header Banner */}
           <div className="bg-gradient-to-r from-emerald-950/80 via-[#16202d] to-sky-950/80 border border-emerald-500/40 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
             <div className="space-y-1">
-              <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded">
-                Lifetime Access Active
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded">
+                  Lifetime Pass Verified
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-[#66c0f4]/20 text-[#66c0f4] border border-[#66c0f4]/40 px-2 py-0.5 rounded flex items-center gap-1">
+                  <Shield className="w-3 h-3" /> Private Setup
+                </span>
+              </div>
               <h2 className="text-xl sm:text-2xl font-black text-white">
-                Complete PC Setup Guide & 245+ Titles Unlocked
+                {guide.title || "Complete PC Setup Guide"}
               </h2>
               <p className="text-xs text-[#c7d5e0]">
-                Follow the 4 simple steps below to set up your offline games in under 10 minutes.
+                {guide.description ||
+                  "Follow the step-by-step instructions below to configure and play your titles."}
               </p>
             </div>
 
@@ -117,7 +154,7 @@ export default function DashboardPage() {
               <button
                 onClick={handleRequestSetupWindow}
                 disabled={requestingWindow}
-                className="btn-steam-cta text-xs px-5 py-2.5 rounded font-black shadow-ctaGlow flex items-center gap-2"
+                className="btn-steam-cta text-xs px-5 py-2.5 rounded font-black shadow-ctaGlow flex items-center gap-2 text-white"
               >
                 <Clock className="w-4 h-4" /> Request Activation Window
               </button>
@@ -130,97 +167,114 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* Step-by-Step Guide Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Step 1 */}
-            <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-4 shadow-md">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-[#66c0f4]/20 border border-[#66c0f4]/40 text-[#66c0f4] font-black flex items-center justify-center text-sm">
-                  1
-                </span>
-                <h3 className="font-black text-white text-base">Client Preparation</h3>
-              </div>
-              <p className="text-xs text-[#8f98a0] leading-relaxed">
-                Ensure Steam is installed on your PC. Close any background game sessions. You will run your games directly through your local client without third-party bloat.
-              </p>
-              <div className="bg-[#16202d] border border-[#2a475e]/60 rounded p-3 text-[11px] text-[#c7d5e0] space-y-1">
-                <p className="font-semibold text-white">Prerequisites:</p>
-                <p>• Windows 10/11 64-bit</p>
-                <p>• Official Steam Desktop Client installed</p>
-                <p>• Sufficient disk space for game downloads</p>
-              </div>
-            </div>
+          {/* Click-by-Click Guide Steps */}
+          <div className="space-y-8">
+            {guide.steps.map((step: GuideStep) => (
+              <div
+                key={step.id || step.stepNumber}
+                className="bg-[#171a21] border border-[#2a475e] hover:border-[#66c0f4]/60 transition-all rounded-xl p-6 sm:p-8 space-y-6 shadow-panelGlow relative overflow-hidden"
+              >
+                {/* Step Header */}
+                <div className="flex items-start justify-between gap-4 border-b border-[#2a475e]/60 pb-4">
+                  <div className="flex items-center gap-4">
+                    <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#66c0f4] to-[#1b2838] border border-[#66c0f4]/60 text-white font-black flex items-center justify-center text-lg shadow-md flex-shrink-0">
+                      {step.stepNumber}
+                    </span>
+                    <div>
+                      <h3 className="font-black text-white text-lg sm:text-xl tracking-wide">
+                        {step.title}
+                      </h3>
+                      {step.subtitle && (
+                        <p className="text-xs font-semibold text-[#66c0f4] uppercase tracking-wider">
+                          {step.subtitle}
+                        </p>
+                      )}
+                    </div>
+                  </div>
 
-            {/* Step 2 */}
-            <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-4 shadow-md">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-black flex items-center justify-center text-sm">
-                  2
-                </span>
-                <h3 className="font-black text-white text-base">Setup Window & Download</h3>
-              </div>
-              <p className="text-xs text-[#8f98a0] leading-relaxed">
-                Tap <strong>&quot;Request Activation Window&quot;</strong> above. You will be scheduled for a 15-minute exclusive session to download and verify your game files.
-              </p>
-              <div className="bg-[#16202d] border border-[#2a475e]/60 rounded p-3 text-[11px] text-[#c7d5e0] space-y-1">
-                <p className="font-semibold text-white">What happens in this step:</p>
-                <p>• Admin shares the single-use login securely via WhatsApp</p>
-                <p>• Start game download from Steam servers at full speed</p>
-                <p>• Launch game once to verify first-time directX/runtime setup</p>
-              </div>
-            </div>
+                  <span className="text-[11px] font-bold text-[#8f98a0] bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1 rounded hidden sm:inline-block">
+                    Step {step.stepNumber} of {guide.steps.length}
+                  </span>
+                </div>
 
-            {/* Step 3 */}
-            <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-4 shadow-md">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 font-black flex items-center justify-center text-sm">
-                  3
-                </span>
-                <h3 className="font-black text-white text-base">Permanent Offline Mode</h3>
-              </div>
-              <p className="text-xs text-[#8f98a0] leading-relaxed">
-                Click <strong>Steam (top left) &rarr; Go Offline... &rarr; Restart in Offline Mode</strong>. Once offline, you can play forever on your PC without getting kicked off.
-              </p>
-              <div className="bg-[#16202d] border border-amber-500/30 rounded p-3 text-[11px] text-amber-200/90 space-y-1">
-                <p className="font-semibold text-amber-300">The Golden Rule:</p>
-                <p>• Never click &quot;Go Online&quot; when launching your games</p>
-                <p>• Enjoy uninterrupted single-player campaigns and story modes</p>
-              </div>
-            </div>
+                {/* Instructions Text */}
+                <div className="text-sm text-[#c7d5e0] leading-relaxed whitespace-pre-line font-normal">
+                  {step.instructions}
+                </div>
 
-            {/* Step 4 */}
-            <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-4 shadow-md">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/40 text-purple-400 font-black flex items-center justify-center text-sm">
-                  4
-                </span>
-                <h3 className="font-black text-white text-base">Local Saves & Enjoyment</h3>
+                {/* Click Highlight Box */}
+                {step.clickHighlight && (
+                  <div className="bg-[#16202d] border-l-4 border-amber-400 p-4 rounded-r-lg flex items-start gap-3">
+                    <MousePointerClick className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5 animate-pulse" />
+                    <div className="space-y-0.5">
+                      <p className="text-[11px] font-black uppercase tracking-wider text-amber-400">
+                        Exact Click Action:
+                      </p>
+                      <p className="text-xs text-white font-medium">
+                        {step.clickHighlight}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Step Screenshot with Lightbox Zoom */}
+                {step.imageUrl && (
+                  <div className="space-y-2">
+                    <div className="relative group rounded-lg overflow-hidden border border-[#2a475e] bg-[#0e141b] shadow-inner">
+                      <img
+                        src={step.imageUrl}
+                        alt={step.title}
+                        className="w-full h-auto max-h-[500px] object-contain rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
+                        loading="lazy"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setSelectedImage(step.imageUrl || null)}
+                        className="absolute bottom-3 right-3 bg-[#171a21]/90 hover:bg-[#66c0f4] hover:text-[#171a21] text-white border border-[#2a475e] px-3 py-1.5 rounded-md text-xs font-bold flex items-center gap-1.5 backdrop-blur-sm transition-all shadow-md"
+                      >
+                        <ZoomIn className="w-3.5 h-3.5" /> Enlarge Screenshot
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
-              <p className="text-xs text-[#8f98a0] leading-relaxed">
-                All game progress, checkpoints, and settings are saved locally in your Windows User profile (`Saved Games` or `AppData`). Your saves belong exclusively to you.
-              </p>
-              <div className="bg-[#16202d] border border-[#2a475e]/60 rounded p-3 text-[11px] text-[#c7d5e0] space-y-1">
-                <p className="font-semibold text-white">Save Safety:</p>
-                <p>• 100% private to your local Windows user</p>
-                <p>• Compatible with all 245+ catalog games</p>
-                <p>• Never overwritten or affected by other users</p>
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Catalog Access Quick Links */}
-          <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-3">
-              <h3 className="font-black text-white text-base flex items-center gap-2">
-                <Gamepad2 className="w-5 h-5 text-[#66c0f4]" /> All 245+ Titles Included in Your Setup
-              </h3>
-              <Link href="/catalog" className="text-xs font-bold text-[#66c0f4] hover:underline">
-                View Full Catalog &rarr;
-              </Link>
+          {/* Quick Support & Catalog Links */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+            <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-3">
+              <div className="flex items-center justify-between">
+                <h3 className="font-black text-white text-base flex items-center gap-2">
+                  <Gamepad2 className="w-5 h-5 text-[#66c0f4]" /> Included Catalog
+                </h3>
+                <Link href="/catalog" className="text-xs font-bold text-[#66c0f4] hover:underline">
+                  Browse Catalog &rarr;
+                </Link>
+              </div>
+              <p className="text-xs text-[#8f98a0]">
+                All 245+ verified PC titles are permanently included in your ₹300 setup plan.
+              </p>
             </div>
-            <p className="text-xs text-[#8f98a0]">
-              Browse the library anytime to check offline compatibility, file sizes, and specific game notes for your rig.
-            </p>
+
+            <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-3">
+              <div className="flex items-center justify-between">
+                <h3 className="font-black text-white text-base flex items-center gap-2">
+                  <MessageSquare className="w-5 h-5 text-emerald-400" /> Need 1-on-1 Assistance?
+                </h3>
+                <a
+                  href="https://wa.me/919999999999?text=Hi%2C%20I%20have%20an%20active%20Steamer%20Setup%20Pass%20and%20need%20help."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-emerald-400 hover:underline flex items-center gap-1"
+                >
+                  WhatsApp Live <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+              <p className="text-xs text-[#8f98a0]">
+                Our support team is active daily from 10:00 AM to 11:00 PM IST to assist with any questions.
+              </p>
+            </div>
           </div>
         </div>
       ) : (
@@ -247,6 +301,32 @@ export default function DashboardPage() {
               <span>Unlock the Full Guide – ₹300</span>
               <ShieldCheck className="w-4 h-4" />
             </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="relative max-w-5xl max-h-[90vh] bg-[#171a21] border border-[#2a475e] rounded-xl overflow-hidden shadow-2xl p-2"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 bg-black/70 hover:bg-[#66c0f4] text-white hover:text-black p-2 rounded-full transition-all z-10"
+              title="Close Image"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={selectedImage}
+              alt="Enlarged guide step"
+              className="w-full h-auto max-h-[85vh] object-contain rounded"
+            />
           </div>
         </div>
       )}

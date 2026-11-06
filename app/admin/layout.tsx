@@ -15,6 +15,7 @@ import {
   Settings,
   History,
   Lock,
+  BookOpen,
 } from "lucide-react";
 
 export default function AdminLayout({
@@ -68,6 +69,7 @@ export default function AdminLayout({
     { name: "Renter Registry", href: "/admin/renters", icon: Users },
     { name: "Setup Windows", href: "/admin/setup-windows", icon: Clock },
     { name: "Verifications", href: "/admin/verifications", icon: CheckCircle2 },
+    { name: "Setup Guide Editor", href: "/admin/guide", icon: BookOpen },
     { name: "Strikes & Bans", href: "/admin/strikes", icon: AlertTriangle },
     { name: "Catalog", href: "/admin/catalog", icon: FolderKanban },
     { name: "Settings & Playbook", href: "/admin/settings", icon: Settings },
