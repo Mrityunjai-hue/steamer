@@ -238,6 +238,91 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* 2.5. How It Works (3 Simple Steps to Trust & Play) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#171a21] border border-[#2a475e] rounded-sm p-5 sm:p-6 shadow-md space-y-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2a475e]/60 pb-3">
+            <div>
+              <span className="text-[10px] font-bold text-[#66c0f4] uppercase tracking-wider block">
+                SIMPLE 3-STEP PROCESS
+              </span>
+              <h2 className="text-base sm:text-lg font-black text-white">
+                How to Unlock & Play in Under 10 Minutes
+              </h2>
+            </div>
+            <div className="flex items-center gap-1.5 text-xs text-[#5ba32b] font-semibold">
+              <ShieldCheck className="w-4 h-4 text-[#5ba32b]" />
+              <span>48-Hour Money-Back Guarantee</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Step 1 */}
+            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-sm space-y-2 relative group hover:border-[#66c0f4] transition-colors">
+              <div className="flex items-center justify-between">
+                <span className="w-7 h-7 rounded-sm bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
+                  01
+                </span>
+                <span className="text-[10px] text-[#8f98a0] font-mono">STEP 1</span>
+              </div>
+              <h3 className="font-bold text-white text-xs sm:text-sm">One-Time UPI Transfer (₹300)</h3>
+              <p className="text-[11px] text-[#8f98a0] leading-relaxed">
+                Scan our official UPI QR code or pay to VPA. No cards, no hidden charges, and zero recurring monthly fees.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-sm space-y-2 relative group hover:border-[#66c0f4] transition-colors">
+              <div className="flex items-center justify-between">
+                <span className="w-7 h-7 rounded-sm bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
+                  02
+                </span>
+                <span className="text-[10px] text-[#8f98a0] font-mono">STEP 2</span>
+              </div>
+              <h3 className="font-bold text-white text-xs sm:text-sm">Fast-Track Admin Verification</h3>
+              <p className="text-[11px] text-[#8f98a0] leading-relaxed">
+                Submit your 12-digit UTR. Our admin verifies it within minutes and unlocks your full visual Setup Dashboard.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-sm space-y-2 relative group hover:border-[#5ba32b] transition-colors">
+              <div className="flex items-center justify-between">
+                <span className="w-7 h-7 rounded-sm bg-[#5ba32b] text-white font-black flex items-center justify-center text-xs">
+                  03
+                </span>
+                <span className="text-[10px] text-[#5ba32b] font-mono font-bold">READY</span>
+              </div>
+              <h3 className="font-bold text-white text-xs sm:text-sm">Play 245+ Titles On Your PC</h3>
+              <p className="text-[11px] text-[#8f98a0] leading-relaxed">
+                Follow the 10-minute visual guide. Play story modes offline with local saves on your PC without getting kicked off.
+              </p>
+            </div>
+          </div>
+
+          {/* Transparent Live Admin Support Bar */}
+          <div className="bg-[#121922] border border-[#2a475e]/60 rounded-sm p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25d366] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#25d366]"></span>
+              </span>
+              <p className="text-[#c7d5e0]">
+                <strong>Need pre-purchase help or setup guidance?</strong> Admin is online 24/7 on WhatsApp.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[#25d366] hover:underline font-bold whitespace-nowrap"
+            >
+              <span>Chat with Admin on WhatsApp →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* 3. Catalog Section: Games You Can Play With This Setup */}
       <div id="games-showcase" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 pt-2">
         {/* Section Header */}

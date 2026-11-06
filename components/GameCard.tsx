@@ -81,23 +81,23 @@ export default function GameCard({
   return (
     <Link
       href={`/game/${id}`}
-      className="group relative bg-[#16202d] hover:bg-[#203042] border border-[#2a475e]/70 hover:border-[#66c0f4] rounded-sm overflow-hidden transition-all duration-200 flex flex-col justify-between shadow-md hover:shadow-panelGlow h-full"
+      className="group relative bg-[#16202d] hover:bg-[#1e2a38] border border-[#2a475e]/70 hover:border-[#66c0f4] rounded-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(102,192,244,0.3)] flex flex-col justify-between h-full"
     >
-      {/* Cover Artwork Container (460x215 Steam Ratio) */}
-      <div className="relative aspect-[460/215] w-full bg-[#0d131b] overflow-hidden flex-shrink-0">
+      {/* Cover Artwork Container (460x215 Steam Ratio with Sheen Sweep) */}
+      <div className="relative aspect-[460/215] w-full bg-[#0d131b] overflow-hidden flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full group-hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/15 before:to-transparent before:transition-transform before:duration-700 before:z-20">
         {headerImage && !imageError ? (
           <Image
             src={headerImage}
             alt={title}
             fill
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             loading="lazy"
             onError={() => setImageError(true)}
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#1b2838] to-[#0e1620] p-2 text-center select-none">
-            <Gamepad2 className="w-6 h-6 text-[#66c0f4]/50 mb-1" />
+            <Gamepad2 className="w-6 h-6 text-[#66c0f4]/50 mb-1 animate-pulse" />
             <span className="text-[11px] font-bold text-[#c7d5e0]/80 tracking-wide line-clamp-1">
               {title}
             </span>
@@ -149,7 +149,7 @@ export default function GameCard({
               ₹{steamPriceINR.toLocaleString("en-IN")}
             </span>
           ) : null}
-          <span className="bg-[#4c6b22] text-[#beee11] font-extrabold text-[10px] px-2 py-0.5 tracking-tight uppercase">
+          <span className="bg-[#4c6b22] text-[#beee11] group-hover:bg-[#5ba32b] group-hover:text-white font-extrabold text-[10px] px-2 py-0.5 tracking-tight uppercase transition-colors duration-200">
             INCLUDED
           </span>
         </div>

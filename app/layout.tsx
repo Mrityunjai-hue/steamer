@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
+import LiveSupportWidget from "@/components/LiveSupportWidget";
 import { brandConfig } from "@/config/brand";
 import { getAppUrl } from "@/lib/url";
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     template: `%s | ${brandConfig.name}`,
   },
   description:
-    "Steamer rents time-limited access to games on a dedicated shared vault account. 100% offline single-player play built on trust.",
+    "Steamer provides the complete PC setup guide & vault access to 245+ single-player PC games offline with local saves.",
   icons: {
     icon: "/brand/icon.svg",
     shortcut: "/brand/icon.svg",
@@ -32,6 +33,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <MobileNav />
+        <LiveSupportWidget />
       </body>
     </html>
   );
