@@ -140,7 +140,7 @@ export default function ProfilePage() {
             </div>
 
             <p className="text-xs text-[#8f98a0] leading-relaxed">
-              Your WhatsApp number is used exclusively by admin to manually relay your setup window credentials.
+              Your WhatsApp number is used exclusively by admin to provide direct 1-on-1 setup assistance and pass verification.
             </p>
 
             <div className="bg-[#16202d] border border-[#2a475e] p-3 rounded-lg text-xs flex justify-between items-center">

@@ -130,7 +130,7 @@ export default function SupportPage() {
         <div className="flex items-center gap-3">
           <Phone className="w-4 h-4 text-[#5ba32b]" />
           <span>
-            Urgent setup window issue? Direct WhatsApp:{" "}
+            Need instant assistance? Direct WhatsApp:{" "}
             <a href={brandConfig.whatsappHelpUrl} target="_blank" rel="noreferrer" className="text-[#66c0f4] font-bold hover:underline">
               {brandConfig.whatsappDisplay}
             </a>
@@ -289,7 +289,7 @@ export default function SupportPage() {
                   onChange={(e) => setCategory(e.target.value)}
                   className="w-full bg-[#16202d] border border-[#2a475e] text-xs text-white rounded p-2 focus:outline-none"
                 >
-                  <option value="LOGIN_HELP">Login & Setup Window Help</option>
+                  <option value="LOGIN_HELP">Setup Guide & Desktop Launcher Help</option>
                   <option value="OFFLINE_MODE">Steam Offline Mode Assistance</option>
                   <option value="GAME_CRASH">Game Crash / Installation Troubleshooting</option>
                   <option value="BILLING">UPI Billing & Payment Inquiries</option>

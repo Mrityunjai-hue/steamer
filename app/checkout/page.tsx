@@ -47,18 +47,16 @@ export default function CheckoutPage() {
   const [guestName, setGuestName] = useState("");
   const [guestPhone, setGuestPhone] = useState("");
 
-  // 12 Mandatory Disclosure checkboxes (UNTICKED by default)
+  // 10 Mandatory Disclosure checkboxes (UNTICKED by default)
   const [checkboxes, setCheckboxes] = useState({
-    offlineOnly: false,
-    noOnlineFeatures: false,
-    onlyMyGames: false,
-    tagsMatter: false,
-    extraLaunchers: false,
-    setupWindows: false,
-    oneDevice: false,
-    sharedAccount: false,
-    platformRisk: false,
-    refundRules: false,
+    offlinePlay: false,
+    personalPcSetup: false,
+    noAccountQueues: false,
+    allAccessCatalog: false,
+    systemRequirements: false,
+    noOnlineMultiplayer: false,
+    whatsappSupport: false,
+    refundGuarantee: false,
     termsAndPrivacy: false,
     finalAccept: false,
   });
@@ -369,125 +367,101 @@ export default function CheckoutPage() {
             </div>
           </div>
 
-          {/* 12 Individual Checkboxes */}
+          {/* 10 Individual Checkboxes */}
           <div className="space-y-3.5 text-xs text-[#c7d5e0]">
             <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
               <input
                 type="checkbox"
-                checked={checkboxes.offlineOnly}
-                onChange={() => handleCheckboxToggle("offlineOnly")}
+                checked={checkboxes.offlinePlay}
+                onChange={() => handleCheckboxToggle("offlinePlay")}
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>Offline only:</strong> I understand every game must be played with Steam in <strong>Offline Mode</strong>. If I go online, I may log out other renters and break the rules.
+                <strong>Offline Play:</strong> I understand all games are downloaded/installed locally and played in <strong>Offline Mode</strong> with permanent local save files on my PC.
               </span>
             </label>
 
             <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
               <input
                 type="checkbox"
-                checked={checkboxes.noOnlineFeatures}
-                onChange={() => handleCheckboxToggle("noOnlineFeatures")}
+                checked={checkboxes.personalPcSetup}
+                onChange={() => handleCheckboxToggle("personalPcSetup")}
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>No online features:</strong> I understand online multiplayer, live co-op, cloud saves, leaderboards, purchases, and community features do <strong>not</strong> work.
+                <strong>Personal PC Setup:</strong> I will follow the visual, click-by-click walkthrough to configure the launcher tool and add titles directly to my library.
               </span>
             </label>
 
             <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
               <input
                 type="checkbox"
-                checked={checkboxes.onlyMyGames}
-                onChange={() => handleCheckboxToggle("onlyMyGames")}
+                checked={checkboxes.noAccountQueues}
+                onChange={() => handleCheckboxToggle("noAccountQueues")}
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>Only my games:</strong> I understand my plan covers only the games I chose, and I will not play any other game on the account.
+                <strong>Zero Account Sharing or Queues:</strong> I understand this pass gives me direct, independent access on my PC without waiting in queues or sharing logins with other users.
               </span>
             </label>
 
             <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
               <input
                 type="checkbox"
-                checked={checkboxes.tagsMatter}
-                onChange={() => handleCheckboxToggle("tagsMatter")}
+                checked={checkboxes.allAccessCatalog}
+                onChange={() => handleCheckboxToggle("allAccessCatalog")}
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>Tags matter:</strong> I have read the tag on each game I picked (Offline OK / Mixed / Not yet verified). I understand Mixed and Not yet verified games may not fully work offline.
+                <strong>All-Access Vault (245+ Titles):</strong> I understand my ₹300 pass unlocks access to all 245+ verified PC titles in the Steamer offline catalog.
               </span>
             </label>
 
             <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
               <input
                 type="checkbox"
-                checked={checkboxes.extraLaunchers}
-                onChange={() => handleCheckboxToggle("extraLaunchers")}
+                checked={checkboxes.systemRequirements}
+                onChange={() => handleCheckboxToggle("systemRequirements")}
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>Extra launchers:</strong> I understand some games need a separate launcher login (Ubisoft Connect, EA app or Rockstar Launcher) which will be shared by WhatsApp in the same way.
+                <strong>System Compatibility:</strong> I confirm my computer meets basic system requirements (Windows 10/11 64-bit with adequate disk space for game downloads).
               </span>
             </label>
 
             <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
               <input
                 type="checkbox"
-                checked={checkboxes.setupWindows}
-                onChange={() => handleCheckboxToggle("setupWindows")}
+                checked={checkboxes.noOnlineMultiplayer}
+                onChange={() => handleCheckboxToggle("noOnlineMultiplayer")}
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>Setup windows:</strong> I understand downloads and updates happen only during scheduled setup windows, and I may have to wait for my turn in queue.
+                <strong>No Online Multiplayer:</strong> I understand that single-player offline gaming does not include live competitive multiplayer servers or online ranked leaderboards.
               </span>
             </label>
 
             <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
               <input
                 type="checkbox"
-                checked={checkboxes.oneDevice}
-                onChange={() => handleCheckboxToggle("oneDevice")}
+                checked={checkboxes.whatsappSupport}
+                onChange={() => handleCheckboxToggle("whatsappSupport")}
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>One device:</strong> I will use only the one device I register. Changing it requires admin approval.
+                <strong>Direct WhatsApp Support:</strong> I understand I have access to dedicated 1-on-1 assistance via WhatsApp for any installation or setup questions.
               </span>
             </label>
 
             <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
               <input
                 type="checkbox"
-                checked={checkboxes.sharedAccount}
-                onChange={() => handleCheckboxToggle("sharedAccount")}
+                checked={checkboxes.refundGuarantee}
+                onChange={() => handleCheckboxToggle("refundGuarantee")}
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>Shared account:</strong> I understand this is a shared third-party account and I do not own any game, license, or key.
-              </span>
-            </label>
-
-            <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
-              <input
-                type="checkbox"
-                checked={checkboxes.platformRisk}
-                onChange={() => handleCheckboxToggle("platformRisk")}
-                className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
-              />
-              <span>
-                <strong>Platform risk:</strong> I understand Steam&apos;s rules restrict account sharing, the account <strong>may be restricted or removed at any time</strong>, and there is no guarantee of availability.
-              </span>
-            </label>
-
-            <label className="flex items-start gap-3 cursor-pointer p-2.5 rounded hover:bg-[#16202d] transition-colors">
-              <input
-                type="checkbox"
-                checked={checkboxes.refundRules}
-                onChange={() => handleCheckboxToggle("refundRules")}
-                className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
-              />
-              <span>
-                <strong>Refund rules:</strong> I have read the refund and credit rules in the Plan and Purchase Conditions.
+                <strong>48-Hour Money-Back Guarantee:</strong> I have read the policy: 100% full refund within 48 hours if setup cannot be completed on my PC.
               </span>
             </label>
 
@@ -519,7 +493,7 @@ export default function CheckoutPage() {
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span className="font-bold text-white">
-                Final: I understand and accept all of the above.
+                Final: I confirm all details are correct and accept all terms above.
               </span>
             </label>
           </div>
@@ -537,14 +511,14 @@ export default function CheckoutPage() {
               className="w-full bg-[#171a21] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
             />
             <p className="text-[10px] text-[#8f98a0]">
-              Only this registered device is authorized for offline play. Max 1 device swap per 30 days.
+              Register your primary gaming rig for convenient device identification and support.
             </p>
           </div>
 
           {/* Mandatory Trust Pledge Box */}
           <div className="bg-gradient-to-r from-emerald-950/60 via-[#16202d] to-sky-950/60 border border-emerald-500/50 p-5 rounded-lg space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4" /> THE STEAMER TRUST PLEDGE (MANDATORY)
+              <ShieldCheck className="w-4 h-4" /> THE STEAMER FAIR-PLAY PLEDGE (MANDATORY)
             </h4>
             <label className="flex items-start gap-3 cursor-pointer text-xs text-white leading-relaxed">
               <input
@@ -555,7 +529,7 @@ export default function CheckoutPage() {
               />
               <span>
                 <strong>
-                  &quot;Steamer is built on trust. I will only play the games in my plan, I will keep Steam in Offline Mode, and I will never share the login. I understand that breaking this ends my access with no refund.&quot;
+                  &quot;Steamer is built on fair play and gamer trust. I will follow the guided setup instructions, keep my game client offline for offline play, and use my access link responsibly on my PC. I understand the 48-Hour Guarantee protects my purchase.&quot;
                 </strong>
               </span>
             </label>

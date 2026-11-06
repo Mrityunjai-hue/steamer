@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   HelpCircle,
   Clock,
+  BookOpen,
   Layers,
 } from "lucide-react";
 
@@ -56,10 +57,10 @@ export default function MyGamesPage() {
           </p>
         </div>
         <Link
-          href="/setup-window"
+          href="/dashboard"
           className="btn-steam-accent text-xs px-4 py-2 rounded font-bold flex items-center gap-1.5"
         >
-          <Clock className="w-4 h-4" /> Setup Window Console
+          <BookOpen className="w-4 h-4" /> Setup Guide Walkthrough
         </Link>
       </div>
 
@@ -69,8 +70,8 @@ export default function MyGamesPage() {
           <h3 className="text-lg font-bold text-white">No Games in Your Plan</h3>
           <p className="text-xs text-[#8f98a0]">
             {activeSub?.type === "ALL_ACCESS"
-              ? "With All-Access, you can download and play any game in the catalog during your setup window!"
-              : "Rent single games or bundles to start playing."}
+              ? "With All-Access, you can configure and play any of the 245+ games in the catalog on your PC!"
+              : "Unlock the All-Access Pass to start playing."}
           </p>
           <Link href="/catalog" className="btn-steam-cta inline-block px-5 py-2.5 rounded text-xs font-bold">
             Browse Catalog
@@ -117,17 +118,12 @@ export default function MyGamesPage() {
                     <WifiOff className="w-3.5 h-3.5 text-[#5ba32b]" /> How to Install and Play Offline:
                   </h4>
                   <ol className="list-decimal list-inside space-y-1 text-[#8f98a0]">
-                    <li>Request your exclusive setup window on Steamer.</li>
+                    <li>Open your Steamer Setup Guide from your Dashboard or Secret Access Link.</li>
                     <li>
-                      When your window is active, log in with the shared account details sent by admin on WhatsApp.
+                      In the desktop launcher app, click <strong>+ Add</strong> and search for <strong>{game.title}</strong>.
                     </li>
-                    <li>Search for <strong>{game.title}</strong> in the library and start downloading.</li>
-                    <li>
-                      {game.launcher !== "Steam only"
-                        ? `Note: ${game.launcher} will launch once during setup to authenticate. Admin will provide auxiliary credentials on WhatsApp.`
-                        : "Before clicking play, set Steam to Offline Mode (Steam → Go Offline)."}
-                    </li>
-                    <li>Launch the game, verify it loads to the main menu, and enjoy offline!</li>
+                    <li>Click <strong>Fetch</strong> to link the manifest directly into your library.</li>
+                    <li>Install the game and launch in Offline Mode with permanent local saves on your PC.</li>
                   </ol>
                 </div>
               </div>

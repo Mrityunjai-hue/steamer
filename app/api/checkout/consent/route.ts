@@ -69,16 +69,14 @@ export async function POST(req: NextRequest) {
 
     // Verify all mandatory disclosures are checked
     const requiredCheckboxes = [
-      "offlineOnly",
-      "noOnlineFeatures",
-      "onlyMyGames",
-      "tagsMatter",
-      "extraLaunchers",
-      "setupWindows",
-      "oneDevice",
-      "sharedAccount",
-      "platformRisk",
-      "refundRules",
+      "offlinePlay",
+      "personalPcSetup",
+      "noAccountQueues",
+      "allAccessCatalog",
+      "systemRequirements",
+      "noOnlineMultiplayer",
+      "whatsappSupport",
+      "refundGuarantee",
       "termsAndPrivacy",
       "finalAccept",
     ];

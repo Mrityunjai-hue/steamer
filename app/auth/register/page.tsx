@@ -145,7 +145,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-bold text-white block">WhatsApp Number (for setup window credentials)</label>
+              <label className="text-xs font-bold text-white block">WhatsApp Number (for 1-on-1 support & pass updates)</label>
               <div className="relative">
                 <Phone className="w-4 h-4 text-[#8f98a0] absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
@@ -158,7 +158,7 @@ export default function RegisterPage() {
                 />
               </div>
               <p className="text-[10px] text-[#8f98a0]">
-                Admin will manually send login credentials to this number during your setup window.
+                Our support team is available on WhatsApp if you need any guidance setting up your games.
               </p>
             </div>
 

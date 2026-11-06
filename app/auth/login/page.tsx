@@ -56,7 +56,7 @@ export default function LoginPage() {
         </div>
         <h1 className="text-2xl font-black text-white tracking-wide">SIGN IN TO STEAMER</h1>
         <p className="text-xs text-[#8f98a0]">
-          Access your rented games, setup windows, and community lounge.
+          Access your All-Access Pass, setup guide walkthrough, and game vault.
         </p>
       </div>
 

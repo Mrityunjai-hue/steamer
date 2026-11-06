@@ -14,7 +14,13 @@ import {
   Laptop,
   Zap,
   ShieldCheck,
+  Gamepad2,
+  MessageSquare,
+  Key,
+  Shield,
+  CheckCircle2,
 } from "lucide-react";
+import { brandConfig } from "@/config/brand";
 
 export const dynamic = "force-dynamic";
 
@@ -111,8 +117,8 @@ export default async function HomePage() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#5ba32b]"></span>
               </span>
               <p className="text-[#c7d5e0]">
-                <strong className="text-white">Store Vault Status:</strong>{" "}
-                <span className="text-[#5ba32b] font-bold">245+ Titles</span> Included in Setup Guide · Single One-Time ₹300 Unlock
+                <strong className="text-white">STEAMER ALL-ACCESS PASS:</strong>{" "}
+                <span className="text-[#5ba32b] font-bold">245+ Blockbuster Titles</span> · ₹300 Flat One-Time Unlock · Zero Account Sharing
               </p>
             </div>
             <div className="flex items-center gap-1.5 text-[#8f98a0]">
@@ -124,35 +130,63 @@ export default async function HomePage() {
           {/* Hero Grid: Marketing Copy Left + Steam Carousel Right */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#2a475e]/40 border border-[#66c0f4]/30 rounded-sm text-xs font-bold text-[#66c0f4]">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>245+ PC Games · Zero Account Sharing</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#2a475e]/50 border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400">
+                <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
+                <span>₹300 All-Access Pass • 245+ PC Games</span>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                PLAY PREMIUM PC GAMES.{" "}
+                ALL-ACCESS PC GAMING PASS.{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66c0f4] via-[#1a9fff] to-emerald-400">
-                  ON YOUR OWN PC. FOREVER.
+                  245+ TITLES. ON YOUR OWN PC.
                 </span>
               </h1>
 
               <p className="text-sm sm:text-base text-[#c7d5e0] leading-relaxed max-w-2xl">
-                Stop paying thousands for individual titles or dealing with shared Steam accounts. Get the ultimate, step-by-step guide to unlocking and playing premium PC games forever on your own system.
+                Stop paying thousands for individual titles or dealing with shared account collisions. Get instant access to the complete 245+ offline game vault and the step-by-step PC setup guide.
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 pt-1">
+              {/* Amenity Badges */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] text-[#c7d5e0] pt-1">
+                <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded">
+                  <Gamepad2 className="w-3.5 h-3.5 text-[#66c0f4]" />
+                  <span>245+ Premium Titles</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded">
+                  <Zap className="w-3.5 h-3.5 text-amber-400" />
+                  <span>10-Min Fast-Track Setup</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded">
+                  <Laptop className="w-3.5 h-3.5 text-[#5ba32b]" />
+                  <span>Zero Account Sharing</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded">
+                  <WifiOff className="w-3.5 h-3.5 text-sky-400" />
+                  <span>Permanent Local Saves</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded">
+                  <MessageSquare className="w-3.5 h-3.5 text-[#25d366]" />
+                  <span>1-on-1 WhatsApp Support</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>48-Hr Money-Back Guarantee</span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   href="/checkout"
-                  className="btn-steam-cta px-7 py-3 rounded-sm text-sm font-bold shadow-ctaGlow flex items-center gap-2 text-white"
+                  className="btn-steam-cta px-7 py-3 rounded text-sm font-bold shadow-ctaGlow flex items-center gap-2 text-white"
                 >
-                  <span>Unlock the Full Guide – ₹300</span>
+                  <span>Get Instant Access – ₹300</span>
                   <ChevronRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href="#games-showcase"
-                  className="btn-steam-panel px-5 py-3 rounded-sm text-sm font-bold flex items-center gap-2 border border-[#2a475e] text-[#c7d5e0] hover:text-white"
+                  href="#amenities-breakdown"
+                  className="btn-steam-panel px-5 py-3 rounded text-sm font-bold flex items-center gap-2 border border-[#2a475e] text-[#c7d5e0] hover:text-white"
                 >
-                  <span>Browse 245+ Titles</span>
+                  <span>See What&apos;s Included</span>
                 </a>
               </div>
             </div>
@@ -165,72 +199,119 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. What You Get (Clean Steam Feature Capsule Strip) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-5 shadow-lg space-y-4">
-          <div className="border-b border-[#2a475e]/60 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      {/* 2. What You Get (All-Access Plan Amenities & Inclusions) */}
+      <section id="amenities-breakdown" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#1b2838] border border-[#2a475e] rounded-xl p-6 sm:p-8 shadow-xl space-y-6">
+          <div className="border-b border-[#2a475e]/60 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <span className="text-[10px] font-bold text-[#66c0f4] uppercase tracking-wider block">
-                WHAT YOU GET FOR ₹300
+              <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider block">
+                THE STEAMER ALL-ACCESS AMENITIES (₹300 FLAT)
               </span>
-              <h2 className="text-base sm:text-lg font-black text-white">
-                Everything You Need to Play Immediately
+              <h2 className="text-xl sm:text-2xl font-black text-white mt-1">
+                Everything Included In Your Setup Pass
               </h2>
             </div>
-            <span className="text-xs text-[#8f98a0]">
-              One-Time Payment · Lifetime Access · No Recurring Fees
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-white font-bold bg-[#16202d] border border-emerald-500/40 px-3 py-1 rounded-full text-emerald-400">
+                ₹300 One-Time · Lifetime Access
+              </span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            {/* Benefit 1 */}
-            <div className="bg-[#16202d] border border-[#2a475e]/60 p-3.5 rounded-sm flex items-start gap-3">
-              <div className="w-8 h-8 rounded-sm bg-[#66c0f4]/10 border border-[#66c0f4]/30 flex items-center justify-center text-[#66c0f4] flex-shrink-0">
-                <BookOpen className="w-4 h-4" />
+          {/* 6 Comprehensive Amenities Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Amenity 1 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/70 p-5 rounded-lg space-y-2 hover:border-[#66c0f4] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#66c0f4]/10 border border-[#66c0f4]/30 flex items-center justify-center text-[#66c0f4]">
+                <Gamepad2 className="w-5 h-5" />
               </div>
-              <div>
-                <h3 className="font-bold text-white text-xs">The Complete Setup Guide</h3>
-                <p className="text-[11px] text-[#8f98a0] mt-0.5 leading-snug">
-                  Easy, step-by-step instructions to configure your library in under 10 minutes.
-                </p>
-              </div>
+              <h3 className="font-bold text-white text-sm">245+ AAA & Indie Games</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Play blockbusters like GTA V, RDR 2, Cyberpunk 2077, Elden Ring, Black Myth: Wukong, God of War, Spider-Man, and hundreds more without buying separate copies.
+              </p>
             </div>
 
-            {/* Benefit 2 */}
-            <div className="bg-[#16202d] border border-[#2a475e]/60 p-3.5 rounded-sm flex items-start gap-3">
-              <div className="w-8 h-8 rounded-sm bg-[#5ba32b]/10 border border-[#5ba32b]/30 flex items-center justify-center text-[#5ba32b] flex-shrink-0">
-                <Laptop className="w-4 h-4" />
+            {/* Amenity 2 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/70 p-5 rounded-lg space-y-2 hover:border-[#5ba32b] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#5ba32b]/10 border border-[#5ba32b]/30 flex items-center justify-center text-[#5ba32b]">
+                <Laptop className="w-5 h-5" />
               </div>
-              <div>
-                <h3 className="font-bold text-white text-xs">No Account Sharing</h3>
-                <p className="text-[11px] text-[#8f98a0] mt-0.5 leading-snug">
-                  Play directly on your own PC without being kicked off by other users.
-                </p>
-              </div>
+              <h3 className="font-bold text-white text-sm">Zero Account Sharing & No Queues</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                No waiting for someone else to log out. No scheduled setup queues. The guide links manifests to your personal machine so you play independently anytime.
+              </p>
             </div>
 
-            {/* Benefit 3 */}
-            <div className="bg-[#16202d] border border-[#2a475e]/60 p-3.5 rounded-sm flex items-start gap-3">
-              <div className="w-8 h-8 rounded-sm bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 flex-shrink-0">
-                <WifiOff className="w-4 h-4" />
+            {/* Amenity 3 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/70 p-5 rounded-lg space-y-2 hover:border-amber-400 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <BookOpen className="w-5 h-5" />
               </div>
-              <div>
-                <h3 className="font-bold text-white text-xs">Offline & Local Play</h3>
-                <p className="text-[11px] text-[#8f98a0] mt-0.5 leading-snug">
-                  Full access to single-player story modes, campaigns, and permanent local saves.
-                </p>
-              </div>
+              <h3 className="font-bold text-white text-sm">Visual Walkthrough & Video Tutorial</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Step-by-step instructions with enlarged screenshot previews, highlighted buttons, and an embedded video player for a foolproof 10-minute setup.
+              </p>
             </div>
 
-            {/* Benefit 4 */}
-            <div className="bg-[#16202d] border border-[#2a475e]/60 p-3.5 rounded-sm flex items-start gap-3">
-              <div className="w-8 h-8 rounded-sm bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 flex-shrink-0">
-                <Zap className="w-4 h-4" />
+            {/* Amenity 4 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/70 p-5 rounded-lg space-y-2 hover:border-sky-400 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
+                <WifiOff className="w-5 h-5" />
               </div>
-              <div>
-                <h3 className="font-bold text-white text-xs">Lifetime Access</h3>
-                <p className="text-[11px] text-[#8f98a0] mt-0.5 leading-snug">
-                  Learn the method once and use it for all 245+ games with zero monthly charges.
+              <h3 className="font-bold text-white text-sm">100% Offline Mode & Local Saves</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Enjoy complete single-player campaigns, story modes, and mods. All progress and save files are stored safely and permanently on your own PC hard drive.
+              </p>
+            </div>
+
+            {/* Amenity 5 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/70 p-5 rounded-lg space-y-2 hover:border-emerald-400 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <Key className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold text-white text-sm">Instant Secret Access Link</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Zero friction: guest checkout available without needing to create a password upfront. Receive your private access URL immediately after payment.
+              </p>
+            </div>
+
+            {/* Amenity 6 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/70 p-5 rounded-lg space-y-2 hover:border-[#25d366] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#25d366]/10 border border-[#25d366]/30 flex items-center justify-center text-[#25d366]">
+                <MessageSquare className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold text-white text-sm">1-on-1 WhatsApp Support</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Direct admin assistance on WhatsApp daily from 10:00 AM to 11:00 PM IST. If you ever get stuck, we walk you through until your games are ready to play.
+              </p>
+            </div>
+          </div>
+
+          {/* Value Comparison Strip */}
+          <div className="bg-[#16202d] border border-[#2a475e] p-5 rounded-lg space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+              Why Gamers Choose the Steamer All-Access Pass:
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div className="p-3 bg-[#171a21] border border-[#2a475e]/50 rounded space-y-1">
+                <span className="text-[#8f98a0] font-bold block">Buying Separately</span>
+                <p className="text-red-400 font-extrabold text-sm">₹50,000+ Total</p>
+                <p className="text-[11px] text-[#8f98a0]">
+                  Buying 245+ AAA games individually at retail costs a fortune.
+                </p>
+              </div>
+              <div className="p-3 bg-[#171a21] border border-[#2a475e]/50 rounded space-y-1">
+                <span className="text-[#8f98a0] font-bold block">Account Rentals</span>
+                <p className="text-amber-400 font-extrabold text-sm">High Frustration</p>
+                <p className="text-[11px] text-[#8f98a0]">
+                  Frequent kicks, login collisions, queue delays, and lost save files.
+                </p>
+              </div>
+              <div className="p-3 bg-emerald-950/40 border border-emerald-500/50 rounded space-y-1">
+                <span className="text-emerald-400 font-bold block">Steamer All-Access Pass</span>
+                <p className="text-emerald-300 font-extrabold text-sm">₹300 One-Time Flat</p>
+                <p className="text-[11px] text-[#c7d5e0]">
+                  Your PC, offline forever, 245+ titles, and 48-Hour Money-Back Guarantee.
                 </p>
               </div>
             </div>
@@ -240,10 +321,10 @@ export default async function HomePage() {
 
       {/* 2.5. How It Works (3 Simple Steps to Trust & Play) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#171a21] border border-[#2a475e] rounded-sm p-5 sm:p-6 shadow-md space-y-5">
+        <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 sm:p-8 shadow-md space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2a475e]/60 pb-3">
             <div>
-              <span className="text-[10px] font-bold text-[#66c0f4] uppercase tracking-wider block">
+              <span className="text-xs font-bold text-[#66c0f4] uppercase tracking-wider block">
                 SIMPLE 3-STEP PROCESS
               </span>
               <h2 className="text-base sm:text-lg font-black text-white">
@@ -258,37 +339,37 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Step 1 */}
-            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-sm space-y-2 relative group hover:border-[#66c0f4] transition-colors">
+            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-lg space-y-2 relative group hover:border-[#66c0f4] transition-colors">
               <div className="flex items-center justify-between">
-                <span className="w-7 h-7 rounded-sm bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
+                <span className="w-7 h-7 rounded bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
                   01
                 </span>
                 <span className="text-[10px] text-[#8f98a0] font-mono">STEP 1</span>
               </div>
               <h3 className="font-bold text-white text-xs sm:text-sm">One-Time UPI Transfer (₹300)</h3>
               <p className="text-[11px] text-[#8f98a0] leading-relaxed">
-                Scan our official UPI QR code or pay to VPA. No cards, no hidden charges, and zero recurring monthly fees.
+                Scan our official UPI QR code or pay to VPA. No credit cards needed, no hidden fees, and zero recurring monthly charges.
               </p>
             </div>
 
             {/* Step 2 */}
-            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-sm space-y-2 relative group hover:border-[#66c0f4] transition-colors">
+            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-lg space-y-2 relative group hover:border-[#66c0f4] transition-colors">
               <div className="flex items-center justify-between">
-                <span className="w-7 h-7 rounded-sm bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
+                <span className="w-7 h-7 rounded bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
                   02
                 </span>
                 <span className="text-[10px] text-[#8f98a0] font-mono">STEP 2</span>
               </div>
-              <h3 className="font-bold text-white text-xs sm:text-sm">Fast-Track Admin Verification</h3>
+              <h3 className="font-bold text-white text-xs sm:text-sm">Instant Access Link</h3>
               <p className="text-[11px] text-[#8f98a0] leading-relaxed">
-                Submit your 12-digit UTR. Our admin verifies it within minutes and unlocks your full visual Setup Dashboard.
+                Submit your 12-digit UTR and get your private secret access link immediately. No mandatory password required.
               </p>
             </div>
 
             {/* Step 3 */}
-            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-sm space-y-2 relative group hover:border-[#5ba32b] transition-colors">
+            <div className="bg-[#1b2838] border border-[#2a475e]/70 p-4 rounded-lg space-y-2 relative group hover:border-[#5ba32b] transition-colors">
               <div className="flex items-center justify-between">
-                <span className="w-7 h-7 rounded-sm bg-[#5ba32b] text-white font-black flex items-center justify-center text-xs">
+                <span className="w-7 h-7 rounded bg-[#5ba32b] text-white font-black flex items-center justify-center text-xs">
                   03
                 </span>
                 <span className="text-[10px] text-[#5ba32b] font-mono font-bold">READY</span>
@@ -301,23 +382,23 @@ export default async function HomePage() {
           </div>
 
           {/* Transparent Live Admin Support Bar */}
-          <div className="bg-[#121922] border border-[#2a475e]/60 rounded-sm p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div className="bg-[#121922] border border-[#2a475e]/60 rounded-lg p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div className="flex items-center gap-3">
               <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25d366] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#25d366]"></span>
               </span>
               <p className="text-[#c7d5e0]">
-                <strong>Need pre-purchase help or setup guidance?</strong> Admin is online 24/7 on WhatsApp.
+                <strong>Questions before purchasing?</strong> Our team is online on WhatsApp (Primary Channel) to assist you.
               </p>
             </div>
             <a
-              href="https://wa.me/919876543210"
+              href={brandConfig.whatsappHelpUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-[#25d366] hover:underline font-bold whitespace-nowrap"
             >
-              <span>Chat with Admin on WhatsApp →</span>
+              <span>Chat on WhatsApp →</span>
             </a>
           </div>
         </div>
