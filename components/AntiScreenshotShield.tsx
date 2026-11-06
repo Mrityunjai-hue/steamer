@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ShieldAlert, EyeOff } from "lucide-react";
+import { ShieldAlert, EyeOff, ShieldCheck } from "lucide-react";
 
 interface AntiScreenshotShieldProps {
   enabled?: boolean;
@@ -20,7 +20,7 @@ export default function AntiScreenshotShield({
   useEffect(() => {
     if (!enabled) return;
 
-    // 1. Defend against screenshot utilities / Snipping Tool that steal focus
+    // 1. Defend against screenshot utilities & Snipping Tool that steal focus
     const handleBlur = () => {
       setIsShieldActive(true);
     };
@@ -37,23 +37,44 @@ export default function AntiScreenshotShield({
       }
     };
 
-    // 2. Intercept PrintScreen and hotkeys
+    // 2. Mouse leave window protection: When user moves mouse outside viewport (e.g. to open Snipping Tool or click another app)
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+        setIsShieldActive(true);
+      }
+    };
+
+    const handleMouseEnter = () => {
+      setIsShieldActive(false);
+    };
+
+    // 3. Intercept PrintScreen and hotkeys
     const handleKeyDown = (e: KeyboardEvent) => {
       // PrintScreen key
       if (e.key === "PrintScreen" || e.keyCode === 44) {
         e.preventDefault();
         try {
-          navigator.clipboard.writeText("Protected content: Screenshots are prohibited.");
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(
+              `PROTECTED STEAMER WALKTHROUGH • ACCOUNT: ${watermarkText} • SCREENSHOTS PROHIBITED`
+            );
+          }
         } catch {}
         setIsShieldActive(true);
         setAlertMsg("Screenshots are blocked to protect guide integrity.");
         setTimeout(() => {
           setIsShieldActive(false);
           setAlertMsg(null);
-        }, 2500);
+        }, 3000);
       }
 
-      // Ctrl + P (Print)
+      // Windows + Shift + S or Mac Command + Shift + 3/4
+      if ((e.shiftKey && (e.metaKey || e.ctrlKey)) || e.key === "F12") {
+        setIsShieldActive(true);
+        setTimeout(() => setIsShieldActive(false), 2000);
+      }
+
+      // Ctrl + P (Print to PDF)
       if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
         e.preventDefault();
         setAlertMsg("Printing this protected guide is disabled.");
@@ -71,14 +92,22 @@ export default function AntiScreenshotShield({
       }
     };
 
-    // 3. Prevent Copy / Cut
+    // 4. Prevent Copy / Cut
     const handleCopy = (e: ClipboardEvent) => {
       e.preventDefault();
+      if (e.clipboardData) {
+        e.clipboardData.setData(
+          "text/plain",
+          "This setup guide is private and confidential to authorized Steamer customers."
+        );
+      }
     };
 
     window.addEventListener("blur", handleBlur);
     window.addEventListener("focus", handleFocus);
     document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
+    document.documentElement.addEventListener("mouseenter", handleMouseEnter);
     window.addEventListener("keydown", handleKeyDown);
     document.addEventListener("copy", handleCopy);
     document.addEventListener("cut", handleCopy);
@@ -87,14 +116,20 @@ export default function AntiScreenshotShield({
       window.removeEventListener("blur", handleBlur);
       window.removeEventListener("focus", handleFocus);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
+      document.documentElement.removeEventListener("mouseenter", handleMouseEnter);
       window.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("copy", handleCopy);
       document.removeEventListener("cut", handleCopy);
     };
-  }, [enabled]);
+  }, [enabled, watermarkText]);
 
   return (
-    <div className="relative select-none" onContextMenu={(e) => e.preventDefault()}>
+    <div
+      className="relative select-none"
+      onContextMenu={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
+    >
       {/* CSS Print killer */}
       <style jsx global>{`
         @media print {
@@ -104,11 +139,11 @@ export default function AntiScreenshotShield({
         }
       `}</style>
 
-      {/* Repeating Anti-Leak Watermark Grid */}
-      <div className="pointer-events-none fixed inset-0 z-40 overflow-hidden select-none opacity-[0.04] sm:opacity-[0.06] flex flex-wrap gap-20 p-6 items-center justify-around transform -rotate-12">
-        {Array.from({ length: 28 }).map((_, i) => (
-          <div key={i} className="text-white font-mono text-xs tracking-widest whitespace-nowrap">
-            CONFIDENTIAL • {watermarkText} • NO RECORDING
+      {/* Prominent Anti-Leak Forensic Watermark Grid */}
+      <div className="pointer-events-none fixed inset-0 z-40 overflow-hidden select-none opacity-15 sm:opacity-20 flex flex-wrap gap-24 p-6 items-center justify-around transform -rotate-12">
+        {Array.from({ length: 32 }).map((_, i) => (
+          <div key={i} className="text-white font-mono text-xs sm:text-sm font-bold tracking-widest whitespace-nowrap drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+            🔒 {watermarkText} • STEAMER PASS • NO SHARING
           </div>
         ))}
       </div>
@@ -121,8 +156,8 @@ export default function AntiScreenshotShield({
             SCREEN CAPTURE SHIELD ACTIVE
           </h3>
           <p className="text-xs text-[#8f98a0] max-w-md leading-relaxed mb-4">
-            This setup walkthrough is protected by Steamer anti-leak policies. Please return focus to
-            this browser window to resume reading.
+            This setup walkthrough is protected by Steamer anti-leak policies. Please return your
+            cursor and focus to this browser window to resume viewing.
           </p>
           <button
             onClick={() => setIsShieldActive(false)}
@@ -145,4 +180,3 @@ export default function AntiScreenshotShield({
     </div>
   );
 }
-
