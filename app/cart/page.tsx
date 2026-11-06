@@ -67,31 +67,31 @@ export default function CartPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: All-Access Guide Banner + Selected Titles Preview */}
         <div className="lg:col-span-8 space-y-6">
-          {/* Main All-Access Guide Feature Card */}
-          <div className="bg-gradient-to-br from-[#1b2838] to-[#171a21] border border-emerald-500/50 rounded-xl p-6 sm:p-8 space-y-4 shadow-xl">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-black px-3 py-1 rounded uppercase tracking-wider flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Lifetime All-Access Pass
+          {/* Main All-Access Guide Feature Card (Steam style) */}
+          <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-6 space-y-4 shadow-lg">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2a475e]/60 pb-3">
+              <span className="bg-[#4c6b22] text-[#beee11] text-[10px] font-extrabold px-2.5 py-1 rounded-sm uppercase tracking-wider flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5" /> Lifetime All-Access Pass
               </span>
               <span className="text-xs text-[#8f98a0]">One-Time Payment · No Recurring Fees</span>
             </div>
 
             <div className="space-y-2">
-              <h2 className="text-2xl sm:text-3xl font-black text-white">
+              <h2 className="text-xl sm:text-2xl font-black text-white">
                 Complete PC Setup Guide & 245+ Titles Vault
               </h2>
-              <p className="text-sm text-[#c7d5e0] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#c7d5e0] leading-relaxed">
                 Stop paying thousands for individual titles or dealing with shared accounts. Get the ultimate, step-by-step guide to unlocking and playing premium PC games forever on your own system.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-[#c7d5e0]">
-              <div className="bg-[#16202d] border border-[#2a475e] p-3 rounded-lg flex items-center gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs text-[#c7d5e0]">
+              <div className="bg-[#16202d] border border-[#2a475e] p-3 rounded-sm flex items-center gap-2.5">
                 <BookOpen className="w-4 h-4 text-[#66c0f4] flex-shrink-0" />
                 <span>Step-by-step setup in under 10 minutes</span>
               </div>
-              <div className="bg-[#16202d] border border-[#2a475e] p-3 rounded-lg flex items-center gap-2.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <div className="bg-[#16202d] border border-[#2a475e] p-3 rounded-sm flex items-center gap-2.5">
+                <ShieldCheck className="w-4 h-4 text-[#5ba32b] flex-shrink-0" />
                 <span>No account sharing · Local saves & offline play</span>
               </div>
             </div>
@@ -160,7 +160,7 @@ export default function CartPage() {
 
         {/* Right Column: Pricing Summary Card */}
         <div className="lg:col-span-4">
-          <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 shadow-xl space-y-6 sticky top-24">
+          <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-6 shadow-xl space-y-6 sticky top-24">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white border-b border-[#2a475e]/60 pb-3">
               Order Summary
             </h3>

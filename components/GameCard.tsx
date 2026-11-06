@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Check, ShieldCheck, Gamepad2, ArrowRight } from "lucide-react";
+import { Gamepad2 } from "lucide-react";
 
 export interface GameCardProps {
   id: string;
@@ -32,128 +32,128 @@ export default function GameCard({
 }: GameCardProps) {
   const [imageError, setImageError] = useState(false);
 
-  // Check if "Offline OK" verified or "Not yet verified"
   const isVerifiedOffline = offlineTag === "Offline OK" && !!testedOfflineOn;
-  const displayOfflineTag = isVerifiedOffline
-    ? "Offline Verified"
-    : offlineTag === "Offline OK"
-    ? "Offline Compatible"
-    : offlineTag;
 
-  // Tier color configuration
+  // Clean, official-looking Steam tier badges (no tacky emojis)
   const getTierBadge = () => {
     switch (hypeTier) {
       case "Hot":
         return (
-          <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-red-950/80 border border-red-500/40 text-red-300">
-            🔥 Hot
+          <span className="bg-[#a62222] text-white font-extrabold text-[9px] uppercase px-1.5 py-0.5 rounded-sm tracking-wider shadow">
+            HOT
           </span>
         );
       case "Popular":
         return (
-          <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-amber-950/80 border border-amber-500/40 text-amber-300">
-            ⚡ Popular
+          <span className="bg-[#1b4369] text-[#66c0f4] font-bold text-[9px] uppercase px-1.5 py-0.5 rounded-sm tracking-wider shadow border border-[#66c0f4]/20">
+            POPULAR
           </span>
         );
       case "Standard":
-        return (
-          <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[#2a475e]/80 border border-[#66c0f4]/30 text-[#66c0f4]">
-            Classic
-          </span>
-        );
+        return null;
       default:
-        return (
-          <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[#1b2838]/80 border border-[#2a475e] text-[#8f98a0]">
-            Vault Title
-          </span>
-        );
+        return null;
     }
   };
 
   const getOfflineBadge = () => {
     if (offlineTag === "Online required") {
       return (
-        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-red-900/60 border border-red-700/40 text-red-300">
+        <span className="bg-[#6b2222]/90 text-[#ff8080] text-[9px] font-bold px-1.5 py-0.5 rounded-sm">
           Online Only
         </span>
       );
     }
+    if (isVerifiedOffline) {
+      return (
+        <span className="bg-[#4c6b22]/90 text-[#a4d007] text-[9px] font-bold px-1.5 py-0.5 rounded-sm tracking-wide">
+          Offline OK
+        </span>
+      );
+    }
     return (
-      <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#5ba32b]/20 border border-[#5ba32b]/40 text-[#5ba32b] flex items-center gap-1">
-        <ShieldCheck className="w-3 h-3" />
-        <span>{displayOfflineTag}</span>
+      <span className="bg-black/60 text-[#8f98a0] text-[9px] font-medium px-1.5 py-0.5 rounded-sm">
+        Offline Ready
       </span>
     );
   };
 
   return (
-    <div className="steam-card flex flex-col h-full bg-[#171a21] border border-[#2a475e]/60 hover:border-[#66c0f4] rounded-lg overflow-hidden transition-all duration-300 group shadow-md hover:shadow-panelGlow">
-      <Link href={`/game/${id}`} className="block relative">
-        {/* Cover Artwork Container */}
-        <div className="relative aspect-[460/215] w-full overflow-hidden bg-[#0d131b]">
-          {!imageError && headerImage ? (
-            <Image
-              src={headerImage}
-              alt={title}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-              onError={() => setImageError(true)}
-            />
-          ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#1b2838] via-[#2a475e] to-[#16202d] text-center">
-              <Gamepad2 className="w-8 h-8 text-[#66c0f4] mb-2 opacity-80" />
-              <span className="text-sm font-bold text-white line-clamp-2 px-2">{title}</span>
-              {series && <span className="text-[11px] text-[#8f98a0]">{series}</span>}
-            </div>
-          )}
-
-          {/* Top Badges Overlay */}
-          <div className="absolute top-2 left-2 flex flex-wrap gap-1.5 z-10">
-            {getTierBadge()}
-            {getOfflineBadge()}
+    <Link
+      href={`/game/${id}`}
+      className="group relative bg-[#16202d] hover:bg-[#203042] border border-[#2a475e]/70 hover:border-[#66c0f4] rounded-sm overflow-hidden transition-all duration-200 flex flex-col justify-between shadow-md hover:shadow-panelGlow h-full"
+    >
+      {/* Cover Artwork Container (460x215 Steam Ratio) */}
+      <div className="relative aspect-[460/215] w-full bg-[#0d131b] overflow-hidden flex-shrink-0">
+        {headerImage && !imageError ? (
+          <Image
+            src={headerImage}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#1b2838] to-[#0e1620] p-2 text-center select-none">
+            <Gamepad2 className="w-6 h-6 text-[#66c0f4]/50 mb-1" />
+            <span className="text-[11px] font-bold text-[#c7d5e0]/80 tracking-wide line-clamp-1">
+              {title}
+            </span>
           </div>
+        )}
 
-          {/* Launcher badge */}
-          {launcher && launcher !== "Steam only" && (
-            <div className="absolute top-2 right-2 z-10 bg-black/70 backdrop-blur text-[10px] text-amber-200 px-1.5 py-0.5 rounded border border-amber-500/30">
-              {launcher}
-            </div>
-          )}
+        {/* Top Badges Overlay */}
+        <div className="absolute top-1.5 left-1.5 flex flex-wrap gap-1 z-10 pointer-events-none">
+          {getTierBadge()}
+          {getOfflineBadge()}
         </div>
 
-        {/* Content Section */}
-        <div className="p-3">
-          <h3 className="text-sm font-bold text-white group-hover:text-[#66c0f4] transition-colors truncate" title={title}>
-            {title}
-          </h3>
-          <div className="flex items-center justify-between text-[11px] text-[#8f98a0] mt-1">
-            <span>{series || "Standalone"}</span>
-            {steamPriceINR && (
-              <span className="text-[10px] text-[#8f98a0]/80 line-through">
-                ₹{steamPriceINR.toLocaleString("en-IN")} on Steam
-              </span>
-            )}
+        {/* Launcher badge (if not standard Steam) */}
+        {launcher && launcher !== "Steam only" && (
+          <div className="absolute top-1.5 right-1.5 z-10 bg-black/80 text-[9px] text-amber-200 px-1.5 py-0.5 rounded-sm border border-amber-500/30">
+            {launcher}
           </div>
-        </div>
-      </Link>
-
-      {/* Access Label (Replaces per-game price tags) */}
-      <div className="px-3 pb-3 pt-1 flex items-center justify-between mt-auto border-t border-[#171a21]/50 bg-[#16202d]/50">
-        <div className="inline-flex items-center gap-1.5 bg-[#5ba32b]/15 border border-[#5ba32b]/40 text-[#5ba32b] px-2.5 py-1 rounded text-xs font-bold">
-          <Check className="w-3.5 h-3.5" />
-          <span>Included in Guide</span>
-        </div>
-
-        <Link
-          href={`/game/${id}`}
-          className="text-xs text-[#8f98a0] hover:text-white flex items-center gap-1 transition-colors group-hover:text-[#66c0f4]"
-        >
-          <span>View Info</span>
-          <ArrowRight className="w-3 h-3" />
-        </Link>
+        )}
       </div>
-    </div>
+
+      {/* Title & Metadata Section */}
+      <div className="p-2.5 space-y-1">
+        <h3
+          className="text-xs sm:text-[13px] font-bold text-[#c7d5e0] group-hover:text-white transition-colors truncate leading-snug"
+          title={title}
+        >
+          {title}
+        </h3>
+        <div className="flex items-center justify-between text-[10px] text-[#626d7b]">
+          <span className="truncate max-w-[70%]">{series || "Single-player"}</span>
+          <span className="text-[#5ba32b] font-medium">Local Play</span>
+        </div>
+      </div>
+
+      {/* Classic Steam Price & Included Capsule Widget */}
+      <div className="px-2.5 pb-2.5 pt-1 flex items-center justify-between mt-auto border-t border-[#1b2838] bg-[#121922]">
+        {/* Windows Platform Icon */}
+        <div className="flex items-center gap-1 text-[#626d7b]" title="Windows PC Supported">
+          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 12.402l35.687-4.86.016 34.423-35.67.202L0 12.402zm35.67 33.529l.028 34.453L.028 75.48.016 46.126l35.682-.195zm4.326-39.04L87.914 0v41.525l-47.918.318V6.891zm47.918 39.52v41.541l-47.918-6.758v-34.99l47.918.207z" />
+          </svg>
+          <span className="text-[9px] text-[#76808c] font-medium uppercase tracking-wider">PC</span>
+        </div>
+
+        {/* Authentic Steam Price Capsule */}
+        <div className="flex items-center bg-[#000000]/60 rounded-sm overflow-hidden border border-black/40">
+          {steamPriceINR ? (
+            <span className="text-[10px] text-[#738895] line-through px-1.5 py-0.5 font-mono">
+              ₹{steamPriceINR.toLocaleString("en-IN")}
+            </span>
+          ) : null}
+          <span className="bg-[#4c6b22] text-[#beee11] font-extrabold text-[10px] px-2 py-0.5 tracking-tight uppercase">
+            INCLUDED
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }

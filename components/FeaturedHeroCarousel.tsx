@@ -90,13 +90,13 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-[#8f98a0] line-through hidden sm:inline">
-            ₹{steamPrice.toLocaleString("en-IN")} on Steam
+        {/* Authentic Steam Price Capsule */}
+        <div className="flex items-center bg-[#000000]/60 rounded-sm overflow-hidden border border-black/40">
+          <span className="text-[11px] text-[#738895] line-through px-2 py-0.5 font-mono">
+            ₹{steamPrice.toLocaleString("en-IN")}
           </span>
-          <span className="text-xs font-black text-[#5ba32b] bg-[#5ba32b]/15 border border-[#5ba32b]/40 px-2.5 py-0.5 rounded flex items-center gap-1">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Included in Guide</span>
+          <span className="bg-[#4c6b22] text-[#beee11] font-extrabold text-[11px] px-2.5 py-0.5 tracking-tight uppercase">
+            INCLUDED
           </span>
         </div>
       </div>

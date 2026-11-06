@@ -126,22 +126,22 @@ export default function CatalogPage() {
         </div>
       </div>
 
-      {/* Showcase Value Callout Banner */}
-      <div className="bg-gradient-to-r from-[#171a21] via-[#1b2838] to-[#171a21] border border-emerald-500/40 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
-        <div className="space-y-1 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-black uppercase px-2 py-0.5 rounded">
-            All 245+ Titles Included
+      {/* Showcase Value Callout Banner (Steam style) */}
+      <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow">
+        <div className="space-y-0.5 text-center sm:text-left">
+          <div className="inline-flex items-center gap-1.5 text-[#5ba32b] text-[11px] font-bold uppercase">
+            <span>● 245+ Titles Included</span>
           </div>
           <p className="text-sm font-bold text-white">
             Stop paying thousands for individual titles. Learn the setup once and play on your own PC forever.
           </p>
           <p className="text-xs text-[#8f98a0]">
-            No account sharing · Local saves · Offline play · One-time flat payment
+            No account sharing · Local saves · Offline play · Single one-time ₹300 unlock
           </p>
         </div>
         <a
           href="/checkout"
-          className="btn-steam-cta px-6 py-2.5 rounded text-xs font-bold whitespace-nowrap shadow-ctaGlow"
+          className="btn-steam-cta px-5 py-2.5 rounded-sm text-xs font-bold whitespace-nowrap shadow-ctaGlow"
         >
           Unlock the Full Guide – ₹300
         </a>

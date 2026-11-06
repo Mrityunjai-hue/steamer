@@ -154,11 +154,11 @@ export default async function GameDetailPage({
 
         {/* Right Column: Pricing & Add to Cart Card */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-[#171a21] border border-emerald-500/50 rounded-xl p-6 shadow-xl space-y-6 sticky top-24">
+          <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-6 shadow-xl space-y-6 sticky top-24">
             <div className="border-b border-[#2a475e]/60 pb-4 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded">
-                  Included in Guide
+                <span className="text-[10px] font-bold text-[#beee11] uppercase tracking-wider bg-[#4c6b22] px-2 py-0.5 rounded-sm">
+                  INCLUDED IN GUIDE
                 </span>
                 <span className="text-[11px] text-[#8f98a0]">Lifetime Pass</span>
               </div>
@@ -171,7 +171,7 @@ export default async function GameDetailPage({
                 </div>
                 {game.steamPriceINR && (
                   <div className="text-right">
-                    <span className="text-xs text-[#8f98a0] line-through block">
+                    <span className="text-xs text-[#8f98a0] line-through block font-mono">
                       Steam: ₹{game.steamPriceINR.toLocaleString("en-IN")}
                     </span>
                     {savings > 0 && (
@@ -185,7 +185,7 @@ export default async function GameDetailPage({
             </div>
 
             {/* Value Highlights */}
-            <div className="bg-[#16202d] border border-[#2a475e]/50 p-3.5 rounded-lg text-xs text-[#c7d5e0] space-y-2">
+            <div className="bg-[#16202d] border border-[#2a475e]/50 p-3.5 rounded-sm text-xs text-[#c7d5e0] space-y-2">
               <p className="font-bold text-white">What You Get for ₹{guidePrice}:</p>
               <ul className="text-[11px] text-[#8f98a0] space-y-1">
                 <li>• Complete Setup Guide (under 10 mins)</li>
@@ -199,13 +199,13 @@ export default async function GameDetailPage({
             <div className="space-y-3">
               <Link
                 href="/checkout"
-                className="w-full btn-steam-cta py-3.5 rounded text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
+                className="w-full btn-steam-cta py-3.5 rounded-sm text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
               >
                 Unlock the Full Guide – ₹{guidePrice}
               </Link>
               <Link
                 href="/catalog"
-                className="w-full btn-steam-panel py-2.5 rounded text-xs font-bold flex items-center justify-center gap-1.5 border border-[#2a475e]"
+                className="w-full btn-steam-panel py-2.5 rounded-sm text-xs font-bold flex items-center justify-center gap-1.5 border border-[#2a475e]"
               >
                 Browse All 245+ Included Games
               </Link>
