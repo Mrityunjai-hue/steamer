@@ -5,32 +5,32 @@ import { calculatePlanPricing } from "@/lib/pricing";
 import { brandConfig } from "@/config/brand";
 import qrcode from "qrcode";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const session = await getSession();
-    if (!session) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
     const body = await req.json();
     const { gameIds = [], isAllAccess = false, deviceLabel = "Primary Gaming Rig", consentId, holdToken } = body;
 
     // Verify consent record
-    const consent = await prisma.consentRecord.findFirst({
-      where: { id: consentId, userId: session.userId, trustPledgeAccepted: true },
+    const consent = await prisma.consentRecord.findUnique({
+      where: { id: consentId },
     });
 
-    if (!consent) {
+    if (!consent || !consent.trustPledgeAccepted) {
       return NextResponse.json(
         { error: "You must complete the mandatory disclosure & Trust Pledge before order creation" },
         { status: 400 }
       );
     }
 
-    // Verify slot hold if provided (user cap removed for Setup Guide model)
+    const userId = session?.userId || consent.userId;
+
+    // Verify slot hold if provided
     if (holdToken) {
       await prisma.slotReservation.updateMany({
-        where: { holdToken, userId: session.userId, status: "HOLD" },
+        where: { holdToken, userId, status: "HOLD" },
         data: { status: "ACTIVE" },
       });
     }
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
     const order = await prisma.order.create({
       data: {
         orderId,
-        userId: session.userId,
+        userId,
         amount: pricing.finalPrice,
         status: "PENDING_PAYMENT",
         expiresAt: orderExpiresAt,
@@ -120,4 +120,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Failed to create order" }, { status: 500 });
   }
 }
-

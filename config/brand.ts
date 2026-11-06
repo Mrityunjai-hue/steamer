@@ -23,6 +23,9 @@ export interface BrandConfig {
   bannerBuiltOnTrust: string;
 }
 
+const envPhone = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP || process.env.ADMIN_WHATSAPP || "";
+const cleanEnvPhone = envPhone.replace(/\D/g, "");
+
 export const brandConfig: BrandConfig = {
   name: "Steamer",
   tagline: "Rent Games. Play Offline. Built on Trust.",
@@ -30,15 +33,15 @@ export const brandConfig: BrandConfig = {
   city: "Bengaluru",
   state: "Karnataka",
   country: "India",
-  supportEmail: "support@steamer.live",
-  legalEmail: "legal@steamer.live",
-  whatsappNumber: "+919876543210",
-  whatsappDisplay: "+91 98765 43210",
-  whatsappHelpUrl: "https://wa.me/919876543210",
+  supportEmail: "steamer.support365@gmail.com",
+  legalEmail: "steamer.support365@gmail.com",
+  whatsappNumber: envPhone,
+  whatsappDisplay: "WhatsApp Direct (Primary Support Channel)",
+  whatsappHelpUrl: cleanEnvPhone ? `https://wa.me/${cleanEnvPhone}` : "/support",
   grievanceOfficer: "Vikram Malhotra",
-  grievanceEmail: "grievance@steamer.live",
+  grievanceEmail: "steamer.support365@gmail.com",
   effectiveDate: "November 1, 2026",
-  supportHours: "10:00 AM – 10:00 PM IST (Monday to Sunday)",
+  supportHours: "10:00 AM – 11:00 PM IST (Monday to Sunday)",
   hostingProvider: "Cloudflare & Secure Dedicated Cloud Infrastructure",
   emailProvider: "Transactional SMTP Delivery Network",
   disclaimer:
@@ -66,4 +69,3 @@ export function hydrateLegalText(template: string): string {
     .replace(/\[HOSTING_PROVIDER\]/g, brandConfig.hostingProvider)
     .replace(/\[EMAIL_PROVIDER\]/g, brandConfig.emailProvider);
 }
-

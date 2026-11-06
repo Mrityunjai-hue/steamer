@@ -10,15 +10,14 @@ const consentSchema = z.object({
   disclosureVersion: z.string().default("1.0"),
   termsVersion: z.string().default("1.0"),
   guidelinesVersion: z.string().default("1.0"),
+  guestEmail: z.string().optional(),
+  guestName: z.string().optional(),
+  guestPhone: z.string().optional(),
 });
 
 export async function POST(req: NextRequest) {
   try {
     const session = await getSession();
-    if (!session) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
     const body = await req.json();
     const parsed = consentSchema.safeParse(body);
 
@@ -26,7 +25,47 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid consent payload" }, { status: 400 });
     }
 
-    const { checkboxes, trustPledge, holdToken, disclosureVersion, termsVersion, guidelinesVersion } = parsed.data;
+    const {
+      checkboxes,
+      trustPledge,
+      holdToken,
+      disclosureVersion,
+      termsVersion,
+      guidelinesVersion,
+      guestEmail,
+      guestName,
+      guestPhone,
+    } = parsed.data;
+
+    let userId = session?.userId;
+
+    if (!userId) {
+      const cleanEmail = (guestEmail || "").toLowerCase().trim();
+      if (!cleanEmail || !cleanEmail.includes("@")) {
+        return NextResponse.json(
+          { error: "A valid email address is required so we can deliver your access link" },
+          { status: 400 }
+        );
+      }
+
+      let user = await prisma.user.findUnique({ where: { email: cleanEmail } });
+      if (!user) {
+        user = await prisma.user.create({
+          data: {
+            email: cleanEmail,
+            whatsappNumber: guestPhone?.trim() || "",
+            passwordHash: "",
+            role: "GUEST_RENTER",
+            profile: {
+              create: {
+                displayName: guestName?.trim() || "Steamer Buyer",
+              },
+            },
+          },
+        });
+      }
+      userId = user.id;
+    }
 
     // Verify all mandatory disclosures are checked
     const requiredCheckboxes = [
@@ -55,35 +94,18 @@ export async function POST(req: NextRequest) {
 
     if (!trustPledge) {
       return NextResponse.json(
-        { error: "The Trust Pledge is mandatory for subscription activation on Steamer" },
+        { error: "You must accept the Steamer Trust Pledge to proceed" },
         { status: 400 }
       );
     }
 
-    // Verify the slot reservation hold is valid and belongs to user
-    const hold = await prisma.slotReservation.findFirst({
-      where: {
-        holdToken,
-        userId: session.userId,
-        status: "HOLD",
-        expiresAt: { gt: new Date() },
-      },
-    });
-
-    if (!hold) {
-      return NextResponse.json(
-        { error: "Your 30-minute slot hold has expired or is invalid. Please reserve a new slot." },
-        { status: 408 }
-      );
-    }
-
-    const ip = req.headers.get("x-forwarded-for") || req.ip || "127.0.0.1";
+    const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
     const userAgent = req.headers.get("user-agent") || "";
 
     // Save ConsentRecord
     const record = await prisma.consentRecord.create({
       data: {
-        userId: session.userId,
+        userId,
         disclosureVersion,
         termsVersion,
         guidelinesVersion,
@@ -97,19 +119,19 @@ export async function POST(req: NextRequest) {
     // Also record legal document acceptance
     await prisma.legalAcceptance.createMany({
       data: [
-        { userId: session.userId, documentSlug: "terms", version: termsVersion, ipAddress: ip, userAgent },
-        { userId: session.userId, documentSlug: "disclosure", version: disclosureVersion, ipAddress: ip, userAgent },
-        { userId: session.userId, documentSlug: "guidelines", version: guidelinesVersion, ipAddress: ip, userAgent },
+        { userId, documentSlug: "terms", version: termsVersion, ipAddress: ip, userAgent },
+        { userId, documentSlug: "disclosure", version: disclosureVersion, ipAddress: ip, userAgent },
+        { userId, documentSlug: "guidelines", version: guidelinesVersion, ipAddress: ip, userAgent },
       ],
     });
 
     return NextResponse.json({
       success: true,
       consentId: record.id,
+      userId,
     });
   } catch (error) {
     console.error("Consent recording error:", error);
     return NextResponse.json({ error: "Failed to record consent" }, { status: 500 });
   }
 }
-

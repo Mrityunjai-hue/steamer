@@ -19,6 +19,7 @@ import {
 import { GuideConfig, DEFAULT_GUIDE_CONFIG, GuideStep } from "@/lib/guide";
 import GuideVideoPlayer from "@/components/GuideVideoPlayer";
 import AntiScreenshotShield from "@/components/AntiScreenshotShield";
+import { brandConfig } from "@/config/brand";
 
 export default function DashboardPage() {
   const [user, setUser] = useState<any>(null);
@@ -270,7 +271,7 @@ export default function DashboardPage() {
                     <MessageSquare className="w-5 h-5 text-emerald-400" /> Need 1-on-1 Assistance?
                   </h3>
                   <a
-                    href="https://wa.me/919999999999?text=Hi%2C%20I%20have%20an%20active%20Steamer%20Setup%20Pass%20and%20need%20help."
+                    href={brandConfig.whatsappHelpUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-emerald-400 hover:underline flex items-center gap-1"

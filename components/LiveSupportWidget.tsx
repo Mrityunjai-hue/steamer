@@ -1,14 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MessageSquare, X, ShieldCheck, ChevronRight } from "lucide-react";
 import { brandConfig } from "@/config/brand";
 
 export default function LiveSupportWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const [contact, setContact] = useState({
+    cleanPhone: brandConfig.whatsappNumber.replace(/\D/g, ""),
+    displayPhone: brandConfig.whatsappDisplay,
+  });
 
-  const cleanPhone = brandConfig.whatsappNumber.replace(/\D/g, "");
-  const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+  useEffect(() => {
+    fetch("/api/contact")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.cleanPhone) {
+          setContact({
+            cleanPhone: data.cleanPhone,
+            displayPhone: data.displayPhone || data.phone,
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const whatsappUrl = `https://wa.me/${contact.cleanPhone}?text=${encodeURIComponent(
     "Hi Steamer Admin! I'm interested in the ₹300 Complete PC Setup Guide & 245+ Titles Vault. Can you help me with a quick question?"
   )}`;
 
@@ -56,7 +73,7 @@ export default function LiveSupportWidget() {
             <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.193-.548-1.787-.74-2.935-2.55-3.024-2.67-.089-.12-1.071-1.425-1.071-2.716 0-1.291.677-1.925.918-2.186.241-.261.528-.326.704-.326.176 0 .352.002.505.01.162.008.379-.061.593.453.221.529.754 1.839.82 1.974.066.135.11.293.022.47-.088.176-.132.287-.264.441-.132.154-.277.345-.395.463-.133.133-.271.277-.117.542.154.264.685 1.13 1.471 1.83 1.011.902 1.864 1.182 2.128 1.314.264.133.418.11.572-.066.154-.176.66-.77 836-1.034.176-.264.352-.22.593-.132.242.088 1.54.726 1.804.858.264.132.44.198.506.308.066.11.066.638-.078 1.043z" />
             </svg>
-            <span>Chat on WhatsApp ({brandConfig.whatsappDisplay})</span>
+            <span>Chat on WhatsApp (Primary Channel)</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </a>
         </div>
@@ -83,4 +100,3 @@ export default function LiveSupportWidget() {
     </div>
   );
 }
-

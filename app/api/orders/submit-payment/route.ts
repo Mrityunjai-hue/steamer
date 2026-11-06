@@ -5,9 +5,7 @@ import { prisma } from "@/lib/prisma";
 export async function POST(req: NextRequest) {
   try {
     const session = await getSession();
-    if (!session) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+    // Support guest orders or authenticated users
 
     // Support FormData for optional screenshot file or JSON
     const contentType = req.headers.get("content-type") || "";
@@ -79,8 +77,12 @@ export async function POST(req: NextRequest) {
       where: { orderId },
     });
 
-    if (!order || order.userId !== session.userId) {
+    if (!order) {
       return NextResponse.json({ error: "Order not found" }, { status: 404 });
+    }
+
+    if (session && order.userId !== session.userId) {
+      return NextResponse.json({ error: "Unauthorized access to this order" }, { status: 403 });
     }
 
     if (order.status === "ACTIVE" || order.status === "VERIFIED") {
@@ -112,7 +114,7 @@ export async function POST(req: NextRequest) {
 
       // Extend active user slot hold
       await tx.slotReservation.updateMany({
-        where: { userId: session.userId, status: "HOLD" },
+        where: { userId: order.userId, status: "HOLD" },
         data: { expiresAt: newExpiresAt },
       });
 
@@ -123,7 +125,7 @@ export async function POST(req: NextRequest) {
           subject: `Verify UPI Payment: Order ${order.orderId} (₹${order.amount}, UTR: ${cleanedUtr})`,
           detailsJson: JSON.stringify({
             orderId: order.orderId,
-            userId: session.userId,
+            userId: order.userId,
             amount: order.amount,
             utr: cleanedUtr,
             payerName: payerName.trim(),

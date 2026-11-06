@@ -16,8 +16,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const [session, setSession] = useState<UserSession | null>(null);
   const [cartCount, setCartCount] = useState(0);
-  const [slotsLeft, setSlotsLeft] = useState(5);
-  const [totalSlots, setTotalSlots] = useState(8);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -44,16 +42,6 @@ export default function Navbar() {
     window.addEventListener("storage", updateCart);
     window.addEventListener("cartUpdated", updateCart);
 
-    // Fetch live slot counter
-    fetch("/api/capacity/slots")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data) {
-          setSlotsLeft(data.slotsLeft ?? 5);
-          setTotalSlots(data.totalSlots ?? 8);
-        }
-      })
-      .catch(() => {});
 
     return () => {
       window.removeEventListener("storage", updateCart);
@@ -128,23 +116,14 @@ export default function Navbar() {
 
         {/* Right Section: Slots Pill, Cart, User menu */}
         <div className="flex items-center gap-3">
-          {/* Live Slot Counter Pill */}
+          {/* Instant All-Access Badge */}
           <Link
-            href="/#slots"
-            title="Active Renter Slots Available"
-            className="hidden sm:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-[#2a475e] rounded-full text-xs font-semibold text-[#c7d5e0] hover:border-[#66c0f4] transition-all"
+            href="/checkout"
+            title="Instant ₹300 All-Access Setup Pass"
+            className="hidden sm:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400 hover:border-emerald-400 transition-all shadow-sm"
           >
-            <span
-              className={`w-2 h-2 rounded-full ${
-                slotsLeft > 0 ? "bg-[#5ba32b] animate-pulse" : "bg-[#c23c2a]"
-              }`}
-            />
-            <span>
-              <strong className={slotsLeft > 0 ? "text-[#5ba32b]" : "text-[#c23c2a]"}>
-                {slotsLeft}
-              </strong>
-              /{totalSlots} Slots Left
-            </span>
+            <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
+            <span>₹300 All-Access • 245+ Titles</span>
           </Link>
 
           {/* Cart Icon */}
@@ -219,9 +198,9 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#171a21] border-b border-[#2a475e] px-4 pt-2 pb-4 space-y-2">
           <div className="flex items-center justify-between py-2 border-b border-[#2a475e]/50">
-            <span className="text-xs text-[#8f98a0]">Capacity Status</span>
+            <span className="text-xs text-[#8f98a0]">All-Access Pass</span>
             <span className="text-xs font-bold text-[#5ba32b]">
-              {slotsLeft} of {totalSlots} slots available
+              ₹300 Instant Unlock (245+ Titles)
             </span>
           </div>
           {navLinks.map((link) => (

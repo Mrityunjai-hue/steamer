@@ -16,6 +16,9 @@ import {
   Upload,
   ArrowRight,
   ExternalLink,
+  User,
+  Key,
+  MessageSquare,
 } from "lucide-react";
 
 export default function CheckoutPage() {
@@ -37,6 +40,12 @@ export default function CheckoutPage() {
   const [isFull, setIsFull] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Guest details state (if user is not signed in)
+  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [guestEmail, setGuestEmail] = useState("");
+  const [guestName, setGuestName] = useState("");
+  const [guestPhone, setGuestPhone] = useState("");
 
   // 12 Mandatory Disclosure checkboxes (UNTICKED by default)
   const [checkboxes, setCheckboxes] = useState({
@@ -78,6 +87,19 @@ export default function CheckoutPage() {
     const savedCart = JSON.parse(localStorage.getItem("steamer_cart") || "[]");
     setCart(savedCart);
 
+    // Check if user is logged in
+    fetch("/api/auth/me")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.user) {
+          setCurrentUser(data.user);
+          setGuestEmail(data.user.email || "");
+          setGuestName(data.user.displayName || data.user.email?.split("@")[0] || "");
+          setGuestPhone(data.user.whatsappNumber || "");
+        }
+      })
+      .catch(() => {});
+
     // Set phase to CONSENT directly (user cap removed for Setup Guide)
     setPhase("CONSENT");
     setLoading(false);
@@ -103,6 +125,17 @@ export default function CheckoutPage() {
 
   // Step 2: Submit Disclosure & Trust Pledge Consent -> Create UPI Order
   const handleProceedToPayment = async () => {
+    if (!currentUser) {
+      if (!guestEmail.trim() || !guestEmail.includes("@")) {
+        setError("Please enter a valid email address so we can deliver your access link.");
+        return;
+      }
+      if (!guestName.trim()) {
+        setError("Please enter your name or gamer tag.");
+        return;
+      }
+    }
+
     if (!allCheckboxesTicked) return;
 
     setError(null);
@@ -117,6 +150,9 @@ export default function CheckoutPage() {
           checkboxes,
           trustPledge,
           holdToken,
+          guestEmail: guestEmail.trim(),
+          guestName: guestName.trim(),
+          guestPhone: guestPhone.trim(),
         }),
       });
 
@@ -137,6 +173,9 @@ export default function CheckoutPage() {
           deviceLabel,
           consentId: consentData.consentId,
           holdToken,
+          guestEmail: guestEmail.trim(),
+          guestName: guestName.trim(),
+          guestPhone: guestPhone.trim(),
         }),
       });
 
@@ -270,6 +309,64 @@ export default function CheckoutPage() {
             <p className="text-xs text-[#8f98a0]">
               Disclosure Version 1.0 · Every point must be individually reviewed and accepted.
             </p>
+          </div>
+
+          {/* Contact Details Card */}
+          <div className="bg-[#16202d] border border-[#2a475e] p-5 rounded-lg space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2a475e]/60 pb-2.5">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
+                <User className="w-4 h-4 text-[#66c0f4]" /> Contact Information (Pass Delivery)
+              </h3>
+              {currentUser ? (
+                <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded">
+                  Logged in as {currentUser.email}
+                </span>
+              ) : (
+                <span className="text-[10px] text-[#8f98a0]">
+                  No password needed • Direct secret access link generated
+                </span>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div className="space-y-1">
+                <label className="font-bold text-white block">Email Address *</label>
+                <input
+                  type="email"
+                  required
+                  placeholder="e.g. yourname@gmail.com"
+                  value={guestEmail}
+                  onChange={(e) => setGuestEmail(e.target.value)}
+                  disabled={!!currentUser}
+                  className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white disabled:opacity-60 focus:outline-none focus:border-[#66c0f4]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="font-bold text-white block">Your Name / Gamer Tag *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Rahul S."
+                  value={guestName}
+                  onChange={(e) => setGuestName(e.target.value)}
+                  className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white focus:outline-none focus:border-[#66c0f4]"
+                />
+              </div>
+
+              <div className="space-y-1 sm:col-span-2">
+                <label className="font-bold text-white block">
+                  WhatsApp Number (Optional — For instant approval updates)
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. +91 98765 43210"
+                  value={guestPhone}
+                  onChange={(e) => setGuestPhone(e.target.value)}
+                  className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white focus:outline-none focus:border-[#66c0f4]"
+                />
+              </div>
+            </div>
           </div>
 
           {/* 12 Individual Checkboxes */}
@@ -632,31 +729,47 @@ export default function CheckoutPage() {
               PAYMENT SUBMITTED SUCCESSFULLY!
             </h2>
             <p className="text-xs text-[#8f98a0] max-w-md mx-auto">
-              Your 12-digit UTR has been logged. Your slot remains locked while our admin confirms the deposit in our bank account.
+              Your 12-digit UTR has been logged. Your Setup Pass has been generated and will unlock immediately upon admin verification.
             </p>
           </div>
 
-          <div className="bg-[#16202d] border border-[#2a475e] p-4 rounded-lg max-w-md mx-auto text-xs text-[#c7d5e0] space-y-2 text-left">
-            <div className="flex justify-between">
+          <div className="bg-[#16202d] border border-[#2a475e] p-5 rounded-lg max-w-md mx-auto text-xs text-[#c7d5e0] space-y-2 text-left">
+            <div className="flex justify-between border-b border-[#2a475e]/40 pb-2">
               <span className="text-[#8f98a0]">Order ID:</span>
               <strong className="font-mono text-white">{orderId}</strong>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between border-b border-[#2a475e]/40 pb-2">
               <span className="text-[#8f98a0]">UTR Reference:</span>
-              <span className="font-mono">{utr}</span>
+              <span className="font-mono text-emerald-400 font-bold">{utr}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-[#8f98a0]">Status:</span>
-              <span className="text-amber-400 font-bold">PAYMENT_SUBMITTED (Pending Admin Bank Check)</span>
+              <span className="text-amber-400 font-bold">Verification Pending</span>
             </div>
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link href="/dashboard" className="btn-steam-cta px-6 py-2.5 rounded text-xs font-bold">
-              Go to My Library / Dashboard
+          {/* Secret Access Pass Card */}
+          <div className="bg-gradient-to-r from-sky-950/60 to-emerald-950/60 border border-[#66c0f4]/40 p-4 rounded-lg max-w-md mx-auto space-y-2 text-left">
+            <p className="text-xs font-black uppercase text-white flex items-center gap-1.5">
+              <Key className="w-4 h-4 text-[#66c0f4]" /> Your Secret Guide Access Link:
+            </p>
+            <p className="text-[11px] text-[#8f98a0]">
+              Bookmark this link to access your unlocked setup guide and videos anytime:
+            </p>
+            <Link
+              href={`/access/${orderId}`}
+              className="text-xs text-[#66c0f4] hover:underline font-mono break-all block bg-[#121922] p-2.5 rounded border border-[#2a475e]"
+            >
+              /access/{orderId} &rarr;
             </Link>
-            <Link href="/onboarding" className="btn-steam-panel px-6 py-2.5 rounded text-xs font-bold border border-[#2a475e]">
-              Complete Onboarding Wizard
+          </div>
+
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link href={`/access/${orderId}`} className="btn-steam-cta px-6 py-2.5 rounded text-xs font-bold shadow-ctaGlow">
+              Open My Setup Pass Link &rarr;
+            </Link>
+            <Link href="/support" className="btn-steam-panel px-6 py-2.5 rounded text-xs font-bold border border-[#2a475e] flex items-center gap-1.5">
+              <MessageSquare className="w-3.5 h-3.5 text-[#25d366]" /> Chat on WhatsApp for Instant Approval
             </Link>
           </div>
         </div>
