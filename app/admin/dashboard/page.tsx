@@ -124,14 +124,14 @@ export default function AdminDashboardPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="bg-[#171a21] border border-[#2a475e] p-5 rounded-xl space-y-2 shadow-sm">
           <div className="flex items-center justify-between text-xs text-[#8f98a0]">
-            <span className="font-bold uppercase">Active Renters / Slots</span>
+            <span className="font-bold uppercase">Active Setup Passes</span>
             <Users className="w-4 h-4 text-[#66c0f4]" />
           </div>
           <div className="text-3xl font-black text-white">
-            {capacity.activeRenters} <span className="text-sm font-normal text-[#8f98a0]">/ {capacity.totalSlots}</span>
+            {capacity.activeRenters} <span className="text-sm font-normal text-[#5ba32b]">Active</span>
           </div>
           <p className="text-[11px] text-[#5ba32b]">
-            {capacity.slotsLeft} slots remaining this cycle
+            Unlimited Capacity • No user intake limits
           </p>
         </div>
 

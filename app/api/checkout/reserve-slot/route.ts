@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Please log in or register before checking out" }, { status: 401 });
     }
 
-    // Check onboarding pause
+    // Check if onboarding is manually paused by admin
     const pauseSetting = await prisma.systemSetting.findUnique({
       where: { key: "onboarding_paused" },
     });
@@ -21,31 +21,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check capacity
-    const maxSetting = await prisma.systemSetting.findUnique({
-      where: { key: "max_active_renters" },
-    });
-    const maxRenters = maxSetting ? parseInt(maxSetting.value, 10) : 8;
-
-    const activeSubs = await prisma.subscription.count({
-      where: { status: "ACTIVE" },
-    });
-
-    const activeHolds = await prisma.slotReservation.count({
-      where: {
-        status: "HOLD",
-        expiresAt: { gt: new Date() },
-        userId: { not: session.userId },
-      },
-    });
-
-    if (activeSubs + activeHolds >= maxRenters) {
-      return NextResponse.json({
-        isFull: true,
-        message: "All rental slots are currently occupied. You may join the priority waitlist.",
-      });
-    }
-
+    // Capacity is unlimited for the Setup Guide model (no account sharing)
     // Clean up any old expired holds for this user
     await prisma.slotReservation.deleteMany({
       where: {
@@ -55,7 +31,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Create 30-minute slot hold per Addendum 2f
+    // Create 30-minute slot hold
     const holdToken = `HOLD_${crypto.randomBytes(16).toString("hex")}`;
     const expiresAt = new Date(Date.now() + 30 * 60 * 1000); // 30 mins
 
@@ -73,10 +49,10 @@ export async function POST(req: NextRequest) {
       holdToken,
       expiresAt: expiresAt.toISOString(),
       holdMinutes: 30,
+      isFull: false,
     });
   } catch (error) {
     console.error("Slot reservation error:", error);
     return NextResponse.json({ error: "Failed to reserve slot" }, { status: 500 });
   }
 }
-

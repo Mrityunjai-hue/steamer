@@ -13,6 +13,7 @@ import {
   ShieldAlert,
   Download,
   ExternalLink,
+  CheckCircle2,
 } from "lucide-react";
 import { brandConfig } from "@/config/brand";
 
@@ -233,30 +234,44 @@ export default function AdminSettingsPage() {
           </div>
         </div>
 
-        {/* Capacity Controls (Section 3.2) */}
+        {/* Platform Scale & Capacity Controls */}
         <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-4 shadow-panelGlow">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2 border-b border-[#2a475e]/60 pb-3">
-            <Users className="w-4 h-4 text-amber-400" /> Platform Capacity Controls (Section 3.2)
-          </h3>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2a475e]/60 pb-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
+              <Users className="w-4 h-4 text-emerald-400" /> Platform Scale & Capacity Controls
+            </h3>
+            <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded">
+              🟢 Unlimited Intake Enabled (No User Caps)
+            </span>
+          </div>
+
+          <div className="p-3 bg-[#16202d] border border-emerald-500/30 rounded text-xs text-[#c7d5e0] space-y-1">
+            <p className="font-bold text-white flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Unlimited Customers Permitted
+            </p>
+            <p className="text-[11px] text-[#8f98a0]">
+              Because users receive the dedicated Setup Guide rather than sharing an active Steam account, the previous 8-user cap and monthly intake limits are disabled. Anyone can purchase and receive access immediately.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div className="space-y-1">
-              <label className="font-bold text-white block">Max Active Concurrent Renters</label>
+              <label className="font-bold text-white block">Max Active Concurrent Users (99999 = Unlimited)</label>
               <input
                 type="number"
-                value={settings["max_active_renters"] || "8"}
+                value={settings["max_active_renters"] || "99999"}
                 onChange={(e) => handleChange("max_active_renters", e.target.value)}
-                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white"
+                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white font-mono"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="font-bold text-white block">Max New Renters Intake / Month</label>
+              <label className="font-bold text-white block">Max New Users Intake / Month (99999 = Unlimited)</label>
               <input
                 type="number"
-                value={settings["max_new_renters_per_month"] || "8"}
+                value={settings["max_new_renters_per_month"] || "99999"}
                 onChange={(e) => handleChange("max_new_renters_per_month", e.target.value)}
-                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white"
+                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white font-mono"
               />
             </div>
 
@@ -264,9 +279,9 @@ export default function AdminSettingsPage() {
               <label className="font-bold text-white block">Max Setup Windows Scheduled / Day</label>
               <input
                 type="number"
-                value={settings["max_setup_windows_per_day"] || "2"}
+                value={settings["max_setup_windows_per_day"] || "50"}
                 onChange={(e) => handleChange("max_setup_windows_per_day", e.target.value)}
-                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white"
+                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white font-mono"
               />
             </div>
 
@@ -276,7 +291,7 @@ export default function AdminSettingsPage() {
                 type="number"
                 value={settings["setup_window_max_minutes"] || "180"}
                 onChange={(e) => handleChange("setup_window_max_minutes", e.target.value)}
-                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white"
+                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white font-mono"
               />
             </div>
           </div>
