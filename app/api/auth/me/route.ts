@@ -1,0 +1,67 @@
+import { NextResponse } from "next/server";
+import { getSession } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+
+export async function GET() {
+  const session = await getSession();
+  if (!session) {
+    return NextResponse.json({ user: null });
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { id: session.userId },
+    include: {
+      profile: true,
+      subscriptions: {
+        where: { status: "ACTIVE" },
+        include: {
+          planGames: {
+            include: { game: true },
+          },
+          device: true,
+        },
+      },
+      devices: true,
+      contactVerifications: {
+        orderBy: { requestedAt: "desc" },
+        take: 1,
+      },
+    },
+  });
+
+  if (!user) {
+    return NextResponse.json({ user: null });
+  }
+
+  const activeSub = user.subscriptions[0] || null;
+
+  return NextResponse.json({
+    user: {
+      userId: user.id,
+      email: user.email,
+      displayName: user.profile?.displayName || "Gamer",
+      role: user.role,
+      whatsappNumber: user.whatsappNumber,
+      isWhatsappVerified: user.isWhatsappVerified,
+      totpEnabled: user.totpEnabled,
+      activeSubscription: activeSub
+        ? {
+            id: activeSub.id,
+            type: activeSub.type,
+            startDate: activeSub.startDate,
+            endDate: activeSub.endDate,
+            deviceLabel: activeSub.device?.deviceLabel || "Primary PC",
+            games: activeSub.planGames.map((pg) => ({
+              id: pg.game.id,
+              title: pg.game.title,
+              launcher: pg.game.launcher,
+              offlineTag: pg.game.offlineTag,
+              headerImage: pg.game.headerImage,
+            })),
+          }
+        : null,
+      verificationPending: !user.isWhatsappVerified ? user.contactVerifications[0] : null,
+    },
+  });
+}
+

@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  # Next.js Application Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: steamer_app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=postgresql://steamer_user:SecurePostgresPassword2026@postgres:5432/steamer_db?schema=public&sslmode=prefer
+      - REDIS_URL=redis://:SecureRedisAuthToken2026@redis:6379/0
+      - JWT_SECRET=change-this-to-a-very-long-and-secure-random-secret-for-production
+      - ENCRYPTION_KEY=0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+      - NEXT_PUBLIC_APP_URL=https://steamer.live
+      - NEXT_PUBLIC_UPI_ID=admin@okaxis
+      - NEXT_PUBLIC_PAYEE_NAME=Steamer Business
+      - ADMIN_PHONE=+919876543210
+      - ADMIN_WHATSAPP=+919876543210
+      - ADMIN_EMAIL=admin@steamer.live
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - steamer_net
+
+  # PostgreSQL 16 Primary Relational Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: steamer_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: steamer_user
+      POSTGRES_PASSWORD: SecurePostgresPassword2026
+      POSTGRES_DB: steamer_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U steamer_user -d steamer_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - steamer_net
+
+  # Redis 7 In-Memory Cache, Rate Limiter & Slot Locks
+  redis:
+    image: redis:7-alpine
+    container_name: steamer_redis
+    restart: always
+    command: ["redis-server", "--requirepass", "SecureRedisAuthToken2026", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "SecureRedisAuthToken2026", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - steamer_net
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  steamer_net:
+    driver: bridge
+

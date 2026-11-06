@@ -1,0 +1,519 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                 String             @id @default(uuid())
+  email              String             @unique
+  passwordHash       String
+  role               String             @default("RENTER") // RENTER, ADMIN, MODERATOR
+  isEmailVerified    Boolean            @default(false)
+  whatsappNumber     String?            // Raw or masked phone number
+  isWhatsappVerified Boolean            @default(false)
+  totpSecret         String?
+  totpEnabled        Boolean            @default(false)
+  isSuspended        Boolean            @default(false)
+  suspendedUntil     DateTime?
+  ipAddress          String?
+  userAgent          String?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  profile            Profile?
+  devices            Device[]
+  orders             Order[]
+  subscriptions      Subscription[]
+  slotReservations   SlotReservation[]
+  waitlistEntries    WaitlistEntry[]
+  setupWindows       SetupWindow[]
+  grants             Grant[]
+  violations         Violation[]
+  strikes            Strike[]
+  consentRecords     ConsentRecord[]
+  legalAcceptances   LegalAcceptance[]
+  contactVerifications ContactVerification[]
+  threads            Thread[]
+  posts              Post[]
+  chatMessages       ChatMessage[]
+  tickets            Ticket[]
+  ticketMessages     TicketMessage[]
+  reportsFiled       Report[]           @relation("ReporterRelation")
+}
+
+model Profile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  displayName String
+  avatarUrl   String?
+  bio         String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Device {
+  id                String         @id @default(uuid())
+  userId            String
+  user              User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deviceLabel       String         // e.g. "Living Room Gaming Rig"
+  deviceFingerprint String?
+  isApproved        Boolean        @default(true)
+  approvedAt        DateTime       @default(now())
+  createdAt         DateTime       @default(now())
+  subscriptions     Subscription[]
+}
+
+model Series {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  games       Game[]
+}
+
+model PricingTier {
+  id           String @id @default(uuid())
+  name         String @unique // Hot, Popular, Standard, Budget
+  rentPriceINR Int
+  description  String?
+}
+
+model Game {
+  id                  String     @id @default(uuid())
+  title               String     @unique
+  seriesId            String?
+  series              Series?    @relation(fields: [seriesId], references: [id])
+  hypeTier            String     // Hot, Popular, Standard, Budget
+  ourMonthlyPriceINR  Int
+  priceOverride       Int?
+  offlineTag          String     @default("Unverified") // Offline OK, Mixed, Online required, Unverified
+  suggestedOfflineTag String?
+  testedOfflineOn     DateTime?
+  launcher            String     @default("Steam only") // Steam only, Ubisoft Connect, EA app, Rockstar Games Launcher
+  purchasableAsSingle Boolean    @default(true)
+  steamAppId          String?
+  steamPriceINR       Int?
+  adminNote           String?
+  releaseDate         String?
+  genres              String?
+  tags                String?
+  headerImage         String?
+  capsuleImage        String?
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+
+  planGames           PlanGame[]
+  threads             Thread[]
+
+  @@index([hypeTier])
+  @@index([offlineTag])
+  @@index([launcher])
+  @@index([steamAppId])
+}
+
+model Plan {
+  id            String         @id @default(uuid())
+  name          String
+  type          String         // SINGLE, BUNDLE_2, BUNDLE_3, MULTI_4_5, ALL_ACCESS
+  priceINR      Int
+  maxGames      Int
+  description   String?
+  subscriptions Subscription[]
+}
+
+model Order {
+  id                String              @id @default(uuid())
+  orderId           String              @unique // STR-2026-000123
+  userId            String
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptionDraft String              // JSON: { planType, gameIds, deviceLabel }
+  amount            Int
+  status            String              @default("PENDING_PAYMENT") // PENDING_PAYMENT, PAYMENT_SUBMITTED, VERIFIED, ACTIVE, REJECTED, EXPIRED, CANCELLED
+  createdAt         DateTime            @default(now())
+  expiresAt         DateTime
+
+  submission        PaymentSubmission?
+  refund            Refund?
+  subscription      Subscription?
+
+  @@index([userId, status])
+}
+
+model PaymentSubmission {
+  id              String    @id @default(uuid())
+  orderId         String    @unique
+  order           Order     @relation(fields: [orderId], references: [orderId], onDelete: Cascade)
+  utr             String    @unique // 12-digit numeric UPI reference
+  payerName       String
+  screenshotPath  String?
+  submittedAt     DateTime  @default(now())
+  verifiedBy      String?
+  verifiedAt      DateTime?
+  rejectionReason String?
+
+  @@index([utr])
+}
+
+model Refund {
+  id        String   @id @default(uuid())
+  orderId   String   @unique
+  order     Order    @relation(fields: [orderId], references: [orderId], onDelete: Cascade)
+  amount    Int
+  reason    String
+  reference String   // UPI refund transaction reference
+  paidAt    DateTime @default(now())
+  adminId   String
+}
+
+model ContactVerification {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  channel     String    // WHATSAPP, EMAIL
+  code        String    // e.g. "VERIFY 4821"
+  status      String    @default("PENDING") // PENDING, VERIFIED, REJECTED
+  requestedAt DateTime  @default(now())
+  verifiedAt  DateTime?
+  verifiedBy  String?
+
+  @@index([userId, status])
+}
+
+model Subscription {
+  id             String         @id @default(uuid())
+  userId         String
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orderId        String?        @unique
+  order          Order?         @relation(fields: [orderId], references: [orderId])
+  planId         String?
+  plan           Plan?          @relation(fields: [planId], references: [id])
+  status         String         @default("ACTIVE") // ACTIVE, EXPIRING, EXPIRED, SUSPENDED, CANCELLED
+  type           String         // SINGLE, BUNDLE_2, BUNDLE_3, MULTI_4_5, ALL_ACCESS
+  priceINR       Int
+  startDate      DateTime       @default(now())
+  endDate        DateTime
+  deviceId       String?
+  device         Device?        @relation(fields: [deviceId], references: [id])
+  freeSwapUsed   Boolean        @default(false)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  planGames      PlanGame[]
+  setupWindows   SetupWindow[]
+  grants         Grant[]
+  consentRecords ConsentRecord[]
+
+  @@index([userId, status])
+}
+
+model PlanGame {
+  id             String       @id @default(uuid())
+  subscriptionId String
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  gameId         String
+  game           Game         @relation(fields: [gameId], references: [id])
+  addedAt        DateTime     @default(now())
+}
+
+model SlotReservation {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  holdToken String   @unique
+  expiresAt DateTime
+  status    String   @default("HOLD") // HOLD, CONSUMED, EXPIRED, RELEASED
+  createdAt DateTime @default(now())
+
+  @@index([status, expiresAt])
+}
+
+model WaitlistEntry {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  position  Int
+  status    String    @default("WAITING") // WAITING, OFFERED, CLAIMED, EXPIRED
+  offeredAt DateTime?
+  expiresAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([status, position])
+}
+
+model SetupWindow {
+  id                    String        @id @default(uuid())
+  userId                String
+  user                  User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptionId        String
+  subscription          Subscription  @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  status                String        @default("QUEUED") // QUEUED, ACTIVE, COMPLETED, EXPIRED, CANCELLED
+  queuePosition         Int           @default(1)
+  startedAt             DateTime?
+  expiresAt             DateTime?
+  closedAt              DateTime?
+  offlineConfirmed      Boolean       @default(false)
+  adminOfflineConfirmed Boolean       @default(false)
+  notes                 String?
+  createdAt             DateTime      @default(now())
+
+  @@index([status])
+  @@index([userId])
+}
+
+model Grant {
+  id                    String       @id @default(uuid())
+  userId                String
+  user                  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptionId        String
+  subscription          Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  deviceLabel           String
+  status                String       @default("ACTIVE") // ACTIVE, EXPIRED, REVOKED
+  issuedAt              DateTime     @default(now())
+  expiresAt             DateTime
+  lastCredentialRelayAt DateTime?
+
+  @@index([userId, status])
+}
+
+model Violation {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type         String   // ONLINE_OUTSIDE_WINDOW, UNAUTHORIZED_GAME, CREDENTIAL_LEAK, ACCOUNT_CHANGE
+  severity     String   // LOW, MEDIUM, HIGH, CRITICAL
+  evidenceJson String?
+  adminNotes   String?
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Strike {
+  id         String    @id @default(uuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  level      Int       // 1 (warning), 2 (7-day suspension), 3 (permanent ban)
+  reason     String
+  issuedAt   DateTime  @default(now())
+  expiresAt  DateTime?
+  resolvedAt DateTime?
+
+  @@index([userId])
+}
+
+model ConsentRecord {
+  id                  String        @id @default(uuid())
+  userId              String
+  user                User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptionId      String?
+  subscription        Subscription? @relation(fields: [subscriptionId], references: [id])
+  disclosureVersion   String
+  termsVersion        String
+  guidelinesVersion   String
+  checkboxesJson      String
+  trustPledgeAccepted Boolean       @default(false)
+  ipAddress           String?
+  userAgent           String?
+  timestamp           DateTime      @default(now())
+
+  @@index([userId])
+}
+
+model LegalDocumentVersion {
+  id              String   @id @default(uuid())
+  slug            String   // terms, disclosure, plan-conditions, guidelines, community-rules, privacy, cookie
+  version         String   // e.g. "1.0"
+  title           String
+  contentMarkdown String
+  effectiveDate   String
+  createdAt       DateTime @default(now())
+
+  @@unique([slug, version])
+}
+
+model LegalAcceptance {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documentSlug String
+  version      String
+  ipAddress    String?
+  userAgent    String?
+  acceptedAt   DateTime @default(now())
+
+  @@index([userId, documentSlug])
+}
+
+model Thread {
+  id        String   @id @default(uuid())
+  category  String   // ANNOUNCEMENTS, SETUP_HELP, OFFLINE_HELP, GAME_HELP, REQUESTS, GENERAL
+  gameId    String?
+  game      Game?    @relation(fields: [gameId], references: [id])
+  title     String
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  isPinned  Boolean  @default(false)
+  isLocked  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+
+  @@index([category])
+  @@index([gameId])
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  threadId  String
+  thread    Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  content   String
+  isDeleted Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([threadId])
+}
+
+model ChatMessage {
+  id        String   @id @default(uuid())
+  room      String   @default("general") // general, setup-lounge, offline-gamers
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  content   String
+  isDeleted Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([room, createdAt])
+}
+
+model Report {
+  id              String   @id @default(uuid())
+  reporterId      String
+  reporter        User     @relation("ReporterRelation", fields: [reporterId], references: [id])
+  targetType      String   // POST, CHAT_MESSAGE, USER
+  targetId        String
+  reason          String
+  status          String   @default("PENDING") // PENDING, RESOLVED, DISMISSED
+  resolutionNotes String?
+  createdAt       DateTime @default(now())
+}
+
+model Ticket {
+  id           String          @id @default(uuid())
+  ticketNumber String          @unique
+  userId       String
+  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category     String          // LOGIN_HELP, OFFLINE_MODE, GAME_CRASH, BILLING, OTHER
+  subject      String
+  status       String          @default("OPEN") // OPEN, IN_PROGRESS, RESOLVED, CLOSED
+  priority     String          @default("MEDIUM") // LOW, MEDIUM, HIGH, URGENT
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  messages     TicketMessage[]
+
+  @@index([userId, status])
+}
+
+model TicketMessage {
+  id         String   @id @default(uuid())
+  ticketId   String
+  ticket     Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  senderId   String
+  senderRole String   // RENTER, ADMIN
+  message    String
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [senderId], references: [id])
+}
+
+model Announcement {
+  id                String   @id @default(uuid())
+  title             String
+  content           String
+  isGlobal          Boolean  @default(true)
+  forcedReacceptance Boolean @default(false)
+  version           String   @default("1.0")
+  createdAt         DateTime @default(now())
+}
+
+model AdminTask {
+  id           String    @id @default(uuid())
+  type         String    // CREDENTIAL_RELAY, OFFLINE_CONFIRMATION, ROTATE_PASSWORD, DEVICE_APPROVAL, STRIKE_REVIEW, DENUVO_WARNING, PRESENCE_ALERT, SEND_REMINDER
+  status       String    @default("PENDING") // PENDING, COMPLETED, DISMISSED
+  subject      String
+  detailsJson  String?
+  dueAt        DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+
+  @@index([status, type])
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  adminId      String
+  action       String   // e.g. "VERIFY_PAYMENT", "RELAY_CREDENTIALS", "EXPIRING_PASSWORD_ROTATED", "STRIKE_ISSUED"
+  targetType   String   // USER, ORDER, SUBSCRIPTION, GAME, SETTINGS, SETUP_WINDOW
+  targetId     String?
+  metadataJson String?
+  ipAddress    String?
+  createdAt    DateTime @default(now())
+
+  @@index([adminId, createdAt])
+}
+
+model SteamPresenceSnapshot {
+  id                  String   @id @default(uuid())
+  accountOnline       Boolean  @default(false)
+  activeGameTitle     String?
+  activeAppId         String?
+  outsideWindowAlert  Boolean  @default(false)
+  snapshotTime        DateTime @default(now())
+
+  @@index([snapshotTime])
+}
+
+model PlaytimeSnapshot {
+  id           String   @id @default(uuid())
+  appId        String
+  totalMinutes Int
+  recordedAt   DateTime @default(now())
+
+  @@index([appId, recordedAt])
+}
+
+model PlaytimeDelta {
+  id                  String   @id @default(uuid())
+  appId               String
+  deltaMinutes        Int
+  periodStart         DateTime
+  periodEnd           DateTime
+  flaggedUnauthorized Boolean  @default(false)
+  auditedAt           DateTime @default(now())
+}
+
+model Coupon {
+  id              String    @id @default(uuid())
+  code            String    @unique
+  discountAmount  Int?
+  discountPercent Int?
+  isSingleUse     Boolean   @default(true)
+  isUsed          Boolean   @default(false)
+  maxUses         Int       @default(1)
+  currentUses     Int       @default(0)
+  expiresAt       DateTime?
+  active          Boolean   @default(true)
+}
+
+model SystemSetting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+}

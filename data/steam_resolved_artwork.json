@@ -1,0 +1,1432 @@
+{
+  "007 First Light": {
+    "appId": "3768760",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3768760/6833c82f518e5a4d0881152fa9cbf01c5d103924/capsule_231x87_alt_assets_4.jpg"
+  },
+  "Assassin's Creed 1": {
+    "appId": "15100",
+    "steamPrice": 499,
+    "releaseDate": "Apr 9, 2008",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed 2": {
+    "appId": "33230",
+    "steamPrice": 499,
+    "releaseDate": "Mar 4, 2010",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed: Brotherhood": {
+    "appId": "48190",
+    "steamPrice": 699,
+    "releaseDate": "Mar 17, 2011",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed: Revelations": {
+    "appId": "201870",
+    "steamPrice": 699,
+    "releaseDate": "Nov 29, 2011",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed 3": {
+    "appId": "208480",
+    "steamPrice": 999,
+    "releaseDate": "Nov 20, 2012",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed 3: Remastered": {
+    "appId": "911400",
+    "steamPrice": 1999,
+    "releaseDate": "Mar 29, 2019",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed 4: Black Flag": {
+    "appId": "242050",
+    "steamPrice": 1499,
+    "releaseDate": "Nov 19, 2013",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed: Unity": {
+    "appId": "289650",
+    "steamPrice": 1499,
+    "releaseDate": "Nov 11, 2014",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed: Rogue": {
+    "appId": "311560",
+    "steamPrice": 999,
+    "releaseDate": "Mar 10, 2015",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed: Syndicate": {
+    "appId": "368500",
+    "steamPrice": 1999,
+    "releaseDate": "Nov 18, 2015",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed: Origins": {
+    "appId": "582160",
+    "steamPrice": 2999,
+    "releaseDate": "Oct 27, 2017",
+    "genres": "Action, RPG"
+  },
+  "Assassin's Creed: Odyssey": {
+    "appId": "812140",
+    "steamPrice": 2999,
+    "releaseDate": "Oct 5, 2018",
+    "genres": "Action, RPG"
+  },
+  "Assassin's Creed: Valhalla": {
+    "appId": "2208920",
+    "steamPrice": 2999,
+    "releaseDate": "Dec 6, 2022",
+    "genres": "Action, RPG"
+  },
+  "Assassin's Creed: Mirage": {
+    "appId": "3035570",
+    "steamPrice": 2499,
+    "releaseDate": "Oct 17, 2024",
+    "genres": "Action, Adventure"
+  },
+  "Assassin's Creed: Shadows": {
+    "appId": "3159330",
+    "steamPrice": 3999,
+    "releaseDate": "2025",
+    "genres": "Action, RPG"
+  },
+  "Assassin's Creed: Black Flag Resynced": {
+    "appId": "3751950",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751950/7599d7fe1b58e0ad5c07e98e8f9f1180dbe19794/capsule_231x87_alt_assets_0.jpg?t=1793391152"
+  },
+  "Assassin's Creed Chronicles: China": {
+    "appId": "354380",
+    "steamPrice": 499,
+    "releaseDate": "Apr 21, 2015",
+    "genres": "Action, Platformer"
+  },
+  "Assassin's Creed Chronicles: India": {
+    "appId": "359610",
+    "steamPrice": 499,
+    "releaseDate": "Jan 12, 2016",
+    "genres": "Action, Platformer"
+  },
+  "Alan Wake 1": {
+    "appId": "108710",
+    "steamPrice": 565,
+    "releaseDate": "Feb 16, 2012",
+    "genres": "Action, Psychological Horror"
+  },
+  "Alien vs Predator": {
+    "appId": "10680",
+    "steamPrice": 699,
+    "releaseDate": "Feb 16, 2010",
+    "genres": "Action, FPS"
+  },
+  "Alien: Isolation": {
+    "appId": "214490",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "ARK: Survival Ascended": {
+    "appId": "2399830",
+    "steamPrice": 3599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Battlefield 3 Premium Edition": {
+    "appId": "1238820",
+    "steamPrice": 1999,
+    "releaseDate": "Jun 11, 2020",
+    "genres": "Action, FPS"
+  },
+  "Battlefield 4 Premium Edition": {
+    "appId": "1238860",
+    "steamPrice": 1999,
+    "releaseDate": "Jun 11, 2020",
+    "genres": "Action, FPS"
+  },
+  "Battlefield V Definitive Edition": {
+    "appId": "1238810",
+    "steamPrice": 2499,
+    "releaseDate": "Jun 11, 2020",
+    "genres": "Action, FPS"
+  },
+  "Battlefield 2042": {
+    "appId": "1517290",
+    "steamPrice": 2999,
+    "releaseDate": "Nov 19, 2021",
+    "genres": "Action, FPS"
+  },
+  "Battlefield Hardline Ultimate Edition": {
+    "appId": "1238880",
+    "steamPrice": 1999,
+    "releaseDate": "Jun 11, 2020",
+    "genres": "Action, FPS"
+  },
+  "Batman: Arkham Asylum": {
+    "appId": "35140",
+    "steamPrice": 565,
+    "releaseDate": "Mar 26, 2010",
+    "genres": "Action, Adventure"
+  },
+  "Batman: Arkham City": {
+    "appId": "200260",
+    "steamPrice": 1599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Batman: Arkham Origins": {
+    "appId": "209000",
+    "steamPrice": 1599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Batman: Arkham Knight": {
+    "appId": "208650",
+    "steamPrice": 1599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Black Myth: Wukong": {
+    "appId": "2358720",
+    "steamPrice": 4799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Bully: Scholarship Edition": {
+    "appId": "12200",
+    "steamPrice": 1199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Control Ultimate Edition": {
+    "appId": "870780",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Crimson Desert": {
+    "appId": "3321460",
+    "steamPrice": 3999,
+    "releaseDate": "2025",
+    "genres": "Action, Open World"
+  },
+  "Darwin's Paradox": {
+    "appId": "2989180",
+    "steamPrice": 850,
+    "releaseDate": "2025",
+    "genres": "Action, Adventure, Puzzle"
+  },
+  "Days Gone": {
+    "appId": "1259420",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Doom": {
+    "appId": "379720",
+    "steamPrice": 1599,
+    "releaseDate": "May 13, 2016",
+    "genres": "Action, FPS"
+  },
+  "Doom Eternal": {
+    "appId": "782330",
+    "steamPrice": 1799,
+    "releaseDate": "Mar 19, 2020",
+    "genres": "Action, FPS"
+  },
+  "Doom: The Dark Ages": {
+    "appId": "3017860",
+    "steamPrice": 4999,
+    "releaseDate": "2025",
+    "genres": "Action, FPS"
+  },
+  "Dragon Ball: FighterZ": {
+    "appId": "678950",
+    "steamPrice": 4799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Dragon Ball Z: Kakarot": {
+    "appId": "851850",
+    "steamPrice": 1599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Dragon Ball: Sparking! Zero": {
+    "appId": "1790600",
+    "steamPrice": 3999,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Dragon Ball Xenoverse": {
+    "appId": "323470",
+    "steamPrice": 1499,
+    "releaseDate": "Feb 26, 2015",
+    "genres": "Anime, Fighting, Action"
+  },
+  "Dragon Ball Xenoverse 2": {
+    "appId": "454650",
+    "steamPrice": 2499,
+    "releaseDate": "Oct 27, 2016",
+    "genres": "Anime, Fighting, Action"
+  },
+  "Deadpool": {
+    "appId": "224060",
+    "steamPrice": 1999,
+    "releaseDate": "Jun 25, 2013",
+    "genres": "Action, Comedy, Superhero"
+  },
+  "Dying Light": {
+    "appId": "239140",
+    "steamPrice": 1999,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Dying Light 2: Stay Human": {
+    "appId": "534380",
+    "steamPrice": 4799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Dying Light: The Beast": {
+    "appId": "3008130",
+    "steamPrice": 3499,
+    "releaseDate": "2025",
+    "genres": "Action, Survival Horror"
+  },
+  "Clair Obscur: Expedition 33": {
+    "appId": "1903340",
+    "steamPrice": 3499,
+    "releaseDate": "2025",
+    "genres": "Turn-Based RPG"
+  },
+  "Far Cry": {
+    "appId": "13520",
+    "steamPrice": 499,
+    "releaseDate": "Mar 23, 2004",
+    "genres": "Action, FPS"
+  },
+  "Far Cry 2": {
+    "appId": "19900",
+    "steamPrice": 499,
+    "releaseDate": "Oct 21, 2008",
+    "genres": "Action, FPS"
+  },
+  "Far Cry 3": {
+    "appId": "220240",
+    "steamPrice": 999,
+    "releaseDate": "Nov 29, 2012",
+    "genres": "Action, Open World"
+  },
+  "Far Cry 3: Blood Dragon": {
+    "appId": "233270",
+    "steamPrice": 699,
+    "releaseDate": "Apr 30, 2013",
+    "genres": "Action, Sci-Fi"
+  },
+  "Far Cry 4": {
+    "appId": "298110",
+    "steamPrice": 1499,
+    "releaseDate": "Nov 18, 2014",
+    "genres": "Action, Open World"
+  },
+  "Far Cry 5": {
+    "appId": "552520",
+    "steamPrice": 2999,
+    "releaseDate": "Mar 27, 2018",
+    "genres": "Action, Open World"
+  },
+  "Far Cry 6": {
+    "appId": "2369390",
+    "steamPrice": 2999,
+    "releaseDate": "May 11, 2023",
+    "genres": "Action, Open World"
+  },
+  "Far Cry: New Dawn": {
+    "appId": "939960",
+    "steamPrice": 1999,
+    "releaseDate": "Feb 15, 2019",
+    "genres": "Action, FPS"
+  },
+  "Far Cry: Primal": {
+    "appId": "371660",
+    "steamPrice": 1999,
+    "releaseDate": "Feb 23, 2016",
+    "genres": "Action, Survival"
+  },
+  "Five Nights at Freddy's": {
+    "appId": "319510",
+    "steamPrice": 229,
+    "releaseDate": "Aug 18, 2014",
+    "genres": "Horror, Indie"
+  },
+  "Five Nights at Freddy's 2": {
+    "appId": "332800",
+    "steamPrice": 299,
+    "releaseDate": "Nov 10, 2014",
+    "genres": "Horror, Indie"
+  },
+  "Five Nights at Freddy's 3": {
+    "appId": "354140",
+    "steamPrice": 299,
+    "releaseDate": "Mar 2, 2015",
+    "genres": "Horror, Survival"
+  },
+  "Five Nights at Freddy's: Help Wanted": {
+    "appId": "732690",
+    "steamPrice": 850,
+    "releaseDate": "May 28, 2019",
+    "genres": "VR, Horror"
+  },
+  "Five Nights at Freddy's: Help Wanted 2": {
+    "appId": "2287520",
+    "steamPrice": 1600,
+    "releaseDate": "Dec 14, 2023",
+    "genres": "Horror, Simulation"
+  },
+  "Five Nights at Freddy's: Security Breach": {
+    "appId": "747660",
+    "steamPrice": 1600,
+    "releaseDate": "Dec 16, 2021",
+    "genres": "Horror, Survival"
+  },
+  "Forza Horizon 4": {
+    "appId": "1293830",
+    "steamPrice": 1299,
+    "releaseDate": "Mar 9, 2021",
+    "genres": "Racing, Open World"
+  },
+  "Forza Horizon 5": {
+    "appId": "1551360",
+    "steamPrice": 4799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Forza Horizon 6": {
+    "appId": "2483190",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2483190/d0e851e9a3d316fb587984f22d81e6288b2f1485/capsule_231x87_alt_assets_6.jpg?t=1793894652"
+  },
+  "Forza Motorsport": {
+    "appId": "2440510",
+    "steamPrice": 3999,
+    "releaseDate": "Oct 10, 2023",
+    "genres": "Racing, Simulation"
+  },
+  "Garry's Mod": {
+    "appId": "4000",
+    "steamPrice": 799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Geometry Dash": {
+    "appId": "322170",
+    "steamPrice": 399,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Getting Over It with Bennett Foddy": {
+    "appId": "240720",
+    "steamPrice": 639,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Ghost of Tsushima Director's Cut": {
+    "appId": "2215430",
+    "steamPrice": 4799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Ghostrunner": {
+    "appId": "1139900",
+    "steamPrice": 1799,
+    "releaseDate": "Oct 27, 2020",
+    "genres": "Cyberpunk, Fast-Paced, First-Person"
+  },
+  "Ghostrunner 2": {
+    "appId": "2144740",
+    "steamPrice": 2499,
+    "releaseDate": "Oct 26, 2023",
+    "genres": "Cyberpunk, Fast-Paced, First-Person"
+  },
+  "God of War": {
+    "appId": "1593500",
+    "steamPrice": 3999,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Grand Theft Auto III - The Definitive Edition": {
+    "appId": "1546970",
+    "steamPrice": 1999,
+    "releaseDate": "Jan 19, 2023",
+    "genres": "Action, Open World"
+  },
+  "Grand Theft Auto: San Andreas - The Definitive Edition": {
+    "appId": "1547000",
+    "steamPrice": 1999,
+    "releaseDate": "Jan 19, 2023",
+    "genres": "Action, Open World"
+  },
+  "Grand Theft Auto: Vice City - The Definitive Edition": {
+    "appId": "1546990",
+    "steamPrice": 1999,
+    "releaseDate": "Jan 19, 2023",
+    "genres": "Action, Open World"
+  },
+  "Grand Theft Auto IV: The Complete Edition": {
+    "appId": "12210",
+    "steamPrice": 999,
+    "releaseDate": "Mar 24, 2020",
+    "genres": "Action, Open World"
+  },
+  "Grand Theft Auto V": {
+    "appId": "271590",
+    "steamPrice": 1978,
+    "releaseDate": "Apr 14, 2015",
+    "genres": "Action, Open World"
+  },
+  "Granny": {
+    "appId": "962400",
+    "steamPrice": 229,
+    "releaseDate": "Nov 20, 2018",
+    "genres": "Horror, Survival, Indie"
+  },
+  "Granny Remake": {
+    "appId": "2110820",
+    "steamPrice": 299,
+    "releaseDate": "Jul 19, 2023",
+    "genres": "Horror, Survival, Indie"
+  },
+  "Green Hell": {
+    "appId": "815370",
+    "steamPrice": 1999,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Hitman: Codename 47": {
+    "appId": "6900",
+    "steamPrice": 399,
+    "releaseDate": "Nov 23, 2000",
+    "genres": "Action, Stealth"
+  },
+  "Hitman 2: Silent Assassin": {
+    "appId": "6850",
+    "steamPrice": 399,
+    "releaseDate": "Oct 1, 2002",
+    "genres": "Action, Stealth"
+  },
+  "Hitman: Blood Money": {
+    "appId": "6860",
+    "steamPrice": 399,
+    "releaseDate": "May 30, 2006",
+    "genres": "Action, Stealth"
+  },
+  "Hitman: Absolution": {
+    "appId": "205930",
+    "steamPrice": 850,
+    "releaseDate": "Nov 20, 2012",
+    "genres": "Action, Stealth"
+  },
+  "Hitman": {
+    "appId": "236870",
+    "steamPrice": 1499,
+    "releaseDate": "Mar 11, 2016",
+    "genres": "Action, Stealth"
+  },
+  "Hitman 2": {
+    "appId": "863550",
+    "steamPrice": 1999,
+    "releaseDate": "Nov 13, 2018",
+    "genres": "Action, Stealth"
+  },
+  "Hitman 3": {
+    "appId": "1659040",
+    "steamPrice": 3199,
+    "releaseDate": "Jan 20, 2022",
+    "genres": "Action, Stealth"
+  },
+  "Hogwarts Legacy": {
+    "appId": "990080",
+    "steamPrice": 4799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Inside": {
+    "appId": "304430",
+    "steamPrice": 850,
+    "releaseDate": "Jul 7, 2016",
+    "genres": "Puzzle, Atmospheric, Adventure"
+  },
+  "Internet Cafe & Supermarket Simulator": {
+    "appId": "2670630",
+    "steamPrice": 480,
+    "releaseDate": "Feb 20, 2024",
+    "genres": "Simulation, Casual"
+  },
+  "It Takes Two": {
+    "appId": "1426210",
+    "steamPrice": 2199,
+    "releaseDate": "Mar 26, 2021",
+    "genres": "Co-op, Adventure"
+  },
+  "Jurassic World Evolution": {
+    "appId": "648350",
+    "steamPrice": 1799,
+    "releaseDate": "Jun 12, 2018",
+    "genres": "Simulation, Strategy"
+  },
+  "Jurassic World Evolution 2": {
+    "appId": "1244460",
+    "steamPrice": 2499,
+    "releaseDate": "Nov 9, 2021",
+    "genres": "Simulation, Strategy"
+  },
+  "Jurassic World Evolution 3": {
+    "appId": "2958130",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2958130/767bbed48a0426d14562f4aba32bd30abefb79ec/capsule_231x87.jpg"
+  },
+  "Just Cause": {
+    "appId": "6880",
+    "steamPrice": 399,
+    "releaseDate": "Sep 22, 2006",
+    "genres": "Action, Open World"
+  },
+  "Just Cause 2": {
+    "appId": "8190",
+    "steamPrice": 499,
+    "releaseDate": "Mar 23, 2010",
+    "genres": "Action, Open World"
+  },
+  "Just Cause 3": {
+    "appId": "225540",
+    "steamPrice": 799,
+    "releaseDate": "Dec 1, 2015",
+    "genres": "Action, Open World"
+  },
+  "Just Cause 4": {
+    "appId": "517630",
+    "steamPrice": 1499,
+    "releaseDate": "Dec 4, 2018",
+    "genres": "Action, Open World"
+  },
+  "The Last of Us Part I": {
+    "appId": "1888930",
+    "steamPrice": 3999,
+    "releaseDate": "Mar 28, 2023",
+    "genres": "Action, Story Rich, Post-Apocalyptic"
+  },
+  "The Last of Us Part II Remastered": {
+    "appId": "2531310",
+    "steamPrice": 3999,
+    "releaseDate": "Upcoming",
+    "genres": "Action, Story Rich, Post-Apocalyptic"
+  },
+  "LEGO Batman: The Videogame": {
+    "appId": "21000",
+    "steamPrice": 565,
+    "releaseDate": "Oct 6, 2008",
+    "genres": "Action, Adventure"
+  },
+  "LEGO Batman 2: DC Super Heroes": {
+    "appId": "213330",
+    "steamPrice": 565,
+    "releaseDate": "Jun 19, 2012",
+    "genres": "Action, Adventure"
+  },
+  "LEGO Batman 3: Beyond Gotham": {
+    "appId": "313690",
+    "steamPrice": 565,
+    "releaseDate": "Nov 11, 2014",
+    "genres": "Action, Adventure"
+  },
+  "LEGO Batman: Legacy of the Dark Knight": {
+    "appId": "2215200",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215200/4933722fc48c284f30ea2d0f9eb932c0ab3de1b5/capsule_231x87.jpg"
+  },
+  "LEGO Brawls": {
+    "appId": "1731460",
+    "steamPrice": 480,
+    "releaseDate": "Sep 2, 2022",
+    "genres": "Action, Fighting, Multiplayer"
+  },
+  "LEGO DC Super-Villains": {
+    "appId": "829110",
+    "steamPrice": 1299,
+    "releaseDate": "Oct 16, 2018",
+    "genres": "Action, Adventure"
+  },
+  "LEGO Marvel Super Heroes 2": {
+    "appId": "647830",
+    "steamPrice": 1299,
+    "releaseDate": "Nov 14, 2017",
+    "genres": "Action, Adventure"
+  },
+  "LEGO Marvel's Avengers": {
+    "appId": "405310",
+    "steamPrice": 565,
+    "releaseDate": "Jan 26, 2016",
+    "genres": "Action, Adventure"
+  },
+  "LEGO Star Wars: The Complete Saga": {
+    "appId": "32440",
+    "steamPrice": 565,
+    "releaseDate": "Nov 12, 2009",
+    "genres": "Action, Adventure"
+  },
+  "LEGO Star Wars III: The Clone Wars": {
+    "appId": "32510",
+    "steamPrice": 565,
+    "releaseDate": "Mar 22, 2011",
+    "genres": "Action, Adventure"
+  },
+  "LEGO Star Wars: The Skywalker Saga": {
+    "appId": "920210",
+    "steamPrice": 2499,
+    "releaseDate": "Apr 5, 2022",
+    "genres": "Action, Adventure"
+  },
+  "LEGO The Hobbit": {
+    "appId": "285160",
+    "steamPrice": 565,
+    "releaseDate": "Apr 8, 2014",
+    "genres": "Action, Adventure, Fantasy"
+  },
+  "LEGO The Lord of the Rings": {
+    "appId": "214510",
+    "steamPrice": 565,
+    "releaseDate": "Nov 27, 2012",
+    "genres": "Action, Adventure"
+  },
+  "Lethal Company": {
+    "appId": "1966720",
+    "steamPrice": 799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Limbo": {
+    "appId": "48000",
+    "steamPrice": 999,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Little Nightmares": {
+    "appId": "424840",
+    "steamPrice": 1599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Little Nightmares II": {
+    "appId": "860510",
+    "steamPrice": 2399,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Life is Strange": {
+    "appId": "319630",
+    "steamPrice": 565,
+    "releaseDate": "Jan 29, 2015",
+    "genres": "Story Rich, Choices Matter"
+  },
+  "Life is Strange 2": {
+    "appId": "532210",
+    "steamPrice": 1299,
+    "releaseDate": "Sep 26, 2018",
+    "genres": "Story Rich, Choices Matter"
+  },
+  "Life is Strange: Double Exposure": {
+    "appId": "1874000",
+    "steamPrice": 2999,
+    "releaseDate": "Oct 29, 2024",
+    "genres": "Story Rich, Supernatural"
+  },
+  "Lost Soul Aside": {
+    "appId": "3378960",
+    "steamPrice": 3499,
+    "releaseDate": "2025",
+    "genres": "Action, RPG, Hack and Slash"
+  },
+  "Mad Max": {
+    "appId": "234140",
+    "steamPrice": 1099,
+    "releaseDate": "Sep 1, 2015",
+    "genres": "Action, Vehicular Combat"
+  },
+  "Mafia: Definitive Edition": {
+    "appId": "1030840",
+    "steamPrice": 2199,
+    "releaseDate": "Sep 24, 2020",
+    "genres": "Action, Crime"
+  },
+  "Mafia (Classic)": {
+    "appId": "40990",
+    "steamPrice": 650,
+    "releaseDate": "Aug 28, 2002",
+    "genres": "Action, Classic"
+  },
+  "Mafia II (Classic)": {
+    "appId": "50130",
+    "steamPrice": 850,
+    "releaseDate": "Aug 24, 2010",
+    "genres": "Action, Crime"
+  },
+  "Mafia II: Definitive Edition": {
+    "appId": "1030830",
+    "steamPrice": 1999,
+    "releaseDate": "May 19, 2020",
+    "genres": "Action, Crime"
+  },
+  "Mafia III: Definitive Edition": {
+    "appId": "360430",
+    "steamPrice": 1999,
+    "releaseDate": "Oct 6, 2016",
+    "genres": "Action, Open World"
+  },
+  "Mafia: The Old Country": {
+    "appId": "1941540",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1941540/header.jpg"
+  },
+  "Marvel's Spider-Man Remastered": {
+    "appId": "1817070",
+    "steamPrice": 3999,
+    "releaseDate": "Aug 12, 2022",
+    "genres": "Action, Superhero, Open World"
+  },
+  "Marvel's Spider-Man: Miles Morales": {
+    "appId": "1817190",
+    "steamPrice": 3999,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Marvel's Spider-Man 2": {
+    "appId": "2651280",
+    "steamPrice": 3999,
+    "releaseDate": "Jan 30, 2025",
+    "genres": "Action, Superhero, Open World"
+  },
+  "Max Payne 2: The Fall of Max Payne": {
+    "appId": "12150",
+    "steamPrice": 565,
+    "releaseDate": "Oct 14, 2003",
+    "genres": "Action, Noir"
+  },
+  "Max Payne 3": {
+    "appId": "204100",
+    "steamPrice": 1349,
+    "releaseDate": "May 31, 2012",
+    "genres": "Action, Shooter"
+  },
+  "Metal Gear Rising: Revengeance": {
+    "appId": "235460",
+    "steamPrice": 1199,
+    "releaseDate": "Jan 9, 2014",
+    "genres": "Action, Hack and Slash"
+  },
+  "Metal Gear Solid": {
+    "appId": "2131630",
+    "steamPrice": 1499,
+    "releaseDate": "Oct 24, 2023",
+    "genres": "Action, Stealth"
+  },
+  "Metal Gear Solid 2: Sons of Liberty": {
+    "appId": "2131640",
+    "steamPrice": 1499,
+    "releaseDate": "Oct 24, 2023",
+    "genres": "Action, Stealth"
+  },
+  "Metal Gear Solid V: Ground Zeroes": {
+    "appId": "311340",
+    "steamPrice": 699,
+    "releaseDate": "Dec 18, 2014",
+    "genres": "Action, Stealth"
+  },
+  "Metal Gear Solid V: The Phantom Pain": {
+    "appId": "287700",
+    "steamPrice": 1499,
+    "releaseDate": "Sep 1, 2015",
+    "genres": "Action, Open World"
+  },
+  "Metro 2033 Redux": {
+    "appId": "286690",
+    "steamPrice": 729,
+    "releaseDate": "Aug 27, 2014",
+    "genres": "Post-Apocalyptic, FPS"
+  },
+  "Metro Exodus": {
+    "appId": "412020",
+    "steamPrice": 1799,
+    "releaseDate": "Feb 14, 2019",
+    "genres": "Post-Apocalyptic, FPS"
+  },
+  "Middle-earth: Shadow of Mordor": {
+    "appId": "241930",
+    "steamPrice": 1299,
+    "releaseDate": "Sep 30, 2014",
+    "genres": "Action, Open World"
+  },
+  "Middle-earth: Shadow of War": {
+    "appId": "356190",
+    "steamPrice": 1999,
+    "releaseDate": "Oct 10, 2017",
+    "genres": "Action, Open World"
+  },
+  "Mortal Kombat 11": {
+    "appId": "976310",
+    "steamPrice": 3999,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Mortal Kombat X": {
+    "appId": "307780",
+    "steamPrice": 1349,
+    "releaseDate": "Apr 13, 2015",
+    "genres": "Fighting, Gore"
+  },
+  "Mount & Blade": {
+    "appId": "22100",
+    "steamPrice": 499,
+    "releaseDate": "Sep 16, 2008",
+    "genres": "Medieval, RPG"
+  },
+  "Mount & Blade II: Bannerlord": {
+    "appId": "261550",
+    "steamPrice": 2499,
+    "releaseDate": "Oct 25, 2022",
+    "genres": "Medieval, Strategy, RPG"
+  },
+  "Mount & Blade: Warband": {
+    "appId": "48700",
+    "steamPrice": 999,
+    "releaseDate": "Mar 31, 2010",
+    "genres": "Medieval, Strategy, RPG"
+  },
+  "Mount & Blade: With Fire & Sword": {
+    "appId": "48720",
+    "steamPrice": 499,
+    "releaseDate": "May 3, 2011",
+    "genres": "Medieval, RPG"
+  },
+  "Naruto Shippuden: Ultimate Ninja Storm": {
+    "appId": "495140",
+    "steamPrice": 999,
+    "releaseDate": "Aug 25, 2017",
+    "genres": "Anime, Fighting"
+  },
+  "Naruto Shippuden: Ultimate Ninja Storm 2": {
+    "appId": "543870",
+    "steamPrice": 999,
+    "releaseDate": "Aug 25, 2017",
+    "genres": "Anime, Fighting"
+  },
+  "Naruto Shippuden: Ultimate Ninja Storm 3": {
+    "appId": "234670",
+    "steamPrice": 1199,
+    "releaseDate": "Oct 24, 2013",
+    "genres": "Anime, Fighting"
+  },
+  "Naruto Shippuden: Ultimate Ninja Storm 4": {
+    "appId": "349040",
+    "steamPrice": 1499,
+    "releaseDate": "Feb 4, 2016",
+    "genres": "Anime, Fighting"
+  },
+  "Need for Speed (2016)": {
+    "appId": "1262540",
+    "steamPrice": 1499,
+    "releaseDate": "Jun 4, 2020",
+    "genres": "Racing, Driving, Open World"
+  },
+  "Need for Speed: Most Wanted (2012)": {
+    "appId": "1262560",
+    "steamPrice": 999,
+    "releaseDate": "Jun 4, 2020",
+    "genres": "Racing, Open World"
+  },
+  "Need for Speed Heat Deluxe Edition": {
+    "appId": "1222680",
+    "steamPrice": 2999,
+    "releaseDate": "Jun 4, 2020",
+    "genres": "Racing, Open World"
+  },
+  "Need for Speed: Hot Pursuit Remastered": {
+    "appId": "1328660",
+    "steamPrice": 1999,
+    "releaseDate": "Nov 6, 2020",
+    "genres": "Racing, Arcade"
+  },
+  "Need for Speed: Rivals Complete Edition": {
+    "appId": "1262600",
+    "steamPrice": 999,
+    "releaseDate": "Jun 4, 2020",
+    "genres": "Racing, Action"
+  },
+  "Outlast": {
+    "appId": "238320",
+    "steamPrice": 850,
+    "releaseDate": "Sep 3, 2013",
+    "genres": "Survival Horror, First-Person"
+  },
+  "Outlast 2": {
+    "appId": "414700",
+    "steamPrice": 1599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "The Outlast Trials": {
+    "appId": "1304930",
+    "steamPrice": 1600,
+    "releaseDate": "Mar 5, 2024",
+    "genres": "Survival Horror, Co-op"
+  },
+  "Pragmata": {
+    "appId": "3357650",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/3e7cf55cf72a980ac94cf45d4212e8f0cb566f7f/capsule_231x87.jpg"
+  },
+  "Prince of Persia (2008)": {
+    "appId": "19980",
+    "steamPrice": 499,
+    "releaseDate": "Dec 10, 2008",
+    "genres": "Action, Platformer"
+  },
+  "Prince of Persia: Warrior Within": {
+    "appId": "13500",
+    "steamPrice": 499,
+    "releaseDate": "Dec 2, 2004",
+    "genres": "Action, Platformer"
+  },
+  "Prince of Persia: The Two Thrones": {
+    "appId": "13530",
+    "steamPrice": 499,
+    "releaseDate": "Dec 1, 2005",
+    "genres": "Action, Platformer"
+  },
+  "Prince of Persia: The Forgotten Sands": {
+    "appId": "33320",
+    "steamPrice": 499,
+    "releaseDate": "May 18, 2010",
+    "genres": "Action, Platformer"
+  },
+  "Prince of Persia: The Sands of Time": {
+    "appId": "13600",
+    "steamPrice": 499,
+    "releaseDate": "Dec 2, 2003",
+    "genres": "Action, Platformer"
+  },
+  "Prince of Persia: The Lost Crown": {
+    "appId": "2751000",
+    "steamPrice": 2499,
+    "releaseDate": "Aug 8, 2024",
+    "genres": "Metroidvania, Action"
+  },
+  "A Plague Tale: Innocence": {
+    "appId": "752590",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Poppy Playtime": {
+    "appId": "1721470",
+    "steamPrice": 480,
+    "releaseDate": "Oct 12, 2021",
+    "genres": "Horror, Puzzle, First-Person"
+  },
+  "Resident Evil 0": {
+    "appId": "339340",
+    "steamPrice": 1099,
+    "releaseDate": "Jan 19, 2016",
+    "genres": "Survival Horror, Classic"
+  },
+  "Resident Evil (1996)": {
+    "appId": "4249100",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4249100/aef370ca73b7260498a95571f1902a096e534320/capsule_231x87.jpg?t=1783037618"
+  },
+  "Resident Evil HD Remaster": {
+    "appId": "304240",
+    "steamPrice": 1099,
+    "releaseDate": "Jan 20, 2015",
+    "genres": "Survival Horror, Classic"
+  },
+  "Resident Evil 2 (1998)": {
+    "appId": "4249110",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4249110/e93655242b20976a69ff4357d8ce50ddb1ec77ed/capsule_231x87.jpg"
+  },
+  "Resident Evil 2 (Remake)": {
+    "appId": "883710",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Resident Evil 3: Nemesis (1999)": {
+    "appId": "4249120",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4249120/c8e9ec1d7923ec2a01b661df41ab558d9a988546/capsule_231x87.jpg"
+  },
+  "Resident Evil 3 (Remake)": {
+    "appId": "952060",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Resident Evil 4 (2005)": {
+    "appId": "254700",
+    "steamPrice": 999,
+    "releaseDate": "Feb 27, 2014",
+    "genres": "Action, Horror"
+  },
+  "Resident Evil 4 (Remake)": {
+    "appId": "2050650",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Resident Evil 5": {
+    "appId": "21690",
+    "steamPrice": 999,
+    "releaseDate": "Sep 15, 2009",
+    "genres": "Action, Co-op, Horror"
+  },
+  "Resident Evil 6": {
+    "appId": "221040",
+    "steamPrice": 1499,
+    "releaseDate": "Mar 22, 2013",
+    "genres": "Action, Co-op, Horror"
+  },
+  "Resident Evil 7: Biohazard": {
+    "appId": "418370",
+    "steamPrice": 1599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Resident Evil Village": {
+    "appId": "1196590",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Resident Evil Requiem": {
+    "appId": "3764200",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg"
+  },
+  "Resident Evil: Revelations": {
+    "appId": "222480",
+    "steamPrice": 1499,
+    "releaseDate": "May 20, 2013",
+    "genres": "Survival Horror, Action"
+  },
+  "Resident Evil: Revelations 2": {
+    "appId": "287290",
+    "steamPrice": 1499,
+    "releaseDate": "Feb 24, 2015",
+    "genres": "Survival Horror, Co-op"
+  },
+  "Rain World": {
+    "appId": "312520",
+    "steamPrice": 999,
+    "releaseDate": "Mar 28, 2017",
+    "genres": "Survival, Platformer, Difficult"
+  },
+  "Ready or Not": {
+    "appId": "1144200",
+    "steamPrice": 2499,
+    "releaseDate": "Dec 13, 2023",
+    "genres": "Tactical, FPS, Co-op"
+  },
+  "Red Dead Redemption": {
+    "appId": "2668510",
+    "steamPrice": 3799,
+    "releaseDate": "Oct 29, 2024",
+    "genres": "Action, Western, Open World"
+  },
+  "Red Dead Redemption 2": {
+    "appId": "1174180",
+    "steamPrice": 3199,
+    "releaseDate": "Dec 5, 2019",
+    "genres": "Action, Western, Open World"
+  },
+  "Sniper Elite 4": {
+    "appId": "312660",
+    "steamPrice": 1699,
+    "releaseDate": "Feb 14, 2017",
+    "genres": "Sniper, Stealth, Action"
+  },
+  "Sniper Elite 5": {
+    "appId": "1029690",
+    "steamPrice": 2499,
+    "releaseDate": "May 26, 2022",
+    "genres": "Sniper, Stealth, Action"
+  },
+  "Saints Row": {
+    "appId": "742420",
+    "steamPrice": 1999,
+    "releaseDate": "Aug 24, 2023",
+    "genres": "Action, Open World"
+  },
+  "Sekiro: Shadows Die Twice": {
+    "appId": "814380",
+    "steamPrice": 4799,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Shin chan: Me and the Professor on Summer Vacation": {
+    "appId": "2061250",
+    "steamPrice": 1799,
+    "releaseDate": "Aug 11, 2022",
+    "genres": "Adventure, Relaxing"
+  },
+  "Shin chan: Shiro and the Coal Town": {
+    "appId": "2699820",
+    "steamPrice": 1999,
+    "releaseDate": "Oct 24, 2024",
+    "genres": "Adventure, Relaxing, Casual"
+  },
+  "Silent Hill 2": {
+    "appId": "2124490",
+    "steamPrice": 5599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Silent Hill f": {
+    "appId": "2947440",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2947440/header.jpg"
+  },
+  "Sleeping Dogs": {
+    "appId": "307690",
+    "steamPrice": 729,
+    "releaseDate": "Oct 8, 2014",
+    "genres": "Action, Martial Arts, Open World"
+  },
+  "SnowRunner": {
+    "appId": "1465360",
+    "steamPrice": 1499,
+    "releaseDate": "May 18, 2021",
+    "genres": "Off-Road, Simulation"
+  },
+  "Sonic Frontiers": {
+    "appId": "1237320",
+    "steamPrice": 2499,
+    "releaseDate": "Nov 8, 2022",
+    "genres": "Platformer, Open World"
+  },
+  "Star Wars Battlefront II (Celebration Edition)": {
+    "appId": "1237950",
+    "steamPrice": 2499,
+    "releaseDate": "Jun 11, 2020",
+    "genres": "Action, Sci-Fi"
+  },
+  "Star Wars Jedi: Fallen Order": {
+    "appId": "1172380",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Star Wars Jedi: Survivor": {
+    "appId": "1774580",
+    "steamPrice": 5599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Stellaris": {
+    "appId": "281990",
+    "steamPrice": 1799,
+    "releaseDate": "May 9, 2016",
+    "genres": "Space, 4X, Strategy"
+  },
+  "Subnautica": {
+    "appId": "264710",
+    "steamPrice": 1499,
+    "releaseDate": "Jan 23, 2018",
+    "genres": "Survival, Open World, Underwater"
+  },
+  "Stellar Blade": {
+    "appId": "3489700",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3489700/header.jpg"
+  },
+  "Tomb Raider I Remastered": {
+    "appId": "224960",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/224960/header.jpg"
+  },
+  "Tomb Raider II Remastered": {
+    "appId": "225300",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225300/header.jpg"
+  },
+  "Tomb Raider III Remastered": {
+    "appId": "225320",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225320/header.jpg"
+  },
+  "Tomb Raider IV Remastered": {
+    "appId": "224980",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/224980/header.jpg"
+  },
+  "Tomb Raider V Remastered": {
+    "appId": "225000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225000/header.jpg"
+  },
+  "Tomb Raider VI Remastered": {
+    "appId": "225020",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225020/header.jpg"
+  },
+  "Tomb Raider: Legend": {
+    "appId": "7000",
+    "steamPrice": 399,
+    "releaseDate": "Apr 7, 2006",
+    "genres": "Action, Adventure"
+  },
+  "Tomb Raider: Underworld": {
+    "appId": "8140",
+    "steamPrice": 499,
+    "releaseDate": "Nov 18, 2008",
+    "genres": "Action, Adventure"
+  },
+  "Tomb Raider: Chronicles": {
+    "appId": "225000",
+    "steamPrice": 399,
+    "releaseDate": "Nov 17, 2000",
+    "genres": "Action, Classic"
+  },
+  "Tomb Raider (2013) GOTY Edition": {
+    "appId": "203160",
+    "steamPrice": 850,
+    "releaseDate": "Mar 4, 2013",
+    "genres": "Action, Adventure, Female Protagonist"
+  },
+  "Rise of the Tomb Raider": {
+    "appId": "391220",
+    "steamPrice": 2399,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Shadow of the Tomb Raider": {
+    "appId": "750920",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Tekken 7": {
+    "appId": "389730",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "Tekken 8": {
+    "appId": "1778820",
+    "steamPrice": 3199,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "The Walking Dead": {
+    "appId": "207610",
+    "steamPrice": 565,
+    "releaseDate": "Apr 24, 2012",
+    "genres": "Zombies, Story Rich"
+  },
+  "The Walking Dead: A New Frontier": {
+    "appId": "536220",
+    "steamPrice": 565,
+    "releaseDate": "Dec 20, 2016",
+    "genres": "Zombies, Story Rich"
+  },
+  "The Walking Dead: Michonne": {
+    "appId": "429570",
+    "steamPrice": 565,
+    "releaseDate": "Feb 23, 2016",
+    "genres": "Zombies, Story Rich"
+  },
+  "The Walking Dead: Season Two": {
+    "appId": "261030",
+    "steamPrice": 565,
+    "releaseDate": "Dec 17, 2013",
+    "genres": "Zombies, Story Rich"
+  },
+  "The Walking Dead: The Final Season": {
+    "appId": "866800",
+    "steamPrice": 729,
+    "releaseDate": "Aug 14, 2018",
+    "genres": "Zombies, Story Rich"
+  },
+  "The Walking Dead: The Telltale Definitive Series": {
+    "appId": "1449690",
+    "steamPrice": 1999,
+    "releaseDate": "Oct 29, 2020",
+    "genres": "Zombies, Story Rich"
+  },
+  "Uncharted 4: A Thief's End": {
+    "appId": "1659420",
+    "steamPrice": 3299,
+    "releaseDate": "Oct 19, 2022",
+    "genres": "Action, Adventure"
+  },
+  "Uncharted: The Lost Legacy": {
+    "appId": "1659420",
+    "headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1659420/header_alt_assets_0.jpg"
+  },
+  "Until Dawn": {
+    "appId": "2172010",
+    "steamPrice": 3999,
+    "releaseDate": "Oct 4, 2024",
+    "genres": "Horror, Choices Matter"
+  },
+  "Unravel": {
+    "appId": "1225560",
+    "steamPrice": 999,
+    "releaseDate": "Jun 4, 2020",
+    "genres": "Puzzle, Platformer"
+  },
+  "Unravel Two": {
+    "appId": "1225570",
+    "steamPrice": 999,
+    "releaseDate": "Jun 4, 2020",
+    "genres": "Co-op, Puzzle"
+  },
+  "Watch Dogs": {
+    "appId": "243470",
+    "steamPrice": 1499,
+    "releaseDate": "May 27, 2014",
+    "genres": "Action, Open World"
+  },
+  "Watch Dogs 2": {
+    "appId": "447040",
+    "steamPrice": 2999,
+    "releaseDate": "Nov 28, 2016",
+    "genres": "Action, Open World"
+  },
+  "Watch Dogs: Legion": {
+    "appId": "2239550",
+    "steamPrice": 2999,
+    "releaseDate": "Jan 26, 2023",
+    "genres": "Action, Open World"
+  },
+  "The Witcher: Enhanced Edition": {
+    "appId": "20900",
+    "steamPrice": 399,
+    "releaseDate": "Sep 16, 2008",
+    "genres": "RPG, Fantasy"
+  },
+  "The Witcher 2: Assassins of Kings Enhanced Edition": {
+    "appId": "20920",
+    "steamPrice": 1599,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "The Witcher 3: Wild Hunt": {
+    "appId": "292030",
+    "steamPrice": 3999,
+    "releaseDate": "Available on Steam",
+    "genres": "Action, Adventure"
+  },
+  "World War Z": {
+    "appId": "699130",
+    "steamPrice": 1299,
+    "releaseDate": "Sep 21, 2021",
+    "genres": "Co-op, Zombies, Action"
+  },
+  "WWE 2K24": {
+    "appId": "2315690",
+    "steamPrice": 3999,
+    "releaseDate": "Mar 8, 2024",
+    "genres": "Sports, Fighting"
+  },
+  "WWE 2K25": {
+    "appId": "2878960",
+    "steamPrice": 4499,
+    "releaseDate": "Upcoming",
+    "genres": "Sports, Fighting, Wrestling"
+  }
+}

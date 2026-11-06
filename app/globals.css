@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-deep: #171a21;
+  --bg: #1b2838;
+  --panel: #2a475e;
+  --panel-2: #16202d;
+  --accent: #66c0f4;
+  --accent-2: #1a9fff;
+  --text: #c7d5e0;
+  --text-dim: #8f98a0;
+  --cta-from: #75b022;
+  --cta-to: #588a1b;
+  --danger: #c23c2a;
+  --warn: #e4b222;
+  --ok: #5ba32b;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar in Steam style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--panel);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Card hover glow */
+.card-steam-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-steam-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 14px rgba(102, 192, 244, 0.25);
+  border-color: rgba(102, 192, 244, 0.4);
+}
+
+/* Green Rent CTA button gradient */
+.btn-steam-cta {
+  background: linear-gradient(to right, var(--cta-from), var(--cta-to));
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: filter 0.2s ease, transform 0.1s ease;
+}
+.btn-steam-cta:hover {
+  filter: brightness(1.15);
+}
+.btn-steam-cta:active {
+  transform: scale(0.98);
+}
+
+/* Cyan accent button */
+.btn-steam-accent {
+  background: linear-gradient(135deg, #1a9fff, #66c0f4);
+  color: #ffffff;
+  font-weight: 600;
+  transition: filter 0.2s ease;
+}
+.btn-steam-accent:hover {
+  filter: brightness(1.12);
+}
+
+/* Dark panel button */
+.btn-steam-panel {
+  background: var(--panel);
+  color: var(--text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-steam-panel:hover {
+  background: #3a6282;
+  color: #ffffff;
+}
+
