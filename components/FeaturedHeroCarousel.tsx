@@ -8,9 +8,9 @@ import {
   ChevronLeft,
   ChevronRight,
   WifiOff,
-  Sparkles,
+  CheckCircle2,
   ArrowRight,
-  Tag,
+  Sparkles,
 } from "lucide-react";
 
 export interface FeaturedGame {
@@ -18,7 +18,7 @@ export interface FeaturedGame {
   title: string;
   steamAppId?: string | null;
   headerImage?: string | null;
-  ourMonthlyPriceINR: number;
+  ourMonthlyPriceINR?: number;
   steamPriceINR?: number | null;
   hypeTier: string;
   series?: { name: string } | null;
@@ -67,13 +67,7 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
     setCurrentIndex((prev) => (prev + 1) % total);
   };
 
-  // Savings calculation
   const steamPrice = currentGame.steamPriceINR || 3499;
-  const ourPrice = currentGame.ourMonthlyPriceINR || 99;
-  const savingsPercent = Math.max(
-    80,
-    Math.round(((steamPrice - ourPrice) / steamPrice) * 100)
-  );
 
   return (
     <div
@@ -84,12 +78,12 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
       {/* Subtle background ambient glow matching active game */}
       <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#66c0f4]/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Header bar: Badge, Live Counter, Rent Price */}
+      {/* Header bar: Badge, Live Counter, Included Status */}
       <div className="flex items-center justify-between gap-2 border-b border-[#2a475e]/50 pb-3">
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-black uppercase tracking-wider text-amber-400 bg-amber-400/10 border border-amber-400/30 px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
             <Flame className="w-3.5 h-3.5 fill-amber-400 animate-pulse text-amber-400" />
-            <span>FEATURED RELEASE</span>
+            <span>FEATURED SHOWCASE</span>
           </span>
           <span className="text-xs font-mono text-[#8f98a0]">
             {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
@@ -98,10 +92,11 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
 
         <div className="flex items-center gap-2">
           <span className="text-xs text-[#8f98a0] line-through hidden sm:inline">
-            ₹{steamPrice.toLocaleString("en-IN")}
+            ₹{steamPrice.toLocaleString("en-IN")} on Steam
           </span>
-          <span className="text-sm font-black text-[#5ba32b] bg-[#5ba32b]/10 border border-[#5ba32b]/30 px-2.5 py-0.5 rounded">
-            Rent ₹{ourPrice}/mo
+          <span className="text-xs font-black text-[#5ba32b] bg-[#5ba32b]/15 border border-[#5ba32b]/40 px-2.5 py-0.5 rounded flex items-center gap-1">
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            <span>Included in Guide</span>
           </span>
         </div>
       </div>
@@ -118,10 +113,10 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
           priority
         />
 
-        {/* Top-Right: Savings Tag */}
-        <div className="absolute top-2.5 right-2.5 bg-gradient-to-r from-red-600 to-amber-600 text-white text-[11px] font-black px-2.5 py-1 rounded shadow-md tracking-wider flex items-center gap-1">
-          <Tag className="w-3 h-3" />
-          <span>SAVE {savingsPercent}%</span>
+        {/* Top-Right: Pass Badge */}
+        <div className="absolute top-2.5 right-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-[11px] font-black px-2.5 py-1 rounded shadow-md tracking-wider flex items-center gap-1">
+          <Sparkles className="w-3 h-3" />
+          <span>ALL-ACCESS VAULT</span>
         </div>
 
         {/* Bottom-Left: Offline Ready Badge */}
@@ -158,16 +153,16 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
           <p className="text-xs text-[#8f98a0] flex items-center gap-1.5">
             <span>{currentGame.series?.name || "Blockbuster"}</span>
             <span className="text-[#2a475e]">·</span>
-            <span className="text-emerald-400 font-semibold">Immediate Setup Window</span>
+            <span className="text-emerald-400 font-semibold">Ready to Play Offline</span>
           </p>
         </div>
 
         <div className="flex items-center gap-2 flex-shrink-0">
           <Link
-            href={`/game/${currentGame.id}`}
+            href="/checkout"
             className="btn-steam-cta text-xs px-4 py-2 rounded font-bold shadow-sm flex items-center gap-1.5"
           >
-            <span>Rent Game</span>
+            <span>Unlock Guide (₹300)</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -191,10 +186,9 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
         </div>
 
         <span className="text-[11px] text-[#8f98a0]">
-          Auto-shuffling ({isPaused ? "Paused" : "Active"})
+          245+ Titles Included with ₹300 Guide
         </span>
       </div>
     </div>
   );
 }
-

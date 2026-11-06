@@ -52,7 +52,8 @@ export default async function GameDetailPage({
   }
 
   const isVerifiedOffline = game.offlineTag === "Offline OK" && !!game.testedOfflineOn;
-  const savings = game.steamPriceINR ? Math.max(0, game.steamPriceINR - game.ourMonthlyPriceINR) : 0;
+  const guidePrice = 300;
+  const savings = game.steamPriceINR ? Math.max(0, game.steamPriceINR - guidePrice) : 0;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -130,14 +131,17 @@ export default async function GameDetailPage({
           {/* Launcher & Offline Notice Box */}
           <div className="bg-[#171a21] border border-[#2a475e] rounded-lg p-5 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
-              <WifiOff className="w-4 h-4 text-[#66c0f4]" /> Platform & Offline Requirements
+              <WifiOff className="w-4 h-4 text-[#66c0f4]" /> Platform & Setup Requirements
             </h3>
             <ul className="text-xs text-[#c7d5e0] space-y-1.5 list-disc list-inside">
               <li>
-                <strong>Launcher:</strong> {game.launcher} (shared business credentials relayed on WhatsApp)
+                <strong>Launcher:</strong> {game.launcher} (Offline Mode configuration)
               </li>
               <li>
-                <strong>Offline Status:</strong> {isVerifiedOffline ? `Verified offline on ${game.testedOfflineOn ? new Date(game.testedOfflineOn).toLocaleDateString() : "test bench"}` : "Unverified. Single-player mode is intended for offline play."}
+                <strong>Offline Status:</strong> {isVerifiedOffline ? `Verified offline on ${game.testedOfflineOn ? new Date(game.testedOfflineOn).toLocaleDateString() : "test bench"}` : "Single-player story mode supported for offline play."}
+              </li>
+              <li>
+                <strong>Access:</strong> Included in the ₹300 Complete PC Setup Guide along with 245+ other games.
               </li>
               {game.adminNote && (
                 <li className="text-amber-300 font-medium">
@@ -150,68 +154,67 @@ export default async function GameDetailPage({
 
         {/* Right Column: Pricing & Add to Cart Card */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 shadow-xl space-y-6 sticky top-24">
+          <div className="bg-[#171a21] border border-emerald-500/50 rounded-xl p-6 shadow-xl space-y-6 sticky top-24">
             <div className="border-b border-[#2a475e]/60 pb-4 space-y-2">
-              <span className="text-[11px] font-bold text-[#8f98a0] uppercase tracking-wider">
-                Monthly Rental Access
-              </span>
-              <div className="flex items-baseline justify-between">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded">
+                  Included in Guide
+                </span>
+                <span className="text-[11px] text-[#8f98a0]">Lifetime Pass</span>
+              </div>
+              <div className="flex items-baseline justify-between pt-1">
                 <div>
                   <span className="text-3xl font-black text-[#5ba32b]">
-                    ₹{game.ourMonthlyPriceINR}
+                    ₹{guidePrice}
                   </span>
-                  <span className="text-xs text-[#8f98a0]"> / 30 days</span>
+                  <span className="text-xs text-[#8f98a0]"> / full guide</span>
                 </div>
                 {game.steamPriceINR && (
                   <div className="text-right">
                     <span className="text-xs text-[#8f98a0] line-through block">
                       Steam: ₹{game.steamPriceINR.toLocaleString("en-IN")}
                     </span>
-                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-500/30">
-                      Save ₹{savings.toLocaleString("en-IN")}
-                    </span>
+                    {savings > 0 && (
+                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-500/30">
+                        Save ₹{savings.toLocaleString("en-IN")}
+                      </span>
+                    )}
                   </div>
                 )}
               </div>
             </div>
 
-            {/* Bundle cap reminder */}
-            <div className="bg-[#16202d] border border-[#2a475e]/50 p-3.5 rounded-lg text-xs text-[#c7d5e0] space-y-1">
-              <p className="font-bold text-white">Combine & Save with Automatic Caps:</p>
-              <p className="text-[11px] text-[#8f98a0]">
-                • 2 games capped at ₹149 total<br />
-                • 3 games capped at ₹199 total<br />
-                • All-Access Pass (240+ games) for ₹300
-              </p>
+            {/* Value Highlights */}
+            <div className="bg-[#16202d] border border-[#2a475e]/50 p-3.5 rounded-lg text-xs text-[#c7d5e0] space-y-2">
+              <p className="font-bold text-white">What You Get for ₹{guidePrice}:</p>
+              <ul className="text-[11px] text-[#8f98a0] space-y-1">
+                <li>• Complete Setup Guide (under 10 mins)</li>
+                <li>• Play <strong>{game.title}</strong> + 245 more games</li>
+                <li>• No account sharing · Play on your own PC</li>
+                <li>• Offline & local saves with lifetime updates</li>
+              </ul>
             </div>
 
             {/* Direct Action Buttons */}
-            {game.purchasableAsSingle ? (
-              <div className="space-y-3">
-                <Link
-                  href={`/checkout?gameId=${game.id}`}
-                  className="w-full btn-steam-cta py-3 rounded text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
-                >
-                  <Plus className="w-4 h-4" /> Rent Single Game (₹{game.ourMonthlyPriceINR})
-                </Link>
-                <Link
-                  href={`/cart`}
-                  className="w-full btn-steam-panel py-2.5 rounded text-xs font-bold flex items-center justify-center gap-1.5 border border-[#2a475e]"
-                >
-                  View Bundle in Cart
-                </Link>
-              </div>
-            ) : (
-              <div className="p-3 bg-red-950/40 border border-red-800/40 rounded text-center text-xs text-red-300">
-                Online-only title. Not available for standalone offline rental.
-              </div>
-            )}
+            <div className="space-y-3">
+              <Link
+                href="/checkout"
+                className="w-full btn-steam-cta py-3.5 rounded text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
+              >
+                Unlock the Full Guide – ₹{guidePrice}
+              </Link>
+              <Link
+                href="/catalog"
+                className="w-full btn-steam-panel py-2.5 rounded text-xs font-bold flex items-center justify-center gap-1.5 border border-[#2a475e]"
+              >
+                Browse All 245+ Included Games
+              </Link>
+            </div>
 
             <div className="text-[11px] text-[#8f98a0]/80 space-y-1 border-t border-[#2a475e]/40 pt-4">
-              <p>✓ 1 registered gaming PC</p>
-              <p>✓ Dedicated setup window for downloads</p>
-              <p>✓ 1 free game swap per 30-day period</p>
-              <p>✓ Built on Trust Pledge system</p>
+              <p>✓ Play directly on your own system</p>
+              <p>✓ One-time flat payment via UPI</p>
+              <p>✓ Admin verification & instant guide unlock</p>
             </div>
           </div>
         </div>

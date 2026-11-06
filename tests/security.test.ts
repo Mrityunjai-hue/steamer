@@ -9,47 +9,29 @@ async function runSecurityProofSuite() {
   console.log("  STEAMER SECURITY & CORE LOGIC VERIFICATION SUITE");
   console.log("==================================================");
 
-  // 1. Strict Pricing Function Verification (Section 5.3)
-  console.log("\n[TEST 1] Pricing Function & Bundle Caps...");
+  // 1. Strict Pricing Function Verification - Flat ₹300 Lifetime Setup Guide Model
+  console.log("\n[TEST 1] Flat ₹300 Lifetime Setup Guide Pricing...");
   
-  // Single game (Hot ₹99)
-  const singleHot = calculatePlanPricing([{ id: "1", title: "GTA V", hypeTier: "Hot", price: 99 }]);
-  assert.strictEqual(singleHot.finalPrice, 99, "Single Hot game should be 99");
-  assert.strictEqual(singleHot.planType, "SINGLE");
+  // Single game preview
+  const single = calculatePlanPricing([{ id: "1", title: "GTA V" }]);
+  assert.strictEqual(single.finalPrice, 300, "Single game must result in flat 300");
+  assert.strictEqual(single.planType, "ALL_ACCESS");
 
-  // 2 games (Hot 99 + Popular 79 = 178, capped at 149)
-  const bundle2 = calculatePlanPricing([
-    { id: "1", title: "GTA V", hypeTier: "Hot", price: 99 },
-    { id: "2", title: "Spider-Man", hypeTier: "Popular", price: 79 },
+  // Multi-game selection
+  const multi = calculatePlanPricing([
+    { id: "1", title: "GTA V" },
+    { id: "2", title: "Spider-Man" },
+    { id: "3", title: "Elden Ring" },
   ]);
-  assert.strictEqual(bundle2.individualSum, 178);
-  assert.strictEqual(bundle2.finalPrice, 149, "2-game bundle must be capped at 149");
-  assert.strictEqual(bundle2.savings, 29);
-  assert.strictEqual(bundle2.planType, "BUNDLE_2");
+  assert.strictEqual(multi.finalPrice, 300, "Multi-game selection must be flat 300");
+  assert.strictEqual(multi.planType, "ALL_ACCESS");
 
-  // 3 games (99 + 79 + 59 = 237, capped at 199)
-  const bundle3 = calculatePlanPricing([
-    { id: "1", title: "GTA V", hypeTier: "Hot", price: 99 },
-    { id: "2", title: "Spider-Man", hypeTier: "Popular", price: 79 },
-    { id: "3", title: "Batman", hypeTier: "Standard", price: 59 },
-  ]);
-  assert.strictEqual(bundle3.finalPrice, 199, "3-game bundle must be capped at 199");
-  assert.strictEqual(bundle3.savings, 38);
-  assert.strictEqual(bundle3.planType, "BUNDLE_3");
+  // Explicit All-Access pass
+  const explicit = calculatePlanPricing([], true);
+  assert.strictEqual(explicit.finalPrice, 300, "All-access pass must be flat 300");
+  assert.strictEqual(explicit.planType, "ALL_ACCESS");
 
-  // 6 or more games automatically upgrades to ALL_ACCESS at 300
-  const bundle6 = calculatePlanPricing([
-    { id: "1", title: "G1", hypeTier: "Budget", price: 39 },
-    { id: "2", title: "G2", hypeTier: "Budget", price: 39 },
-    { id: "3", title: "G3", hypeTier: "Budget", price: 39 },
-    { id: "4", title: "G4", hypeTier: "Budget", price: 39 },
-    { id: "5", title: "G5", hypeTier: "Budget", price: 39 },
-    { id: "6", title: "G6", hypeTier: "Budget", price: 39 },
-  ]);
-  assert.strictEqual(bundle6.finalPrice, 300, "6+ games must upgrade to ALL_ACCESS at 300");
-  assert.strictEqual(bundle6.planType, "ALL_ACCESS");
-
-  console.log("  ✓ All pricing caps, bundle tiers, and automatic All-Access conversions PASSED");
+  console.log("  ✓ Flat ₹300 Lifetime All-Access Guide pricing verified successfully");
 
   // 2. Steam Guard & Credential Leak Filter (Section 10)
   console.log("\n[TEST 2] Steam Guard & Credential Leak Detection (Section 10)...");

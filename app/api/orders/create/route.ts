@@ -27,21 +27,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Verify slot hold
-    const hold = await prisma.slotReservation.findFirst({
-      where: {
-        holdToken,
-        userId: session.userId,
-        status: "HOLD",
-        expiresAt: { gt: new Date() },
-      },
-    });
-
-    if (!hold) {
-      return NextResponse.json(
-        { error: "Your 30-minute slot hold has expired. Please re-reserve a slot." },
-        { status: 408 }
-      );
+    // Verify slot hold if provided (user cap removed for Setup Guide model)
+    if (holdToken) {
+      await prisma.slotReservation.updateMany({
+        where: { holdToken, userId: session.userId, status: "HOLD" },
+        data: { status: "ACTIVE" },
+      });
     }
 
     // Fetch games and calculate official price
@@ -90,14 +81,15 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Create Order with status PENDING_PAYMENT
+    // Create Order with status PENDING_PAYMENT (1 hour window to submit UTR)
+    const orderExpiresAt = new Date(Date.now() + 60 * 60 * 1000);
     const order = await prisma.order.create({
       data: {
         orderId,
         userId: session.userId,
         amount: pricing.finalPrice,
         status: "PENDING_PAYMENT",
-        expiresAt: hold.expiresAt,
+        expiresAt: orderExpiresAt,
         subscriptionDraft: JSON.stringify({
           planType: pricing.planType,
           gameIds: isAllAccess ? [] : games.map((g) => g.id),

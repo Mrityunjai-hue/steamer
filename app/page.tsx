@@ -13,9 +13,12 @@ import {
   Sparkles,
   ChevronRight,
   WifiOff,
-  Users,
   CheckCircle2,
   Lock,
+  BookOpen,
+  Laptop,
+  Check,
+  Zap,
 } from "lucide-react";
 
 export const dynamic = "force-dynamic";
@@ -25,13 +28,10 @@ export default async function HomePage() {
   let popularGames: any[] = [];
   let standardGames: any[] = [];
   let budgetGames: any[] = [];
-  let verifiedOfflineGames: any[] = [];
-  let slotsLeft = 8;
-  let totalSlots = 8;
   let sortedHeroGames: any[] = [];
 
   try {
-    const [hot, pop, std, bud, ver] = await Promise.all([
+    const [hot, pop, std, bud] = await Promise.all([
       prisma.game.findMany({
         where: { hypeTier: "Hot", offlineTag: { not: "Online required" } },
         take: 6,
@@ -52,27 +52,12 @@ export default async function HomePage() {
         take: 6,
         include: { series: true },
       }),
-      prisma.game.findMany({
-        where: { testedOfflineOn: { not: null }, offlineTag: "Offline OK" },
-        take: 6,
-        include: { series: true },
-      }),
     ]);
     hotGames = hot;
     popularGames = pop;
     standardGames = std;
     budgetGames = bud;
-    verifiedOfflineGames = ver;
 
-    // Capacity stats
-    const maxRentersSetting = await prisma.systemSetting.findUnique({
-      where: { key: "max_active_renters" },
-    });
-    totalSlots = maxRentersSetting ? parseInt(maxRentersSetting.value, 10) : 8;
-    const activeSubs = await prisma.subscription.count({ where: { status: "ACTIVE" } });
-    slotsLeft = Math.max(0, totalSlots - activeSubs);
-
-    // Curated list of high-hype flagship blockbusters for the Hero Carousel
     const highHypeTitles = [
       "Black Myth: Wukong",
       "Ghost of Tsushima DIRECTOR'S CUT",
@@ -88,7 +73,6 @@ export default async function HomePage() {
       "Dying Light: The Beast",
     ];
 
-    // Fetch premier hero games specifically, with fallback to any Hot games
     const featuredGamesRaw = await prisma.game.findMany({
       where: {
         OR: [
@@ -114,25 +98,25 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="space-y-12 pb-16">
-      {/* 1. Hero Showcase Carousel / Feature Banner */}
-      <section className="relative bg-gradient-to-b from-[#171a21] via-[#1b2838] to-[#1b2838] border-b border-[#2a475e]/40 pt-8 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="space-y-14 pb-16">
+      {/* 1. Hero Showcase / Main Hook */}
+      <section className="relative bg-gradient-to-b from-[#171a21] via-[#1b2838] to-[#1b2838] border-b border-[#2a475e]/40 pt-8 pb-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Top Trust & Live Capacity Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#16202d]/80 border border-[#2a475e]/80 rounded-lg p-3.5 mb-8 shadow-md">
+          {/* Top Value Bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#16202d]/90 border border-[#2a475e] rounded-lg p-3.5 mb-8 shadow-md">
             <div className="flex items-center gap-3">
               <span className="flex h-3 w-3 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5ba32b] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-[#5ba32b]"></span>
               </span>
               <p className="text-xs sm:text-sm font-semibold text-[#c7d5e0]">
-                <strong>Capacity Status:</strong>{" "}
-                <span className="text-[#5ba32b] font-bold">{slotsLeft} of {totalSlots} active slots</span> available this month
+                <strong>Instant Access:</strong>{" "}
+                <span className="text-[#5ba32b] font-bold">245+ Full Titles</span> Included · Single One-Time ₹300 Setup
               </p>
             </div>
             <div className="flex items-center gap-2 text-xs text-[#8f98a0]">
               <WifiOff className="w-4 h-4 text-[#66c0f4]" />
-              <span>100% Single-Player Offline Mode Only</span>
+              <span>100% Single-Player Offline Mode · Local Saves</span>
             </div>
           </div>
 
@@ -141,37 +125,38 @@ export default async function HomePage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#2a475e]/50 border border-[#66c0f4]/40 rounded-full text-xs font-bold text-[#66c0f4]">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>245+ Blockbuster PC Games · 30-Day Flexible Rentals</span>
+                <span>245+ Blockbuster PC Games · Zero Account Sharing</span>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                RENT GAMES. PLAY OFFLINE.{" "}
+                PLAY PREMIUM PC GAMES.{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66c0f4] via-[#1a9fff] to-emerald-400">
-                  BUILT ON TRUST.
+                  ON YOUR OWN PC. FOREVER.
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-base text-[#8f98a0] leading-relaxed max-w-2xl">
-                Experience AAA single-player masterpieces without paying full price. Rent individual games from ₹39/mo, build bundles capped at ₹149 & ₹199, or unlock the entire vault with our All-Access Pass for just ₹300/month.
+              <p className="text-sm sm:text-base text-[#c7d5e0] leading-relaxed max-w-2xl font-medium">
+                Stop paying thousands for individual titles or dealing with shared Steam accounts. Get the ultimate, step-by-step guide to unlocking and playing premium PC games forever on your own system.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link
-                  href="/catalog"
-                  className="btn-steam-cta px-6 py-3 rounded text-sm font-bold shadow-ctaGlow flex items-center gap-2"
+                  href="/checkout"
+                  className="btn-steam-cta px-7 py-3.5 rounded text-sm font-black shadow-ctaGlow flex items-center gap-2 text-white"
                 >
-                  Browse 245+ Titles <ChevronRight className="w-4 h-4" />
+                  <span>Unlock the Full Guide – ₹300</span>
+                  <ChevronRight className="w-4 h-4" />
                 </Link>
-                <Link
-                  href="/legal/disclosure"
-                  className="btn-steam-panel px-5 py-3 rounded text-sm font-bold flex items-center gap-2 border border-[#2a475e]"
+                <a
+                  href="#games-showcase"
+                  className="btn-steam-panel px-5 py-3.5 rounded text-sm font-bold flex items-center gap-2 border border-[#2a475e] text-[#c7d5e0] hover:text-white"
                 >
-                  <ShieldCheck className="w-4 h-4 text-[#66c0f4]" /> Read Trust Model
-                </Link>
+                  <span>Browse 245+ Included Titles</span>
+                </a>
               </div>
             </div>
 
-            {/* Dynamic Shuffling Featured Hero Carousel */}
+            {/* Dynamic Featured Showcase Carousel */}
             <div className="lg:col-span-5">
               <FeaturedHeroCarousel games={sortedHeroGames} />
             </div>
@@ -179,74 +164,107 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. Built on Trust Banner (Mandatory Rule) */}
+      {/* 2. What You Get (Value & Security Section) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-[#171a21] via-[#2a475e]/50 to-[#171a21] border border-[#66c0f4]/30 rounded-lg p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-panelGlow">
-          <div className="flex items-start gap-4">
-            <div className="p-3 bg-[#66c0f4]/10 border border-[#66c0f4]/30 rounded-lg flex-shrink-0">
-              <ShieldCheck className="w-8 h-8 text-[#66c0f4]" />
+        <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div className="border-b border-[#2a475e]/60 pb-4">
+            <span className="text-xs font-bold text-[#66c0f4] uppercase tracking-wider">
+              Complete Transparency
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black text-white mt-1">
+              What You Get With Your ₹300 One-Time Unlock
+            </h2>
+            <p className="text-xs sm:text-sm text-[#8f98a0] mt-1">
+              No hidden fees, no recurring subscriptions, and no lock-in. Everything you need to play immediately.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Benefit 1 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/80 rounded-lg p-5 space-y-2.5">
+              <div className="w-10 h-10 rounded-lg bg-[#66c0f4]/10 border border-[#66c0f4]/30 flex items-center justify-center text-[#66c0f4]">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <h3 className="font-black text-white text-sm">The Complete Setup Guide</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Easy, step-by-step instructions to set up your offline library on your own PC in under 10 minutes.
+              </p>
             </div>
-            <div className="space-y-1.5">
-              <h3 className="text-lg font-black text-white tracking-wide flex items-center gap-2">
-                BUILT ON TRUST ARCHITECTURE
-              </h3>
-              <p className="text-xs sm:text-sm text-[#c7d5e0] leading-relaxed max-w-3xl">
-                {brandConfig.trustBanner}
+
+            {/* Benefit 2 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/80 rounded-lg p-5 space-y-2.5">
+              <div className="w-10 h-10 rounded-lg bg-[#5ba32b]/10 border border-[#5ba32b]/30 flex items-center justify-center text-[#5ba32b]">
+                <Laptop className="w-5 h-5" />
+              </div>
+              <h3 className="font-black text-white text-sm">No Account Sharing</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Play directly on your own PC without getting kicked off by other users or fighting for online slots.
+              </p>
+            </div>
+
+            {/* Benefit 3 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/80 rounded-lg p-5 space-y-2.5">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <WifiOff className="w-5 h-5" />
+              </div>
+              <h3 className="font-black text-white text-sm">Offline & Local Play</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Full access to single-player story modes, deep campaigns, and permanent local save files on your drive.
+              </p>
+            </div>
+
+            {/* Benefit 4 */}
+            <div className="bg-[#16202d] border border-[#2a475e]/80 rounded-lg p-5 space-y-2.5">
+              <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                <Zap className="w-5 h-5" />
+              </div>
+              <h3 className="font-black text-white text-sm">Lifetime Access</h3>
+              <p className="text-xs text-[#8f98a0] leading-relaxed">
+                Learn the method once, and use it for all 245+ supported games and future additions forever.
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 3. Catalog Showcase Header */}
+      <section id="games-showcase" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-4">
+        <div className="bg-gradient-to-r from-[#171a21] via-[#2a475e]/40 to-[#171a21] border border-[#66c0f4]/30 rounded-xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-panelGlow">
+          <div className="space-y-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#5ba32b] flex items-center gap-1.5">
+              <Check className="w-4 h-4" /> 100% Included With ₹300 Unlock
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-wide">
+              Games You Can Play With This Setup
+            </h2>
+            <p className="text-xs sm:text-sm text-[#8f98a0] max-w-2xl leading-relaxed">
+              Every title below is supported by our setup method. Zero individual game purchases required &mdash; unlock all 245+ games for a single ₹300.
+            </p>
+          </div>
+
           <Link
-            href="/legal/disclosure"
-            className="flex-shrink-0 text-xs font-bold text-white bg-[#2a475e] hover:bg-[#3a6282] border border-[#66c0f4]/40 px-4 py-2.5 rounded transition-all"
+            href="/checkout"
+            className="btn-steam-cta px-6 py-3 rounded text-sm font-black whitespace-nowrap shadow-ctaGlow text-white flex-shrink-0"
           >
-            Read Our Trust Pledge
+            Unlock All 245+ Titles – ₹300
           </Link>
         </div>
       </section>
 
-      {/* 3. All-Access Pass Banner (₹300/Month) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden bg-gradient-to-r from-emerald-950/80 via-[#16202d] to-sky-950/80 border border-emerald-500/40 rounded-xl p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
-          <div className="space-y-2">
-            <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-bold px-2.5 py-1 rounded uppercase tracking-wider">
-              Best Value Subscription
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-white">
-              ALL-ACCESS PASS — PLAY EVERYTHING
-            </h2>
-            <p className="text-xs sm:text-sm text-[#c7d5e0] max-w-2xl leading-relaxed">
-              Why pick just one or two? Get unlimited monthly rental access to all 240+ purchasable titles across every series — GTA, God of War, Spider-Man, Resident Evil, Assassin&apos;s Creed, and more.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
-            <div className="text-center sm:text-right">
-              <div className="text-3xl font-black text-[#5ba32b]">₹300</div>
-              <div className="text-xs text-[#8f98a0]">per 30 days · No auto-renew</div>
-            </div>
-            <Link
-              href="/checkout?allAccess=true"
-              className="btn-steam-cta text-sm px-6 py-3 rounded font-bold whitespace-nowrap shadow-ctaGlow"
-            >
-              Get All-Access Pass
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Hot Releases (₹99/Month) */}
+      {/* 4. Hot Releases (Included) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-3">
           <div className="flex items-center gap-2">
             <Flame className="w-5 h-5 text-red-400 fill-red-400" />
-            <h2 className="text-lg sm:text-xl font-black text-white tracking-wide">
-              HOT RELEASES (₹99 / MO)
-            </h2>
+            <h3 className="text-lg sm:text-xl font-black text-white tracking-wide">
+              HOT BLOCKBUSTERS · INCLUDED
+            </h3>
           </div>
           <Link
-            href="/catalog?tier=Hot"
+            href="/catalog"
             className="text-xs font-bold text-[#66c0f4] hover:underline flex items-center gap-1"
           >
-            View all ({hotGames.length}+) <ChevronRight className="w-3.5 h-3.5" />
+            View all 245+ games <ChevronRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -258,29 +276,27 @@ export default async function HomePage() {
               title={game.title}
               series={game.series?.name}
               hypeTier={game.hypeTier}
-              ourMonthlyPriceINR={game.ourMonthlyPriceINR}
               steamPriceINR={game.steamPriceINR}
               offlineTag={game.offlineTag}
               testedOfflineOn={game.testedOfflineOn}
               launcher={game.launcher}
               headerImage={game.headerImage}
-              purchasableAsSingle={game.purchasableAsSingle}
             />
           ))}
         </div>
       </section>
 
-      {/* 5. Popular Blockbusters (₹79/Month) */}
+      {/* 5. Popular Blockbusters (Included) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-3">
           <div className="flex items-center gap-2">
             <Star className="w-5 h-5 text-[#66c0f4] fill-[#66c0f4]" />
-            <h2 className="text-lg sm:text-xl font-black text-white tracking-wide">
-              POPULAR HITS (₹79 / MO)
-            </h2>
+            <h3 className="text-lg sm:text-xl font-black text-white tracking-wide">
+              POPULAR HITS · INCLUDED
+            </h3>
           </div>
           <Link
-            href="/catalog?tier=Popular"
+            href="/catalog"
             className="text-xs font-bold text-[#66c0f4] hover:underline flex items-center gap-1"
           >
             View all ({popularGames.length}+) <ChevronRight className="w-3.5 h-3.5" />
@@ -295,29 +311,27 @@ export default async function HomePage() {
               title={game.title}
               series={game.series?.name}
               hypeTier={game.hypeTier}
-              ourMonthlyPriceINR={game.ourMonthlyPriceINR}
               steamPriceINR={game.steamPriceINR}
               offlineTag={game.offlineTag}
               testedOfflineOn={game.testedOfflineOn}
               launcher={game.launcher}
               headerImage={game.headerImage}
-              purchasableAsSingle={game.purchasableAsSingle}
             />
           ))}
         </div>
       </section>
 
-      {/* 6. Standard & Evergreen (₹59/Month) */}
+      {/* 6. Standard Masterpieces (Included) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-3">
           <div className="flex items-center gap-2">
             <Award className="w-5 h-5 text-blue-300" />
-            <h2 className="text-lg sm:text-xl font-black text-white tracking-wide">
-              STANDARD MASTERPIECES (₹59 / MO)
-            </h2>
+            <h3 className="text-lg sm:text-xl font-black text-white tracking-wide">
+              STANDARD MASTERPIECES · INCLUDED
+            </h3>
           </div>
           <Link
-            href="/catalog?tier=Standard"
+            href="/catalog"
             className="text-xs font-bold text-[#66c0f4] hover:underline flex items-center gap-1"
           >
             View all ({standardGames.length}+) <ChevronRight className="w-3.5 h-3.5" />
@@ -332,29 +346,27 @@ export default async function HomePage() {
               title={game.title}
               series={game.series?.name}
               hypeTier={game.hypeTier}
-              ourMonthlyPriceINR={game.ourMonthlyPriceINR}
               steamPriceINR={game.steamPriceINR}
               offlineTag={game.offlineTag}
               testedOfflineOn={game.testedOfflineOn}
               launcher={game.launcher}
               headerImage={game.headerImage}
-              purchasableAsSingle={game.purchasableAsSingle}
             />
           ))}
         </div>
       </section>
 
-      {/* 7. Budget Classics (₹39/Month) */}
+      {/* 7. Classic Favorites (Included) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-3">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-300" />
-            <h2 className="text-lg sm:text-xl font-black text-white tracking-wide">
-              BUDGET CLASSICS (₹39 / MO)
-            </h2>
+            <Sparkles className="w-5 h-5 text-amber-400" />
+            <h3 className="text-lg sm:text-xl font-black text-white tracking-wide">
+              CLASSIC FAVORITES · INCLUDED
+            </h3>
           </div>
           <Link
-            href="/catalog?tier=Budget"
+            href="/catalog"
             className="text-xs font-bold text-[#66c0f4] hover:underline flex items-center gap-1"
           >
             View all ({budgetGames.length}+) <ChevronRight className="w-3.5 h-3.5" />
@@ -369,103 +381,36 @@ export default async function HomePage() {
               title={game.title}
               series={game.series?.name}
               hypeTier={game.hypeTier}
-              ourMonthlyPriceINR={game.ourMonthlyPriceINR}
               steamPriceINR={game.steamPriceINR}
               offlineTag={game.offlineTag}
               testedOfflineOn={game.testedOfflineOn}
               launcher={game.launcher}
               headerImage={game.headerImage}
-              purchasableAsSingle={game.purchasableAsSingle}
             />
           ))}
         </div>
       </section>
 
-      {/* 8. Verified Offline OK Showcase */}
-      {verifiedOfflineGames.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-3">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#5ba32b]" />
-              <h2 className="text-lg sm:text-xl font-black text-white tracking-wide">
-                TESTED & VERIFIED OFFLINE OK
-              </h2>
-            </div>
-            <span className="text-xs text-[#8f98a0]">Tested directly on hardware</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {verifiedOfflineGames.map((game) => (
-              <GameCard
-                key={game.id}
-                id={game.id}
-                title={game.title}
-                series={game.series?.name}
-                hypeTier={game.hypeTier}
-                ourMonthlyPriceINR={game.ourMonthlyPriceINR}
-                steamPriceINR={game.steamPriceINR}
-                offlineTag={game.offlineTag}
-                testedOfflineOn={game.testedOfflineOn}
-                launcher={game.launcher}
-                headerImage={game.headerImage}
-                purchasableAsSingle={game.purchasableAsSingle}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 9. Simple 4-Step How It Works */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <div className="bg-[#171a21] border border-[#2a475e]/80 rounded-xl p-8 space-y-6">
-          <h2 className="text-xl sm:text-2xl font-black text-white text-center tracking-wide">
-            HOW STEAMER WORKS IN 4 EASY STEPS
+      {/* 8. Bottom CTA Banner */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-r from-emerald-950/80 via-[#16202d] to-sky-950/80 border border-emerald-500/40 rounded-xl p-8 text-center space-y-4 shadow-2xl">
+          <h2 className="text-2xl sm:text-4xl font-black text-white tracking-wide">
+            Ready to Play Over 245+ Blockbuster PC Games?
           </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="bg-[#16202d] border border-[#2a475e]/40 p-5 rounded-lg space-y-2">
-              <div className="w-7 h-7 rounded-full bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-sm">
-                1
-              </div>
-              <h4 className="font-bold text-white text-sm">Choose Your Games</h4>
-              <p className="text-xs text-[#8f98a0] leading-relaxed">
-                Pick 1, 2, or 3 games or the ₹300 All-Access Pass. Caps apply automatically to save you money.
-              </p>
-            </div>
-
-            <div className="bg-[#16202d] border border-[#2a475e]/40 p-5 rounded-lg space-y-2">
-              <div className="w-7 h-7 rounded-full bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-sm">
-                2
-              </div>
-              <h4 className="font-bold text-white text-sm">Consent & Direct UPI</h4>
-              <p className="text-xs text-[#8f98a0] leading-relaxed">
-                Accept the Trust Pledge and transfer rent via your UPI app with your unique Order ID.
-              </p>
-            </div>
-
-            <div className="bg-[#16202d] border border-[#2a475e]/40 p-5 rounded-lg space-y-2">
-              <div className="w-7 h-7 rounded-full bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-sm">
-                3
-              </div>
-              <h4 className="font-bold text-white text-sm">Setup Window</h4>
-              <p className="text-xs text-[#8f98a0] leading-relaxed">
-                Admin shares account access over WhatsApp for your exclusive download slot.
-              </p>
-            </div>
-
-            <div className="bg-[#16202d] border border-[#2a475e]/40 p-5 rounded-lg space-y-2">
-              <div className="w-7 h-7 rounded-full bg-[#5ba32b] text-white font-black flex items-center justify-center text-sm">
-                4
-              </div>
-              <h4 className="font-bold text-white text-sm">Switch to Offline Mode</h4>
-              <p className="text-xs text-[#8f98a0] leading-relaxed">
-                Switch Steam to Offline Mode, confirm in the app, and play all month on your own time!
-              </p>
-            </div>
+          <p className="text-sm sm:text-base text-[#c7d5e0] max-w-2xl mx-auto leading-relaxed">
+            Get the full setup walkthrough, complete game library access, and play on your own system without paying full retail or sharing active logins.
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/checkout"
+              className="btn-steam-cta text-base px-8 py-4 rounded-lg font-black shadow-ctaGlow inline-flex items-center gap-2 text-white"
+            >
+              <span>Unlock the Full Guide – ₹300</span>
+              <ChevronRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
     </div>
   );
 }
-

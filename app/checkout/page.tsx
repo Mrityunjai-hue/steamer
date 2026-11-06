@@ -78,52 +78,21 @@ export default function CheckoutPage() {
     const savedCart = JSON.parse(localStorage.getItem("steamer_cart") || "[]");
     setCart(savedCart);
 
-    // Reserve 30-min slot hold
-    fetch("/api/checkout/reserve-slot", { method: "POST" })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.holdToken) {
-          setHoldToken(data.holdToken);
-          setHoldExpiresAt(new Date(data.expiresAt));
-          setPhase("CONSENT");
-        } else if (data?.isFull) {
-          setIsFull(true);
-        } else if (data?.error) {
-          setError(data.error);
-        }
-      })
-      .catch((err) => {
-        console.error("Slot hold error:", err);
-        setError("Network error reserving slot");
-      })
-      .finally(() => setLoading(false));
+    // Set phase to CONSENT directly (user cap removed for Setup Guide)
+    setPhase("CONSENT");
+    setLoading(false);
 
-    // Calculate official pricing
+    // Calculate official pricing (₹300 flat)
     fetch("/api/cart/calculate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ gameIds: savedCart.map((g: any) => g.id), isAllAccess: false }),
+      body: JSON.stringify({ gameIds: [], isAllAccess: true }),
     })
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (data?.pricing) setPricing(data.pricing);
       });
   }, []);
-
-  // Timer countdown
-  useEffect(() => {
-    if (!holdExpiresAt) return;
-    const interval = setInterval(() => {
-      const diff = holdExpiresAt.getTime() - Date.now();
-      if (diff <= 0) {
-        setMinutesRemaining(0);
-        clearInterval(interval);
-      } else {
-        setMinutesRemaining(Math.ceil(diff / 60000));
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [holdExpiresAt]);
 
   const handleCheckboxToggle = (key: keyof typeof checkboxes) => {
     setCheckboxes((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -134,7 +103,7 @@ export default function CheckoutPage() {
 
   // Step 2: Submit Disclosure & Trust Pledge Consent -> Create UPI Order
   const handleProceedToPayment = async () => {
-    if (!allCheckboxesTicked || !holdToken) return;
+    if (!allCheckboxesTicked) return;
 
     setError(null);
     setLoading(true);
@@ -265,22 +234,22 @@ export default function CheckoutPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      {/* Slot Hold Header */}
+      {/* Setup Guide Header */}
       <div className="bg-[#171a21] border border-[#2a475e] p-4 rounded-xl flex items-center justify-between shadow-lg">
         <div className="flex items-center gap-3">
-          <span className="w-3 h-3 rounded-full bg-[#5ba32b] animate-ping" />
+          <span className="w-3 h-3 rounded-full bg-[#5ba32b]" />
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-white">
-              Slot Reserved Under Hold
+              Lifetime PC Setup Guide & Vault Access (245+ Titles)
             </h3>
             <p className="text-[11px] text-[#8f98a0]">
-              Exclusive 30-minute reservation locked in while you complete checkout.
+              One-Time Payment · Permanent Personal PC Offline Setup · Zero Recurring Fees
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2 bg-[#16202d] border border-[#2a475e] px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold text-[#66c0f4]">
-          <Clock className="w-4 h-4 text-amber-400" />
-          <span>{minutesRemaining}m Remaining</span>
+        <div className="flex items-center gap-2 bg-[#16202d] border border-[#2a475e] px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold text-[#5ba32b]">
+          <CheckCircle2 className="w-4 h-4 text-[#5ba32b]" />
+          <span>Flat ₹300 Total</span>
         </div>
       </div>
 

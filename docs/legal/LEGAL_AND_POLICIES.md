@@ -27,29 +27,27 @@ Steamer is operated by [BUSINESS] ("we", "us"). We provide a paid, time-limited 
 You must be **18 or older** and able to enter a binding contract in India. You must give accurate details and verify your email and WhatsApp number. One person, one account.
 
 ## 3. What you are buying
-You are buying **time-limited, personal, non-commercial access** to selected games on a shared third-party account that we manage, for the plan period you paid for. You are **not** buying a game, a key, a licence, a copy of any game, or ownership of anything. We do not sell, copy or distribute game files. When your plan ends, your access ends.
+You are purchasing **The Complete PC Setup Guide & Lifetime Vault Access Pass** for a single one-time fee of ₹300. You receive our curated, step-by-step instructions for configuring and playing 245+ single-player PC games on your own system in offline mode. You are **not** buying game licenses or ownership of game software. We do not sell, crack, or distribute pirated software files.
 
-## 4. Platform risk (please read)
-Steam's own terms restrict how accounts can be shared. Because this service runs on a shared account, **the platform may restrict, suspend or remove the account at any time**, which could stop access without notice. We do not guarantee availability, uptime or that any game will launch. By buying, you accept this risk. What we will do if the account is lost is set out in the Plan and Purchase Conditions (section C).
+## 4. No Account Sharing
+Unlike shared-account rental services where multiple users battle for the same login, our setup guide teaches you how to configure games directly on your personal computer so you never get kicked off by other players.
 
-## 5. Offline-only play
-All games must be played with Steam set to **Offline Mode**. Online multiplayer, co-op that needs a live connection, cloud saves, online leaderboards, in-game purchases and community features are **not supported**. Games tagged "Mixed" may work only in single-player. Games tagged "Online required" are not sold. The "Offline OK" tag appears only after we have tested the game; "Not yet verified" means we have not tested it. We do not refund for a game that cannot be played offline if it was tagged Mixed, Unverified or had a launcher warning that you acknowledged at checkout.
+## 5. Offline & Local Play
+All setup instructions are intended strictly for **offline, single-player campaigns and story modes**. Online multiplayer, live co-op, online leaderboards, and in-game microtransactions are not supported. Save files are preserved locally on your PC.
 
-## 6. Setup windows
-Because a Steam account can only be online on one device at a time, we schedule exclusive **setup windows** for first login, downloads and updates. You must request a window, follow the queue, and switch to Offline Mode when you are done. Waiting times can vary. Running over your window or staying online after it ends may be treated as a rule breach.
+## 6. Setup Instructions & Delivery
+Upon completing your one-time ₹300 payment via direct UPI and submitting your UTR reference, our admin confirms the order and your dashboard immediately unlocks the click-by-click Setup Guide. Setup takes under 10 minutes to complete.
 
-## 7. Plans, prices and payment
-- Prices are shown in INR, per 30 days, and include applicable taxes unless stated.
-- Plans are monthly and **do not auto-renew**. You choose whether to renew.
-- Payment is processed by Razorpay or other providers we name. We never see or store your full card details.
-- Your plan starts when payment is confirmed and the slot is allocated. Days run continuously from the start date, including days when you do not play.
-- We may change prices. Changes apply only to new purchases and renewals, never to a plan already paid for.
+## 7. Pricing and Payment
+- Pricing is flat ₹300 INR (one-time payment). There are **no recurring monthly fees or auto-renewals**.
+- Payment is collected via direct UPI to our verified UPI VPA with zero payment gateway processing fees.
+- Lifetime access to current and future guide updates for all 245+ supported catalog titles is included.
 
-## 8. Slots and waitlist
-We limit the number of active renters. Slots are first come, first served. A slot is held for you for 10 minutes during checkout. If we are full you can join the waitlist; you will have 24 hours to claim an offered slot. We may pause new sign-ups at any time to protect the service.
+## 8. Refunds & Guarantee
+If the setup guide fails to work on your compatible Windows PC and our admin support team cannot resolve the issue within 48 hours of purchase, you are eligible for a full refund via direct UPI.
 
-## 9. Trust model and Trust Pledge
-Plans are **not technically locked**. You can technically see and launch other games on the account. You pay for the games you choose, and you promise to play **only** those. Breaking this promise is a serious breach (see section 12). By ticking the Trust Pledge you confirm you understand and agree.
+## 9. Trust Model and Security Commitment
+Steamer is built on trust and transparent knowledge sharing. Users must not use the provided configuration materials to conduct malicious attacks, circumvent local network security policies, or distribute malicious software.
 
 ## 10. Your responsibilities
 You must follow the Renter Guidelines (section D). In particular you must not: go online, change any account detail, add or remove friends, use the Steam wallet, market, workshop or community, share or reveal login details or Steam Guard codes to anyone, log in on more than your registered device, install or play games outside your plan, use cheats or mods that may trigger bans, or try to access any other renter's data.

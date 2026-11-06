@@ -257,32 +257,32 @@ async function main() {
       effectiveDate: brandConfig.effectiveDate,
       contentMarkdown: hydrateLegalText(`
 ## 1. Who we are
-Steamer is operated by [BUSINESS] ("we", "us"). We provide a paid, time-limited access service described below. Steamer is an independent service. We are **not affiliated with, endorsed by or sponsored by Valve Corporation, Steam, or any game publisher**. All game names, images and trademarks belong to their owners.
+Steamer is operated by [BUSINESS] ("we", "us"). We provide a digital knowledge base and PC configuration guide service described below. Steamer is an independent service. We are **not affiliated with, endorsed by or sponsored by Valve Corporation, Steam, or any game publisher**. All game names, images and trademarks belong to their respective owners.
 
 ## 2. Who can use the service
-You must be **18 or older** and able to enter a binding contract in India. You must give accurate details and verify your email and WhatsApp number. One person, one account.
+You must be **18 or older** and able to enter a binding contract in India. You must provide accurate details including your name, email, and WhatsApp number. One person, one account.
 
 ## 3. What you are buying
-You are buying **time-limited, personal, non-commercial access** to selected games on a shared third-party account that we manage, for the plan period you paid for. You are **not** buying a game, a key, a licence, a copy of any game, or ownership of anything. We do not sell, copy or distribute game files. When your plan ends, your access ends.
+You are purchasing **The Complete PC Setup Guide & Lifetime Vault Access Pass** for a single one-time fee of ₹300. You receive our curated, step-by-step instructions for configuring and playing 245+ single-player PC games on your own system in offline mode. You are **not** buying game licenses or ownership of game software. We do not sell, crack, or distribute pirated software files.
 
-## 4. Platform risk (please read)
-Steam's own terms restrict how accounts can be shared. Because this service runs on a shared account, **the platform may restrict, suspend or remove the account at any time**, which could stop access without notice. We do not guarantee availability, uptime or that any game will launch. By buying, you accept this risk.
+## 4. No Account Sharing
+Unlike shared-account rental services where multiple users battle for the same login, our setup guide teaches you how to configure games directly on your personal computer so you never get kicked off by other players.
 
-## 5. Offline-only play
-All games must be played with Steam set to **Offline Mode**. Online multiplayer, co-op that needs a live connection, cloud saves, online leaderboards, in-game purchases and community features are **not supported**. Games tagged "Mixed" may work only in single-player. Games tagged "Online required" are not sold.
+## 5. Offline & Local Play
+All setup instructions are intended strictly for **offline, single-player campaigns and story modes**. Online multiplayer, live co-op, online leaderboards, and in-game microtransactions are not supported. Save files are preserved locally on your PC.
 
-## 6. Setup windows
-Because a Steam account can only be online on one device at a time, we schedule exclusive **setup windows** for first login, downloads and updates. You must request a window, follow the queue, and switch to Offline Mode when you are done.
+## 6. Setup Instructions & Delivery
+Upon completing your one-time ₹300 payment via direct UPI and submitting your UTR reference, our admin confirms the order and your dashboard immediately unlocks the click-by-click Setup Guide. Setup takes under 10 minutes to complete.
 
-## 7. Plans, prices and payment
-- Prices are shown in INR, per 30 days. Plans are monthly and **do not auto-renew**.
-- Payment is collected via direct UPI to our verified UPI VPA.
-- Your plan starts when payment is verified by our admin and your slot is confirmed.
+## 7. Pricing and Payment
+- Pricing is flat ₹300 INR (one-time payment). There are **no recurring monthly fees or auto-renewals**.
+- Payment is collected via direct UPI to our verified UPI VPA with zero payment gateway processing fees.
+- Lifetime access to current and future guide updates for all 245+ supported catalog titles is included.
 
-## 8. Trust model and Trust Pledge
-Plans are **not technically locked**. You pay for the games you choose, and you promise to play **only** those. Breaking this promise is a serious breach ending access with no refund.
+## 8. Refunds & Guarantee
+If the setup guide fails to work on your compatible Windows PC and our admin support team cannot resolve the issue within 48 hours of purchase, you are eligible for a full refund via direct UPI.
 
-## 9. Contact and grievance
+## 9. Contact and Grievance
 Support: [SUPPORT_EMAIL] · WhatsApp: [WHATSAPP_NUMBER] · Grievance Officer: [GRIEVANCE_OFFICER], [SUPPORT_EMAIL].
 `),
     },
@@ -293,15 +293,14 @@ Support: [SUPPORT_EMAIL] · WhatsApp: [WHATSAPP_NUMBER] · Grievance Officer: [G
       effectiveDate: brandConfig.effectiveDate,
       contentMarkdown: hydrateLegalText(`
 ### Essential Pre-Purchase Disclosures
-- **Offline only:** Every game must be played with Steam in Offline Mode.
-- **No online features:** Multiplayer, cloud saves, and DLC purchases are not supported.
-- **Only your games:** You promise to play only the games in your plan.
-- **Setup windows:** Downloads and updates happen during scheduled, exclusive setup windows.
-- **One device:** Access is restricted to your single registered device.
-- **Platform risk:** Shared accounts carry platform risk and can be restricted by Steam without notice.
+- **One-Time ₹300 Payment:** You pay once for lifetime access. There are no recurring subscriptions.
+- **Offline & Local Play:** All games run in offline single-player mode with local saves stored on your PC.
+- **No Account Sharing:** Setup is configured for your personal system so you won't get interrupted by other users.
+- **245+ Titles Supported:** The guide includes configuration steps for every title listed in the catalog.
+- **Fast 10-Minute Setup:** Easy click-by-click instructions designed for beginners and experienced PC gamers alike.
 
-### The Trust Pledge
-"Steamer is built on trust. I will only play the games in my plan, I will keep Steam in Offline Mode, and I will never share the login. I understand that breaking this ends my access with no refund."
+### The Steamer Commitment
+"Steamer provides honest, high-value setup knowledge for PC gamers. We respect your time, provide clean local configurations without account kick-offs, and stand behind our guide with dedicated WhatsApp support."
 `),
     },
     {
@@ -310,17 +309,15 @@ Support: [SUPPORT_EMAIL] · WhatsApp: [WHATSAPP_NUMBER] · Grievance Officer: [G
       title: "Plan and Purchase Conditions",
       effectiveDate: brandConfig.effectiveDate,
       contentMarkdown: hydrateLegalText(`
-## C1. Pricing Tiers
-- Single game: Hot ₹99 · Popular ₹79 · Standard ₹59 · Budget ₹39
-- 2-game bundle: Sum capped at ₹149
-- 3-game bundle: Sum capped at ₹199
-- 4–5 games: Lower of sum or ₹300
-- All-Access: ₹300 (unlocks the complete purchasable catalog)
+## C1. Pricing Plan
+- **Complete PC Setup Guide & Lifetime Vault Access:** Flat ₹300 INR (One-time payment).
+- Grants unlimited lifetime access to the step-by-step setup walkthrough for all 245+ single-player PC games.
+- No individual game fees, no tier upgrades, and no recurring monthly charges.
 
-## C2. Refunds and Credits
-1. **Before credentials are shared:** full cancellation and refund upon request.
-2. **After credentials are shared:** no refunds, except if the account is lost and unrecoverable for >7 days, in which case pro-rata refunds are issued via UPI.
-3. If a game tagged **Offline OK** fails to run offline after troubleshooting, you may swap it free of charge.
+## C2. Refunds and Assistance
+1. **Admin Verification:** Orders are verified via UPI UTR within minutes.
+2. **Support Guarantee:** If you encounter any configuration roadblock, contact our team on WhatsApp for 1-on-1 assistance.
+3. **Refund Policy:** If our guide cannot be successfully configured on your system after admin assistance, a full refund is processed via UPI within 48 hours.
 `),
     },
     {

@@ -86,10 +86,10 @@ export default function CatalogPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2a475e]/60 pb-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-white tracking-wide">
-            GAME CATALOG ({totalGames} TITLES)
+            GAMES YOU CAN PLAY WITH THIS SETUP ({totalGames} TITLES)
           </h1>
           <p className="text-xs sm:text-sm text-[#8f98a0]">
-            Browse our full vault of offline-ready single-player PC games.
+            Browse our full vault of 245+ offline-ready single-player PC games included in the ₹300 Complete Setup Guide.
           </p>
         </div>
 
@@ -126,6 +126,27 @@ export default function CatalogPage() {
         </div>
       </div>
 
+      {/* Showcase Value Callout Banner */}
+      <div className="bg-gradient-to-r from-[#171a21] via-[#1b2838] to-[#171a21] border border-emerald-500/40 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
+        <div className="space-y-1 text-center sm:text-left">
+          <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-black uppercase px-2 py-0.5 rounded">
+            All 245+ Titles Included
+          </div>
+          <p className="text-sm font-bold text-white">
+            Stop paying thousands for individual titles. Learn the setup once and play on your own PC forever.
+          </p>
+          <p className="text-xs text-[#8f98a0]">
+            No account sharing · Local saves · Offline play · One-time flat payment
+          </p>
+        </div>
+        <a
+          href="/checkout"
+          className="btn-steam-cta px-6 py-2.5 rounded text-xs font-bold whitespace-nowrap shadow-ctaGlow"
+        >
+          Unlock the Full Guide – ₹300
+        </a>
+      </div>
+
       {/* Main Layout: Sidebar Filters + Game Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filter Sidebar (Desktop) */}
@@ -160,8 +181,6 @@ export default function CatalogPage() {
               className="w-full bg-[#16202d] border border-[#2a475e] text-xs text-white rounded p-2 focus:outline-none focus:border-[#66c0f4]"
             >
               <option value="hype">Hype / Popularity</option>
-              <option value="price_asc">Price: Low to High</option>
-              <option value="price_desc">Price: High to Low</option>
               <option value="title_asc">Title: A – Z</option>
               <option value="title_desc">Title: Z – A</option>
               <option value="newest">Recently Added</option>
@@ -185,7 +204,7 @@ export default function CatalogPage() {
                       : "text-[#c7d5e0] hover:bg-[#2a475e]/40"
                   }`}
                 >
-                  {t === "" ? "All Tiers" : t === "Hot" ? "Hot (₹99)" : t === "Popular" ? "Popular (₹79)" : t === "Standard" ? "Standard (₹59)" : "Budget (₹39)"}
+                  {t === "" ? "All Tiers" : `${t} Tier`}
                 </button>
               ))}
             </div>

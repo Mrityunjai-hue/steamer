@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 const consentSchema = z.object({
   checkboxes: z.record(z.boolean()),
   trustPledge: z.boolean(),
-  holdToken: z.string(),
+  holdToken: z.string().optional(),
   disclosureVersion: z.string().default("1.0"),
   termsVersion: z.string().default("1.0"),
   guidelinesVersion: z.string().default("1.0"),
