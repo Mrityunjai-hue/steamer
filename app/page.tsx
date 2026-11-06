@@ -21,9 +21,17 @@ import {
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  // Fetch featured tiers and verified offline games from DB
-  const [hotGames, popularGames, standardGames, budgetGames, verifiedOfflineGames] =
-    await Promise.all([
+  let hotGames: any[] = [];
+  let popularGames: any[] = [];
+  let standardGames: any[] = [];
+  let budgetGames: any[] = [];
+  let verifiedOfflineGames: any[] = [];
+  let slotsLeft = 8;
+  let totalSlots = 8;
+  let sortedHeroGames: any[] = [];
+
+  try {
+    const [hot, pop, std, bud, ver] = await Promise.all([
       prisma.game.findMany({
         where: { hypeTier: "Hot", offlineTag: { not: "Online required" } },
         take: 6,
@@ -50,52 +58,60 @@ export default async function HomePage() {
         include: { series: true },
       }),
     ]);
+    hotGames = hot;
+    popularGames = pop;
+    standardGames = std;
+    budgetGames = bud;
+    verifiedOfflineGames = ver;
 
-  // Capacity stats
-  const maxRentersSetting = await prisma.systemSetting.findUnique({
-    where: { key: "max_active_renters" },
-  });
-  const totalSlots = maxRentersSetting ? parseInt(maxRentersSetting.value, 10) : 8;
-  const activeSubs = await prisma.subscription.count({ where: { status: "ACTIVE" } });
-  const slotsLeft = Math.max(0, totalSlots - activeSubs);
+    // Capacity stats
+    const maxRentersSetting = await prisma.systemSetting.findUnique({
+      where: { key: "max_active_renters" },
+    });
+    totalSlots = maxRentersSetting ? parseInt(maxRentersSetting.value, 10) : 8;
+    const activeSubs = await prisma.subscription.count({ where: { status: "ACTIVE" } });
+    slotsLeft = Math.max(0, totalSlots - activeSubs);
 
-  // Curated list of high-hype flagship blockbusters for the Hero Carousel
-  const highHypeTitles = [
-    "Black Myth: Wukong",
-    "Ghost of Tsushima DIRECTOR'S CUT",
-    "Red Dead Redemption 2",
-    "God of War",
-    "Marvel's Spider-Man Remastered",
-    "Grand Theft Auto V",
-    "Hogwarts Legacy",
-    "Silent Hill 2",
-    "Cyberpunk 2077",
-    "Elden Ring",
-    "Dragon Ball: Sparking! Zero",
-    "Dying Light: The Beast",
-  ];
+    // Curated list of high-hype flagship blockbusters for the Hero Carousel
+    const highHypeTitles = [
+      "Black Myth: Wukong",
+      "Ghost of Tsushima DIRECTOR'S CUT",
+      "Red Dead Redemption 2",
+      "God of War",
+      "Marvel's Spider-Man Remastered",
+      "Grand Theft Auto V",
+      "Hogwarts Legacy",
+      "Silent Hill 2",
+      "Cyberpunk 2077",
+      "Elden Ring",
+      "Dragon Ball: Sparking! Zero",
+      "Dying Light: The Beast",
+    ];
 
-  // Fetch premier hero games specifically, with fallback to any Hot games
-  const featuredGamesRaw = await prisma.game.findMany({
-    where: {
-      OR: [
-        { title: { in: highHypeTitles } },
-        { hypeTier: "Hot" }
-      ],
-      offlineTag: { not: "Online required" }
-    },
-    take: 12,
-    include: { series: true }
-  });
+    // Fetch premier hero games specifically, with fallback to any Hot games
+    const featuredGamesRaw = await prisma.game.findMany({
+      where: {
+        OR: [
+          { title: { in: highHypeTitles } },
+          { hypeTier: "Hot" }
+        ],
+        offlineTag: { not: "Online required" }
+      },
+      take: 12,
+      include: { series: true }
+    });
 
-  const sortedHeroGames = [...featuredGamesRaw].sort((a, b) => {
-    const idxA = highHypeTitles.indexOf(a.title);
-    const idxB = highHypeTitles.indexOf(b.title);
-    if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-    if (idxA !== -1) return -1;
-    if (idxB !== -1) return 1;
-    return 0;
-  }).slice(0, 8);
+    sortedHeroGames = [...featuredGamesRaw].sort((a, b) => {
+      const idxA = highHypeTitles.indexOf(a.title);
+      const idxB = highHypeTitles.indexOf(b.title);
+      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+      if (idxA !== -1) return -1;
+      if (idxB !== -1) return 1;
+      return 0;
+    }).slice(0, 8);
+  } catch (err) {
+    console.error("HomePage database query error:", err);
+  }
 
   return (
     <div className="space-y-12 pb-16">

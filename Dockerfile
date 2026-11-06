@@ -1,4 +1,5 @@
-# Multi-stage Dockerfile for Steamer (Next.js 14 App Router + Prisma)
+# Multi-stage Dockerfile for Steamer (Next.js 14 App Router + Prisma + SQLite)
+
 # Stage 1: Dependencies
 FROM node:20-alpine AS deps
 RUN apk add --no-cache libc6-compat openssl
@@ -31,24 +32,30 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV DATABASE_URL="file:/app/prisma/steamer.db"
-RUN apk add --no-cache openssl
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Install both libc6-compat and openssl for Prisma engine compatibility on Alpine
+RUN apk add --no-cache libc6-compat openssl
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Copy static assets and standalone server
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+
+# Copy prisma schema and pre-seeded database
 COPY --from=builder /app/prisma ./prisma
+# Keep a permanent seed copy in prisma_seed to survive empty volume mounts
+COPY --from=builder /app/prisma ./prisma_seed
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 
-# Ensure SQLite file and directory are writable by nextjs user
-RUN chown -R nextjs:nodejs /app/prisma
-
-USER nextjs
+# Copy startup entrypoint
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh && chown -R nextjs:nodejs /app/prisma
 
 EXPOSE 3000
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["/app/entrypoint.sh"]
