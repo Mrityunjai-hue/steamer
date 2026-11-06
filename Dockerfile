@@ -13,12 +13,15 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Build-time environment fallbacks
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+ENV DATABASE_URL="file:./steamer.db"
+
 # Generate Prisma Client
 RUN npx prisma generate
 
 # Build Next.js
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV=production
 RUN npm run build
 
 # Stage 3: Runner
@@ -27,6 +30,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV DATABASE_URL="file:/app/prisma/steamer.db"
 RUN apk add --no-cache openssl
 
 RUN addgroup --system --gid 1001 nodejs
@@ -38,6 +42,9 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 
+# Ensure SQLite file and directory are writable by nextjs user
+RUN chown -R nextjs:nodejs /app/prisma
+
 USER nextjs
 
 EXPOSE 3000
@@ -45,4 +52,3 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
 CMD ["node", "server.js"]
-

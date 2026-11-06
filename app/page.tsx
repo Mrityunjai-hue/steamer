@@ -18,7 +18,7 @@ import {
   Lock,
 } from "lucide-react";
 
-export const revalidate = 60; // Refresh store data every 60s
+export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   // Fetch featured tiers and verified offline games from DB
