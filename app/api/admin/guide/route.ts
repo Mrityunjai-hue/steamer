@@ -45,3 +45,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Failed to save guide" }, { status: 500 });
   }
 }
+

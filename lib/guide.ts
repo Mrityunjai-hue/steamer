@@ -11,21 +11,27 @@ export interface GuideStep {
 export interface GuideConfig {
   title: string;
   description: string;
+  videoUrl?: string;
+  videoTitle?: string;
   protection: {
     disableCopy: boolean;
     disableRightClick: boolean;
     watermark: boolean;
+    antiScreenshot: boolean;
   };
   steps: GuideStep[];
 }
 
 export const DEFAULT_GUIDE_CONFIG: GuideConfig = {
   title: "Complete PC Setup Walkthrough",
-  description: "Follow the visual, click-by-click instructions below to configure and play your titles on your system.",
+  description: "Follow the visual, click-by-click instructions and video walkthrough below to configure your titles.",
+  videoUrl: "",
+  videoTitle: "Full Video Walkthrough & Setup Demo",
   protection: {
     disableCopy: true,
     disableRightClick: true,
     watermark: true,
+    antiScreenshot: true,
   },
   steps: [
     {

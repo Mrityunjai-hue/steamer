@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import {
   BookOpen,
   Save,
@@ -16,8 +15,14 @@ import {
   AlertCircle,
   RefreshCw,
   Image as ImageIcon,
+  Video,
+  Play,
+  FileVideo,
+  Lock,
 } from "lucide-react";
 import type { GuideConfig, GuideStep } from "@/lib/guide";
+import GuideVideoPlayer from "@/components/GuideVideoPlayer";
+import AntiScreenshotShield from "@/components/AntiScreenshotShield";
 
 export default function AdminGuideEditorPage() {
   const [guide, setGuide] = useState<GuideConfig | null>(null);
@@ -26,6 +31,7 @@ export default function AdminGuideEditorPage() {
   const [saveStatus, setSaveStatus] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"editor" | "preview">("editor");
   const [uploadingIndex, setUploadingIndex] = useState<number | null>(null);
+  const [uploadingVideo, setUploadingVideo] = useState(false);
 
   const fetchGuide = async () => {
     try {
@@ -57,7 +63,7 @@ export default function AdminGuideEditorPage() {
       });
       const data = await res.json();
       if (res.ok) {
-        setSaveStatus("Guide published successfully! Paying users now see this live.");
+        setSaveStatus("Guide & Video settings published successfully! Paying users now see this live.");
         setTimeout(() => setSaveStatus(null), 4000);
       } else {
         alert(data.error || "Failed to save guide");
@@ -141,6 +147,33 @@ export default function AdminGuideEditorPage() {
     }
   };
 
+  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !guide) return;
+
+    setUploadingVideo(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/admin/guide/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (res.ok && data.url) {
+        setGuide({ ...guide, videoUrl: data.url });
+      } else {
+        alert(data.error || "Failed to upload video");
+      }
+    } catch {
+      alert("Error uploading video file");
+    } finally {
+      setUploadingVideo(false);
+    }
+  };
+
   if (loading || !guide) {
     return (
       <div className="py-24 flex justify-center">
@@ -158,7 +191,7 @@ export default function AdminGuideEditorPage() {
             <BookOpen className="w-6 h-6 text-[#66c0f4]" /> Setup Guide Visual Editor
           </h1>
           <p className="text-xs text-[#8f98a0] mt-0.5">
-            Manage the visual, click-by-click instructions and screenshots unlocked by paying users on their dashboard.
+            Manage the visual, click-by-click instructions, walkthrough video, and screenshots unlocked by paying users.
           </p>
         </div>
 
@@ -235,8 +268,8 @@ export default function AdminGuideEditorPage() {
               </div>
             </div>
 
-            {/* Anti-Copy & Anti-Leak Toggles */}
-            <div className="pt-2 border-t border-[#2a475e]/40 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[#c7d5e0]">
+            {/* Anti-Copy, Anti-Screenshot & Watermark Toggles */}
+            <div className="pt-2 border-t border-[#2a475e]/40 grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs text-[#c7d5e0]">
               <label className="flex items-center gap-2 cursor-pointer bg-[#16202d] border border-[#2a475e]/60 p-2.5 rounded">
                 <input
                   type="checkbox"
@@ -249,10 +282,7 @@ export default function AdminGuideEditorPage() {
                   }
                   className="rounded border-[#2a475e] text-[#66c0f4] focus:ring-0"
                 />
-                <div>
-                  <strong className="block text-white text-[11px]">Disable Text Selection</strong>
-                  <span className="text-[10px] text-[#8f98a0]">Prevents copying guide steps</span>
-                </div>
+                <span>Disable Text Selection / Copy</span>
               </label>
 
               <label className="flex items-center gap-2 cursor-pointer bg-[#16202d] border border-[#2a475e]/60 p-2.5 rounded">
@@ -267,10 +297,7 @@ export default function AdminGuideEditorPage() {
                   }
                   className="rounded border-[#2a475e] text-[#66c0f4] focus:ring-0"
                 />
-                <div>
-                  <strong className="block text-white text-[11px]">Disable Right-Click</strong>
-                  <span className="text-[10px] text-[#8f98a0]">Blocks image saving / inspect</span>
-                </div>
+                <span>Disable Right-Click Context Menu</span>
               </label>
 
               <label className="flex items-center gap-2 cursor-pointer bg-[#16202d] border border-[#2a475e]/60 p-2.5 rounded">
@@ -285,65 +312,147 @@ export default function AdminGuideEditorPage() {
                   }
                   className="rounded border-[#2a475e] text-[#66c0f4] focus:ring-0"
                 />
-                <div>
-                  <strong className="block text-white text-[11px]">Anti-Leak Watermark</strong>
-                  <span className="text-[10px] text-[#8f98a0]">Displays user email on images</span>
-                </div>
+                <span>Overlay Email Watermark (Anti-Leak)</span>
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer bg-[#16202d] border border-[#2a475e]/60 p-2.5 rounded">
+                <input
+                  type="checkbox"
+                  checked={guide.protection?.antiScreenshot ?? true}
+                  onChange={(e) =>
+                    setGuide({
+                      ...guide,
+                      protection: { ...guide.protection, antiScreenshot: e.target.checked },
+                    })
+                  }
+                  className="rounded border-[#2a475e] text-[#66c0f4] focus:ring-0"
+                />
+                <span className="text-amber-300 font-semibold">Anti-Screenshot Shield (Blur on Capture)</span>
               </label>
             </div>
           </div>
 
-          {/* Steps List */}
+          {/* Walkthrough Video Player Configuration */}
+          <div className="bg-[#171a21] border border-[#2a475e] rounded-lg p-5 space-y-4">
+            <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-3">
+              <h2 className="text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2">
+                <Video className="w-4 h-4 text-[#66c0f4]" /> Walkthrough Video Player (Inline & Protected)
+              </h2>
+              <span className="text-[10px] text-[#66c0f4] font-mono bg-[#16202d] border border-[#2a475e] px-2 py-0.5 rounded">
+                Downloads & Recording Prohibited
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label className="text-[11px] font-bold text-[#8f98a0] uppercase">Video Title</label>
+                <input
+                  type="text"
+                  value={guide.videoTitle || ""}
+                  onChange={(e) => setGuide({ ...guide, videoTitle: e.target.value })}
+                  placeholder="e.g. Complete Visual Video Walkthrough"
+                  className="w-full bg-[#16202d] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <label className="text-[11px] font-bold text-[#8f98a0] uppercase">Video Source / URL</label>
+                  <label className="text-[10px] text-[#66c0f4] hover:underline cursor-pointer flex items-center gap-1 font-bold">
+                    <FileVideo className="w-3 h-3" />
+                    <span>{uploadingVideo ? "Uploading..." : "Upload MP4 / WEBM File"}</span>
+                    <input
+                      type="file"
+                      accept="video/mp4,video/webm,video/quicktime"
+                      onChange={handleVideoUpload}
+                      disabled={uploadingVideo}
+                      className="hidden"
+                    />
+                  </label>
+                </div>
+                <input
+                  type="text"
+                  value={guide.videoUrl || ""}
+                  onChange={(e) => setGuide({ ...guide, videoUrl: e.target.value })}
+                  placeholder="Paste direct MP4 URL, YouTube URL, Vimeo, or upload a video file above"
+                  className="w-full bg-[#16202d] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
+                />
+              </div>
+            </div>
+
+            {/* Video Preview in Admin */}
+            {guide.videoUrl && (
+              <div className="pt-2">
+                <p className="text-[11px] text-[#8f98a0] font-semibold mb-2">Video Player Preview:</p>
+                <GuideVideoPlayer
+                  videoUrl={guide.videoUrl}
+                  title={guide.videoTitle || "Walkthrough Video"}
+                  watermarkText="ADMIN PREVIEW • STEAMER"
+                />
+                <button
+                  type="button"
+                  onClick={() => setGuide({ ...guide, videoUrl: "" })}
+                  className="mt-2 text-xs text-red-400 hover:text-red-300 font-bold"
+                >
+                  Remove Video
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Step List Management */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-bold uppercase tracking-wider text-white">
-                Walkthrough Steps ({guide.steps.length} Steps)
+                Step-by-Step Walkthrough Cards ({guide.steps.length} Steps)
               </h2>
               <button
                 onClick={handleAddStep}
-                className="btn-steam-panel text-xs px-3.5 py-1.5 rounded font-bold border border-[#2a475e] flex items-center gap-1.5"
+                className="btn-steam-panel px-3 py-1.5 rounded text-xs font-bold text-[#66c0f4] hover:text-white border border-[#2a475e] flex items-center gap-1.5"
               >
-                <Plus className="w-3.5 h-3.5 text-[#66c0f4]" /> Add New Step
+                <Plus className="w-3.5 h-3.5" /> Add Step
               </button>
             </div>
 
             {guide.steps.map((step, index) => (
               <div
                 key={step.id || index}
-                className="bg-[#171a21] border border-[#2a475e] rounded-lg p-5 space-y-4 shadow-sm"
+                className="bg-[#171a21] border border-[#2a475e] rounded-lg p-5 space-y-4 shadow-md relative"
               >
-                {/* Step Top Bar: Step Number + Reorder + Delete */}
+                {/* Step Header Controls */}
                 <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-sm bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-md bg-[#66c0f4]/20 border border-[#66c0f4]/40 text-[#66c0f4] font-black flex items-center justify-center text-xs">
                       {step.stepNumber}
                     </span>
-                    <strong className="text-white text-sm">Step {step.stepNumber}</strong>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider">
+                      Step #{step.stepNumber}
+                    </span>
                   </div>
 
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => handleMoveStep(index, "up")}
                       disabled={index === 0}
-                      className="p-1.5 text-[#8f98a0] hover:text-white disabled:opacity-30 rounded"
+                      className="p-1 rounded bg-[#16202d] border border-[#2a475e] text-[#8f98a0] hover:text-white disabled:opacity-30"
                       title="Move Up"
                     >
-                      <ArrowUp className="w-4 h-4" />
+                      <ArrowUp className="w-3.5 h-3.5" />
                     </button>
                     <button
                       onClick={() => handleMoveStep(index, "down")}
                       disabled={index === guide.steps.length - 1}
-                      className="p-1.5 text-[#8f98a0] hover:text-white disabled:opacity-30 rounded"
+                      className="p-1 rounded bg-[#16202d] border border-[#2a475e] text-[#8f98a0] hover:text-white disabled:opacity-30"
                       title="Move Down"
                     >
-                      <ArrowDown className="w-4 h-4" />
+                      <ArrowDown className="w-3.5 h-3.5" />
                     </button>
                     <button
                       onClick={() => handleRemoveStep(index)}
-                      className="p-1.5 text-red-400 hover:text-red-300 rounded ml-2"
+                      className="p-1 rounded bg-red-950/40 border border-red-500/30 text-red-400 hover:text-red-300 ml-2"
                       title="Delete Step"
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
@@ -418,13 +527,20 @@ export default function AdminGuideEditorPage() {
                     />
                   </div>
 
-                  {/* Screenshot Thumbnail Preview */}
+                  {/* Screenshot Thumbnail Preview with Robust IMG Tag */}
                   {step.imageUrl && (
                     <div className="relative aspect-[16/9] max-w-md rounded overflow-hidden border border-[#2a475e] bg-black/60 group">
-                      <Image src={step.imageUrl} alt={step.title} fill className="object-contain" />
+                      <img
+                        src={step.imageUrl}
+                        alt={step.title}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLElement).style.opacity = "0.4";
+                        }}
+                      />
                       <button
                         onClick={() => handleStepChange(index, "imageUrl", "")}
-                        className="absolute top-2 right-2 bg-red-600/80 hover:bg-red-600 text-white p-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="absolute top-2 right-2 bg-red-600/80 hover:bg-red-600 text-white p-1 px-2 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity font-bold shadow-md"
                         title="Remove Screenshot"
                       >
                         Remove
@@ -444,55 +560,73 @@ export default function AdminGuideEditorPage() {
           </div>
         </div>
       ) : (
-        /* LIVE PREVIEW TAB */
-        <div className="bg-[#171a21] border border-[#2a475e] rounded-lg p-6 sm:p-8 space-y-8 select-none">
-          <div className="border-b border-[#2a475e]/60 pb-4">
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded">
-              Verified User View
-            </span>
-            <h2 className="text-2xl font-black text-white mt-2">{guide.title}</h2>
-            <p className="text-xs text-[#8f98a0] mt-1">{guide.description}</p>
-          </div>
+        /* LIVE PREVIEW TAB (Shows exact verified paid customer view) */
+        <AntiScreenshotShield
+          enabled={guide.protection?.antiScreenshot ?? true}
+          watermarkText="ADMIN PREVIEW • STEAMER PASS"
+        >
+          <div className="bg-[#171a21] border border-[#2a475e] rounded-lg p-6 sm:p-8 space-y-8 select-none">
+            <div className="border-b border-[#2a475e]/60 pb-4">
+              <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded">
+                Verified User View
+              </span>
+              <h2 className="text-2xl font-black text-white mt-2">{guide.title}</h2>
+              <p className="text-xs text-[#8f98a0] mt-1">{guide.description}</p>
+            </div>
 
-          <div className="space-y-6">
-            {guide.steps.map((step) => (
-              <div
-                key={step.id}
-                className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-6 space-y-4 shadow-md"
-              >
-                <div className="flex items-center gap-3 border-b border-[#2a475e]/40 pb-3">
-                  <span className="w-7 h-7 rounded-sm bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
-                    {step.stepNumber}
-                  </span>
-                  <h3 className="text-base font-bold text-white">{step.title}</h3>
-                </div>
-
-                <p className="text-xs text-[#c7d5e0] leading-relaxed whitespace-pre-line">
-                  {step.instructions}
-                </p>
-
-                {step.clickHighlight && (
-                  <div className="bg-[#16202d] border-l-2 border-[#66c0f4] p-3 text-xs text-[#66c0f4] rounded-r font-semibold">
-                    {step.clickHighlight}
-                  </div>
-                )}
-
-                {step.imageUrl && (
-                  <div className="relative aspect-[16/9] w-full rounded border border-[#2a475e] overflow-hidden bg-black/60 shadow-lg">
-                    <Image src={step.imageUrl} alt={step.title} fill className="object-contain" />
-                    {guide.protection?.watermark && (
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 select-none">
-                        <span className="text-3xl font-black text-white rotate-[-15deg]">
-                          CONFIDENTIAL · STEAMER VAULT
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
+            {/* Walkthrough Video Player in Preview */}
+            {guide.videoUrl && (
+              <div className="space-y-2">
+                <GuideVideoPlayer
+                  videoUrl={guide.videoUrl}
+                  title={guide.videoTitle || "Setup Walkthrough Video"}
+                  watermarkText="PREVIEW • USER@EXAMPLE.COM"
+                />
               </div>
-            ))}
+            )}
+
+            {/* Step-by-Step Preview Cards */}
+            <div className="space-y-6">
+              {guide.steps.map((step) => (
+                <div
+                  key={step.id || step.stepNumber}
+                  className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-6 space-y-4 shadow-md"
+                >
+                  <div className="flex items-center gap-3 border-b border-[#2a475e]/40 pb-3">
+                    <span className="w-7 h-7 rounded-sm bg-[#66c0f4] text-[#171a21] font-black flex items-center justify-center text-xs">
+                      {step.stepNumber}
+                    </span>
+                    <h3 className="text-base font-bold text-white">{step.title}</h3>
+                  </div>
+
+                  <p className="text-xs text-[#c7d5e0] leading-relaxed whitespace-pre-line">
+                    {step.instructions}
+                  </p>
+
+                  {step.clickHighlight && (
+                    <div className="bg-[#16202d] border-l-4 border-amber-400 p-3 text-xs text-amber-300 rounded-r font-semibold">
+                      🎯 {step.clickHighlight}
+                    </div>
+                  )}
+
+                  {/* Visual Screenshot Display in Preview */}
+                  {step.imageUrl && (
+                    <div className="relative aspect-[16/9] w-full rounded border border-[#2a475e] overflow-hidden bg-black/60 shadow-lg">
+                      <img
+                        src={step.imageUrl}
+                        alt={step.title}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLElement).style.opacity = "0.4";
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </AntiScreenshotShield>
       )}
     </div>
   );
