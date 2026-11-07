@@ -24,9 +24,34 @@ export const metadata: Metadata = {
   },
   description:
     "Steamer provides the complete PC setup guide & vault access to 265+ single-player PC games offline with local saves.",
+  applicationName: "Steamer",
+  manifest: "/manifest.webmanifest",
+  themeColor: "#0B0018",
+  appleWebApp: {
+    capable: true,
+    title: "Steamer",
+    statusBarStyle: "black-translucent",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Steamer",
+    title: "Steamer",
+    description: "Steamer",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Steamer app logo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Steamer",
+    description: "Steamer",
+    images: ["/og-image.png"],
+  },
   icons: {
-    icon: "/brand/icon.svg",
-    shortcut: "/brand/icon.svg",
+    icon: [
+      { url: "/brand/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
