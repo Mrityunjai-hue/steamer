@@ -22,6 +22,10 @@ export async function GET() {
         },
       },
       devices: true,
+      setupWindows: {
+        orderBy: { createdAt: "desc" },
+        take: 1,
+      },
       contactVerifications: {
         orderBy: { requestedAt: "desc" },
         take: 1,
@@ -75,6 +79,15 @@ export async function GET() {
           }
         : null,
       verificationPending: !user.isWhatsappVerified ? user.contactVerifications[0] : null,
+      latestSetupWindow: user.setupWindows[0]
+        ? {
+            id: user.setupWindows[0].id,
+            status: user.setupWindows[0].status,
+            expiresAt: user.setupWindows[0].expiresAt,
+            startedAt: user.setupWindows[0].startedAt,
+            offlineConfirmed: user.setupWindows[0].offlineConfirmed,
+          }
+        : null,
     },
   });
 }

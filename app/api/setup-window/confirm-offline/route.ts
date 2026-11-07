@@ -21,10 +21,11 @@ export async function POST(req: NextRequest) {
 
     const window = await prisma.setupWindow.findFirst({
       where: {
-        id: setupWindowId,
         userId: session.userId,
         status: "ACTIVE",
+        ...(setupWindowId ? { id: setupWindowId } : {}),
       },
+      orderBy: { createdAt: "desc" },
     });
 
     if (!window) {
