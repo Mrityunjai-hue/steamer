@@ -41,22 +41,28 @@ export default function AntiScreenshotShield({
       return;
     }
 
-    // 1. Loss of focus / Snipping Tool activation (Win+Shift+S, alt-tab, clicking external apps)
+    // 1. Loss of focus / Snipping Tool activation / Mobile app switcher
     const handleBlur = () => {
-      activateBlackout();
+      activateBlackout("Window focus changed. Content protected.");
     };
 
     const handleFocus = () => {
-      deactivateBlackout();
+      // On focus return, hold blackout for 2 seconds to defeat rapid snipping / mobile capture tools
+      setTimeout(deactivateBlackout, 2000);
     };
 
-    // 2. Visibility change (tab switch, window minimized, screen recording overlay)
+    // 2. Visibility change (tab switch, window minimized, screen recording overlay, iOS control center)
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        activateBlackout();
+        activateBlackout("Screen capture or background switch detected.");
       } else {
-        deactivateBlackout();
+        setTimeout(deactivateBlackout, 2000);
       }
+    };
+
+    // 2b. Page hide / iOS swipe gesture
+    const handlePageHide = () => {
+      activateBlackout("System navigation detected. Content protected.");
     };
 
     // 3. Mouse leaving the viewport towards system taskbar or corners
@@ -145,6 +151,7 @@ export default function AntiScreenshotShield({
 
     window.addEventListener("blur", handleBlur);
     window.addEventListener("focus", handleFocus);
+    window.addEventListener("pagehide", handlePageHide);
     document.addEventListener("visibilitychange", handleVisibilityChange);
     document.documentElement.addEventListener("mouseleave", handleMouseLeave);
     document.documentElement.addEventListener("mouseenter", handleMouseEnter);
@@ -160,6 +167,7 @@ export default function AntiScreenshotShield({
       }
       window.removeEventListener("blur", handleBlur);
       window.removeEventListener("focus", handleFocus);
+      window.removeEventListener("pagehide", handlePageHide);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
       document.documentElement.removeEventListener("mouseenter", handleMouseEnter);
@@ -179,6 +187,12 @@ export default function AntiScreenshotShield({
     >
       {/* Global CSS Print Killer & Pure Solid Blackout Styles */}
       <style jsx global>{`
+        img {
+          -webkit-touch-callout: none !important;
+          -webkit-user-drag: none !important;
+          user-select: none !important;
+        }
+
         @media print {
           html, body {
             display: none !important;
