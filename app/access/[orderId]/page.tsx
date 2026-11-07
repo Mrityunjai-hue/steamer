@@ -118,7 +118,8 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
 
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
       e.preventDefault();
-      e.returnValue = "Setup in progress! You must click 'Process Completed' to finalize your setup before leaving.";
+      e.returnValue =
+        "WARNING: If you leave this page, your one-time setup session is permanently terminated and you will NEVER be allowed to view this guide again unless you purchase a renewal!";
       return e.returnValue;
     };
 
@@ -165,6 +166,17 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
     } finally {
       setCompleting(false);
     }
+  };
+
+  const handleForfeitAndLeave = async () => {
+    try {
+      await fetch(`/api/orders/access/${orderId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "COMPLETE_SETUP" }),
+      });
+    } catch {}
+    window.location.href = `/access/${orderId}`;
   };
 
   const handleClaimAccount = async (e: React.FormEvent) => {
@@ -723,8 +735,13 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
               </p>
             </div>
 
-            <div className="bg-[#121922] p-3 rounded-lg border border-[#2a475e] text-[11px] text-[#8f98a0]">
-              Leaving early without confirming keeps your timer running. You can return anytime before it expires.
+            <div className="bg-red-950/60 border border-red-500/50 p-3.5 rounded-lg text-[11px] text-red-200 text-left space-y-1">
+              <p className="font-bold flex items-center gap-1.5 text-red-400">
+                <AlertTriangle className="w-4 h-4 flex-shrink-0" /> STRICT ONE-TIME ACCESS POLICY
+              </p>
+              <p className="leading-relaxed">
+                If you leave this page, your setup session is immediately terminated and permanently locked. You will <strong>never be allowed to view this setup guide again</strong> unless you purchase a renewal.
+              </p>
             </div>
 
             <div className="space-y-2 pt-2">
@@ -735,19 +752,16 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
                   const el = document.getElementById("process-completed-section");
                   el?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full btn-steam-cta py-3 rounded-lg text-xs font-bold text-white shadow-ctaGlow flex items-center justify-center gap-2"
+                className="w-full btn-steam-cta py-3.5 rounded-lg text-xs font-bold text-white shadow-ctaGlow flex items-center justify-center gap-2"
               >
-                <CheckCircle2 className="w-4 h-4" /> Continue Setup &amp; Scroll to Confirmation
+                <CheckCircle2 className="w-4 h-4" /> Stay on Page &amp; Continue Setup
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  setShowNavLockModal(false);
-                  window.location.href = "/";
-                }}
-                className="w-full btn-steam-panel py-2.5 rounded-lg text-xs font-semibold text-[#8f98a0] hover:text-white border border-[#2a475e] flex items-center justify-center gap-2"
+                onClick={handleForfeitAndLeave}
+                className="w-full py-2 text-[11px] text-red-400 hover:text-red-300 hover:underline transition-colors block text-center"
               >
-                Leave Page Anyway (Return to Store)
+                Forfeit Session &amp; Leave (Locks Guide Permanently)
               </button>
             </div>
           </div>
