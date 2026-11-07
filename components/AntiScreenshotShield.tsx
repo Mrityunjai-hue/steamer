@@ -43,12 +43,24 @@ export default function AntiScreenshotShield({
 
     // 1. Loss of focus / Snipping Tool activation / Mobile app switcher
     const handleBlur = () => {
-      activateBlackout("Window focus changed. Content protected.");
+      // Allow user interaction with the video player iframe without false-triggering a blackout
+      setTimeout(() => {
+        const active = typeof document !== "undefined" ? document.activeElement : null;
+        if (
+          active &&
+          (active.tagName === "IFRAME" ||
+            active.tagName === "VIDEO" ||
+            active.id === "guide-video-iframe" ||
+            active.closest?.("[data-video-player]"))
+        ) {
+          return;
+        }
+        activateBlackout("Window focus changed. Content protected.");
+      }, 120);
     };
 
     const handleFocus = () => {
-      // On focus return, hold blackout for 2 seconds to defeat rapid snipping / mobile capture tools
-      setTimeout(deactivateBlackout, 2000);
+      deactivateBlackout();
     };
 
     // 2. Visibility change (tab switch, window minimized, screen recording overlay, iOS control center)
