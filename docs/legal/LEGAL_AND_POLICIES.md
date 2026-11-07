@@ -178,11 +178,15 @@ Coupons are single-use unless stated, cannot be combined, and have no cash value
 **Guidelines version 1.0**
 
 ## D1. The Core Guidelines
-1. **Offline & Single-Player:** All games are downloaded to your personal computer and configured for offline play.
-2. **Follow the Visual Walkthrough:** Follow the step-by-step Setup Guide provided in your dashboard.
-3. **Local Save Files:** Save files are stored directly on your personal computer; keep local backups of your game progress.
-4. **Independent Personal PC Use:** Access is for your own system; do not redistribute guide materials or files.
-5. **Direct Support:** Contact our team via WhatsApp for any 1-on-1 configuration or troubleshooting questions.
+1. **Offline & Single-Player:** All games are configured for offline play with permanent local save files on your PC.
+2. **One-Time 45-Minute Setup Session:** Each purchase unlocks a dedicated 45-minute setup session to configure your games.
+3. **Mandatory Process Completion:** Complete all walkthrough steps and click "Process Completed" to finalize your setup and release page navigation locks.
+4. **Permanent Window Lock:** Once confirmed or expired, setup credentials permanently lock to safeguard vault integrity.
+5. **No Autonomous Re-Activation:** Users who have completed the guide cannot request another activation window autonomously.
+6. **Renewal Policy for Hardware Changes:** Users who switch to a new PC, upgrade hardware, reformat, or need a re-installation must use the "Renew Setup Window" option or contact WhatsApp Admin.
+7. **Local Save Files:** Save files are stored directly on your personal computer; keep local backups of your game progress.
+8. **Independent Personal PC Use:** Access is for your own system; do not redistribute guide materials or files.
+9. **Direct Support:** Contact our team via WhatsApp for any 1-on-1 configuration or troubleshooting questions.
 
 ## D2. Quick-Start Onboarding Steps
 1. ☐ I understand all 265+ single-player PC games run 100% offline with permanent local saves on my PC.

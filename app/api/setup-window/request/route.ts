@@ -28,6 +28,31 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check if user has already completed a setup window or order
+    const completedWindow = await prisma.setupWindow.findFirst({
+      where: {
+        userId: session.userId,
+        OR: [{ status: "COMPLETED" }, { offlineConfirmed: true }],
+      },
+    });
+
+    const completedOrder = await prisma.order.findFirst({
+      where: {
+        userId: session.userId,
+        status: "COMPLETED",
+      },
+    });
+
+    if (completedWindow || completedOrder) {
+      return NextResponse.json(
+        {
+          error:
+            "Your one-time setup session is already completed and permanently secured. To request a fresh activation window (e.g. for a new PC, hardware change, or system format), please use the Renew option or contact Admin on WhatsApp.",
+        },
+        { status: 403 }
+      );
+    }
+
     // Check if user already has an active or queued window
     const existingWindow = await prisma.setupWindow.findFirst({
       where: {

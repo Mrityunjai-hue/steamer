@@ -82,6 +82,25 @@ export async function GET() {
     }
   }
 
+  const hasPurchased =
+    !!activeSub ||
+    (await prisma.order.count({
+      where: {
+        userId: user.id,
+        status: { in: ["COMPLETED", "VERIFIED", "ACTIVE"] },
+      },
+    })) > 0;
+
+  const isCompleted =
+    latestWindow?.status === "COMPLETED" ||
+    latestWindow?.offlineConfirmed === true ||
+    (await prisma.order.count({
+      where: {
+        userId: user.id,
+        status: "COMPLETED",
+      },
+    })) > 0;
+
   return NextResponse.json({
     user: {
       userId: user.id,
@@ -91,6 +110,8 @@ export async function GET() {
       whatsappNumber: user.whatsappNumber,
       isWhatsappVerified: user.isWhatsappVerified,
       totpEnabled: user.totpEnabled,
+      hasPurchased,
+      isCompleted,
       activeSubscription: activeSub
         ? {
             id: activeSub.id,

@@ -46,6 +46,7 @@ export default function CheckoutPage() {
   const [guestEmail, setGuestEmail] = useState("");
   const [guestName, setGuestName] = useState("");
   const [guestPhone, setGuestPhone] = useState("");
+  const [isRenewal, setIsRenewal] = useState(false);
 
   // Single simplified agreement checkbox
   const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -69,6 +70,13 @@ export default function CheckoutPage() {
 
   // 1. Initial Load: Check Auth, Cart, and Pricing
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("renew") === "true") {
+        setIsRenewal(true);
+      }
+    }
+
     const savedCart = JSON.parse(localStorage.getItem("steamer_cart") || "[]");
     setCart(savedCart);
 
@@ -78,6 +86,9 @@ export default function CheckoutPage() {
       .then((data) => {
         if (data?.user) {
           setCurrentUser(data.user);
+          if (data.user.isCompleted || data.user.hasPurchased) {
+            setIsRenewal(true);
+          }
           setGuestEmail(data.user.email || "");
           setGuestName(data.user.displayName || data.user.email?.split("@")[0] || "");
           setGuestPhone(data.user.whatsappNumber || "");
@@ -234,22 +245,26 @@ export default function CheckoutPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      {/* Setup Guide Header */}
+      {/* Setup Guide / Renewal Header */}
       <div className="bg-[#171a21] border border-[#2a475e] p-4 rounded-xl flex items-center justify-between shadow-lg">
         <div className="flex items-center gap-3">
-          <span className="w-3 h-3 rounded-full bg-[#5ba32b]" />
+          <span className={`w-3 h-3 rounded-full ${isRenewal ? "bg-[#66c0f4] animate-pulse" : "bg-[#5ba32b]"}`} />
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-white">
-              Lifetime games access in your personal Steam (265+ Titles)
+              {isRenewal
+                ? "Setup Window Renewal & Device Re-Activation (265+ Titles)"
+                : "Lifetime games access in your personal Steam (265+ Titles)"}
             </h3>
             <p className="text-[11px] text-[#8f98a0]">
-              One-Time Payment · Permanent Personal PC Offline Setup · Zero Recurring Fees
+              {isRenewal
+                ? "Fresh 45-Minute Setup Session for New PC or Re-Installation · Lifetime Game Access Retained"
+                : "One-Time Payment · Permanent Personal PC Offline Setup · Zero Recurring Fees"}
             </p>
           </div>
         </div>
         <div className="flex items-center gap-2 bg-[#16202d] border border-[#2a475e] px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold text-[#5ba32b]">
           <CheckCircle2 className="w-4 h-4 text-[#5ba32b]" />
-          <span>Flat ₹300 Total</span>
+          <span>{isRenewal ? "₹300 Renewal" : "Flat ₹300 Total"}</span>
         </div>
       </div>
 
@@ -389,7 +404,16 @@ export default function CheckoutPage() {
 
               <div className="p-2.5 bg-[#16202d] rounded border border-[#2a475e]/40 space-y-1">
                 <p className="font-bold text-white flex items-center gap-1.5">
-                  <span className="text-emerald-400">6.</span> Legal Terms & Fair-Play Pledge
+                  <span className="text-emerald-400">6.</span> Single-Use Setup Window &amp; Renewal Policy
+                </p>
+                <p className="text-[#8f98a0] text-[11px] leading-relaxed">
+                  Each purchase or renewal includes one 45-minute setup session window to configure your PC. Once confirmed or expired, walkthrough credentials permanently lock to safeguard vault integrity. Completed users cannot request another setup window autonomously; if you switch PCs or format, you can renew your setup pass anytime.
+                </p>
+              </div>
+
+              <div className="p-2.5 bg-[#16202d] rounded border border-[#2a475e]/40 space-y-1">
+                <p className="font-bold text-white flex items-center gap-1.5">
+                  <span className="text-emerald-400">7.</span> Legal Terms &amp; Fair-Play Pledge
                 </p>
                 <p className="text-[#8f98a0] text-[11px] leading-relaxed">
                   Subject to Steamer&apos;s{" "}
@@ -430,7 +454,7 @@ export default function CheckoutPage() {
                 className="mt-0.5 rounded border-emerald-500 text-emerald-500 focus:ring-0 bg-[#121922] w-5 h-5 flex-shrink-0 cursor-pointer"
               />
               <span className="font-semibold">
-                I have read, understood, and accept all the conditions above — including <strong>Offline Play requirements</strong>, <strong>265+ Vault Access</strong>, the <strong>Steamer Fair-Play Pledge</strong>, and the <strong>48-Hour Money-Back Guarantee</strong>.
+                I have read, understood, and accept all the conditions above — including <strong>Offline Play requirements</strong>, <strong>265+ Vault Access</strong>, the <strong>Steamer Fair-Play Pledge</strong>, the <strong>48-Hour Money-Back Guarantee</strong>, and the <strong>Single-Use Setup Window Policy</strong>.
               </span>
             </label>
           </div>
@@ -441,7 +465,7 @@ export default function CheckoutPage() {
             disabled={!canProceed || loading}
             className="w-full btn-steam-cta py-3.5 rounded text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {loading ? "Preparing Payment..." : "Proceed to UPI Payment (₹300)"} <ArrowRight className="w-4 h-4" />
+            {loading ? "Preparing Payment..." : isRenewal ? "Proceed to UPI Payment (Renew Setup Window – ₹300)" : "Proceed to UPI Payment (₹300)"} <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       )}

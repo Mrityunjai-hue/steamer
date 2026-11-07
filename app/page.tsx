@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
 import GameCard from "@/components/GameCard";
 import FeaturedHeroCarousel from "@/components/FeaturedHeroCarousel";
 import ReviewsSection from "@/components/ReviewsSection";
@@ -26,6 +27,23 @@ import { brandConfig } from "@/config/brand";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
+  const session = await getSession();
+  let userCompleted = false;
+  if (session?.userId) {
+    const completedWindow = await prisma.setupWindow.findFirst({
+      where: {
+        userId: session.userId,
+        OR: [{ status: "COMPLETED" }, { offlineConfirmed: true }],
+      },
+    });
+    const completedOrder = await prisma.order.findFirst({
+      where: { userId: session.userId, status: "COMPLETED" },
+    });
+    if (completedWindow || completedOrder) {
+      userCompleted = true;
+    }
+  }
+
   let hotGames: any[] = [];
   let popularGames: any[] = [];
   let standardGames: any[] = [];
@@ -176,19 +194,39 @@ export default async function HomePage() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
-                <Link
-                  href="/checkout"
-                  className="btn-steam-cta px-7 py-3 rounded text-sm font-bold shadow-ctaGlow flex items-center gap-2 text-white"
-                >
-                  <span>Get 265 Games for ₹300</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-                <a
-                  href="#amenities-breakdown"
-                  className="btn-steam-panel px-5 py-3 rounded text-sm font-bold flex items-center gap-2 border border-[#2a475e] text-[#c7d5e0] hover:text-white"
-                >
-                  <span>See What&apos;s Included</span>
-                </a>
+                {userCompleted ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      className="btn-steam-cta px-7 py-3 rounded text-sm font-bold shadow-ctaGlow flex items-center gap-2 text-white"
+                    >
+                      <span>Open Your Vault &amp; Library</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
+                    <Link
+                      href="/checkout?renew=true"
+                      className="btn-steam-panel px-5 py-3 rounded text-sm font-bold flex items-center gap-2 border border-[#2a475e] text-[#66c0f4] hover:text-white"
+                    >
+                      <span>Renew Setup Window</span>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/checkout"
+                      className="btn-steam-cta px-7 py-3 rounded text-sm font-bold shadow-ctaGlow flex items-center gap-2 text-white"
+                    >
+                      <span>Get 265 Games for ₹300</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
+                    <a
+                      href="#amenities-breakdown"
+                      className="btn-steam-panel px-5 py-3 rounded text-sm font-bold flex items-center gap-2 border border-[#2a475e] text-[#c7d5e0] hover:text-white"
+                    >
+                      <span>See What&apos;s Included</span>
+                    </a>
+                  </>
+                )}
               </div>
             </div>
 
@@ -591,13 +629,31 @@ export default async function HomePage() {
             Get the full setup walkthrough, complete game library access, and play directly to your Steam account forever without paying thousands or fighting for shared accounts.
           </p>
           <div className="pt-2">
-            <Link
-              href="/checkout"
-              className="btn-steam-cta text-sm px-8 py-3.5 rounded-sm font-bold shadow-ctaGlow inline-flex items-center gap-2 text-white"
-            >
-              <span>Get 265 Games of Your Choice for ₹300</span>
-              <ChevronRight className="w-4 h-4" />
-            </Link>
+            {userCompleted ? (
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/dashboard"
+                  className="btn-steam-cta text-sm px-8 py-3.5 rounded-sm font-bold shadow-ctaGlow inline-flex items-center gap-2 text-white"
+                >
+                  <span>Vault Active • Open Library</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/checkout?renew=true"
+                  className="btn-steam-panel text-sm px-6 py-3.5 rounded-sm font-bold border border-[#2a475e] inline-flex items-center gap-2 text-[#66c0f4] hover:text-white"
+                >
+                  <span>Switched PC? Renew Setup Window</span>
+                </Link>
+              </div>
+            ) : (
+              <Link
+                href="/checkout"
+                className="btn-steam-cta text-sm px-8 py-3.5 rounded-sm font-bold shadow-ctaGlow inline-flex items-center gap-2 text-white"
+              >
+                <span>Get 265 Games of Your Choice for ₹300</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            )}
           </div>
         </div>
       </section>

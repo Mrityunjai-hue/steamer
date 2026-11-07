@@ -255,14 +255,17 @@ export default function DashboardPage() {
               >
                 <Gamepad2 className="w-4 h-4" /> Browse Included 265+ Games
               </Link>
-              <button
-                onClick={handleRequestSetupWindow}
-                disabled={requestingWindow}
-                className="w-full sm:w-auto btn-steam-panel text-xs px-6 py-3 rounded-lg font-bold flex items-center justify-center gap-2 border border-[#2a475e] text-white"
+              <Link
+                href="/checkout?renew=true"
+                className="w-full sm:w-auto btn-steam-panel text-xs px-6 py-3 rounded-lg font-bold flex items-center justify-center gap-2 border border-[#2a475e] text-[#66c0f4] hover:text-white hover:border-[#66c0f4]"
               >
-                <Clock className="w-4 h-4" /> Request Activation Window
-              </button>
+                <RefreshCw className="w-4 h-4" /> Renew Setup Window (New PC)
+              </Link>
             </div>
+
+            <p className="text-[11px] text-[#8f98a0] max-w-md mx-auto pt-1">
+              🔒 <strong>Single-Use Policy:</strong> Setup sessions cannot be re-opened once confirmed. If you switched computers, formatted your PC, or need a re-installation, click <strong>Renew Setup Window</strong> above or contact Admin on WhatsApp.
+            </p>
           </div>
         ) : (
           /* UNLOCKED VIEW: THE COMPLETE DYNAMIC VISUAL SETUP GUIDE WITH ANTI-SCREENSHOT SHIELD */

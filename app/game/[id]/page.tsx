@@ -3,9 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
 import GameCard from "@/components/GameCard";
 import {
   ShieldCheck,
+  CheckCircle2,
   AlertTriangle,
   Flame,
   Star,
@@ -49,6 +51,23 @@ export default async function GameDetailPage({
 
   if (!game) {
     notFound();
+  }
+
+  const session = await getSession();
+  let userCompleted = false;
+  if (session?.userId) {
+    const completedWindow = await prisma.setupWindow.findFirst({
+      where: {
+        userId: session.userId,
+        OR: [{ status: "COMPLETED" }, { offlineConfirmed: true }],
+      },
+    });
+    const completedOrder = await prisma.order.findFirst({
+      where: { userId: session.userId, status: "COMPLETED" },
+    });
+    if (completedWindow || completedOrder) {
+      userCompleted = true;
+    }
   }
 
   const isVerifiedOffline = game.offlineTag === "Offline OK" && !!game.testedOfflineOn;
@@ -197,18 +216,45 @@ export default async function GameDetailPage({
 
             {/* Direct Action Buttons */}
             <div className="space-y-3">
-              <Link
-                href="/checkout"
-                className="w-full btn-steam-cta py-3.5 rounded-sm text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
-              >
-                Unlock the Full Guide – ₹{guidePrice}
-              </Link>
-              <Link
-                href="/catalog"
-                className="w-full btn-steam-panel py-2.5 rounded-sm text-xs font-bold flex items-center justify-center gap-1.5 border border-[#2a475e]"
-              >
-                Browse All 265+ Included Games
-              </Link>
+              {userCompleted ? (
+                <>
+                  <div className="bg-emerald-950/60 border border-emerald-500/40 p-3 rounded text-center space-y-1">
+                    <p className="text-xs font-bold text-emerald-400 flex items-center justify-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4" /> Game Included in Your Vault
+                    </p>
+                    <p className="text-[10px] text-[#8f98a0]">
+                      Lifetime offline access active in your personal Steam.
+                    </p>
+                  </div>
+                  <Link
+                    href="/dashboard"
+                    className="w-full btn-steam-cta py-3.5 rounded-sm text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
+                  >
+                    Open Your Library &amp; Guide
+                  </Link>
+                  <Link
+                    href="/checkout?renew=true"
+                    className="w-full btn-steam-panel py-2 rounded-sm text-xs font-bold flex items-center justify-center gap-1.5 border border-[#2a475e] text-[#66c0f4] hover:text-white"
+                  >
+                    Switched PC? Renew Setup Window
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/checkout"
+                    className="w-full btn-steam-cta py-3.5 rounded-sm text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
+                  >
+                    Unlock the Full Guide – ₹{guidePrice}
+                  </Link>
+                  <Link
+                    href="/catalog"
+                    className="w-full btn-steam-panel py-2.5 rounded-sm text-xs font-bold flex items-center justify-center gap-1.5 border border-[#2a475e]"
+                  >
+                    Browse All 265+ Included Games
+                  </Link>
+                </>
+              )}
             </div>
 
             <div className="text-[11px] text-[#8f98a0]/80 space-y-1 border-t border-[#2a475e]/40 pt-4">

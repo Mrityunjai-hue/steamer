@@ -17,8 +17,21 @@ interface CartItem {
 
 export default function CartPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [userStatus, setUserStatus] = useState<{ isCompleted?: boolean; hasPurchased?: boolean } | null>(null);
 
   useEffect(() => {
+    fetch("/api/auth/me")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.user) {
+          setUserStatus({
+            isCompleted: data.user.isCompleted,
+            hasPurchased: data.user.hasPurchased,
+          });
+        }
+      })
+      .catch(() => {});
+
     try {
       const saved = JSON.parse(localStorage.getItem("steamer_cart") || "[]");
       setCart(saved);
@@ -168,7 +181,11 @@ export default function CartPage() {
             <div className="space-y-3 text-xs text-[#c7d5e0]">
               <div className="flex justify-between items-center">
                 <span className="text-[#8f98a0]">Plan:</span>
-                <strong className="text-white text-right">Lifetime games access in your personal Steam</strong>
+                <strong className="text-white text-right">
+                  {userStatus?.isCompleted
+                    ? "Setup Window Renewal (New PC / Re-Activation)"
+                    : "Lifetime games access in your personal Steam"}
+                </strong>
               </div>
 
               <div className="flex justify-between items-center">
@@ -178,7 +195,9 @@ export default function CartPage() {
 
               <div className="flex justify-between items-center">
                 <span className="text-[#8f98a0]">Access Type:</span>
-                <span className="text-white">Lifetime in personal Steam</span>
+                <span className="text-white">
+                  {userStatus?.isCompleted ? "Fresh 45-Min Setup Session" : "Lifetime in personal Steam"}
+                </span>
               </div>
 
               <div className="border-t border-[#2a475e]/60 pt-4 flex justify-between items-baseline">
@@ -195,18 +214,37 @@ export default function CartPage() {
             </div>
 
             <div className="space-y-3">
-              <Link
-                href="/checkout"
-                className="w-full btn-steam-cta py-3.5 rounded text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
-              >
-                Unlock the Full Guide – ₹{ALL_ACCESS_PRICE} <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/catalog"
-                className="w-full btn-steam-panel py-2 rounded text-xs font-bold flex items-center justify-center border border-[#2a475e]"
-              >
-                Browse All 265+ Games
-              </Link>
+              {userStatus?.isCompleted ? (
+                <>
+                  <Link
+                    href="/checkout?renew=true"
+                    className="w-full btn-steam-cta py-3.5 rounded text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
+                  >
+                    Renew Setup Window – ₹{ALL_ACCESS_PRICE} <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/dashboard"
+                    className="w-full btn-steam-panel py-2 rounded text-xs font-bold flex items-center justify-center border border-[#2a475e] text-white"
+                  >
+                    Open Your Library &amp; Guide
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/checkout"
+                    className="w-full btn-steam-cta py-3.5 rounded text-sm font-bold flex items-center justify-center gap-2 shadow-ctaGlow"
+                  >
+                    Unlock the Full Guide – ₹{ALL_ACCESS_PRICE} <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/catalog"
+                    className="w-full btn-steam-panel py-2 rounded text-xs font-bold flex items-center justify-center border border-[#2a475e]"
+                  >
+                    Browse All 265+ Games
+                  </Link>
+                </>
+              )}
             </div>
 
             <div className="text-[11px] text-[#8f98a0] space-y-1.5 border-t border-[#2a475e]/40 pt-4">

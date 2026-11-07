@@ -10,6 +10,8 @@ interface UserSession {
   userId: string;
   email: string;
   role: string;
+  hasPurchased?: boolean;
+  isCompleted?: boolean;
 }
 
 export default function Navbar() {
@@ -116,15 +118,26 @@ export default function Navbar() {
 
         {/* Right Section: Badges, Cart, User Auth, and Hamburger */}
         <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
-          {/* Instant All-Access Badge (Desktop) */}
-          <Link
-            href="/checkout"
-            title="Instant ₹300 All-Access Setup Pass"
-            className="hidden lg:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400 hover:border-emerald-400 transition-all shadow-sm h-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
-            <span>₹300 All-Access • 265+ Titles</span>
-          </Link>
+          {/* Instant All-Access / Renew Badge (Desktop) */}
+          {session?.isCompleted ? (
+            <Link
+              href="/checkout?renew=true"
+              title="Renew Setup Window (New PC / Re-Activation)"
+              className="hidden lg:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400 hover:border-emerald-400 transition-all shadow-sm h-8"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#5ba32b]" />
+              <span>Vault Active • Renew Pass</span>
+            </Link>
+          ) : (
+            <Link
+              href="/checkout"
+              title="Instant ₹300 All-Access Setup Pass"
+              className="hidden lg:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400 hover:border-emerald-400 transition-all shadow-sm h-8"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
+              <span>₹300 All-Access • 265+ Titles</span>
+            </Link>
+          )}
 
           {/* Cart Icon */}
           <Link
@@ -199,8 +212,20 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#171a21] border-b border-[#2a475e] px-4 pt-3 pb-5 space-y-3 animate-in slide-in-from-top-2 duration-150">
           <div className="flex items-center justify-between py-2 border-b border-[#2a475e]/50 text-xs">
-            <span className="text-[#8f98a0]">All-Access Vault Pass</span>
-            <span className="font-bold text-[#5ba32b]">₹300 Instant Unlock (265+ Titles)</span>
+            <span className="text-[#8f98a0]">
+              {session?.isCompleted ? "Vault Active (Lifetime)" : "All-Access Vault Pass"}
+            </span>
+            {session?.isCompleted ? (
+              <Link
+                href="/checkout?renew=true"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="font-bold text-[#66c0f4] hover:underline"
+              >
+                Renew Setup Window &rarr;
+              </Link>
+            ) : (
+              <span className="font-bold text-[#5ba32b]">₹300 Instant Unlock (265+ Titles)</span>
+            )}
           </div>
 
           <div className="grid grid-cols-2 gap-2 pb-2 border-b border-[#2a475e]/50 sm:hidden">
