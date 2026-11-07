@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"20900"
+	"Universe"		"1"
+	"name"		"The Witcher: Enhanced Edition"
+	"StateFlags"		"4"
+	"installdir"		"The Witcher: Enhanced Edition"
+	"LastUpdated"		"1794075127"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

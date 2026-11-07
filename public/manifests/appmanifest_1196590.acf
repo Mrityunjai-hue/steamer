@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1196590"
+	"Universe"		"1"
+	"name"		"Resident Evil Village"
+	"StateFlags"		"4"
+	"installdir"		"Resident Evil Village"
+	"LastUpdated"		"1794075112"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

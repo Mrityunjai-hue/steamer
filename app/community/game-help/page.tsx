@@ -50,8 +50,9 @@ interface GameFix {
 
 const LAUNCHERS = [
   { label: "All Fixes", value: "ALL" },
-  { label: "Ubisoft Connect", value: "Ubisoft Connect" },
-  { label: "Rockstar Games", value: "Rockstar Games Launcher" },
+  { label: "Ubisoft Connect (Assassin's Creed)", value: "Ubisoft Connect" },
+  { label: "Call of Duty / Activision", value: "Activision / Steam" },
+  { label: "Rockstar Games (GTA / RDR)", value: "Rockstar Games Launcher" },
   { label: "EA App", value: "EA app" },
   { label: "PlayStation PC", value: "PlayStation PC" },
   { label: "Steam Only", value: "Steam only" },
@@ -314,13 +315,12 @@ export default function GameHelpPage() {
                     {/* Action Bar: Direct Download */}
                     <div className="flex items-center gap-2 pt-1">
                       <a
-                        href={item.downloadUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`/api/manifests/download/${item.steamAppId}`}
+                        download={`appmanifest_${item.steamAppId}.acf`}
                         className="btn-steam-cta flex-1 py-2 rounded text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-sm"
                       >
                         <Download className="w-3.5 h-3.5" />
-                        <span>Download Manifest Fix</span>
+                        <span>Download Manifest (.acf)</span>
                       </a>
                       {item.game?.id && (
                         <Link

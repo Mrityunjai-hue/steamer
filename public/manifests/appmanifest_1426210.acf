@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1426210"
+	"Universe"		"1"
+	"name"		"It Takes Two"
+	"StateFlags"		"4"
+	"installdir"		"It Takes Two"
+	"LastUpdated"		"1794075084"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

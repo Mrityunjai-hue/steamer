@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"292730"
+	"Universe"		"1"
+	"name"		"Call of Duty®: Infinite Warfare"
+	"StateFlags"		"4"
+	"installdir"		"Call of Duty®: Infinite Warfare"
+	"LastUpdated"		"1794075134"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

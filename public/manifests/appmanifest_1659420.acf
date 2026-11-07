@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1659420"
+	"Universe"		"1"
+	"name"		"Uncharted: The Lost Legacy"
+	"StateFlags"		"4"
+	"installdir"		"Uncharted: The Lost Legacy"
+	"LastUpdated"		"1794075125"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"393080"
+	"Universe"		"1"
+	"name"		"Call of Duty®: Modern Warfare® Remastered (2017)"
+	"StateFlags"		"4"
+	"installdir"		"Call of Duty®: Modern Warfare® Remastered (2017)"
+	"LastUpdated"		"1794075130"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

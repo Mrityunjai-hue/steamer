@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1874000"
+	"Universe"		"1"
+	"name"		"Life is Strange: Double Exposure"
+	"StateFlags"		"4"
+	"installdir"		"Life is Strange: Double Exposure"
+	"LastUpdated"		"1794075093"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

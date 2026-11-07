@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"298110"
+	"Universe"		"1"
+	"name"		"Far Cry 4"
+	"StateFlags"		"4"
+	"installdir"		"Far Cry 4"
+	"LastUpdated"		"1794075073"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

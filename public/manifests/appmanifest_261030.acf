@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"261030"
+	"Universe"		"1"
+	"name"		"The Walking Dead: Season Two"
+	"StateFlags"		"4"
+	"installdir"		"The Walking Dead: Season Two"
+	"LastUpdated"		"1794075124"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

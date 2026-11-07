@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"939960"
+	"Universe"		"1"
+	"name"		"Far Cry: New Dawn"
+	"StateFlags"		"4"
+	"installdir"		"Far Cry: New Dawn"
+	"LastUpdated"		"1794075074"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

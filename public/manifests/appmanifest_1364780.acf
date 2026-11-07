@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1364780"
+	"Universe"		"1"
+	"name"		"Street Fighter" 6"
+	"StateFlags"		"4"
+	"installdir"		"Street Fighter" 6"
+	"LastUpdated"		"1794075134"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

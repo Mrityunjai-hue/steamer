@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1774580"
+	"Universe"		"1"
+	"name"		"Star Wars Jedi: Survivor"
+	"StateFlags"		"4"
+	"installdir"		"Star Wars Jedi: Survivor"
+	"LastUpdated"		"1794075118"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

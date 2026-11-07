@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"8140"
+	"Universe"		"1"
+	"name"		"Tomb Raider: Underworld"
+	"StateFlags"		"4"
+	"installdir"		"Tomb Raider: Underworld"
+	"LastUpdated"		"1794075119"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

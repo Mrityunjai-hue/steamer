@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1449690"
+	"Universe"		"1"
+	"name"		"The Walking Dead: The Telltale Definitive Series"
+	"StateFlags"		"4"
+	"installdir"		"The Walking Dead: The Telltale Definitive Series"
+	"LastUpdated"		"1794075125"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

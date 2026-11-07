@@ -13,7 +13,14 @@ export async function GET(req: NextRequest) {
     const where: any = {};
 
     if (launcher && launcher !== "ALL") {
-      where.launcher = launcher;
+      if (launcher === "Activision / Steam") {
+        where.OR = [
+          { launcher: "Activision / Steam" },
+          { title: { contains: "Call of Duty", mode: "insensitive" } },
+        ];
+      } else {
+        where.launcher = launcher;
+      }
     }
 
     if (steamAppId) {

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"517630"
+	"Universe"		"1"
+	"name"		"Just Cause 4"
+	"StateFlags"		"4"
+	"installdir"		"Just Cause 4"
+	"LastUpdated"		"1794075087"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

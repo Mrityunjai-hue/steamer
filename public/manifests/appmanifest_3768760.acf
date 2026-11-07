@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"3768760"
+	"Universe"		"1"
+	"name"		"007 First Light"
+	"StateFlags"		"4"
+	"installdir"		"007 First Light"
+	"LastUpdated"		"1794075136"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

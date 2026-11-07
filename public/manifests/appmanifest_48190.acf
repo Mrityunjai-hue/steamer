@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"48190"
+	"Universe"		"1"
+	"name"		"Assassin's Creed: Brotherhood"
+	"StateFlags"		"4"
+	"installdir"		"Assassin's Creed: Brotherhood"
+	"LastUpdated"		"1794075057"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

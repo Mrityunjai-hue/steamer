@@ -51,15 +51,21 @@ Write-Host ""
 
 # 2. Ask for AppID if not provided
 if (-not $AppId) {
-    Write-Host "Popular Game AppIDs:" -ForegroundColor Yellow
-    Write-Host "  * 2208920 : Assassin's Creed Valhalla"
+    Write-Host "Popular Game & Franchise AppIDs:" -ForegroundColor Yellow
+    Write-Host "  * 311210  : Call of Duty: Black Ops III (Offline Campaign & Zombies)"
+    Write-Host "  * 202970  : Call of Duty: Black Ops II"
+    Write-Host "  * 393080  : Call of Duty: Modern Warfare Remastered"
+    Write-Host "  * 476620  : Call of Duty: WWII"
+    Write-Host "  * 2208920 : Assassin's Creed Valhalla (Ubisoft Connect Bypass)"
     Write-Host "  * 2420110 : Assassin's Creed Mirage"
-    Write-Host "  * 1174180 : Red Dead Redemption 2"
+    Write-Host "  * 812140  : Assassin's Creed Odyssey"
+    Write-Host "  * 1174180 : Red Dead Redemption 2 (-scOfflineOnly)"
     Write-Host "  * 271590  : Grand Theft Auto V"
-    Write-Host "  * 1774580 : Star Wars Jedi: Survivor"
-    Write-Host "  * 2215430 : Ghost of Tsushima DIRECTOR'S CUT"
-    Write-Host "  * 1091500 : Cyberpunk 2077"
+    Write-Host "  * 1774580 : Star Wars Jedi: Survivor (EA App Bypass)"
+    Write-Host "  * 2215430 : Ghost of Tsushima DIRECTOR'S CUT (PSN SDK Bypass)"
+    Write-Host "  * 1091500 : Cyberpunk 2077 (--launcher-skip)"
     Write-Host "  * 2358720 : Black Myth: Wukong"
+    Write-Host "  * 1245620 : Elden Ring (EAC Offline)"
     Write-Host ""
     $AppId = Read-Host "Enter the Steam AppID of your game"
 }
@@ -78,59 +84,51 @@ $ApiUrl = "https://steamer-one.vercel.app/api/manifests?steamAppId=$AppId"
 $ManifestData = $null
 
 try {
-    $res = Invoke-RestMethod -Uri $ApiUrl -Method Get -TimeoutSec 15
+    $res = Invoke-RestMethod -Uri $ApiUrl -Method Get -TimeoutSec 10
     if ($res -and $res.manifests -and $res.manifests.Count -gt 0) {
         $ManifestData = $res.manifests[0]
     }
 } catch {
-    Write-Host "[WARN] Remote fetch failed. Using fallback archive template..." -ForegroundColor Yellow
+    # If internet or offline, continue with local template
 }
 
 $TargetAcf = Join-Path $SteamApps "appmanifest_$AppId.acf"
 
 # 4. Download and Install Manifest
-if ($ManifestData -and $ManifestData.downloadUrl) {
+$DirectAcfUrl = "https://steamer-one.vercel.app/api/manifests/download/$AppId"
+$installedOk = $false
+
+if ($ManifestData) {
     Write-Host "[INFO] Found verified fix: $($ManifestData.title) ($($ManifestData.launcher))" -ForegroundColor Green
-    Write-Host "[INFO] Downloading from: $($ManifestData.downloadUrl)..." -ForegroundColor Cyan
-    
-    $TempZip = Join-Path $env:TEMP "steamer_$AppId.zip"
-    $TempExtract = Join-Path $env:TEMP "steamer_extract_$AppId"
-    
-    try {
-        Invoke-WebRequest -Uri $ManifestData.downloadUrl -OutFile $TempZip -UseBasicParsing
-        if (Test-Path $TempExtract) { Remove-Item $TempExtract -Recurse -Force }
-        Expand-Archive -Path $TempZip -DestinationPath $TempExtract -Force
-        
-        # Look for .acf file inside
-        $AcfFile = Get-ChildItem -Path $TempExtract -Filter "*.acf" -Recurse | Select-Object -First 1
-        if ($AcfFile) {
-            Copy-Item -Path $AcfFile.FullName -Destination $TargetAcf -Force
-            Write-Host "[SUCCESS] Installed '$($AcfFile.Name)' to $SteamApps" -ForegroundColor Green
-        } else {
-            # Copy all files to steamapps
-            Copy-Item -Path "$TempExtract\*" -Destination $SteamApps -Recurse -Force
-            Write-Host "[SUCCESS] Injected manifest package to $SteamApps" -ForegroundColor Green
-        }
-        
-        if ($ManifestData.launchArguments) {
-            Write-Host ""
-            Write-Host "[RECOMMENDED LAUNCH ARGUMENTS]: $($ManifestData.launchArguments)" -ForegroundColor Yellow
-            Write-Host "Set this in Steam: Right Click Game > Properties > Launch Options."
-        }
-    } catch {
-        Write-Host "[ERROR] Could not download remote archive. Creating standard offline manifest template..." -ForegroundColor Yellow
+}
+
+Write-Host "[INFO] Downloading verified Valve .acf manifest from Steamer repository..." -ForegroundColor Cyan
+
+try {
+    Invoke-WebRequest -Uri $DirectAcfUrl -OutFile $TargetAcf -UseBasicParsing -TimeoutSec 15
+    if (Test-Path $TargetAcf) {
+        $installedOk = $true
+        Write-Host "[SUCCESS] Successfully installed 'appmanifest_$AppId.acf' directly into:" -ForegroundColor Green
+        Write-Host "          $SteamApps" -ForegroundColor Green
     }
-} else {
-    Write-Host "[INFO] Creating standard Steam offline manifest for AppID $AppId..." -ForegroundColor Cyan
+} catch {
+    Write-Host "[WARN] Remote connection unavailable. Generating local verified manifest..." -ForegroundColor Yellow
+}
+
+if (-not $installedOk) {
+    $titleStr = if ($ManifestData -and $ManifestData.title) { $ManifestData.title } else { "Steamer Game $AppId" }
+    $cleanTitle = $titleStr.Replace('"', '')
+    $timestamp = [int][double]::Parse((Get-Date (Get-Date).ToUniversalTime() -UFormat %s))
+    
     $AcfContent = @"
 "AppState"
 {
 	"appid"		"$AppId"
 	"Universe"		"1"
-	"name"		"Steamer Game $AppId"
+	"name"		"$cleanTitle"
 	"StateFlags"		"4"
-	"installdir"		"$AppId"
-	"LastUpdated"		"$([int][double]::Parse((Get-Date (Get-Date).ToUniversalTime() -UFormat %s)))"
+	"installdir"		"$cleanTitle"
+	"LastUpdated"		"$timestamp"
 	"UpdateResult"		"0"
 	"BytesToDownload"		"0"
 	"BytesDownloaded"		"0"
@@ -147,7 +145,13 @@ if ($ManifestData -and $ManifestData.downloadUrl) {
 }
 "@
     Set-Content -Path $TargetAcf -Value $AcfContent -Encoding Ascii
-    Write-Host "[SUCCESS] Created standard offline manifest: $TargetAcf" -ForegroundColor Green
+    Write-Host "[SUCCESS] Generated and installed offline manifest: $TargetAcf" -ForegroundColor Green
+}
+
+if ($ManifestData -and $ManifestData.launchArguments) {
+    Write-Host ""
+    Write-Host "[RECOMMENDED LAUNCH ARGUMENTS]: $($ManifestData.launchArguments)" -ForegroundColor Yellow
+    Write-Host "Set this in Steam: Right Click Game > Properties > Launch Options."
 }
 
 Write-Host ""

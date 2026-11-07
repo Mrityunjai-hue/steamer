@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"323470"
+	"Universe"		"1"
+	"name"		"Dragon Ball Xenoverse"
+	"StateFlags"		"4"
+	"installdir"		"Dragon Ball Xenoverse"
+	"LastUpdated"		"1794075069"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

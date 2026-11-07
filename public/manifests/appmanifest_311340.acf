@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"311340"
+	"Universe"		"1"
+	"name"		"Metal Gear Solid V: Ground Zeroes"
+	"StateFlags"		"4"
+	"installdir"		"Metal Gear Solid V: Ground Zeroes"
+	"LastUpdated"		"1794075098"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

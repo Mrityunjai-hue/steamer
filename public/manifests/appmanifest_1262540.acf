@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1262540"
+	"Universe"		"1"
+	"name"		"Need for Speed (2016)"
+	"StateFlags"		"4"
+	"installdir"		"Need for Speed (2016)"
+	"LastUpdated"		"1794075104"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

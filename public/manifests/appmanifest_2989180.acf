@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2989180"
+	"Universe"		"1"
+	"name"		"Darwin's Paradox"
+	"StateFlags"		"4"
+	"installdir"		"Darwin's Paradox"
+	"LastUpdated"		"1794075067"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

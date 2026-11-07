@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"371660"
+	"Universe"		"1"
+	"name"		"Far Cry: Primal"
+	"StateFlags"		"4"
+	"installdir"		"Far Cry: Primal"
+	"LastUpdated"		"1794075074"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"495140"
+	"Universe"		"1"
+	"name"		"Naruto Shippuden: Ultimate Ninja Storm"
+	"StateFlags"		"4"
+	"installdir"		"Naruto Shippuden: Ultimate Ninja Storm"
+	"LastUpdated"		"1794075102"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"339340"
+	"Universe"		"1"
+	"name"		"Resident Evil 0"
+	"StateFlags"		"4"
+	"installdir"		"Resident Evil 0"
+	"LastUpdated"		"1794075108"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

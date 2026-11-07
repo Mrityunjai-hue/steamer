@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"271590"
+	"Universe"		"1"
+	"name"		"Grand Theft Auto V"
+	"StateFlags"		"4"
+	"installdir"		"Grand Theft Auto V"
+	"LastUpdated"		"1794075081"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

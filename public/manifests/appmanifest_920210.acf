@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"920210"
+	"Universe"		"1"
+	"name"		"LEGO Star Wars: The Skywalker Saga"
+	"StateFlags"		"4"
+	"installdir"		"LEGO Star Wars: The Skywalker Saga"
+	"LastUpdated"		"1794075090"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

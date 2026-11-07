@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"19980"
+	"Universe"		"1"
+	"name"		"Prince of Persia (2008)"
+	"StateFlags"		"4"
+	"installdir"		"Prince of Persia (2008)"
+	"LastUpdated"		"1794075106"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

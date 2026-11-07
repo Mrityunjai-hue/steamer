@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1546970"
+	"Universe"		"1"
+	"name"		"Grand Theft Auto III - The Definitive Edition"
+	"StateFlags"		"4"
+	"installdir"		"Grand Theft Auto III - The Definitive Edition"
+	"LastUpdated"		"1794075079"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2215430"
+	"Universe"		"1"
+	"name"		"Ghost of Tsushima DIRECTOR'S CUT"
+	"StateFlags"		"4"
+	"installdir"		"Ghost of Tsushima DIRECTOR'S CUT"
+	"LastUpdated"		"1794075136"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

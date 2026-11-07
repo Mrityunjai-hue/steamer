@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2699820"
+	"Universe"		"1"
+	"name"		"Shin chan: Shiro and the Coal Town"
+	"StateFlags"		"4"
+	"installdir"		"Shin chan: Shiro and the Coal Town"
+	"LastUpdated"		"1794075115"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

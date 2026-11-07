@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"200260"
+	"Universe"		"1"
+	"name"		"Batman: Arkham City"
+	"StateFlags"		"4"
+	"installdir"		"Batman: Arkham City"
+	"LastUpdated"		"1794075065"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

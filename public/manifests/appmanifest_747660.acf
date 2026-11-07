@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"747660"
+	"Universe"		"1"
+	"name"		"Five Nights at Freddy's: Security Breach"
+	"StateFlags"		"4"
+	"installdir"		"Five Nights at Freddy's: Security Breach"
+	"LastUpdated"		"1794075076"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

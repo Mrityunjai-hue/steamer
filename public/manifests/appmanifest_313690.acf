@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"313690"
+	"Universe"		"1"
+	"name"		"LEGO Batman 3: Beyond Gotham"
+	"StateFlags"		"4"
+	"installdir"		"LEGO Batman 3: Beyond Gotham"
+	"LastUpdated"		"1794075088"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

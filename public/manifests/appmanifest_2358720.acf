@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2358720"
+	"Universe"		"1"
+	"name"		"Black Myth: Wukong"
+	"StateFlags"		"4"
+	"installdir"		"Black Myth: Wukong"
+	"LastUpdated"		"1794075066"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

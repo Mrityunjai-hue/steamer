@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"209000"
+	"Universe"		"1"
+	"name"		"Batman: Arkham Origins"
+	"StateFlags"		"4"
+	"installdir"		"Batman: Arkham Origins"
+	"LastUpdated"		"1794075065"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

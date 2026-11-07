@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"249130"
+	"Universe"		"1"
+	"name"		"LEGO Marvel Super Heroes"
+	"StateFlags"		"4"
+	"installdir"		"LEGO Marvel Super Heroes"
+	"LastUpdated"		"1794075139"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

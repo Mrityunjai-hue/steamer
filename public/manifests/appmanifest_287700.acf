@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"287700"
+	"Universe"		"1"
+	"name"		"Metal Gear Solid V: The Phantom Pain"
+	"StateFlags"		"4"
+	"installdir"		"Metal Gear Solid V: The Phantom Pain"
+	"LastUpdated"		"1794075099"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

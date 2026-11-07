@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2315690"
+	"Universe"		"1"
+	"name"		"WWE 2K24"
+	"StateFlags"		"4"
+	"installdir"		"WWE 2K24"
+	"LastUpdated"		"1794075129"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"35140"
+	"Universe"		"1"
+	"name"		"Batman: Arkham Asylum"
+	"StateFlags"		"4"
+	"installdir"		"Batman: Arkham Asylum"
+	"LastUpdated"		"1794075065"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"429570"
+	"Universe"		"1"
+	"name"		"The Walking Dead: Michonne"
+	"StateFlags"		"4"
+	"installdir"		"The Walking Dead: Michonne"
+	"LastUpdated"		"1794075124"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

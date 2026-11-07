@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1593500"
+	"Universe"		"1"
+	"name"		"God of War"
+	"StateFlags"		"4"
+	"installdir"		"God of War"
+	"LastUpdated"		"1794075079"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}
