@@ -68,12 +68,12 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
 
   return (
     <div
-      className="bg-[#171a21] border border-[#2a475e] hover:border-[#66c0f4]/50 rounded-xl p-4 sm:p-5 shadow-panelGlow space-y-4 transition-all relative overflow-hidden group"
+      className="bg-[#171a21] border border-[#2a475e] hover:border-[#66c0f4]/70 rounded-xl p-4 sm:p-5 shadow-panelGlow hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_25px_rgba(102,192,244,0.25)] space-y-4 transition-all duration-300 relative overflow-hidden group"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Subtle background ambient glow matching active game */}
-      <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#66c0f4]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#66c0f4]/10 rounded-full blur-3xl pointer-events-none animate-steam-pulse" />
 
       {/* Header bar: Badge, Live Counter, Included Status */}
       <div className="flex items-center justify-between gap-2 border-b border-[#2a475e]/50 pb-3">
@@ -88,25 +88,27 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
         </div>
 
         {/* Authentic Steam Price Capsule */}
-        <div className="flex items-center bg-[#000000]/60 rounded-sm overflow-hidden border border-black/40">
+        <div className="flex items-center bg-[#000000]/70 rounded-sm overflow-hidden border border-black/50 shadow-sm">
           <span className="text-[11px] text-[#738895] line-through px-2 py-0.5 font-mono">
             ₹{steamPrice.toLocaleString("en-IN")}
           </span>
-          <span className="bg-[#4c6b22] text-[#beee11] font-extrabold text-[11px] px-2.5 py-0.5 tracking-tight uppercase">
+          <span className="bg-[#4c6b22] text-[#beee11] group-hover:bg-[#5ba32b] group-hover:text-white font-extrabold text-[11px] px-2.5 py-0.5 tracking-tight uppercase transition-colors duration-200">
             INCLUDED
           </span>
         </div>
       </div>
 
       {/* Main Image Showcase with Overlays & Navigation Chevrons */}
-      <div className="relative aspect-[460/215] w-full rounded-lg overflow-hidden bg-[#0d131b] border border-[#2a475e]/60 group/image">
+      <div
+        key={currentGame.id}
+        className="relative aspect-[460/215] w-full rounded-lg overflow-hidden bg-[#0d131b] border border-[#2a475e]/60 group/image steam-sheen animate-in fade-in zoom-in-[0.98] duration-500 shadow-inner"
+      >
         <Image
-          key={currentGame.id}
           src={currentGame.headerImage || "/brand/icon.svg"}
           alt={currentGame.title}
           fill
           sizes="(max-width: 768px) 100vw, 500px"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-out group-hover/image:scale-108"
           priority
         />
 
@@ -120,7 +122,7 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
         <button
           onClick={handlePrev}
           aria-label="Previous Featured Game"
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#171a21]/80 hover:bg-[#66c0f4] text-white hover:text-black border border-[#2a475e] hover:border-[#66c0f4] flex items-center justify-center transition-all opacity-80 group-hover:opacity-100 shadow-lg backdrop-blur"
+          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#171a21]/80 hover:bg-[#66c0f4] text-white hover:text-black border border-[#2a475e] hover:border-[#66c0f4] flex items-center justify-center transition-all opacity-80 group-hover:opacity-100 hover:scale-110 active:scale-95 shadow-lg backdrop-blur"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
@@ -129,7 +131,7 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
         <button
           onClick={handleNext}
           aria-label="Next Featured Game"
-          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#171a21]/80 hover:bg-[#66c0f4] text-white hover:text-black border border-[#2a475e] hover:border-[#66c0f4] flex items-center justify-center transition-all opacity-80 group-hover:opacity-100 shadow-lg backdrop-blur"
+          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#171a21]/80 hover:bg-[#66c0f4] text-white hover:text-black border border-[#2a475e] hover:border-[#66c0f4] flex items-center justify-center transition-all opacity-80 group-hover:opacity-100 hover:scale-110 active:scale-95 shadow-lg backdrop-blur"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
@@ -150,13 +152,13 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
 
         <Link
           href={`/catalog?search=${encodeURIComponent(currentGame.title)}`}
-          className="text-xs text-[#66c0f4] hover:underline flex-shrink-0 font-bold"
+          className="text-xs text-[#66c0f4] hover:underline flex-shrink-0 font-bold transition-transform hover:translate-x-0.5"
         >
           View in Catalog →
         </Link>
       </div>
 
-      {/* Slide Indicators / Thumbnails Row */}
+      {/* Slide Indicators / Thumbnails Row with Animated Progress Timer */}
       <div className="flex items-center justify-between pt-2 border-t border-[#2a475e]/30">
         <div className="flex items-center gap-1.5">
           {games.map((g, idx) => (
@@ -164,12 +166,21 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
               key={g.id}
               onClick={() => setCurrentIndex(idx)}
               aria-label={`Jump to ${g.title}`}
-              className={`h-1.5 rounded-full transition-all ${
+              className={`h-2 rounded-full transition-all overflow-hidden relative ${
                 idx === currentIndex
-                  ? "w-7 bg-gradient-to-r from-[#66c0f4] to-[#1a9fff]"
-                  : "w-2 bg-[#2a475e] hover:bg-[#8f98a0]"
+                  ? "w-8 bg-[#2a475e] border border-[#66c0f4]/50"
+                  : "w-2.5 bg-[#2a475e]/70 hover:bg-[#8f98a0]"
               }`}
-            />
+            >
+              {idx === currentIndex && (
+                <span
+                  key={`progress-${idx}`}
+                  className={`absolute inset-0 bg-gradient-to-r from-[#66c0f4] to-[#1a9fff] ${
+                    isPaused ? "w-full" : "steam-progress-bar"
+                  }`}
+                />
+              )}
+            </button>
           ))}
         </div>
 

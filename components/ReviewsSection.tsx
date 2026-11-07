@@ -261,7 +261,7 @@ export default function ReviewsSection() {
           {filteredReviews.map((r) => (
             <div
               key={r.id}
-              className="bg-[#171a21] border border-[#2a475e]/70 hover:border-[#66c0f4]/50 rounded-xl p-5 space-y-4 shadow-md transition-all flex flex-col justify-between"
+              className="bg-[#171a21] border border-[#2a475e]/70 hover:border-[#66c0f4]/70 hover:-translate-y-1.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.6),0_0_20px_rgba(102,192,244,0.18)] rounded-xl p-5 space-y-4 shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 {/* Rating & Verified Badge */}

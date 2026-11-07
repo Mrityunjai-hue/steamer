@@ -65,48 +65,122 @@ html, body {
 
 /* Card hover glow */
 .card-steam-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
 }
 .card-steam-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 14px rgba(102, 192, 244, 0.25);
-  border-color: rgba(102, 192, 244, 0.4);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 20px rgba(102, 192, 244, 0.35);
+  border-color: rgba(102, 192, 244, 0.8);
 }
 
 /* Green Rent CTA button gradient */
 .btn-steam-cta {
   background: linear-gradient(to right, var(--cta-from), var(--cta-to));
   color: #ffffff;
-  font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  transition: filter 0.2s ease, transform 0.1s ease;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: filter 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
 }
 .btn-steam-cta:hover {
-  filter: brightness(1.15);
+  filter: brightness(1.18);
+  transform: translateY(-1.5px) scale(1.01);
+  box-shadow: 0 0 25px rgba(117, 176, 34, 0.55), 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 .btn-steam-cta:active {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.97);
 }
 
 /* Cyan accent button */
 .btn-steam-accent {
   background: linear-gradient(135deg, #1a9fff, #66c0f4);
   color: #ffffff;
-  font-weight: 600;
-  transition: filter 0.2s ease;
+  font-weight: 700;
+  transition: filter 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
 }
 .btn-steam-accent:hover {
-  filter: brightness(1.12);
+  filter: brightness(1.15);
+  transform: translateY(-1.5px);
+  box-shadow: 0 0 22px rgba(102, 192, 244, 0.5);
 }
 
 /* Dark panel button */
 .btn-steam-panel {
   background: var(--panel);
   color: var(--text);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
 }
 .btn-steam-panel:hover {
   background: #3a6282;
   color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Steam Ambient Animations */
+@keyframes steamPulseSlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes steamFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes steamProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-steam-pulse {
+  animation: steamPulseSlow 6s ease-in-out infinite;
+}
+
+.animate-steam-float {
+  animation: steamFloat 4s ease-in-out infinite;
+}
+
+.steam-progress-bar {
+  animation: steamProgress 4.5s linear infinite;
+}
+
+/* Steam Card Sheen Sweep */
+.steam-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.steam-sheen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: transform 0.75s ease-out;
+  pointer-events: none;
+  z-index: 20;
+}
+.steam-sheen:hover::before {
+  transform: translateX(350%) skewX(-20deg);
 }
 
