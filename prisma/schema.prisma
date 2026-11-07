@@ -109,6 +109,7 @@ model Game {
 
   planGames           PlanGame[]
   threads             Thread[]
+  fixManifests        GameFixManifest[]
 
   @@index([hypeTier])
   @@index([offlineTag])
@@ -532,4 +533,32 @@ model Review {
   createdAt   DateTime @default(now())
 
   @@index([createdAt])
+}
+
+model GameFixManifest {
+  id                String   @id @default(uuid())
+  gameId            String?
+  game              Game?    @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  steamAppId        String
+  title             String
+  launcher          String   // "Ubisoft Connect", "EA app", "Rockstar Games Launcher", "PlayStation PC", "Steam only"
+  fixType           String   // "MANIFEST_ACF", "LAUNCHER_BYPASS", "OFFLINE_PATCH", "REGISTRY_FIX"
+  manifestVersion   String   @default("v1.0 (lua.tool verified)")
+  downloadUrl       String
+  mirrorUrl         String?
+  fileSizeBytes     Int      @default(0)
+  sha256            String   @default("verified-steamer-sha256")
+  instructions      String
+  launchArguments   String?
+  targetDirectory   String   @default("Steam/steamapps")
+  sourceToolkit     String   @default("lua.tool")
+  testedWorkingDate DateTime @default(now())
+  verifiedByAdmin   Boolean  @default(true)
+  downloadCount     Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([gameId])
+  @@index([steamAppId])
+  @@index([launcher])
 }

@@ -11,8 +11,8 @@ export default function MobileNav() {
   const links = [
     { name: "Store", href: "/", icon: Store, isLiveSupport: false },
     { name: "Catalog", href: "/catalog", icon: Compass, isLiveSupport: false },
+    { name: "Fixes & Help", href: "/community/game-help", icon: MessageCircle, isLiveSupport: false },
     { name: "Library", href: "/dashboard", icon: Library, isLiveSupport: false },
-    { name: "Community", href: "/community", icon: MessageCircle, isLiveSupport: false },
     { name: "Support", href: "/support", icon: HelpCircle, isLiveSupport: true },
   ];
 

@@ -46,6 +46,9 @@ export default async function GameDetailPage({
           _count: { select: { posts: true } },
         },
       },
+      fixManifests: {
+        take: 1,
+      },
     },
   });
 
@@ -169,6 +172,34 @@ export default async function GameDetailPage({
               )}
             </ul>
           </div>
+
+          {/* Verified Manifest Fix Callout Box */}
+          {game.fixManifests?.[0] && (
+            <div className="bg-[#121922] border border-[#66c0f4]/50 rounded-lg p-4 space-y-2.5 shadow-md">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold text-[#66c0f4] flex items-center gap-1.5 uppercase tracking-wide">
+                  <Sparkles className="w-3.5 h-3.5 text-[#66c0f4]" /> Verified Manifest Fix Available
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 px-2 py-0.5 rounded">
+                  {game.fixManifests[0].sourceToolkit}
+                </span>
+              </div>
+              <p className="text-xs text-[#c7d5e0] leading-relaxed">
+                Requires <strong>{game.fixManifests[0].launcher}</strong> offline manifest bypass. Verified working for single-player story mode on personal machines.
+              </p>
+              <div className="flex items-center justify-between pt-1 border-t border-[#2a475e]/40">
+                <code className="text-[10px] font-mono text-[#8f98a0]">
+                  Target: {game.fixManifests[0].targetDirectory}
+                </code>
+                <Link
+                  href={`/community/game-help?search=${encodeURIComponent(game.title)}`}
+                  className="text-xs font-bold text-[#66c0f4] hover:underline flex items-center gap-1"
+                >
+                  View Fix &amp; Manifest →
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Right Column: Pricing & Add to Cart Card */}
