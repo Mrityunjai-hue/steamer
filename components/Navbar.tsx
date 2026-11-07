@@ -42,7 +42,6 @@ export default function Navbar() {
     window.addEventListener("storage", updateCart);
     window.addEventListener("cartUpdated", updateCart);
 
-
     return () => {
       window.removeEventListener("storage", updateCart);
       window.removeEventListener("cartUpdated", updateCart);
@@ -68,12 +67,12 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#171a21]/95 backdrop-blur border-b border-[#2a475e]/60 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-[#171a21]/95 backdrop-blur border-b border-[#2a475e]/60 shadow-lg w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo & Wordmark */}
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-9 h-9 flex-shrink-0 transition-transform group-hover:scale-105">
+        <div className="flex items-center gap-2 sm:gap-6 flex-shrink-0">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0 transition-transform group-hover:scale-105">
               <Image
                 src="/brand/icon.svg"
                 alt="Steamer Logo"
@@ -84,10 +83,10 @@ export default function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-black tracking-widest text-white group-hover:text-[#66c0f4] transition-colors leading-none">
+              <span className="text-lg sm:text-xl font-black tracking-widest text-white group-hover:text-[#66c0f4] transition-colors leading-none">
                 STEAMER
               </span>
-              <span className="text-[9px] font-bold tracking-wider text-[#66c0f4] uppercase leading-tight">
+              <span className="text-[8px] sm:text-[9px] font-bold tracking-wider text-[#66c0f4] uppercase leading-tight">
                 Offline Vault
               </span>
             </div>
@@ -114,13 +113,13 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Right Section: Slots Pill, Cart, User menu */}
-        <div className="flex items-center gap-3">
-          {/* Instant All-Access Badge */}
+        {/* Right Section: Badges, Cart, User Auth, and Hamburger */}
+        <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+          {/* Instant All-Access Badge (Desktop) */}
           <Link
             href="/checkout"
             title="Instant ₹300 All-Access Setup Pass"
-            className="hidden sm:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400 hover:border-emerald-400 transition-all shadow-sm"
+            className="hidden lg:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400 hover:border-emerald-400 transition-all shadow-sm h-8"
           >
             <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
             <span>₹300 All-Access • 265+ Titles</span>
@@ -129,12 +128,12 @@ export default function Navbar() {
           {/* Cart Icon */}
           <Link
             href="/cart"
-            className="relative p-2 text-[#c7d5e0] hover:text-[#66c0f4] hover:bg-[#2a475e]/40 rounded-lg transition-colors"
+            className="relative h-8 w-8 flex items-center justify-center text-[#c7d5e0] hover:text-[#66c0f4] hover:bg-[#2a475e]/40 rounded-lg transition-colors border border-transparent hover:border-[#2a475e]/60"
             title="View Cart"
           >
-            <ShoppingCart className="w-5 h-5" />
+            <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
             {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-[#75b022] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-md animate-bounce">
+              <span className="absolute -top-1 -right-1 bg-[#75b022] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-md animate-bounce">
                 {cartCount}
               </span>
             )}
@@ -142,11 +141,11 @@ export default function Navbar() {
 
           {/* User Auth / Profile */}
           {session ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               {session.role === "ADMIN" && (
                 <Link
                   href="/admin/dashboard"
-                  className="hidden md:flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-amber-300 bg-amber-950/60 border border-amber-500/40 rounded hover:bg-amber-900/60 transition-colors"
+                  className="hidden md:flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-amber-300 bg-amber-950/60 border border-amber-500/40 rounded hover:bg-amber-900/60 transition-colors h-8"
                 >
                   <Shield className="w-3.5 h-3.5" />
                   ADMIN
@@ -154,74 +153,98 @@ export default function Navbar() {
               )}
               <Link
                 href="/dashboard"
-                className="flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-[#c7d5e0] bg-[#2a475e]/70 hover:bg-[#2a475e] hover:text-white rounded transition-colors"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 text-xs font-semibold text-[#c7d5e0] bg-[#2a475e]/70 hover:bg-[#2a475e] hover:text-white rounded transition-colors h-8"
               >
-                <UserIcon className="w-4 h-4 text-[#66c0f4]" />
-                <span className="hidden sm:inline max-w-[120px] truncate">{session.email}</span>
+                <UserIcon className="w-3.5 h-3.5 text-[#66c0f4]" />
+                <span className="hidden sm:inline max-w-[100px] truncate">{session.email}</span>
               </Link>
               <button
                 onClick={handleLogout}
                 title="Sign out"
-                className="p-1.5 text-[#8f98a0] hover:text-red-400 hover:bg-[#2a475e]/40 rounded transition-colors"
+                className="h-8 w-8 flex items-center justify-center text-[#8f98a0] hover:text-red-400 hover:bg-[#2a475e]/40 rounded transition-colors"
               >
                 <LogOut className="w-4 h-4" />
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <Link
                 href="/auth/login"
-                className="px-3 py-1.5 text-xs font-bold text-[#c7d5e0] hover:text-white hover:bg-[#2a475e]/50 rounded transition-colors"
+                className="hidden sm:inline-flex px-3 py-1 text-xs font-bold text-[#c7d5e0] hover:text-white hover:bg-[#2a475e]/50 rounded transition-colors h-8 items-center"
               >
                 LOGIN
               </Link>
               <Link
                 href="/auth/register"
-                className="px-3.5 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-[#1a9fff] to-[#66c0f4] hover:brightness-110 rounded shadow transition-all"
+                className="px-2.5 sm:px-3.5 py-1 text-xs font-bold text-white bg-gradient-to-r from-[#1a9fff] to-[#66c0f4] hover:brightness-110 rounded shadow transition-all h-8 flex items-center"
               >
                 SIGN UP
               </Link>
             </div>
           )}
 
-          {/* Mobile hamburger menu */}
+          {/* Mobile hamburger menu (three bars) - perfectly sized and aligned */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-[#c7d5e0] hover:text-white hover:bg-[#2a475e] rounded"
+            className="md:hidden h-8 w-8 flex items-center justify-center text-[#c7d5e0] hover:text-white bg-[#2a475e]/40 hover:bg-[#2a475e] border border-[#2a475e] rounded-lg transition-colors flex-shrink-0"
+            aria-label="Toggle navigation menu"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </div>
 
       {/* Mobile dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#171a21] border-b border-[#2a475e] px-4 pt-2 pb-4 space-y-2">
-          <div className="flex items-center justify-between py-2 border-b border-[#2a475e]/50">
-            <span className="text-xs text-[#8f98a0]">All-Access Pass</span>
-            <span className="text-xs font-bold text-[#5ba32b]">
-              ₹300 Instant Unlock (265+ Titles)
-            </span>
+        <div className="md:hidden bg-[#171a21] border-b border-[#2a475e] px-4 pt-3 pb-5 space-y-3 animate-in slide-in-from-top-2 duration-150">
+          <div className="flex items-center justify-between py-2 border-b border-[#2a475e]/50 text-xs">
+            <span className="text-[#8f98a0]">All-Access Vault Pass</span>
+            <span className="font-bold text-[#5ba32b]">₹300 Instant Unlock (265+ Titles)</span>
           </div>
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`block px-3 py-2 text-sm font-semibold rounded ${
-                isActive(link.href)
-                  ? "text-white bg-[#2a475e]"
-                  : "text-[#c7d5e0] hover:bg-[#2a475e]/40"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
+
+          <div className="grid grid-cols-2 gap-2 pb-2 border-b border-[#2a475e]/50 sm:hidden">
+            {!session && (
+              <>
+                <Link
+                  href="/auth/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-center py-2 text-xs font-bold text-white bg-[#2a475e]/60 hover:bg-[#2a475e] rounded border border-[#2a475e]"
+                >
+                  LOGIN
+                </Link>
+                <Link
+                  href="/auth/register"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-center py-2 text-xs font-bold text-white bg-gradient-to-r from-[#1a9fff] to-[#66c0f4] rounded shadow"
+                >
+                  SIGN UP
+                </Link>
+              </>
+            )}
+          </div>
+
+          <div className="space-y-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-3 py-2 text-xs font-bold rounded transition-colors ${
+                  isActive(link.href)
+                    ? "text-white bg-[#2a475e]"
+                    : "text-[#c7d5e0] hover:bg-[#2a475e]/40"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
           {session?.role === "ADMIN" && (
             <Link
               href="/admin/dashboard"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 text-sm font-bold text-amber-300 bg-amber-950/40 rounded border border-amber-500/30"
+              className="block px-3 py-2 text-xs font-bold text-amber-300 bg-amber-950/40 rounded border border-amber-500/30"
             >
               Admin Console
             </Link>
@@ -231,4 +254,3 @@ export default function Navbar() {
     </header>
   );
 }
-

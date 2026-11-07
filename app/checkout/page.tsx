@@ -347,7 +347,7 @@ export default function CheckoutPage() {
                   <span className="text-emerald-400">1.</span> Offline Play & Permanent Local Saves
                 </p>
                 <p className="text-[#8f98a0] text-[11px] leading-relaxed">
-                  All games are downloaded/installed locally on your PC and run in offline mode. Your progress, save states, and campaign files remain permanently stored on your local drive.
+                  All games are added to your Steam account directly and run in offline mode. Your progress, save states, and campaign files remain permanently stored on your local drive.
                 </p>
               </div>
 
@@ -365,7 +365,7 @@ export default function CheckoutPage() {
                   <span className="text-emerald-400">3.</span> Zero Queues & Independent Personal Setup
                 </p>
                 <p className="text-[#8f98a0] text-[11px] leading-relaxed">
-                  No queue waiting and no shared login credentials with other players. You follow the guided visual walkthrough to configure the launcher on your own PC.
+                  No queue waiting and no shared login credentials with other players. You follow the guided visual walkthrough to configure the games on your Steam account directly.
                 </p>
               </div>
 
@@ -374,7 +374,7 @@ export default function CheckoutPage() {
                   <span className="text-emerald-400">4.</span> 48-Hour 100% Money-Back Guarantee
                 </p>
                 <p className="text-[#8f98a0] text-[11px] leading-relaxed">
-                  If you cannot get the setup working on your PC, you receive a full 100% refund within 48 hours of purchase. Zero questions asked.
+                  If you cannot get the setup working on your Steam account directly, you receive a full 100% refund within 48 hours of purchase. Zero questions asked.
                 </p>
               </div>
 

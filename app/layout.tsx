@@ -27,10 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="bg-[#1b2838] text-[#c7d5e0] min-h-screen flex flex-col antialiased selection:bg-[#66c0f4]/30 selection:text-white">
+    <html lang="en" className="dark overflow-x-hidden max-w-full w-full">
+      <body className="bg-[#1b2838] text-[#c7d5e0] min-h-screen flex flex-col antialiased selection:bg-[#66c0f4]/30 selection:text-white overflow-x-hidden max-w-full w-full">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 overflow-x-hidden max-w-full w-full">{children}</main>
         <Footer />
         <MobileNav />
         <LiveSupportWidget />

@@ -143,7 +143,7 @@ export default async function HomePage() {
               </h1>
 
               <p className="text-sm sm:text-base text-[#c7d5e0] leading-relaxed max-w-2xl">
-                Stop paying thousands for individual titles or dealing with shared account collisions. Choose any of our 265+ blockbuster PC games and play them offline on your own PC with permanent local saves.
+                Stop paying thousands for individual titles or dealing with shared account collisions. Choose any of our 265+ blockbuster PC games and play them on your Steam account directly with permanent local saves.
               </p>
 
               {/* Amenity Badges */}
@@ -260,7 +260,7 @@ export default async function HomePage() {
               </div>
               <h3 className="font-bold text-white text-sm">100% Offline Mode & Local Saves</h3>
               <p className="text-xs text-[#8f98a0] leading-relaxed">
-                Enjoy complete single-player campaigns, story modes, and mods. All progress and save files are stored safely and permanently on your own PC hard drive.
+                Enjoy complete single-player campaigns, story modes, and mods. All progress and save files are activated on your Steam account directly with permanent local saves.
               </p>
             </div>
 
@@ -374,9 +374,9 @@ export default async function HomePage() {
                 </span>
                 <span className="text-[10px] text-[#5ba32b] font-mono font-bold">READY</span>
               </div>
-              <h3 className="font-bold text-white text-xs sm:text-sm">Play 265+ Titles On Your PC</h3>
+              <h3 className="font-bold text-white text-xs sm:text-sm">Play 265+ Titles On Your Steam Account Directly</h3>
               <p className="text-[11px] text-[#8f98a0] leading-relaxed">
-                Follow the 10-minute visual guide. Play story modes offline with local saves on your PC without getting kicked off.
+                Follow the 10-minute visual guide. Play story modes offline with local saves on your Steam account directly without getting kicked off.
               </p>
             </div>
           </div>

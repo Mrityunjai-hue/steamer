@@ -169,7 +169,7 @@ export default function ThreadDetailPage() {
             rows={4}
             placeholder="Write your response... (Safety filter active: Steam Guard codes are prohibited)"
             required
-            className="w-full bg-[#16202d] border border-[#2a475e] rounded-lg p-3 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
+            className="w-full bg-[#16202d] border border-[#2a475e] rounded-lg p-3.5 text-base sm:text-xs text-white focus:outline-none focus:border-[#66c0f4]"
           />
 
           <div className="flex justify-end">

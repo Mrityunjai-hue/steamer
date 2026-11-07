@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   MessageSquare,
@@ -22,6 +22,7 @@ export default function CommunityPage() {
   const [chatInput, setChatInput] = useState("");
   const [chatRoom, setChatRoom] = useState("general");
   const [loading, setLoading] = useState(true);
+  const chatFeedRef = useRef<HTMLDivElement>(null);
 
   // New Thread Form Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,6 +70,13 @@ export default function CommunityPage() {
       return () => clearInterval(interval);
     }
   }, [tab, chatRoom]);
+
+  // Keep chat scrolled to bottom smoothly inside its own container without scrolling the window
+  useEffect(() => {
+    if (tab === "CHAT" && chatFeedRef.current) {
+      chatFeedRef.current.scrollTop = chatFeedRef.current.scrollHeight;
+    }
+  }, [chatMessages, tab]);
 
   const handleCreateThread = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -260,68 +268,84 @@ export default function CommunityPage() {
         </div>
       ) : (
         /* CHAT LOUNGE VIEW */
-        <div className="bg-[#171a21] border border-[#2a475e] rounded-xl overflow-hidden shadow-2xl flex flex-col h-[600px]">
-          {/* Chat room selector */}
-          <div className="bg-[#16202d] border-b border-[#2a475e] p-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#5ba32b] animate-pulse" />
-              <span className="text-xs font-bold text-white uppercase">Live Chat Room:</span>
+        <div className="bg-[#171a21] border border-[#2a475e] rounded-xl overflow-hidden shadow-2xl flex flex-col h-[650px] relative">
+          {/* Chat Room Top Bar - Spacious, uncluttered, and responsive */}
+          <div className="bg-[#16202d] border-b border-[#2a475e] p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex items-center gap-2 bg-[#171a21] border border-[#2a475e] px-3 py-1.5 rounded-lg shadow-sm">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#5ba32b] animate-pulse" />
+                <span className="text-xs font-bold text-white tracking-wider uppercase">Live Lounge:</span>
+              </div>
               <select
                 value={chatRoom}
                 onChange={(e) => setChatRoom(e.target.value)}
-                className="bg-[#171a21] border border-[#2a475e] text-xs text-[#66c0f4] font-bold rounded px-2.5 py-1 focus:outline-none"
+                className="bg-[#171a21] border border-[#2a475e] hover:border-[#66c0f4]/50 text-xs text-[#66c0f4] font-bold rounded-lg px-3.5 py-1.5 focus:outline-none transition-colors cursor-pointer"
               >
                 <option value="general">General Gaming Lounge</option>
                 <option value="setup-lounge">Setup & Download Help</option>
                 <option value="offline-gamers">Offline Story Gamers</option>
               </select>
             </div>
-            <span className="text-[11px] text-[#8f98a0]">
-              Automated code & credential protection active
-            </span>
+
+            <div className="flex items-center gap-2 text-xs text-[#8f98a0] bg-[#171a21]/70 border border-[#2a475e]/50 px-3.5 py-1.5 rounded-lg w-fit">
+              <ShieldCheck className="w-4 h-4 text-[#5ba32b] shrink-0" />
+              <span>Automated credential & code guard active</span>
+            </div>
           </div>
 
           {/* Messages Feed */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3">
+          <div ref={chatFeedRef} className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4">
             {chatMessages.length === 0 ? (
-              <div className="h-full flex items-center justify-center text-xs text-[#8f98a0]">
-                No messages yet in this lounge room. Say hello!
+              <div className="h-full flex flex-col items-center justify-center text-center p-8 space-y-2.5 text-[#8f98a0]">
+                <MessageSquare className="w-10 h-10 text-[#2a475e] opacity-60" />
+                <p className="text-sm font-semibold text-[#c7d5e0]">No messages yet in this lounge room</p>
+                <p className="text-xs text-[#8f98a0]">Be the first to say hello or ask an offline gaming question!</p>
               </div>
             ) : (
               chatMessages.map((msg) => (
-                <div key={msg.id} className="bg-[#16202d]/80 border border-[#2a475e]/40 p-3 rounded-lg text-xs">
-                  <div className="flex items-center justify-between text-[10px] text-[#8f98a0] mb-1">
-                    <span className="font-bold text-[#66c0f4]">
-                      {msg.author?.profile?.displayName || "Gamer"}
+                <div
+                  key={msg.id}
+                  className="bg-[#16202d]/90 hover:bg-[#16202d] border border-[#2a475e]/50 p-4 rounded-xl text-xs space-y-2 shadow-sm transition-colors"
+                >
+                  <div className="flex items-center justify-between gap-2 border-b border-[#2a475e]/30 pb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-sm text-[#66c0f4]">
+                        {msg.author?.profile?.displayName || "Gamer"}
+                      </span>
                       {msg.author?.role === "ADMIN" && (
-                        <span className="ml-1 text-amber-300 bg-amber-950/60 px-1 py-0.2 rounded font-black">
+                        <span className="text-[10px] text-amber-300 bg-amber-950/80 border border-amber-500/40 px-2 py-0.5 rounded font-black uppercase tracking-wider">
                           ADMIN
                         </span>
                       )}
+                    </div>
+                    <span className="text-[11px] text-[#8f98a0] shrink-0">
+                      {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
-                    <span>{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
-                  <p className="text-[#c7d5e0] leading-relaxed break-words">{msg.content}</p>
+                  <p className="text-[#c7d5e0] text-xs sm:text-sm leading-relaxed break-words font-normal">
+                    {msg.content}
+                  </p>
                 </div>
               ))
             )}
           </div>
 
-          {/* Chat Input Bar */}
-          <form onSubmit={handleSendChat} className="p-3 bg-[#16202d] border-t border-[#2a475e] flex items-center gap-2">
+          {/* Chat Input Bar - text-base on mobile prevents auto-zoom/jumping */}
+          <form onSubmit={handleSendChat} className="p-3 sm:p-4 bg-[#16202d] border-t border-[#2a475e] flex items-center gap-3">
             <input
               type="text"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
-              placeholder="Type your message... (never share login codes)"
-              className="flex-1 bg-[#171a21] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
+              placeholder="Type your message... (never share passwords)"
+              className="flex-1 bg-[#171a21] border border-[#2a475e] focus:border-[#66c0f4] rounded-lg px-4 py-2.5 text-base sm:text-xs text-white placeholder:text-[#8f98a0] focus:outline-none transition-colors"
+              autoComplete="off"
             />
             <button
               type="submit"
               disabled={!chatInput.trim()}
-              className="btn-steam-cta px-4 py-2 rounded text-xs font-bold flex items-center gap-1.5 disabled:opacity-40"
+              className="btn-steam-cta px-4 sm:px-5 py-2.5 rounded-lg text-xs font-bold flex items-center gap-1.5 disabled:opacity-40 shrink-0"
             >
-              <Send className="w-3.5 h-3.5" /> Send
+              <Send className="w-3.5 h-3.5" /> <span>Send</span>
             </button>
           </form>
         </div>
@@ -368,7 +392,7 @@ export default function CommunityPage() {
                   onChange={(e) => setNewTitle(e.target.value)}
                   placeholder="e.g. Best graphic settings for Red Dead Redemption 2"
                   required
-                  className="w-full bg-[#16202d] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
+                  className="w-full bg-[#16202d] border border-[#2a475e] rounded px-3.5 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-[#66c0f4]"
                 />
               </div>
 
@@ -380,7 +404,7 @@ export default function CommunityPage() {
                   rows={5}
                   placeholder="Share details, questions, or setup instructions..."
                   required
-                  className="w-full bg-[#16202d] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
+                  className="w-full bg-[#16202d] border border-[#2a475e] rounded px-3.5 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-[#66c0f4]"
                 />
               </div>
 

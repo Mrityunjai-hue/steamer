@@ -78,6 +78,18 @@ export default function CatalogPage() {
     setPage(1);
   };
 
+  const changePage = (newPage: number) => {
+    setPage(newPage);
+    if (typeof window !== "undefined") {
+      const el = document.getElementById("catalog-games-anchor");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  };
+
   const hasActiveFilters = !!(search || selectedTier || selectedSeries || selectedLauncher || selectedOfflineTag || includeOnlineOnly);
 
   return (
@@ -133,7 +145,7 @@ export default function CatalogPage() {
             <span>● 265+ Titles Included</span>
           </div>
           <p className="text-sm font-bold text-white">
-            Stop paying thousands for individual titles. Learn the setup once and play on your own PC forever.
+            Stop paying thousands for individual titles. Learn the setup once and play on your Steam account directly forever.
           </p>
           <p className="text-xs text-[#8f98a0]">
             No account sharing · Local saves · Offline play · Single one-time ₹300 unlock
@@ -299,7 +311,7 @@ export default function CatalogPage() {
         {/* Game Grid Section */}
         <div className="md:col-span-3 space-y-5">
           {/* Top Pagination & Active Filters Ribbon */}
-          <div className="bg-[#171a21] border border-[#2a475e]/60 rounded-lg p-3 sm:p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+          <div id="catalog-games-anchor" className="bg-[#171a21] border border-[#2a475e]/60 rounded-lg p-3 sm:p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm scroll-mt-20">
             <div className="flex flex-wrap items-center gap-2 text-xs text-[#8f98a0]">
               <span>
                 Showing <strong className="text-white">{totalGames === 0 ? 0 : (page - 1) * 24 + 1}–{Math.min(page * 24, totalGames)}</strong> of{" "}
@@ -324,7 +336,7 @@ export default function CatalogPage() {
                 </span>
 
                 <button
-                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  onClick={() => changePage(Math.max(1, page - 1))}
                   disabled={page <= 1}
                   className="px-2.5 py-1.5 bg-[#2a475e] hover:bg-[#31536f] disabled:opacity-30 disabled:cursor-not-allowed text-white rounded text-xs flex items-center gap-1 font-bold transition-colors"
                 >
@@ -332,7 +344,7 @@ export default function CatalogPage() {
                 </button>
 
                 <button
-                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  onClick={() => changePage(Math.min(totalPages, page + 1))}
                   disabled={page >= totalPages}
                   className="px-2.5 py-1.5 bg-[#2a475e] hover:bg-[#31536f] disabled:opacity-30 disabled:cursor-not-allowed text-white rounded text-xs flex items-center gap-1 font-bold transition-colors"
                 >
@@ -388,16 +400,16 @@ export default function CatalogPage() {
 
                   <div className="flex items-center gap-2">
                     <button
-                      onClick={() => setPage((p) => Math.max(1, p - 1))}
+                      onClick={() => changePage(Math.max(1, page - 1))}
                       disabled={page <= 1}
-                      className="p-2 bg-[#2a475e] disabled:opacity-30 disabled:cursor-not-allowed text-white rounded text-xs flex items-center gap-1 font-bold"
+                      className="p-2 bg-[#2a475e] hover:bg-[#31536f] disabled:opacity-30 disabled:cursor-not-allowed text-white rounded text-xs flex items-center gap-1 font-bold transition-colors"
                     >
                       <ChevronLeft className="w-4 h-4" /> Previous
                     </button>
                     <button
-                      onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                      onClick={() => changePage(Math.min(totalPages, page + 1))}
                       disabled={page >= totalPages}
-                      className="p-2 bg-[#2a475e] disabled:opacity-30 disabled:cursor-not-allowed text-white rounded text-xs flex items-center gap-1 font-bold"
+                      className="p-2 bg-[#2a475e] hover:bg-[#31536f] disabled:opacity-30 disabled:cursor-not-allowed text-white rounded text-xs flex items-center gap-1 font-bold transition-colors"
                     >
                       Next <ChevronRight className="w-4 h-4" />
                     </button>
