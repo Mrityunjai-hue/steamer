@@ -122,8 +122,8 @@ html, body {
     transform: scale(1);
   }
   50% {
-    opacity: 0.65;
-    transform: scale(1.08);
+    opacity: 0.75;
+    transform: scale(1.12);
   }
 }
 
@@ -145,19 +145,52 @@ html, body {
   }
 }
 
+@keyframes steamFadeIn {
+  0% {
+    opacity: 0.25;
+    transform: scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes steamMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-steam-pulse {
-  animation: steamPulseSlow 6s ease-in-out infinite;
+  animation: steamPulseSlow 5s ease-in-out infinite;
 }
 
 .animate-steam-float {
-  animation: steamFloat 4s ease-in-out infinite;
+  animation: steamFloat 3.5s ease-in-out infinite;
+}
+
+.animate-steam-fade {
+  animation: steamFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-steam-marquee {
+  display: flex;
+  width: max-content;
+  animation: steamMarquee 35s linear infinite;
+}
+.animate-steam-marquee:hover {
+  animation-play-state: paused;
 }
 
 .steam-progress-bar {
   animation: steamProgress 4.5s linear infinite;
 }
 
-/* Steam Card Sheen Sweep */
+/* Steam Card Sheen Sweep (Triggered when parent card or image is hovered) */
 .steam-sheen {
   position: relative;
   overflow: hidden;
@@ -166,21 +199,22 @@ html, body {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 60%;
+  left: -120%;
+  width: 70%;
   height: 100%;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.3) 50%,
     transparent 100%
   );
-  transform: skewX(-20deg);
-  transition: transform 0.75s ease-out;
+  transform: skewX(-25deg);
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
   pointer-events: none;
-  z-index: 20;
+  z-index: 25;
 }
+.group:hover .steam-sheen::before,
 .steam-sheen:hover::before {
-  transform: translateX(350%) skewX(-20deg);
+  transform: translateX(380%) skewX(-25deg);
 }
 

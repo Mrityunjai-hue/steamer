@@ -81,17 +81,17 @@ export default function GameCard({
   return (
     <Link
       href={`/game/${id}`}
-      className="group relative bg-[#16202d] hover:bg-[#1e2a38] border border-[#2a475e]/70 hover:border-[#66c0f4] rounded-sm overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-[0_12px_28px_rgba(0,0,0,0.6),0_0_20px_rgba(102,192,244,0.35)] flex flex-col justify-between h-full"
+      className="group relative bg-[#16202d] hover:bg-[#1e2a38] border border-[#2a475e]/70 hover:border-[#66c0f4] rounded-sm overflow-hidden transition-all duration-300 hover:-translate-y-2.5 hover:scale-[1.03] hover:shadow-[0_16px_36px_rgba(0,0,0,0.8),0_0_25px_rgba(102,192,244,0.45)] flex flex-col justify-between h-full"
     >
-      {/* Cover Artwork Container (460x215 Steam Ratio with Sheen Sweep) */}
-      <div className="relative aspect-[460/215] w-full bg-[#0d131b] overflow-hidden flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full group-hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:transition-transform before:duration-600 before:z-20">
+      {/* Cover Artwork Container (460x215 Steam Ratio with High-Visibility Sheen Sweep) */}
+      <div className="steam-sheen relative aspect-[460/215] w-full bg-[#0d131b] overflow-hidden flex-shrink-0">
         {headerImage && !imageError ? (
           <Image
             src={headerImage}
             alt={title}
             fill
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
-            className="object-cover group-hover:scale-108 transition-transform duration-500 ease-out"
+            className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
             loading="lazy"
             onError={() => setImageError(true)}
           />

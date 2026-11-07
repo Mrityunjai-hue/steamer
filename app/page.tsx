@@ -2,8 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
-import GameCard from "@/components/GameCard";
 import FeaturedHeroCarousel from "@/components/FeaturedHeroCarousel";
+import SteamCategoryRow from "@/components/SteamCategoryRow";
+import SteamTickerBanner from "@/components/SteamTickerBanner";
 import ReviewsSection from "@/components/ReviewsSection";
 import {
   Flame,
@@ -55,27 +56,27 @@ export default async function HomePage() {
     const [hot, pop, std, bud, ver] = await Promise.all([
       prisma.game.findMany({
         where: { hypeTier: "Hot", offlineTag: { not: "Online required" } },
-        take: 6,
+        take: 12,
         include: { series: true },
       }),
       prisma.game.findMany({
         where: { hypeTier: "Popular", offlineTag: { not: "Online required" } },
-        take: 6,
+        take: 12,
         include: { series: true },
       }),
       prisma.game.findMany({
         where: { hypeTier: "Standard", offlineTag: { not: "Online required" } },
-        take: 6,
+        take: 12,
         include: { series: true },
       }),
       prisma.game.findMany({
         where: { hypeTier: "Budget", offlineTag: { not: "Online required" } },
-        take: 6,
+        take: 12,
         include: { series: true },
       }),
       prisma.game.findMany({
         where: { testedOfflineOn: { not: null }, offlineTag: "Offline OK" },
-        take: 6,
+        take: 12,
         include: { series: true },
       }),
     ]);
@@ -127,9 +128,9 @@ export default async function HomePage() {
     <div className="space-y-10 pb-16">
       {/* 1. Hero Showcase / Featured Section (Authentic Steam Store Style) */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#171a21] via-[#1b2838] to-[#171a21] border-b border-[#2a475e]/40 pt-6 pb-10 px-4 sm:px-6 lg:px-8">
-        {/* Steam Ambient Backlight Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#66c0f4]/5 rounded-full blur-3xl pointer-events-none animate-steam-pulse" />
-        <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#1a9fff]/5 rounded-full blur-3xl pointer-events-none animate-steam-pulse" style={{ animationDelay: "2s" }} />
+        {/* Steam Ambient Backlight Breathing Orbs */}
+        <div className="absolute -top-10 -left-10 w-[500px] h-[500px] bg-gradient-to-br from-[#1a9fff]/20 to-[#66c0f4]/10 rounded-full blur-3xl pointer-events-none animate-steam-pulse" />
+        <div className="absolute -bottom-10 -right-10 w-[500px] h-[500px] bg-gradient-to-tl from-[#5ba32b]/15 via-[#1a9fff]/15 to-transparent rounded-full blur-3xl pointer-events-none animate-steam-pulse" style={{ animationDelay: "2.5s" }} />
 
         <div className="relative max-w-7xl mx-auto space-y-6">
           {/* Top Steam Live Status Bar */}
@@ -241,6 +242,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* 1.5. Steam Live Marquee Ticker (Infinite 60fps Carousel of Included AAA Games) */}
+      <SteamTickerBanner />
 
       {/* 2. What You Get (All-Access Plan Amenities & Inclusions) */}
       <section id="amenities-breakdown" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -468,161 +472,51 @@ export default async function HomePage() {
         </div>
 
         {/* Category 1: Hot Blockbusters */}
-        <section className="space-y-3 group/section">
-          <div className="relative flex items-center justify-between border-b border-[#2a475e]/40 pb-2.5">
-            <span className="absolute -bottom-[1px] left-0 w-12 group-hover/section:w-28 h-[2px] bg-gradient-to-r from-red-500 to-transparent transition-all duration-300" />
-            <div className="flex items-center gap-2">
-              <Flame className="w-4 h-4 text-red-400 fill-red-400 group-hover/section:scale-110 transition-transform" />
-              <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
-                Hot Blockbusters
-              </h3>
-            </div>
-            <span className="text-[11px] text-[#5ba32b] font-medium">Included in Guide</span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {hotGames.map((game) => (
-              <GameCard
-                key={game.id}
-                id={game.id}
-                title={game.title}
-                series={game.series?.name}
-                hypeTier={game.hypeTier}
-                steamPriceINR={game.steamPriceINR}
-                offlineTag={game.offlineTag}
-                testedOfflineOn={game.testedOfflineOn}
-                launcher={game.launcher}
-                headerImage={game.headerImage}
-              />
-            ))}
-          </div>
-        </section>
+        <SteamCategoryRow
+          title="Hot Blockbusters"
+          icon={<Flame className="w-4 h-4 text-red-400 fill-red-400" />}
+          accentColor="#ef4444"
+          badgeText="Included in Guide"
+          games={hotGames}
+        />
 
         {/* Category 2: Popular Franchises */}
-        <section className="space-y-3 group/section">
-          <div className="relative flex items-center justify-between border-b border-[#2a475e]/40 pb-2.5">
-            <span className="absolute -bottom-[1px] left-0 w-12 group-hover/section:w-28 h-[2px] bg-gradient-to-r from-[#66c0f4] to-transparent transition-all duration-300" />
-            <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-[#66c0f4] fill-[#66c0f4] group-hover/section:scale-110 transition-transform" />
-              <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
-                Popular Franchises
-              </h3>
-            </div>
-            <span className="text-[11px] text-[#5ba32b] font-medium">Included in Guide</span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {popularGames.map((game) => (
-              <GameCard
-                key={game.id}
-                id={game.id}
-                title={game.title}
-                series={game.series?.name}
-                hypeTier={game.hypeTier}
-                steamPriceINR={game.steamPriceINR}
-                offlineTag={game.offlineTag}
-                testedOfflineOn={game.testedOfflineOn}
-                launcher={game.launcher}
-                headerImage={game.headerImage}
-              />
-            ))}
-          </div>
-        </section>
+        <SteamCategoryRow
+          title="Popular Franchises"
+          icon={<Star className="w-4 h-4 text-[#66c0f4] fill-[#66c0f4]" />}
+          accentColor="#66c0f4"
+          badgeText="Included in Guide"
+          games={popularGames}
+        />
 
         {/* Category 3: Acclaimed Masterpieces */}
-        <section className="space-y-3 group/section">
-          <div className="relative flex items-center justify-between border-b border-[#2a475e]/40 pb-2.5">
-            <span className="absolute -bottom-[1px] left-0 w-12 group-hover/section:w-28 h-[2px] bg-gradient-to-r from-blue-400 to-transparent transition-all duration-300" />
-            <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-blue-300 group-hover/section:scale-110 transition-transform" />
-              <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
-                Acclaimed Masterpieces
-              </h3>
-            </div>
-            <span className="text-[11px] text-[#5ba32b] font-medium">Included in Guide</span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {standardGames.map((game) => (
-              <GameCard
-                key={game.id}
-                id={game.id}
-                title={game.title}
-                series={game.series?.name}
-                hypeTier={game.hypeTier}
-                steamPriceINR={game.steamPriceINR}
-                offlineTag={game.offlineTag}
-                testedOfflineOn={game.testedOfflineOn}
-                launcher={game.launcher}
-                headerImage={game.headerImage}
-              />
-            ))}
-          </div>
-        </section>
+        <SteamCategoryRow
+          title="Acclaimed Masterpieces"
+          icon={<Award className="w-4 h-4 text-blue-300" />}
+          accentColor="#60a5fa"
+          badgeText="Included in Guide"
+          games={standardGames}
+        />
 
         {/* Category 4: Verified Offline OK */}
         {verifiedOfflineGames.length > 0 && (
-          <section className="space-y-3 group/section">
-            <div className="relative flex items-center justify-between border-b border-[#2a475e]/40 pb-2.5">
-              <span className="absolute -bottom-[1px] left-0 w-12 group-hover/section:w-28 h-[2px] bg-gradient-to-r from-[#5ba32b] to-transparent transition-all duration-300" />
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#5ba32b] group-hover/section:scale-110 transition-transform" />
-                <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
-                  Verified Offline OK
-                </h3>
-              </div>
-              <span className="text-[11px] text-[#5ba32b] font-medium">Tested on Hardware</span>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-              {verifiedOfflineGames.map((game) => (
-                <GameCard
-                  key={game.id}
-                  id={game.id}
-                  title={game.title}
-                  series={game.series?.name}
-                  hypeTier={game.hypeTier}
-                  steamPriceINR={game.steamPriceINR}
-                  offlineTag={game.offlineTag}
-                  testedOfflineOn={game.testedOfflineOn}
-                  launcher={game.launcher}
-                  headerImage={game.headerImage}
-                />
-              ))}
-            </div>
-          </section>
+          <SteamCategoryRow
+            title="Verified Offline OK"
+            icon={<ShieldCheck className="w-4 h-4 text-[#5ba32b]" />}
+            accentColor="#5ba32b"
+            badgeText="Tested on Hardware"
+            games={verifiedOfflineGames}
+          />
         )}
 
-        {/* Category 5: Classic Favorites */}
-        <section className="space-y-3 group/section">
-          <div className="relative flex items-center justify-between border-b border-[#2a475e]/40 pb-2.5">
-            <span className="absolute -bottom-[1px] left-0 w-12 group-hover/section:w-28 h-[2px] bg-gradient-to-r from-amber-400 to-transparent transition-all duration-300" />
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-400 group-hover/section:scale-110 transition-transform" />
-              <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
-                Classic Favorites &amp; Indies
-              </h3>
-            </div>
-            <span className="text-[11px] text-[#5ba32b] font-medium">Included in Guide</span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {budgetGames.map((game) => (
-              <GameCard
-                key={game.id}
-                id={game.id}
-                title={game.title}
-                series={game.series?.name}
-                hypeTier={game.hypeTier}
-                steamPriceINR={game.steamPriceINR}
-                offlineTag={game.offlineTag}
-                testedOfflineOn={game.testedOfflineOn}
-                launcher={game.launcher}
-                headerImage={game.headerImage}
-              />
-            ))}
-          </div>
-        </section>
+        {/* Category 5: Classic Favorites & Indies */}
+        <SteamCategoryRow
+          title="Classic Favorites & Indies"
+          icon={<Sparkles className="w-4 h-4 text-amber-400" />}
+          accentColor="#f59e0b"
+          badgeText="Included in Guide"
+          games={budgetGames}
+        />
       </div>
 
       {/* 3.5. Verified Gamer Reviews & Proof */}

@@ -73,7 +73,7 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Subtle background ambient glow matching active game */}
-      <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#66c0f4]/10 rounded-full blur-3xl pointer-events-none animate-steam-pulse" />
+      <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#1a9fff]/20 rounded-full blur-3xl pointer-events-none animate-steam-pulse" />
 
       {/* Header bar: Badge, Live Counter, Included Status */}
       <div className="flex items-center justify-between gap-2 border-b border-[#2a475e]/50 pb-3">
@@ -101,7 +101,7 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
       {/* Main Image Showcase with Overlays & Navigation Chevrons */}
       <div
         key={currentGame.id}
-        className="relative aspect-[460/215] w-full rounded-lg overflow-hidden bg-[#0d131b] border border-[#2a475e]/60 group/image steam-sheen animate-in fade-in zoom-in-[0.98] duration-500 shadow-inner"
+        className="relative aspect-[460/215] w-full rounded-lg overflow-hidden bg-[#0d131b] border border-[#2a475e]/60 group/image steam-sheen animate-steam-fade shadow-inner"
       >
         <Image
           src={currentGame.headerImage || "/brand/icon.svg"}
@@ -158,24 +158,32 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
         </Link>
       </div>
 
-      {/* Slide Indicators / Thumbnails Row with Animated Progress Timer */}
-      <div className="flex items-center justify-between pt-2 border-t border-[#2a475e]/30">
-        <div className="flex items-center gap-1.5">
-          {games.map((g, idx) => (
+      {/* Steam Multi-Thumbnail Strip with Active Progress Bar */}
+      <div className="pt-2 border-t border-[#2a475e]/40 space-y-2">
+        <div className="grid grid-cols-4 sm:grid-cols-5 gap-1.5">
+          {games.slice(0, 5).map((g, idx) => (
             <button
               key={g.id}
               onClick={() => setCurrentIndex(idx)}
-              aria-label={`Jump to ${g.title}`}
-              className={`h-2 rounded-full transition-all overflow-hidden relative ${
+              onMouseEnter={() => setCurrentIndex(idx)}
+              title={g.title}
+              className={`relative aspect-[460/215] rounded overflow-hidden border transition-all duration-200 group/thumb ${
                 idx === currentIndex
-                  ? "w-8 bg-[#2a475e] border border-[#66c0f4]/50"
-                  : "w-2.5 bg-[#2a475e]/70 hover:bg-[#8f98a0]"
+                  ? "border-[#66c0f4] shadow-[0_0_12px_rgba(102,192,244,0.7)] scale-[1.03] z-10"
+                  : "border-[#2a475e]/60 opacity-60 hover:opacity-100 hover:border-[#8f98a0]"
               }`}
             >
+              <Image
+                src={g.headerImage || "/brand/icon.svg"}
+                alt={g.title}
+                fill
+                sizes="120px"
+                className="object-cover group-hover/thumb:scale-105 transition-transform duration-300"
+              />
               {idx === currentIndex && (
                 <span
-                  key={`progress-${idx}`}
-                  className={`absolute inset-0 bg-gradient-to-r from-[#66c0f4] to-[#1a9fff] ${
+                  key={`thumb-progress-${idx}`}
+                  className={`absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-[#66c0f4] to-emerald-400 ${
                     isPaused ? "w-full" : "steam-progress-bar"
                   }`}
                 />
@@ -183,10 +191,6 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
             </button>
           ))}
         </div>
-
-        <span className="text-[11px] text-[#8f98a0]">
-          265 Games Included
-        </span>
       </div>
     </div>
   );
