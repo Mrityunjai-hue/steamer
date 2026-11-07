@@ -72,6 +72,7 @@ function getDatabaseUrl(): string {
 }
 
 const dbUrl = getDatabaseUrl();
+process.env.DATABASE_URL = dbUrl;
 
 declare global {
   // eslint-disable-next-line no-var
