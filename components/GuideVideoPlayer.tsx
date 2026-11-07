@@ -75,15 +75,30 @@ export default function GuideVideoPlayer({
         </div>
       </div>
 
-      {/* Video Container with Overlaid Watermark Shield */}
-      <div className="relative aspect-video w-full bg-[#0b0e14] overflow-hidden">
+      {/* Video Container with Overlaid Watermark Shield & Anti-Popout Protection */}
+      <div className="relative w-full aspect-video min-h-[240px] sm:min-h-[320px] bg-[#0b0e14] overflow-hidden">
+        {/* Anti-Popout Shield: Physically covers Google Drive's top bar so users cannot pop out to Google Drive */}
+        {isGoogleDrive && (
+          <div className="absolute top-0 left-0 right-0 h-14 z-30 bg-gradient-to-b from-[#0b0e14] via-[#0b0e14]/85 to-transparent flex items-center justify-between px-3 sm:px-4 pointer-events-auto select-none border-b border-[#2a475e]/30">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-xs font-bold text-white tracking-wide truncate max-w-[200px] sm:max-w-none">
+                {title}
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 text-[9px] font-mono text-emerald-400 bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded uppercase">
+              <Shield className="w-2.5 h-2.5" /> Steamer DRM
+            </div>
+          </div>
+        )}
+
         {/* Anti-Screen Recording Dynamic Floating Watermark */}
         <div className="absolute inset-0 z-20 pointer-events-none flex flex-col justify-between p-6 opacity-[0.08] select-none">
           <div className="text-white font-mono text-xs tracking-widest text-left">
             {watermarkText}
           </div>
           <div className="text-white font-mono text-sm tracking-widest text-center transform -rotate-6">
-            PROTECTED STEAMER WALKTHROUGH • NO RECORDING
+            PROTECTED STEAMER WALKTHROUGH • NO SHARING
           </div>
           <div className="text-white font-mono text-xs tracking-widest text-right">
             {watermarkText}
@@ -94,7 +109,8 @@ export default function GuideVideoPlayer({
           <iframe
             src={embedUrl}
             title={title}
-            className="w-full h-full border-0"
+            className="w-full h-full border-0 touch-manipulation"
+            sandbox="allow-scripts allow-same-origin allow-forms"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowFullScreen
           />
@@ -115,9 +131,9 @@ export default function GuideVideoPlayer({
         )}
       </div>
 
-      <div className="px-5 py-2.5 bg-[#121922] border-t border-[#2a475e]/60 flex items-center justify-between text-[11px] text-[#8f98a0]">
-        <span>⚡ Watch the full walkthrough before performing your client setup.</span>
-        <span className="text-[#66c0f4]">Steam Protected Stream</span>
+      <div className="px-4 sm:px-5 py-2.5 bg-[#121922] border-t border-[#2a475e]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-[#8f98a0]">
+        <span>⚡ Tap video to play/pause • Rotate device for full-screen landscape view</span>
+        <span className="text-[#66c0f4] text-[10px] sm:text-[11px]">Direct download & pop-out disabled</span>
       </div>
     </div>
   );
