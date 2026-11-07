@@ -231,6 +231,12 @@ export default function DashboardPage() {
               </p>
             </div>
 
+            {windowMsg && (
+              <div className="p-3 bg-[#66c0f4]/10 border border-[#66c0f4]/40 rounded-lg text-xs text-[#66c0f4] text-center font-bold">
+                {windowMsg}
+              </div>
+            )}
+
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/catalog"
@@ -307,22 +313,11 @@ export default function DashboardPage() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 flex-shrink-0">
-                  <button
-                    onClick={handleRequestSetupWindow}
-                    disabled={requestingWindow}
-                    className="btn-steam-cta text-xs px-5 py-2.5 rounded font-black shadow-ctaGlow flex items-center gap-2 text-white"
-                  >
-                    <Clock className="w-4 h-4" /> Request Activation Window
-                  </button>
+                <div className="text-xs text-right text-emerald-300 bg-[#16202d] p-3 rounded-lg border border-emerald-500/30 flex-shrink-0">
+                  <p className="font-bold">One-Time Setup Window</p>
+                  <p className="text-[10px] text-[#8f98a0]">Active Session • Locks upon completion</p>
                 </div>
               </div>
-
-              {windowMsg && (
-                <div className="p-3 bg-[#66c0f4]/10 border border-[#66c0f4]/40 rounded-lg text-xs text-[#66c0f4] text-center font-bold">
-                  {windowMsg}
-                </div>
-              )}
 
               {/* Video Walkthrough Player (If configured by admin) */}
               {guide.videoUrl && (
