@@ -9,21 +9,14 @@ export default function OnboardingPage() {
   const router = useRouter();
 
   const steps = [
-    "I will wait for my setup window and will only log in when I am told to by admin.",
-    "I will log in once and turn on 'Remember my password' on my registered device.",
-    "I will download ONLY the games included in my active subscription plan.",
-    "When the download finishes, I will go to Steam → Go Offline BEFORE launching any game.",
-    "I will confirm in the app that I am now safely in Offline Mode to release the window.",
-    "I will NEVER click 'Go Online' or reconnect to the internet in Steam outside of a setup window.",
-    "I will not change any account detail (password, email, phone, profile name, or Steam Guard).",
-    "I will not add friends, join groups, or post on the Steam community/market/wallet.",
-    "I will use only my single registered device for playing these games.",
-    "I will play only the games in my plan and I will strictly NEVER share the login with anyone.",
-    "I will back up my own save files locally, as cloud saves are disabled in Offline Mode.",
-    "I have read and agree to follow all Renter Guidelines, Terms of Service, and Policies.",
+    "I understand all 245+ single-player PC games run 100% offline with permanent local saves on my PC.",
+    "I will follow the click-by-click Setup Guide walkthrough in my dashboard to configure titles in my personal library.",
+    "I understand this pass gives me direct, independent access on my PC with zero queues and zero account sharing.",
+    "I will keep my secret access link confidential to protect my personal dashboard and setup guide access.",
+    "I have access to dedicated 1-on-1 WhatsApp support (+91 99369 29997) if I ever need setup or troubleshooting assistance.",
   ];
 
-  const [checkedSteps, setCheckedSteps] = useState<boolean[]>(new Array(12).fill(false));
+  const [checkedSteps, setCheckedSteps] = useState<boolean[]>(new Array(5).fill(false));
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -68,13 +61,13 @@ export default function OnboardingPage() {
         <div className="border-b border-[#2a475e]/60 pb-4 space-y-2">
           <div className="flex items-center gap-2 text-[#66c0f4]">
             <BookOpen className="w-5 h-5" />
-            <span className="text-xs font-bold uppercase tracking-wider">Mandatory Pre-Flight Guide</span>
+            <span className="text-xs font-bold uppercase tracking-wider">Quick Start Setup Guide</span>
           </div>
           <h1 className="text-2xl font-black text-white">
-            RENTER ONBOARDING & GOLDEN OFFLINE RULES
+            WELCOME TO STEAMER ALL-ACCESS
           </h1>
           <p className="text-xs text-[#8f98a0] leading-relaxed">
-            Before your first setup window can be scheduled, please acknowledge each of the 12 golden operational rules below. Steamer is built on trust, and following these rules ensures everyone enjoys uninterrupted offline gaming.
+            Please review and confirm the 5 core operating points below before opening your personal Setup Guide and game vault.
           </p>
         </div>
 
@@ -85,7 +78,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* 12 Checklist Steps */}
+        {/* 5 Checklist Steps */}
         <div className="space-y-3">
           {steps.map((text, idx) => (
             <label
@@ -103,7 +96,7 @@ export default function OnboardingPage() {
                 className="mt-0.5 rounded border-[#2a475e] text-[#5ba32b] focus:ring-0 bg-[#171a21] w-4 h-4"
               />
               <span className="text-xs leading-relaxed">
-                <strong>Step {idx + 1}:</strong> {text}
+                <strong>Point {idx + 1}:</strong> {text}
               </span>
             </label>
           ))}
@@ -111,7 +104,7 @@ export default function OnboardingPage() {
 
         <div className="border-t border-[#2a475e]/60 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-xs text-[#8f98a0]">
-            {checkedSteps.filter(Boolean).length} of 12 steps confirmed
+            {checkedSteps.filter(Boolean).length} of 5 points confirmed
           </span>
 
           <button
@@ -119,11 +112,10 @@ export default function OnboardingPage() {
             disabled={!allChecked || submitting}
             className="w-full sm:w-auto btn-steam-cta px-6 py-2.5 rounded text-xs font-bold flex items-center justify-center gap-2 shadow-ctaGlow disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {submitting ? "Confirming..." : "Complete Onboarding"} <ArrowRight className="w-4 h-4" />
+            {submitting ? "Confirming..." : "Open Setup Guide"} <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </div>
     </div>
   );
 }
-

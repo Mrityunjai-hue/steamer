@@ -99,35 +99,35 @@ export default function AdminSettingsPage() {
     <div className="space-y-8 max-w-4xl">
       <div className="border-b border-[#2a475e]/60 pb-4">
         <h1 className="text-xl sm:text-2xl font-black text-white tracking-wide flex items-center gap-2">
-          <Settings className="w-6 h-6 text-[#66c0f4]" /> SYSTEM SETTINGS & CAPACITY CONTROLS
+          <Settings className="w-6 h-6 text-[#66c0f4]" /> SYSTEM SETTINGS & PLATFORM CONTROLS
         </h1>
         <p className="text-xs text-[#8f98a0]">
-          Configure UPI collection VPAs, contact channels, capacity limits, and emergency playbooks.
+          Configure UPI collection VPAs, contact channels, platform scale, and emergency broadcast playbooks.
         </p>
       </div>
 
-      {/* Account-Lost Playbook Emergency Card (Section 9) */}
+      {/* Emergency Store Maintenance Playbook */}
       <div className="bg-red-950/40 border border-red-500/60 rounded-xl p-6 space-y-4 shadow-xl">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-black uppercase tracking-wider text-red-300 flex items-center gap-2">
-            <ShieldAlert className="w-5 h-5 text-red-400" /> ACCOUNT-LOST EMERGENCY PLAYBOOK
+            <ShieldAlert className="w-5 h-5 text-red-400" /> STORE MAINTENANCE & BROADCAST PLAYBOOK
           </h3>
           <button
             onClick={handleTriggerPlaybook}
             className="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-2 rounded font-bold shadow-md"
           >
-            Trigger Playbook
+            Trigger Broadcast Playbook
           </button>
         </div>
         <p className="text-xs text-red-200/90 leading-relaxed">
-          If access to the business Steam account is restricted or revoked, one click immediately pauses all store onboarding, exports active renters, and generates ready-made WhatsApp broadcast links to notify renters under our refund policy.
+          If store maintenance or an emergency update is required, one click pauses new checkouts and generates ready-made WhatsApp broadcast links to notify active pass holders.
         </p>
 
         {playbookResult && (
           <div className="bg-[#171a21] border border-red-500/40 p-4 rounded-lg space-y-3 text-xs">
             <p className="font-bold text-white">{playbookResult.message}</p>
             <span className="text-[#8f98a0]">
-              Broadcast Task List ({playbookResult.broadcastList?.length || 0} Renters):
+              Broadcast Task List ({playbookResult.broadcastList?.length || 0} Pass Holders):
             </span>
             <div className="space-y-2 max-h-48 overflow-y-auto">
               {playbookResult.broadcastList?.map((r: any, idx: number) => (
@@ -212,7 +212,7 @@ export default function AdminSettingsPage() {
             </div>
 
             <div className="space-y-1">
-              <label className="font-bold text-white block">Admin WhatsApp Number (Credentials Relay)</label>
+              <label className="font-bold text-white block">Admin WhatsApp Number (Customer Support & Orders)</label>
               <input
                 type="text"
                 value={settings["admin_whatsapp"] || ""}
@@ -234,64 +234,64 @@ export default function AdminSettingsPage() {
           </div>
         </div>
 
-        {/* Platform Scale & Capacity Controls */}
+        {/* Platform Scale & Architecture Controls */}
         <div className="bg-[#171a21] border border-[#2a475e] rounded-xl p-6 space-y-4 shadow-panelGlow">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2a475e]/60 pb-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
-              <Users className="w-4 h-4 text-emerald-400" /> Platform Scale & Capacity Controls
+              <Users className="w-4 h-4 text-emerald-400" /> Platform Scale & Delivery Architecture
             </h3>
             <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded">
-              🟢 Unlimited Intake Enabled (No User Caps)
+              🟢 Unlimited Customer Access Active
             </span>
           </div>
 
           <div className="p-3 bg-[#16202d] border border-emerald-500/30 rounded text-xs text-[#c7d5e0] space-y-1">
             <p className="font-bold text-white flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Unlimited Customers Permitted
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Independent Offline PC Setup Guide
             </p>
             <p className="text-[11px] text-[#8f98a0]">
-              Because users receive the dedicated Setup Guide rather than sharing an active Steam account, the previous 8-user cap and monthly intake limits are disabled. Anyone can purchase and receive access immediately.
+              Users configure their games directly on their personal systems using the visual Setup Guide. There are no shared accounts, no login collisions, no queues, and no user limits.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div className="space-y-1">
-              <label className="font-bold text-white block">Max Active Concurrent Users (99999 = Unlimited)</label>
+              <label className="font-bold text-white block">Platform Model</label>
               <input
-                type="number"
-                value={settings["max_active_renters"] || "99999"}
-                onChange={(e) => handleChange("max_active_renters", e.target.value)}
-                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white font-mono"
+                type="text"
+                disabled
+                value="Independent PC Setup & Vault Access"
+                className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-emerald-400 font-bold"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="font-bold text-white block">Max New Users Intake / Month (99999 = Unlimited)</label>
+              <label className="font-bold text-white block">Intake Capacity</label>
               <input
-                type="number"
-                value={settings["max_new_renters_per_month"] || "99999"}
-                onChange={(e) => handleChange("max_new_renters_per_month", e.target.value)}
-                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white font-mono"
+                type="text"
+                disabled
+                value="Unlimited (No User Caps)"
+                className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-emerald-400 font-bold"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="font-bold text-white block">Max Setup Windows Scheduled / Day</label>
+              <label className="font-bold text-white block">Pass Pricing</label>
               <input
-                type="number"
-                value={settings["max_setup_windows_per_day"] || "50"}
-                onChange={(e) => handleChange("max_setup_windows_per_day", e.target.value)}
-                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white font-mono"
+                type="text"
+                disabled
+                value="Flat ₹300 (Lifetime Vault Access)"
+                className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white font-mono"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="font-bold text-white block">Setup Window Max Minutes (Default 180)</label>
+              <label className="font-bold text-white block">Catalog Scope</label>
               <input
-                type="number"
-                value={settings["setup_window_max_minutes"] || "180"}
-                onChange={(e) => handleChange("setup_window_max_minutes", e.target.value)}
-                className="w-full bg-[#16202d] border border-[#2a475e] rounded p-2 text-white font-mono"
+                type="text"
+                disabled
+                value="245+ Verified Single-Player Titles"
+                className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white font-mono"
               />
             </div>
           </div>

@@ -93,41 +93,32 @@ Support: [SUPPORT_EMAIL] · WhatsApp: [WHATSAPP_NUMBER] · Grievance Officer: [G
 
 # B. "READ BEFORE YOU BUY" DISCLOSURE AND TRUST PLEDGE
 
-*Shown on every plan page and at checkout. Each line has its own UNTICKED checkbox. Payment is blocked until all are ticked. Store the version and the answers.*
+*Shown on checkout and access pages. Each line has its own individual checkbox. Pass delivery requires all points to be acknowledged.*
 
-**Disclosure version 1.0**
+**Disclosure version 1.0 (Lifetime PC Setup Guide & Vault Access)**
 
-☐ **Offline only.** I understand every game must be played with Steam in **Offline Mode**. If I go online, I may log out other renters and break the rules.
+☐ **Offline Play:** I understand all games are downloaded/installed locally and played in **Offline Mode** with permanent local save files on my PC.
 
-☐ **No online features.** I understand online multiplayer, co-op needing a connection, cloud saves, leaderboards, purchases and Steam community features do **not** work.
+☐ **Personal PC Setup:** I will follow the visual, click-by-click walkthrough to configure the launcher tool and add titles directly to my library.
 
-☐ **Only my games.** I understand my plan covers only the games I chose, and I will not play any other game on the account.
+☐ **Zero Account Sharing or Queues:** I understand this pass gives me direct, independent access on my PC without waiting in queues or sharing logins with other users.
 
-☐ **Tags matter.** I have read the tag on each game I picked (Offline OK / Mixed / Not yet verified). I understand "Mixed" and "Not yet verified" games may not fully work offline.
+☐ **All-Access Vault (245+ Titles):** I understand my ₹300 pass unlocks access to all 245+ verified PC titles in the Steamer offline catalog.
 
-☐ **Extra launchers.** I understand some games need a separate launcher login (Ubisoft Connect, EA app or Rockstar Launcher) that will be shared with me on WhatsApp in the same way.
+☐ **System Compatibility:** I confirm my computer meets basic system requirements (Windows 10/11 64-bit with adequate disk space for game downloads).
 
-☐ **Setup windows.** I understand downloads and updates happen only during scheduled setup windows, and I may have to wait for my turn.
+☐ **No Online Multiplayer:** I understand that single-player offline gaming does not include live competitive multiplayer servers or online ranked leaderboards.
 
-☐ **One device.** I will use only the one device I register. Changing it needs approval.
+☐ **Direct WhatsApp Support:** I understand I have access to dedicated 1-on-1 assistance via WhatsApp for any installation or setup questions.
 
-☐ **Shared account.** I understand this is a shared third-party account and I do not own any game or key.
+☐ **Refund Guarantee:** If the setup guide fails to work on my compatible PC and support cannot resolve it within 48 hours, I am eligible for a full refund.
 
-☐ **Platform risk.** I understand Steam's rules restrict account sharing, the account **may be restricted or removed at any time**, and there is no guarantee of availability.
+☐ **One-Time Flat Payment:** I understand this is a one-time ₹300 INR payment for lifetime access, with zero auto-renewals or recurring monthly charges.
 
-☐ **Refund rules.** I have read the refund and credit rules in the Plan and Purchase Conditions.
+☐ **Terms and Fair-Play Pledge:** I have read and agree to the Terms of Service and Privacy Policy, and pledge to use the guide responsibly for personal gaming on my PC.
 
-☐ **Terms and Privacy.** I have read and accept the Terms of Service and Privacy Policy.
-
-☐ **Final:** *I understand and accept all of the above.*
-
-### TRUST PLEDGE (separate checkbox, required)
-☐ **"Steamer is built on trust. I will only play the games in my plan, I will keep Steam in Offline Mode, and I will never share the login. I understand that breaking this ends my access with no refund."**
-
-### Per-game acknowledgments (shown when relevant)
-- **Mixed:** "☐ This game is tagged Mixed. Only single-player may work offline."
-- **Not yet verified:** "☐ We have not yet tested this game offline. I accept the risk that it may not run."
-- **Extra launcher:** "☐ This game needs a separate launcher login which will be shared by WhatsApp like the Steam login."
+### FAIR-PLAY TRUST PLEDGE (Required)
+☐ **"Steamer is built on honesty and transparent gamer support. I will configure titles on my personal PC for offline gaming and respect the platform terms. I understand breaking this voids my support and access."**
 
 ---
 
@@ -182,46 +173,28 @@ Coupons are single-use unless stated, cannot be combined, and have no cash value
 
 ---
 
-# D. RENTER GUIDELINES AND ONBOARDING WIZARD
+# D. OFFLINE SETUP & GAMING GUIDELINES
 
 **Guidelines version 1.0**
 
-## D1. The golden rules
-1. **Go Offline before you play.** In Steam: *Steam → Go Offline*. Do this BEFORE launching any game.
-2. **Never click "Go Online"** unless we tell you to during your setup window.
-3. **Play only your games.** Everything else on the account is off-limits.
-4. **Never change the account.** No password, email, phone, profile name, avatar, privacy or Steam Guard changes.
-5. **No social or money features.** No friends, groups, chat, comments, reviews, market, trading, wallet, gifts or purchases.
-6. **One person, one device.** No logging in anywhere else, no remote play, no sharing.
-7. **Keep the login secret.** Never post it, forward it, or screenshot it.
-8. **Don't cheat or mod.** Anti-cheat actions can cause bans on the account.
-9. **Back up your saves.** Offline mode means cloud saves are off. Back up your save files on your own device.
-10. **Ask us** if anything looks strange.
+## D1. The Core Guidelines
+1. **Offline & Single-Player:** All games are downloaded to your personal computer and configured for offline play.
+2. **Follow the Visual Walkthrough:** Follow the step-by-step Setup Guide provided in your dashboard.
+3. **Local Save Files:** Save files are stored directly on your personal computer; keep local backups of your game progress.
+4. **Independent Personal PC Use:** Access is for your own system; do not redistribute guide materials or files.
+5. **Direct Support:** Contact our team via WhatsApp for any 1-on-1 configuration or troubleshooting questions.
 
-## D2. Onboarding wizard steps (each step has a tick box)
-1. ☐ I will wait for my setup window and will only log in when I am told to.
-2. ☐ I will log in once and turn on **"Remember my password"**.
-3. ☐ I will download **only** the games in my plan.
-4. ☐ When the download finishes, I will go to *Steam → Go Offline* **before** launching any game.
-5. ☐ I will confirm in the app that I am now in Offline Mode.
-6. ☐ I will never click Go Online or reconnect, except in a setup window.
-7. ☐ I will not change any account detail or use any social, market or wallet feature.
-8. ☐ I will not add friends, join groups or post on the Steam community.
-9. ☐ I will use only my registered device.
-10. ☐ I will play only the games in my plan and I will not share the login.
-11. ☐ I will back up my own save files.
-12. ☐ I have read the Terms, Guidelines and Privacy Policy.
+## D2. Quick-Start Onboarding Steps
+1. ☐ I understand all 245+ single-player PC games run 100% offline with permanent local saves on my PC.
+2. ☐ I will follow the click-by-click Setup Guide walkthrough in my dashboard to configure titles in my personal library.
+3. ☐ I understand this pass gives me direct, independent access on my PC with zero queues and zero account sharing.
+4. ☐ I will keep my secret access link confidential to protect my personal dashboard and setup guide access.
+5. ☐ I have access to dedicated 1-on-1 WhatsApp support (+91 99369 29997) if I ever need setup or troubleshooting assistance.
 
-## D3. Troubleshooting (shown in Help Center)
-- **Steam asks me to log in again:** don't enter anything; contact us. Reconnecting may be needed in a new setup window.
-- **Game says online connection required:** close it, check your tag, and open a ticket. Do not go online.
-- **Game won't start offline:** verify game files only while online inside a setup window; otherwise open a ticket.
-- **Extra launcher asks for login:** open a ticket; we will share the details by WhatsApp. Do not create a new launcher account.
-- **I accidentally went online:** switch back to Offline Mode immediately and message us. Honest reports are treated more kindly than hidden mistakes.
-- **Steam Guard email/code:** never share or post it. We will send what's needed on WhatsApp.
-
-## D4. Consequences
-Breaking the guidelines leads to the strike steps in the Terms (section 12).
+## D3. Troubleshooting & Support
+- **Setup roadblock:** Message admin on WhatsApp (+91 99369 29997) or email steamer.support365@gmail.com.
+- **Hardware/driver support:** Verify system requirements before installing larger 3D titles.
+- **Refund Guarantee:** If our team cannot successfully configure the guide on your compatible system within 48 hours, full refund is guaranteed.
 
 ---
 

@@ -25,7 +25,7 @@ export default async function LegalPage({
     { slug: "terms", title: "Terms of Service" },
     { slug: "disclosure", title: "Pre-Purchase Disclosure & Trust Pledge" },
     { slug: "plan-conditions", title: "Plan & Purchase Conditions" },
-    { slug: "guidelines", title: "Renter Guidelines (Offline Rules)" },
+    { slug: "guidelines", title: "Offline Setup & Gaming Guidelines" },
     { slug: "community-rules", title: "Community Rules" },
     { slug: "privacy", title: "Privacy Policy" },
   ];

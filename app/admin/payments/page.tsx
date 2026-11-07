@@ -60,7 +60,7 @@ export default function AdminPaymentsPage() {
 
       const data = await res.json();
       if (res.ok) {
-        alert(data.message || "Payment verified and 30-day plan activated!");
+        alert(data.message || "Payment verified and lifetime access activated!");
         fetchPayments();
       } else {
         alert(data.error || "Failed to verify payment");
@@ -121,7 +121,7 @@ export default function AdminPaymentsPage() {
             <CreditCard className="w-6 h-6 text-[#66c0f4]" /> UPI PAYMENTS VERIFICATION QUEUE
           </h1>
           <p className="text-xs text-[#8f98a0]">
-            Review direct UPI bank deposits and activate 30-day renter subscriptions.
+            Review direct UPI bank deposits and activate lifetime setup access passes.
           </p>
         </div>
 

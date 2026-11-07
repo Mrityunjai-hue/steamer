@@ -12,7 +12,7 @@ export async function GET() {
     const settings = await prisma.systemSetting.findMany();
     const settingsMap = Object.fromEntries(settings.map((s) => [s.key, s.value]));
 
-    const totalSlots = parseInt(settingsMap["max_active_renters"] || "8", 10);
+    const totalSlots = 99999;
     const onboardingPaused = settingsMap["onboarding_paused"] === "true";
 
     // Active subscriptions count

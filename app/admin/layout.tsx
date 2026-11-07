@@ -66,11 +66,8 @@ export default function AdminLayout({
   const tabs = [
     { name: "Overview", href: "/admin/dashboard", icon: LayoutDashboard },
     { name: "UPI Payments", href: "/admin/payments", icon: CreditCard },
-    { name: "Renter Registry", href: "/admin/renters", icon: Users },
-    { name: "Setup Windows", href: "/admin/setup-windows", icon: Clock },
-    { name: "Verifications", href: "/admin/verifications", icon: CheckCircle2 },
+    { name: "Customer Roster", href: "/admin/renters", icon: Users },
     { name: "Setup Guide Editor", href: "/admin/guide", icon: BookOpen },
-    { name: "Strikes & Bans", href: "/admin/strikes", icon: AlertTriangle },
     { name: "Catalog", href: "/admin/catalog", icon: FolderKanban },
     { name: "Settings & Playbook", href: "/admin/settings", icon: Settings },
     { name: "Audit Log", href: "/admin/audit", icon: History },

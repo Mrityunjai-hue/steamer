@@ -323,17 +323,14 @@ Support: [SUPPORT_EMAIL] · WhatsApp: [WHATSAPP_NUMBER] · Grievance Officer: [G
     {
       slug: "guidelines",
       version: "1.0",
-      title: "Renter Guidelines & Onboarding",
+      title: "Offline Setup & Gaming Guidelines",
       effectiveDate: brandConfig.effectiveDate,
       contentMarkdown: hydrateLegalText(`
-1. Go Offline before you play (Steam -> Go Offline).
-2. Never click "Go Online" outside of an authorized setup window.
-3. Play only your chosen games.
-4. Never change account details (password, email, Steam Guard, profile).
-5. No social, trading, or market features.
-6. One person, one registered device.
-7. Keep credentials strictly confidential.
-8. Back up your save files locally.
+1. **Offline & Single-Player:** All games are configured for offline play with permanent local save files on your PC.
+2. **Follow the Visual Walkthrough:** Follow the step-by-step Setup Guide provided in your dashboard.
+3. **Local Save Files:** Save files are stored directly on your personal computer; keep local backups of your game progress.
+4. **Independent Personal PC Use:** Access is for your own system; do not redistribute guide materials or files.
+5. **Direct Support:** Contact our team via WhatsApp for any 1-on-1 configuration or troubleshooting questions.
 `),
     },
     {
@@ -390,7 +387,7 @@ Images are served directly from Valve's public CDN.
         posts: {
           create: {
             authorId: admin.id,
-            content: "Welcome to Steamer! Please review our Renter Guidelines and always switch Steam to Offline Mode before launching your games. Enjoy gaming!",
+            content: "Welcome to Steamer! Please review our Offline Setup Guidelines and follow the click-by-click walkthrough in your dashboard. Enjoy uninterrupted offline gaming!",
           },
         },
       },
@@ -402,13 +399,13 @@ Images are served directly from Valve's public CDN.
       create: {
         id: "seed-thread-setup-help-1",
         category: "SETUP_HELP",
-        title: "How to properly set Steam to Offline Mode on Windows",
+        title: "How to configure single-player titles using the Setup Guide",
         authorId: admin.id,
         isPinned: true,
         posts: {
           create: {
             authorId: admin.id,
-            content: "Step 1: Finish downloading your games during your setup window.\\nStep 2: Click 'Steam' in the top left menu.\\nStep 3: Click 'Go Offline...'.\\nStep 4: Click 'Restart in Offline Mode'. Now you are safe to play anytime!",
+            content: "Step 1: Open your personal Setup Guide in your dashboard.\\nStep 2: Follow the visual walkthrough to configure the launcher.\\nStep 3: Fetch your favorite games directly into your library.\\nStep 4: Download and enjoy your games anytime with local saves!",
           },
         },
       },

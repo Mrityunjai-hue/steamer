@@ -24,7 +24,7 @@ export default function Footer() {
               <span className="text-lg font-black tracking-widest text-white">STEAMER</span>
             </div>
             <p className="text-[#8f98a0] leading-relaxed">
-              {brandConfig.tagline} Fair, time-limited rental access for offline story immersion.
+              {brandConfig.tagline} Complete PC setup guide and lifetime vault access for offline single-player gaming.
             </p>
             <div className="flex items-center gap-2 text-[#5ba32b] bg-[#5ba32b]/10 border border-[#5ba32b]/30 px-3 py-1.5 rounded text-[11px] font-semibold w-fit">
               <ShieldCheck className="w-4 h-4" />
@@ -87,7 +87,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/legal/guidelines" className="hover:text-[#66c0f4] transition-colors">
-                  Renter Offline Guidelines
+                  Offline Setup & Gaming Guidelines
                 </Link>
               </li>
               <li>

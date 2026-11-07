@@ -135,7 +135,7 @@ export default function CommunityPage() {
             COMMUNITY & OFFLINE HUB
           </h1>
           <p className="text-xs sm:text-sm text-[#8f98a0]">
-            Connect with verified renters, share offline tips, and discuss your favorite games.
+            Connect with verified gamers, share offline tips, and discuss your favorite games.
           </p>
         </div>
 

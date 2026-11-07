@@ -41,10 +41,10 @@ export default function AdminRentersPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#2a475e]/60 pb-4">
         <div>
           <h1 className="text-xl sm:text-2xl font-black text-white tracking-wide flex items-center gap-2">
-            <Users className="w-6 h-6 text-[#66c0f4]" /> RENTER REGISTRY (AUDIT & ACCESS ROSTER)
+            <Users className="w-6 h-6 text-[#66c0f4]" /> CUSTOMER ACCESS ROSTER (PASS HOLDERS)
           </h1>
           <p className="text-xs text-[#8f98a0]">
-            Complete record of all subscribers, registered devices, games held, and days left.
+            Complete record of all pass holders, contact details, and lifetime vault access grants.
           </p>
         </div>
 

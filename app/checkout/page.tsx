@@ -37,7 +37,6 @@ export default function CheckoutPage() {
   const [holdToken, setHoldToken] = useState<string | null>(null);
   const [holdExpiresAt, setHoldExpiresAt] = useState<Date | null>(null);
   const [minutesRemaining, setMinutesRemaining] = useState<number>(30);
-  const [isFull, setIsFull] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -244,30 +243,6 @@ export default function CheckoutPage() {
     }
   };
 
-  // Full / Waitlist view
-  if (isFull) {
-    return (
-      <div className="max-w-2xl mx-auto px-4 py-16 text-center space-y-6">
-        <div className="w-16 h-16 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto">
-          <Clock className="w-8 h-8" />
-        </div>
-        <h1 className="text-2xl sm:text-3xl font-black text-white">ALL RENTAL SLOTS ARE FULL</h1>
-        <p className="text-sm text-[#8f98a0] leading-relaxed">
-          To maintain strict platform stability and avoid platform restrictions, Steamer caps concurrent active renters. All slots are currently occupied.
-        </p>
-        <button
-          onClick={async () => {
-            const res = await fetch("/api/waitlist/join", { method: "POST" });
-            const data = await res.json();
-            alert(data.message || "Added to waitlist!");
-          }}
-          className="btn-steam-cta px-6 py-3 rounded text-sm font-bold shadow-ctaGlow"
-        >
-          Join Priority Waitlist (FCFS)
-        </button>
-      </div>
-    );
-  }
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
