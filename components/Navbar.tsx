@@ -56,6 +56,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "STORE", href: "/" },
     { name: "CATALOG", href: "/catalog" },
+    { name: "REVIEWS", href: "/#reviews" },
     { name: "LIBRARY", href: "/dashboard" },
     { name: "COMMUNITY", href: "/community" },
     { name: "SUPPORT", href: "/support" },

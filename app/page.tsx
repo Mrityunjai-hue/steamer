@@ -3,6 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import GameCard from "@/components/GameCard";
 import FeaturedHeroCarousel from "@/components/FeaturedHeroCarousel";
+import ReviewsSection from "@/components/ReviewsSection";
 import {
   Flame,
   Star,
@@ -311,7 +312,7 @@ export default async function HomePage() {
                 <span className="text-emerald-400 font-bold block">Steamer All-Access Pass</span>
                 <p className="text-emerald-300 font-extrabold text-sm">₹300 One-Time Flat</p>
                 <p className="text-[11px] text-[#c7d5e0]">
-                  Your PC, offline forever, 265+ titles, and 48-Hour Money-Back Guarantee.
+                  Directly to your Steam account, offline forever, 265+ titles, and 48-Hour Money-Back Guarantee.
                 </p>
               </div>
             </div>
@@ -577,14 +578,17 @@ export default async function HomePage() {
         </section>
       </div>
 
+      {/* 3.5. Verified Gamer Reviews & Proof */}
+      <ReviewsSection />
+
       {/* 4. Bottom CTA Banner (Clean Steam Store Style) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-6 sm:p-8 text-center space-y-4 shadow-xl">
           <h2 className="text-xl sm:text-3xl font-black text-white tracking-wide">
-            Ready to Play Over 265+ PC Games On Your Own System?
+            Ready to Play Over 265+ PC Games Directly on Your Steam Account?
           </h2>
           <p className="text-xs sm:text-sm text-[#c7d5e0] max-w-2xl mx-auto leading-relaxed">
-            Get the full setup walkthrough, complete game library access, and play forever without paying thousands or fighting for shared accounts.
+            Get the full setup walkthrough, complete game library access, and play directly to your Steam account forever without paying thousands or fighting for shared accounts.
           </p>
           <div className="pt-2">
             <Link

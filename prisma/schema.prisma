@@ -517,3 +517,18 @@ model SystemSetting {
   description String?
   updatedAt   DateTime @updatedAt
 }
+
+model Review {
+  id          String   @id @default(uuid())
+  userName    String
+  userEmail   String?
+  rating      Int      @default(5)
+  title       String?
+  comment     String
+  gameTitle   String?
+  imageUrl    String?
+  isVerified  Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+}

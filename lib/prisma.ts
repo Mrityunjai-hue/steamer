@@ -31,18 +31,7 @@ function getDatabaseUrl(): string {
       }
     });
 
-    let shouldCopy = true;
-    if (fs.existsSync(tmpDbPath) && sourcePath) {
-      try {
-        const srcStat = fs.statSync(sourcePath);
-        const tmpStat = fs.statSync(tmpDbPath);
-        if (srcStat.size === tmpStat.size && srcStat.mtimeMs <= tmpStat.mtimeMs) {
-          shouldCopy = false;
-        }
-      } catch {
-        shouldCopy = true;
-      }
-    }
+    const shouldCopy = !fs.existsSync(tmpDbPath);
 
     if (shouldCopy && sourcePath) {
       try {

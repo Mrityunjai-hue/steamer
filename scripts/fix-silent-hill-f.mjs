@@ -56,3 +56,4 @@ async function updateSilentHillF() {
 updateSilentHillF()
   .catch(console.error)
   .finally(() => prisma.$disconnect());
+

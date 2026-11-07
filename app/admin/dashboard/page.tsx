@@ -37,17 +37,28 @@ export default function AdminDashboardPage() {
     accessUrl?: string | null;
   } | null>(null);
 
-  const fetchDashboard = () => {
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchDashboard = (isManual = false) => {
+    if (isManual) setRefreshing(true);
     fetch("/api/admin/dashboard")
       .then((res) => (res.ok ? res.json() : null))
       .then((resData) => {
         if (resData) setData(resData);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        if (isManual) setTimeout(() => setRefreshing(false), 500);
+      });
   };
 
   useEffect(() => {
     fetchDashboard();
+    // Auto-refresh dashboard stats and pending orders every 10 seconds
+    const interval = setInterval(() => {
+      fetchDashboard();
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleToggleOnboarding = async (newState: boolean) => {
@@ -144,16 +155,27 @@ export default function AdminDashboardPage() {
           </div>
         </div>
 
-        <button
-          onClick={() => handleToggleOnboarding(!capacity.onboardingPaused)}
-          className={`px-4 py-2 rounded text-xs font-bold transition-all shadow-md ${
-            capacity.onboardingPaused
-              ? "bg-[#5ba32b] hover:bg-[#68b831] text-white"
-              : "bg-red-600 hover:bg-red-700 text-white"
-          }`}
-        >
-          {capacity.onboardingPaused ? "Resume Store Intake" : "Pause Store Intake"}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => fetchDashboard(true)}
+            disabled={refreshing}
+            className="px-3.5 py-2 rounded text-xs font-bold bg-[#16202d] hover:bg-[#2a475e] text-white border border-[#2a475e] flex items-center gap-2 transition-all shadow-sm"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 text-[#66c0f4] ${refreshing ? "animate-spin" : ""}`} />
+            <span>{refreshing ? "Refreshing..." : "Refresh Stats"}</span>
+          </button>
+
+          <button
+            onClick={() => handleToggleOnboarding(!capacity.onboardingPaused)}
+            className={`px-4 py-2 rounded text-xs font-bold transition-all shadow-md ${
+              capacity.onboardingPaused
+                ? "bg-[#5ba32b] hover:bg-[#68b831] text-white"
+                : "bg-red-600 hover:bg-red-700 text-white"
+            }`}
+          >
+            {capacity.onboardingPaused ? "Resume Store Intake" : "Pause Store Intake"}
+          </button>
+        </div>
       </div>
 
       {/* Top KPI Metric Cards */}
@@ -319,7 +341,7 @@ export default function AdminDashboardPage() {
           </div>
 
           <p className="text-xs text-[#8f98a0] leading-relaxed">
-            The platform operates on the modern <strong>Independent PC Setup & Vault Guide</strong> framework. Users configure their games directly on their own systems using the guided walkthrough.
+            The platform operates on the modern <strong>Independent PC Setup & Vault Guide</strong> framework. Users configure their games directly on their Steam accounts using the guided walkthrough.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">

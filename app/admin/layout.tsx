@@ -34,7 +34,6 @@ export default function AdminLayout({
           setIsAdmin(true);
         } else {
           setIsAdmin(false);
-          window.location.href = "/auth/login";
         }
       })
       .catch(() => setIsAdmin(false));

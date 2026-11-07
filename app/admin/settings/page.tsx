@@ -250,7 +250,7 @@ export default function AdminSettingsPage() {
               <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Independent Offline PC Setup Guide
             </p>
             <p className="text-[11px] text-[#8f98a0]">
-              Users configure their games directly on their personal systems using the visual Setup Guide. There are no shared accounts, no login collisions, no queues, and no user limits.
+              Users configure their games directly on their Steam accounts using the visual Setup Guide. There are no shared accounts, no login collisions, no queues, and no user limits.
             </p>
           </div>
 

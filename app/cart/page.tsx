@@ -81,7 +81,7 @@ export default function CartPage() {
                 Complete PC Setup Guide & 265+ Titles Vault
               </h2>
               <p className="text-xs sm:text-sm text-[#c7d5e0] leading-relaxed">
-                Stop paying thousands for individual titles or dealing with shared accounts. Get the ultimate, step-by-step guide to unlocking and playing premium PC games forever on your own system.
+                Stop paying thousands for individual titles or dealing with shared accounts. Get the ultimate, step-by-step guide to unlocking and playing premium PC games forever directly on your Steam account.
               </p>
             </div>
 
@@ -214,7 +214,7 @@ export default function CartPage() {
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> What You Get:
               </p>
               <p>• The Complete Setup Guide (under 10 mins)</p>
-              <p>• No account sharing · Play on your own PC</p>
+              <p>• No account sharing · Directly on your Steam account</p>
               <p>• Full offline & local saves support</p>
               <p>• Direct UPI payment with instant admin verification</p>
             </div>

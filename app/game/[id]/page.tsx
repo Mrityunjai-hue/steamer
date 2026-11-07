@@ -190,7 +190,7 @@ export default async function GameDetailPage({
               <ul className="text-[11px] text-[#8f98a0] space-y-1">
                 <li>• Complete Setup Guide (under 10 mins)</li>
                 <li>• Play <strong>{game.title}</strong> + 245 more games</li>
-                <li>• No account sharing · Play on your own PC</li>
+                <li>• No account sharing · Directly on your Steam account</li>
                 <li>• Offline & local saves with lifetime updates</li>
               </ul>
             </div>
@@ -212,7 +212,7 @@ export default async function GameDetailPage({
             </div>
 
             <div className="text-[11px] text-[#8f98a0]/80 space-y-1 border-t border-[#2a475e]/40 pt-4">
-              <p>✓ Play directly on your own system</p>
+              <p>✓ Play directly on your Steam account</p>
               <p>✓ One-time flat payment via UPI</p>
               <p>✓ Admin verification & instant guide unlock</p>
             </div>

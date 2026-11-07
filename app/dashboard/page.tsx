@@ -298,7 +298,7 @@ export default function DashboardPage() {
               Unlock the Complete PC Setup Guide
             </h2>
             <p className="text-sm text-[#8f98a0] max-w-lg mx-auto leading-relaxed">
-              Get the ultimate, step-by-step instructions to unlock and play 265+ premium PC games on your own system forever with zero account conflicts.
+              Get the ultimate, step-by-step instructions to unlock and play 265+ premium PC games directly on your Steam account forever with zero account conflicts.
             </p>
           </div>
 

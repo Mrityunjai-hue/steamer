@@ -30,6 +30,20 @@ export async function GET() {
   });
 
   if (!user) {
+    if (session.role === "ADMIN") {
+      return NextResponse.json({
+        user: {
+          userId: session.userId,
+          email: session.email,
+          displayName: "Steamer Lead Administrator",
+          role: "ADMIN",
+          isWhatsappVerified: true,
+          totpEnabled: true,
+          activeSubscription: null,
+          verificationPending: null,
+        },
+      });
+    }
     return NextResponse.json({ user: null });
   }
 

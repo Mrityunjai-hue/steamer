@@ -20,21 +20,31 @@ import {
 export default function AdminRentersPage() {
   const [registry, setRegistry] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("ALL");
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
-  const fetchRegistry = () => {
+  const fetchRegistry = (isManual = false) => {
+    if (isManual) setRefreshing(true);
     fetch(`/api/admin/renters?search=${encodeURIComponent(search)}`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (data?.registry) setRegistry(data.registry);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        if (isManual) setTimeout(() => setRefreshing(false), 500);
+      });
   };
 
   useEffect(() => {
     fetchRegistry();
+    // Auto-refresh roster every 10 seconds for new registrations
+    const interval = setInterval(() => {
+      fetchRegistry();
+    }, 10000);
+    return () => clearInterval(interval);
   }, [search]);
 
   const handleAction = async (userId: string, action: string) => {
@@ -76,13 +86,29 @@ export default function AdminRentersPage() {
           </p>
         </div>
 
-        <a
-          href="/api/admin/renters?format=csv"
-          download
-          className="btn-steam-cta text-xs px-4 py-2 rounded font-bold flex items-center gap-1.5 shadow-sm"
-        >
-          <Download className="w-4 h-4" /> Export Registry (CSV)
-        </a>
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-1.5 text-[11px] text-[#5ba32b] bg-[#5ba32b]/10 border border-[#5ba32b]/30 px-2.5 py-1 rounded">
+            <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
+            <span>Auto-Sync (10s)</span>
+          </div>
+
+          <button
+            onClick={() => fetchRegistry(true)}
+            disabled={refreshing}
+            className="px-3.5 py-2 rounded text-xs font-bold bg-[#16202d] hover:bg-[#2a475e] text-white border border-[#2a475e] flex items-center gap-2 transition-all shadow-sm"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 text-[#66c0f4] ${refreshing ? "animate-spin" : ""}`} />
+            <span>{refreshing ? "Refreshing..." : "Refresh Roster"}</span>
+          </button>
+
+          <a
+            href="/api/admin/renters?format=csv"
+            download
+            className="btn-steam-cta text-xs px-4 py-2 rounded font-bold flex items-center gap-1.5 shadow-sm"
+          >
+            <Download className="w-4 h-4" /> Export Registry (CSV)
+          </a>
+        </div>
       </div>
 
       {/* Search & Status Filters */}
