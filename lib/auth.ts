@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { prisma } from "./prisma";
+import { syncCloudToDatabase } from "./cloud-sync";
 
 type NextRequest = any;
 
@@ -70,6 +71,25 @@ export async function getSession(): Promise<SessionPayload | null> {
         where: { email: payload.email.toLowerCase().trim() },
         select: { id: true, email: true, role: true },
       });
+    }
+
+    // If missing from this container, sync from persistent cloud vault
+    if (!user) {
+      try {
+        await syncCloudToDatabase();
+        user = await prisma.user.findUnique({
+          where: { id: payload.userId },
+          select: { id: true, email: true, role: true },
+        });
+        if (!user && payload.email) {
+          user = await prisma.user.findUnique({
+            where: { email: payload.email.toLowerCase().trim() },
+            select: { id: true, email: true, role: true },
+          });
+        }
+      } catch (syncErr) {
+        console.warn("Cloud sync non-fatal error in getSession:", syncErr);
+      }
     }
 
     if (!user && payload.role === "ADMIN") {

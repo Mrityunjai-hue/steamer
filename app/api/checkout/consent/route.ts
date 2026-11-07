@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { registerUserInCloud } from "@/lib/cloud-sync";
 
 const consentSchema = z.object({
   checkboxes: z.record(z.boolean()).nullable().optional(),
@@ -69,6 +70,18 @@ export async function POST(req: NextRequest) {
             },
           },
         });
+
+        // Sync new buyer to cloud vault
+        try {
+          await registerUserInCloud({
+            id: user.id,
+            email: cleanEmail,
+            passwordHash: "",
+            role: "GUEST_RENTER",
+            whatsappNumber: guestPhone?.trim() || "",
+            displayName: guestName?.trim() || cleanEmail.split("@")[0] || "Steamer Buyer",
+          });
+        } catch {}
       } else if (guestPhone?.trim() && !user.whatsappNumber) {
         await prisma.user.update({
           where: { id: user.id },

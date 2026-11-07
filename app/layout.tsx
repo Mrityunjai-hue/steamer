@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
 import LiveSupportWidget from "@/components/LiveSupportWidget";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
+import ViewportResetManager from "@/components/ViewportResetManager";
 import { brandConfig } from "@/config/brand";
 import { getAppUrl } from "@/lib/url";
 
@@ -43,6 +44,7 @@ export default function RootLayout({
         <MobileNav />
         <LiveSupportWidget />
         <CookieConsentBanner />
+        <ViewportResetManager />
       </body>
     </html>
   );
