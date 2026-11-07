@@ -101,8 +101,14 @@ export async function GET(
     let startedAtDate: Date = new Date();
 
     if (isVerified) {
+      // Find duration setting or default to 45 minutes
+      const durationSetting = await prisma.systemSetting.findUnique({
+        where: { key: "setup_window_duration_minutes" },
+      });
+      const durationMinutes = durationSetting?.value ? parseInt(durationSetting.value, 10) : 45;
+
       // Find subscription for user
-      const subscription = await prisma.subscription.findFirst({
+      let subscription = await prisma.subscription.findFirst({
         where: {
           OR: [{ orderId: order.orderId }, { userId: order.userId }],
         },
@@ -117,14 +123,24 @@ export async function GET(
         orderBy: { createdAt: "desc" },
       });
 
-      if (!setupWindow && subscription) {
-        // Read duration setting or default to 45 minutes
-        const durationSetting = await prisma.systemSetting.findUnique({
-          where: { key: "setup_window_duration_minutes" },
-        });
-        const durationMinutes = durationSetting?.value ? parseInt(durationSetting.value, 10) : 45;
+      // Case A: No setup window exists yet
+      if (!setupWindow) {
         startedAtDate = new Date();
         expiresAtDate = new Date(startedAtDate.getTime() + durationMinutes * 60 * 1000);
+
+        if (!subscription) {
+          subscription = await prisma.subscription.create({
+            data: {
+              userId: order.userId,
+              orderId: order.orderId,
+              type: "ALL_ACCESS",
+              priceINR: order.amount,
+              startDate: startedAtDate,
+              endDate: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+              status: "ACTIVE",
+            },
+          });
+        }
 
         setupWindow = await prisma.setupWindow.create({
           data: {
@@ -137,6 +153,22 @@ export async function GET(
         });
       }
 
+      // Case B: Setup window exists but expiresAt was not set yet (or was QUEUED)
+      if (setupWindow && !setupWindow.expiresAt) {
+        startedAtDate = setupWindow.startedAt || new Date();
+        expiresAtDate = new Date(startedAtDate.getTime() + durationMinutes * 60 * 1000);
+
+        setupWindow = await prisma.setupWindow.update({
+          where: { id: setupWindow.id },
+          data: {
+            status: "ACTIVE",
+            startedAt: startedAtDate,
+            expiresAt: expiresAtDate,
+          },
+        });
+      }
+
+      // Case C: Active window with persisted expiresAt
       if (setupWindow && setupWindow.expiresAt) {
         expiresAtDate = new Date(setupWindow.expiresAt);
         startedAtDate = setupWindow.startedAt ? new Date(setupWindow.startedAt) : new Date(setupWindow.createdAt);

@@ -36,7 +36,16 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
   const [completing, setCompleting] = useState(false);
   const [completeSuccess, setCompleteSuccess] = useState(false);
   const [showNavLockModal, setShowNavLockModal] = useState(false);
-  const [remainingTime, setRemainingTime] = useState<number | null>(null);
+  const [remainingTime, setRemainingTime] = useState<number | null>(() => {
+    if (typeof window !== "undefined") {
+      const cached = localStorage.getItem(`steamer_setup_expires_${orderId}`);
+      if (cached) {
+        const diff = Math.max(0, Math.floor((new Date(cached).getTime() - Date.now()) / 1000));
+        return diff;
+      }
+    }
+    return null;
+  });
 
   // Set password state for guest buyers
   const [password, setPassword] = useState("");
@@ -49,7 +58,13 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
       const json = await res.json();
       if (res.ok) {
         setData(json);
-        if (json.remainingSeconds !== undefined) {
+        if (json.expiresAt) {
+          if (typeof window !== "undefined") {
+            localStorage.setItem(`steamer_setup_expires_${orderId}`, json.expiresAt);
+          }
+          const diff = Math.max(0, Math.floor((new Date(json.expiresAt).getTime() - Date.now()) / 1000));
+          setRemainingTime(diff);
+        } else if (json.remainingSeconds !== undefined) {
           setRemainingTime(json.remainingSeconds);
         }
       } else {

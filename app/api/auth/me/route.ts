@@ -52,6 +52,35 @@ export async function GET() {
   }
 
   const activeSub = user.subscriptions[0] || null;
+  let latestWindow = user.setupWindows[0] || null;
+
+  // Persist setup window timer if activeSub exists and window timer is uninitialized
+  if (activeSub) {
+    if (!latestWindow) {
+      const startedAt = new Date();
+      const expiresAt = new Date(startedAt.getTime() + 45 * 60 * 1000);
+      latestWindow = await prisma.setupWindow.create({
+        data: {
+          userId: user.id,
+          subscriptionId: activeSub.id,
+          status: "ACTIVE",
+          startedAt,
+          expiresAt,
+        },
+      });
+    } else if (!latestWindow.expiresAt && latestWindow.status !== "COMPLETED") {
+      const startedAt = latestWindow.startedAt || new Date();
+      const expiresAt = new Date(startedAt.getTime() + 45 * 60 * 1000);
+      latestWindow = await prisma.setupWindow.update({
+        where: { id: latestWindow.id },
+        data: {
+          status: "ACTIVE",
+          startedAt,
+          expiresAt,
+        },
+      });
+    }
+  }
 
   return NextResponse.json({
     user: {
@@ -79,13 +108,13 @@ export async function GET() {
           }
         : null,
       verificationPending: !user.isWhatsappVerified ? user.contactVerifications[0] : null,
-      latestSetupWindow: user.setupWindows[0]
+      latestSetupWindow: latestWindow
         ? {
-            id: user.setupWindows[0].id,
-            status: user.setupWindows[0].status,
-            expiresAt: user.setupWindows[0].expiresAt,
-            startedAt: user.setupWindows[0].startedAt,
-            offlineConfirmed: user.setupWindows[0].offlineConfirmed,
+            id: latestWindow.id,
+            status: latestWindow.status,
+            expiresAt: latestWindow.expiresAt,
+            startedAt: latestWindow.startedAt,
+            offlineConfirmed: latestWindow.offlineConfirmed,
           }
         : null,
     },

@@ -35,7 +35,16 @@ export default function DashboardPage() {
   const [completing, setCompleting] = useState(false);
   const [completeSuccess, setCompleteSuccess] = useState(false);
   const [showNavLockModal, setShowNavLockModal] = useState(false);
-  const [remainingTime, setRemainingTime] = useState<number | null>(45 * 60);
+  const [remainingTime, setRemainingTime] = useState<number | null>(() => {
+    if (typeof window !== "undefined") {
+      const cached = localStorage.getItem("steamer_setup_dashboard_expires");
+      if (cached) {
+        const diff = Math.max(0, Math.floor((new Date(cached).getTime() - Date.now()) / 1000));
+        return diff;
+      }
+    }
+    return null;
+  });
 
   useEffect(() => {
     Promise.all([
@@ -62,6 +71,9 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (user?.latestSetupWindow?.expiresAt) {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("steamer_setup_dashboard_expires", user.latestSetupWindow.expiresAt);
+      }
       const diff = Math.max(
         0,
         Math.floor((new Date(user.latestSetupWindow.expiresAt).getTime() - Date.now()) / 1000)
