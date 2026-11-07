@@ -1,86 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
-  <defs>
-    <!-- Background Shield Gradient -->
-    <linearGradient id="shieldPlate" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1b2838" />
-      <stop offset="50%" stop-color="#171a21" />
-      <stop offset="100%" stop-color="#0e141b" />
-    </linearGradient>
-
-    <!-- Cyber Neon Gradient -->
-    <linearGradient id="cyanSapphire" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#66c0f4" />
-      <stop offset="60%" stop-color="#1a9fff" />
-      <stop offset="100%" stop-color="#0066cc" />
-    </linearGradient>
-
-    <!-- Inner Core Glow -->
-    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#66c0f4" stop-opacity="0.4" />
-      <stop offset="80%" stop-color="#1a9fff" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#1a9fff" stop-opacity="0" />
-    </radialGradient>
-
-    <!-- Outer Neon Border Glow Filter -->
-    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-  </defs>
-
-  <!-- Ambient Backlight -->
-  <circle cx="60" cy="60" r="48" fill="url(#coreGlow)" />
-
-  <!-- Outer Cyber Armor Hex-Shield -->
-  <polygon points="60,6 108,28 108,82 60,114 12,82 12,28" 
-           fill="url(#shieldPlate)" 
-           stroke="#2a475e" 
-           stroke-width="2.5" 
-           stroke-linejoin="round" />
-
-  <!-- Inner Glowing Aegis Rim -->
-  <polygon points="60,14 100,33 100,77 60,105 20,77 20,33" 
-           fill="none" 
-           stroke="url(#cyanSapphire)" 
-           stroke-width="2" 
-           stroke-linejoin="round"
-           filter="url(#neonGlow)" />
-
-  <!-- Shield Top Tech Accents -->
-  <line x1="42" y1="23" x2="78" y2="23" stroke="#66c0f4" stroke-width="2.5" stroke-linecap="round" />
-  <circle cx="60" cy="23" r="2" fill="#5ba32b" />
-
-  <!-- Controller Silhouette Body (The Vault Controller) -->
-  <!-- Top Bridge & Grips -->
-  <path d="M 38 45 
-           C 44 42, 76 42, 82 45 
-           C 92 50, 97 66, 92 81 
-           C 89 89, 81 91, 74 84 
-           C 69 79, 66 74, 60 74 
-           C 54 74, 51 79, 46 84 
-           C 39 91, 31 89, 28 81 
-           C 23 66, 28 50, 38 45 Z" 
-        fill="#101822" 
-        stroke="url(#cyanSapphire)" 
-        stroke-width="2.5" 
-        stroke-linejoin="round" />
-
-  <!-- D-Pad (Left Controller Grip) -->
-  <path d="M 40 57 L 44 57 L 44 53 L 48 53 L 48 57 L 52 57 L 52 61 L 48 61 L 48 65 L 44 65 L 44 61 L 40 61 Z" 
-        fill="#66c0f4" />
-
-  <!-- Action Diamond Buttons (Right Controller Grip) -->
-  <circle cx="76" cy="54" r="2" fill="#66c0f4" />
-  <circle cx="72" cy="59" r="2" fill="#1a9fff" />
-  <circle cx="80" cy="59" r="2" fill="#1a9fff" />
-  <circle cx="76" cy="64" r="2" fill="#66c0f4" />
-
-  <!-- Center Vault Nexus Dial / Offline Power Symbol -->
-  <circle cx="60" cy="59" r="6" fill="#16202d" stroke="#66c0f4" stroke-width="2" />
-  <!-- Offline Lock Shackle / Play Core -->
-  <path d="M 58 56 L 64 59 L 58 62 Z" fill="#66c0f4" />
-
-  <!-- Bottom Cyber Grip Slits -->
-  <line x1="33" y1="74" x2="36" y2="79" stroke="#2a475e" stroke-width="2" stroke-linecap="round" />
-  <line x1="87" y1="74" x2="84" y2="79" stroke="#2a475e" stroke-width="2" stroke-linecap="round" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+ <linearGradient id="bg" x1="12%" y1="0%" x2="88%" y2="100%"><stop stop-color="#16052C"/><stop offset=".55" stop-color="#0B0018"/><stop offset="1" stop-color="#24083E"/></linearGradient>
+ <linearGradient id="shell" x1="16%" y1="8%" x2="88%" y2="92%"><stop stop-color="#FFF4FF"/><stop offset=".22" stop-color="#EBCBFF"/><stop offset=".56" stop-color="#C58AFF"/><stop offset=".8" stop-color="#A64AF0"/><stop offset="1" stop-color="#7130C2"/></linearGradient>
+ <linearGradient id="pink" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#FFE8FF"/><stop offset=".36" stop-color="#F5A7FF"/><stop offset=".72" stop-color="#D86BFA"/><stop offset="1" stop-color="#9D42D9"/></linearGradient>
+ <linearGradient id="arm" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#FFF7FF"/><stop offset=".38" stop-color="#E2B9FF"/><stop offset=".72" stop-color="#B875F4"/><stop offset="1" stop-color="#8A3ED0"/></linearGradient>
+ <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<circle cx="256" cy="256" r="247" fill="url(#bg)"/>
+<circle cx="256" cy="256" r="239" fill="none" stroke="#B75BFA" stroke-opacity=".55" stroke-width="5"/>
+<circle cx="256" cy="256" r="226" fill="none" stroke="#F6C7FF" stroke-opacity=".18" stroke-width="2"/>
+<ellipse cx="256" cy="438" rx="140" ry="20" fill="#9E43E8" opacity=".12" filter="url(#shadow)"/>
+<!-- mechanical arm / backbone -->
+<path d="M134 360 L235 260 Q253 242 273 221 L333 161 Q350 145 369 162 L390 183 Q408 201 392 219 L308 303 Q289 322 270 339 L177 421 Q157 438 139 420 L118 399 Q101 382 118 365 Z" fill="url(#arm)" stroke="#F9E7FF" stroke-width="5" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M145 374 L251 274 L288 311 L169 415 Q155 425 143 412" fill="#A85AE7" opacity=".22"/>
+<!-- large upward-facing claw jaws: dominate upper half -->
+<path d="M252 245 C220 222 185 204 150 169 C133 152 128 127 139 105 L168 53 Q178 34 196 45 L220 61 Q235 71 228 88 L207 133 L259 181 Q276 197 276 218 Z" fill="url(#shell)" stroke="#FFF0FF" stroke-width="5" stroke-linejoin="round"/>
+<path d="M260 245 C291 221 327 200 361 166 C379 149 384 124 372 102 L344 52 Q334 33 316 44 L292 60 Q277 70 284 87 L305 132 L253 180 Q236 197 236 218 Z" fill="url(#pink)" stroke="#FFF0FF" stroke-width="5" stroke-linejoin="round"/>
+<!-- reflective jaw facets -->
+<path d="M151 109 L179 57 Q184 49 193 55 L212 69 L185 128 Q177 145 162 132 Z" fill="#FFFFFF" opacity=".45"/>
+<path d="M359 108 L331 57 Q326 49 317 55 L298 68 L326 128 Q334 145 349 132 Z" fill="#FFF5FF" opacity=".48"/>
+<!-- central large pivot -->
+<circle cx="256" cy="254" r="73" fill="#0B0018" opacity=".45" filter="url(#shadow)"/>
+<circle cx="256" cy="250" r="68" fill="url(#shell)" stroke="#FFF3FF" stroke-width="6"/>
+<circle cx="256" cy="250" r="48" fill="#18052B" stroke="#8F42D2" stroke-width="9"/>
+<circle cx="256" cy="250" r="34" fill="url(#pink)" stroke="#FCEAFF" stroke-width="3"/>
+<ellipse cx="244" cy="235" rx="15" ry="8" fill="#FFFFFF" opacity=".55"/>
+<!-- smaller rear joint -->
+<circle cx="134" cy="390" r="49" fill="url(#shell)" stroke="#FBEAFF" stroke-width="5"/>
+<circle cx="134" cy="390" r="34" fill="#170429" stroke="#9348D6" stroke-width="7"/>
+<circle cx="134" cy="390" r="22" fill="url(#pink)"/>
+<ellipse cx="126" cy="382" rx="9" ry="5" fill="#FFFFFF" opacity=".55"/>
 </svg>
