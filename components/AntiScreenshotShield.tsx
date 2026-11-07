@@ -109,6 +109,7 @@ export default function AntiScreenshotShield({
     document.documentElement.addEventListener("mouseleave", handleMouseLeave);
     document.documentElement.addEventListener("mouseenter", handleMouseEnter);
     window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyDown);
     document.addEventListener("copy", handleCopy);
     document.addEventListener("cut", handleCopy);
 
@@ -119,6 +120,7 @@ export default function AntiScreenshotShield({
       document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
       document.documentElement.removeEventListener("mouseenter", handleMouseEnter);
       window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyDown);
       document.removeEventListener("copy", handleCopy);
       document.removeEventListener("cut", handleCopy);
     };
