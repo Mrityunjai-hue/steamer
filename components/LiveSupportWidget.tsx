@@ -26,14 +26,14 @@ export default function LiveSupportWidget() {
   }, []);
 
   const whatsappUrl = `https://wa.me/${contact.cleanPhone}?text=${encodeURIComponent(
-    "Hi Steamer Admin! I'm interested in the ₹300 Complete PC Setup Guide & 265+ Titles Vault. Can you help me with a quick question?"
+    "Hi Steamer Admin! I'm interested in the 265 Games for ₹300 pass. Can you help me with a quick question?"
   )}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end">
       {/* Expanded Trust Card */}
       {isOpen && (
-        <div className="mb-3 w-80 bg-[#171a21] border border-[#2a475e] rounded-lg shadow-2xl p-4 text-xs space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-200">
+        <div className="mb-3 w-[calc(100vw-2rem)] max-w-xs bg-[#171a21] border border-[#2a475e] rounded-lg shadow-2xl p-4 text-xs space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-200">
           <div className="flex items-center justify-between border-b border-[#2a475e]/60 pb-2.5">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2.5 w-2.5">

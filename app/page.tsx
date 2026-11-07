@@ -132,18 +132,18 @@ export default async function HomePage() {
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#2a475e]/50 border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400">
                 <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
-                <span>₹300 All-Access Pass • 265+ PC Games</span>
+                <span>Get 265 Games of Your Choice for ₹300</span>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                ALL-ACCESS PC GAMING PASS.{" "}
+                GET 265 GAMES OF YOUR CHOICE{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66c0f4] via-[#1a9fff] to-emerald-400">
-                  265+ TITLES. ON YOUR OWN PC.
+                  FOR ₹300.
                 </span>
               </h1>
 
               <p className="text-sm sm:text-base text-[#c7d5e0] leading-relaxed max-w-2xl">
-                Stop paying thousands for individual titles or dealing with shared account collisions. Get instant access to the complete 265+ offline game vault and the step-by-step PC setup guide.
+                Stop paying thousands for individual titles or dealing with shared account collisions. Choose any of our 265+ blockbuster PC games and play them offline on your own PC with permanent local saves.
               </p>
 
               {/* Amenity Badges */}
@@ -179,7 +179,7 @@ export default async function HomePage() {
                   href="/checkout"
                   className="btn-steam-cta px-7 py-3 rounded text-sm font-bold shadow-ctaGlow flex items-center gap-2 text-white"
                 >
-                  <span>Get Instant Access – ₹300</span>
+                  <span>Get 265 Games for ₹300</span>
                   <ChevronRight className="w-4 h-4" />
                 </Link>
                 <a
