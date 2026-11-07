@@ -99,8 +99,11 @@ export async function GET(req: NextRequest) {
       totalPages: Math.ceil(total / limit),
       seriesList: allSeries.map((s) => s.name),
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error in catalog API:", error);
-    return NextResponse.json({ error: "Failed to load catalog" }, { status: 500 });
+    return NextResponse.json({
+      error: "Failed to load catalog",
+      details: error?.message || String(error),
+    }, { status: 500 });
   }
 }

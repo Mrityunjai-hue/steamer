@@ -1,9 +1,77 @@
 import { PrismaClient } from "@prisma/client";
+import path from "path";
+import fs from "fs";
 
-// Ensure fallback for SQLite in container/serverless environments
-if (!process.env.DATABASE_URL) {
-  process.env.DATABASE_URL = "file:./steamer.db";
+function getDatabaseUrl(): string {
+  // If running in Vercel or AWS Lambda serverless environment
+  const isServerless = Boolean(
+    process.env.VERCEL ||
+    process.env.AWS_LAMBDA_FUNCTION_NAME ||
+    process.env.NOW_REGION
+  );
+
+  if (isServerless) {
+    const tmpDbPath = path.join("/tmp", "steamer.db");
+
+    // Copy to /tmp if it doesn't exist or is smaller than source
+    let shouldCopy = true;
+    if (fs.existsSync(tmpDbPath)) {
+      try {
+        const tmpStat = fs.statSync(tmpDbPath);
+        if (tmpStat.size > 500000) {
+          shouldCopy = false;
+        }
+      } catch {
+        shouldCopy = true;
+      }
+    }
+
+    if (shouldCopy) {
+      const candidates = [
+        path.join(process.cwd(), "prisma", "steamer.db"),
+        path.join(process.cwd(), "steamer.db"),
+        path.join(process.cwd(), "prisma_seed", "steamer.db"),
+        path.join(__dirname, "..", "prisma", "steamer.db"),
+        path.join(__dirname, "..", "steamer.db"),
+        "/var/task/prisma/steamer.db",
+        "/var/task/steamer.db",
+      ];
+
+      for (const p of candidates) {
+        if (fs.existsSync(p)) {
+          try {
+            fs.copyFileSync(p, tmpDbPath);
+            console.log(`[Prisma Vercel] Initialized SQLite at ${tmpDbPath} from ${p}`);
+            break;
+          } catch (e) {
+            console.error(`[Prisma Vercel] Error copying from ${p}:`, e);
+          }
+        }
+      }
+    }
+
+    return `file:${tmpDbPath}`;
+  }
+
+  // Local development / server environment
+  if (process.env.DATABASE_URL) {
+    if (process.env.DATABASE_URL.startsWith("file:")) {
+      const raw = process.env.DATABASE_URL.replace("file:", "");
+      if (path.isAbsolute(raw)) return process.env.DATABASE_URL;
+
+      const cwdPath = path.join(process.cwd(), raw);
+      const prismaPath = path.join(process.cwd(), "prisma", path.basename(raw));
+      if (fs.existsSync(cwdPath)) return `file:${cwdPath}`;
+      if (fs.existsSync(prismaPath)) return `file:${prismaPath}`;
+    }
+    return process.env.DATABASE_URL;
+  }
+
+  const defaultDb = path.join(process.cwd(), "prisma", "steamer.db");
+  return `file:${defaultDb}`;
 }
+
+const dbUrl = getDatabaseUrl();
 
 declare global {
   // eslint-disable-next-line no-var
@@ -13,8 +81,12 @@ declare global {
 export const prisma =
   global.prisma ||
   new PrismaClient({
+    datasources: {
+      db: {
+        url: dbUrl,
+      },
+    },
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
   });
 
 if (process.env.NODE_ENV !== "production") global.prisma = prisma;
-

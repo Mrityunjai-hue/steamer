@@ -2,6 +2,11 @@
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
+  experimental: {
+    outputFileTracingIncludes: {
+      '/**': ['./prisma/steamer.db', './steamer.db'],
+    },
+  },
   images: {
     remotePatterns: [
       {
