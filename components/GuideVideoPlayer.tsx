@@ -80,17 +80,31 @@ export default function GuideVideoPlayer({
 
       {/* Video Container with Overlaid Watermark Shield & Anti-Popout Protection */}
       <div className="relative w-full aspect-video min-h-[260px] sm:min-h-[420px] bg-[#000000] overflow-hidden">
-        {/* Anti-Popout Top Cap: Ensures Google Drive's top bar cannot ever peek through or be clicked */}
+        {/* Anti-Popout Top Cap & Corner Shield: Ensures Google Drive's top bar and popout icon can NEVER be clicked */}
         {isGoogleDrive && (
-          <div className="absolute top-0 left-0 right-0 h-8 z-30 bg-[#0b0e14]/95 backdrop-blur-sm flex items-center justify-between px-3 pointer-events-auto select-none border-b border-[#2a475e]/40">
-            <div className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider">
-                Steamer Protected Stream
-              </span>
+          <>
+            <div className="absolute top-0 left-0 right-0 h-10 z-30 bg-[#0b0e14]/95 backdrop-blur-sm flex items-center justify-between px-3.5 pointer-events-auto select-none border-b border-[#2a475e]/40">
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-[10px] sm:text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
+                  Steamer Protected Stream
+                </span>
+              </div>
+              <span className="text-[9px] sm:text-[10px] font-mono text-[#8f98a0]">Inline DRM Protected</span>
             </div>
-            <span className="text-[9px] font-mono text-[#8f98a0]">Inline Only</span>
-          </div>
+            {/* Top-Right Shield: Physically intercepts and cancels clicks on the top-right corner where pop-out icon resides */}
+            <div
+              className="absolute top-0 right-0 w-28 h-14 z-40 bg-transparent pointer-events-auto select-none"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+            />
+          </>
         )}
 
         {/* Anti-Screen Recording Dynamic Floating Watermark */}
@@ -113,10 +127,9 @@ export default function GuideVideoPlayer({
             title={title}
             className={`w-full border-0 touch-manipulation ${
               isGoogleDrive
-                ? "absolute -top-[56px] left-0 h-[calc(100%+56px)]"
+                ? "absolute -top-[58px] left-0 h-[calc(100%+58px)]"
                 : "h-full"
             }`}
-            sandbox="allow-scripts allow-same-origin allow-forms"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowFullScreen
           />

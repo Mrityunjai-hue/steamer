@@ -41,59 +41,16 @@ export default function AntiScreenshotShield({
       return;
     }
 
-    // 1. Loss of focus / Snipping Tool activation / Mobile app switcher
-    const handleBlur = () => {
-      // Allow user interaction with the video player iframe without false-triggering a blackout
-      setTimeout(() => {
-        const active = typeof document !== "undefined" ? document.activeElement : null;
-        if (
-          active &&
-          (active.tagName === "IFRAME" ||
-            active.tagName === "VIDEO" ||
-            active.id === "guide-video-iframe" ||
-            active.closest?.("[data-video-player]"))
-        ) {
-          return;
-        }
-        activateBlackout("Window focus changed. Content protected.");
-      }, 120);
-    };
-
-    const handleFocus = () => {
-      deactivateBlackout();
-    };
-
-    // 2. Visibility change (tab switch, window minimized, screen recording overlay, iOS control center)
+    // 1. Visibility change (tab switch, window minimized)
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        activateBlackout("Screen capture or background switch detected.");
+        activateBlackout("Background switch detected. Screen protected.");
       } else {
-        setTimeout(deactivateBlackout, 2000);
+        deactivateBlackout();
       }
     };
 
-    // 2b. Page hide / iOS swipe gesture
-    const handlePageHide = () => {
-      activateBlackout("System navigation detected. Content protected.");
-    };
-
-    // 3. Mouse leaving the viewport towards system taskbar or corners
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (
-        e.clientY <= 0 ||
-        e.clientX <= 0 ||
-        e.clientX >= window.innerWidth ||
-        e.clientY >= window.innerHeight
-      ) {
-        activateBlackout();
-      }
-    };
-
-    const handleMouseEnter = () => {
-      deactivateBlackout();
-    };
-
-    // 4. Keyboard shortcuts: PrintScreen, Windows key, Ctrl/Cmd+Shift combos, DevTools, Print
+    // 2. Keyboard shortcuts: PrintScreen, Windows key, Ctrl/Cmd+Shift combos, DevTools, Print
     const handleKeyAction = (e: KeyboardEvent) => {
       // PrintScreen key
       if (e.key === "PrintScreen" || e.keyCode === 44) {
@@ -161,12 +118,7 @@ export default function AntiScreenshotShield({
       }
     };
 
-    window.addEventListener("blur", handleBlur);
-    window.addEventListener("focus", handleFocus);
-    window.addEventListener("pagehide", handlePageHide);
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
-    document.documentElement.addEventListener("mouseenter", handleMouseEnter);
     window.addEventListener("keydown", handleKeyAction, true);
     window.addEventListener("keyup", handleKeyAction, true);
     window.addEventListener("beforeprint", handleBeforePrint);
@@ -177,12 +129,7 @@ export default function AntiScreenshotShield({
       if (typeof document !== "undefined") {
         document.documentElement.classList.remove("steamer-blackout");
       }
-      window.removeEventListener("blur", handleBlur);
-      window.removeEventListener("focus", handleFocus);
-      window.removeEventListener("pagehide", handlePageHide);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
-      document.documentElement.removeEventListener("mouseenter", handleMouseEnter);
       window.removeEventListener("keydown", handleKeyAction, true);
       window.removeEventListener("keyup", handleKeyAction, true);
       window.removeEventListener("beforeprint", handleBeforePrint);
@@ -225,7 +172,9 @@ export default function AntiScreenshotShield({
         }
 
         html.steamer-blackout #steamer-blackout-shield,
-        html.steamer-blackout #steamer-blackout-shield * {
+        html.steamer-blackout #steamer-blackout-shield *,
+        html.steamer-blackout [data-video-player],
+        html.steamer-blackout [data-video-player] * {
           visibility: visible !important;
           opacity: 1 !important;
         }
