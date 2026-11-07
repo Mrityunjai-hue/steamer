@@ -11,7 +11,8 @@
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
     "seed": "ts-node --transpile-only prisma/seed.ts",
-    "test:security": "ts-node --transpile-only tests/security.test.ts"
+    "test:security": "ts-node --transpile-only tests/security.test.ts",
+    "brand:assets": "node scripts/generate-brand-assets.mjs"
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
@@ -44,6 +45,7 @@
     "prisma": "^5.14.0",
     "tailwindcss": "^3.4.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "sharp": "^0.34.3"
   }
 }
