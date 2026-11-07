@@ -114,9 +114,7 @@ export default function DashboardPage() {
   }, [isSetupActive]);
 
   const handleCompleteProcess = async () => {
-    const confirm = window.confirm(
-      "Confirm that you have completed all setup steps, set Steam to Offline Mode, and launched your game?"
-    );
+    const confirm = window.confirm("Confirm that you have completed all the setup steps?");
     if (!confirm) return;
 
     setCompleting(true);
@@ -427,8 +425,8 @@ export default function DashboardPage() {
                       ⚠️ MANDATORY FINAL REQUIREMENT BEFORE LEAVING
                     </h4>
                     <p className="leading-relaxed">
-                      You <strong>cannot navigate away</strong> or visit any other page until you complete your Steam setup and click the confirmation button below.
-                      Ensure that you have completed all 8 steps, switched Steam to <strong>Offline Mode</strong>, and launched your title at least once before confirming.
+                      You <strong>cannot navigate away</strong> or visit any other page until you complete your setup and click the confirmation button below.
+                      Ensure that you have completed all the walkthrough steps above before confirming.
                     </p>
                   </div>
                 </div>
@@ -593,7 +591,7 @@ export default function DashboardPage() {
                 Setup In Progress
               </h3>
               <p className="text-xs text-[#c7d5e0] leading-relaxed">
-                You cannot navigate away or access other pages until you complete your Steam offline setup and click <strong>&quot;Process Completed&quot;</strong> below.
+                You cannot navigate away or access other pages until you complete the setup steps and click <strong>&quot;Process Completed&quot;</strong> below.
               </p>
             </div>
 
