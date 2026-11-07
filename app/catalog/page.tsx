@@ -89,7 +89,7 @@ export default function CatalogPage() {
             GAMES YOU CAN PLAY WITH THIS SETUP ({totalGames} TITLES)
           </h1>
           <p className="text-xs sm:text-sm text-[#8f98a0]">
-            Browse our full vault of 245+ offline-ready single-player PC games included in the ₹300 Complete Setup Guide.
+            Browse our full vault of {totalGames || "265+"} offline-ready single-player PC games included in the ₹300 Complete Setup Guide.
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function CatalogPage() {
       <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow">
         <div className="space-y-0.5 text-center sm:text-left">
           <div className="inline-flex items-center gap-1.5 text-[#5ba32b] text-[11px] font-bold uppercase">
-            <span>● 245+ Titles Included</span>
+            <span>● 265+ Titles Included</span>
           </div>
           <p className="text-sm font-bold text-white">
             Stop paying thousands for individual titles. Learn the setup once and play on your own PC forever.
@@ -162,12 +162,24 @@ export default function CatalogPage() {
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
-                className="text-[11px] text-[#66c0f4] hover:underline"
+                className="text-[11px] text-amber-400 hover:underline font-bold"
               >
                 Reset All
               </button>
             )}
           </div>
+
+          {/* Quick Reset Button */}
+          <button
+            onClick={clearFilters}
+            className={`w-full py-2 px-3 rounded text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+              hasActiveFilters
+                ? "bg-amber-600 hover:bg-amber-500 text-white shadow-md cursor-pointer"
+                : "bg-[#16202d] text-[#8f98a0] hover:text-white border border-[#2a475e]/60"
+            }`}
+          >
+            <RefreshCw className="w-3.5 h-3.5" /> Reset All Filters
+          </button>
 
           {/* Sort Dropdown */}
           <div className="space-y-2">
@@ -285,7 +297,50 @@ export default function CatalogPage() {
         </aside>
 
         {/* Game Grid Section */}
-        <div className="md:col-span-3 space-y-6">
+        <div className="md:col-span-3 space-y-5">
+          {/* Top Pagination & Active Filters Ribbon */}
+          <div className="bg-[#171a21] border border-[#2a475e]/60 rounded-lg p-3 sm:p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-[#8f98a0]">
+              <span>
+                Showing <strong className="text-white">{totalGames === 0 ? 0 : (page - 1) * 24 + 1}–{Math.min(page * 24, totalGames)}</strong> of{" "}
+                <strong className="text-white">{totalGames}</strong> titles
+              </span>
+
+              {hasActiveFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="text-[11px] font-bold text-amber-300 bg-amber-950/70 border border-amber-500/50 px-2 py-0.5 rounded hover:bg-amber-900/80 transition-colors flex items-center gap-1"
+                >
+                  <RefreshCw className="w-3 h-3" /> Reset Filters
+                </button>
+              )}
+            </div>
+
+            {/* Top Page Navigation */}
+            {totalPages > 1 && (
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-[#8f98a0] font-mono mr-1">
+                  Page <strong className="text-white">{page}</strong> of <strong className="text-white">{totalPages}</strong>
+                </span>
+
+                <button
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page <= 1}
+                  className="px-2.5 py-1.5 bg-[#2a475e] hover:bg-[#31536f] disabled:opacity-30 disabled:cursor-not-allowed text-white rounded text-xs flex items-center gap-1 font-bold transition-colors"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" /> Previous
+                </button>
+
+                <button
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page >= totalPages}
+                  className="px-2.5 py-1.5 bg-[#2a475e] hover:bg-[#31536f] disabled:opacity-30 disabled:cursor-not-allowed text-white rounded text-xs flex items-center gap-1 font-bold transition-colors"
+                >
+                  Next <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
+          </div>
           {loading ? (
             <div className="py-24 flex flex-col items-center justify-center space-y-3">
               <RefreshCw className="w-8 h-8 text-[#66c0f4] animate-spin" />
