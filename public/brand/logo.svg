@@ -1,102 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 84" width="360" height="84" fill="none">
-  <defs>
-    <!-- Background Shield Gradient -->
-    <linearGradient id="logoShieldPlate" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1b2838" />
-      <stop offset="50%" stop-color="#171a21" />
-      <stop offset="100%" stop-color="#0e141b" />
-    </linearGradient>
-
-    <!-- Cyber Neon Gradient -->
-    <linearGradient id="logoCyanSapphire" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#66c0f4" />
-      <stop offset="60%" stop-color="#1a9fff" />
-      <stop offset="100%" stop-color="#0066cc" />
-    </linearGradient>
-
-    <!-- Lettering Gradient -->
-    <linearGradient id="logoTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" />
-      <stop offset="100%" stop-color="#c7d5e0" />
-    </linearGradient>
-
-    <!-- Outer Neon Border Glow Filter -->
-    <filter id="logoNeonGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="2.5" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-  </defs>
-
-  <!-- Left Emblem (Scales from icon.svg) -->
-  <g transform="translate(6, 6) scale(0.6)">
-    <!-- Outer Cyber Armor Hex-Shield -->
-    <polygon points="60,6 108,28 108,82 60,114 12,82 12,28" 
-             fill="url(#logoShieldPlate)" 
-             stroke="#2a475e" 
-             stroke-width="2.5" 
-             stroke-linejoin="round" />
-
-    <!-- Inner Glowing Aegis Rim -->
-    <polygon points="60,14 100,33 100,77 60,105 20,77 20,33" 
-             fill="none" 
-             stroke="url(#logoCyanSapphire)" 
-             stroke-width="2" 
-             stroke-linejoin="round"
-             filter="url(#logoNeonGlow)" />
-
-    <!-- Shield Top Tech Accents -->
-    <line x1="42" y1="23" x2="78" y2="23" stroke="#66c0f4" stroke-width="2.5" stroke-linecap="round" />
-    <circle cx="60" cy="23" r="2.5" fill="#5ba32b" />
-
-    <!-- Controller Silhouette Body -->
-    <path d="M 38 45 
-             C 44 42, 76 42, 82 45 
-             C 92 50, 97 66, 92 81 
-             C 89 89, 81 91, 74 84 
-             C 69 79, 66 74, 60 74 
-             C 54 74, 51 79, 46 84 
-             C 39 91, 31 89, 28 81 
-             C 23 66, 28 50, 38 45 Z" 
-          fill="#101822" 
-          stroke="url(#logoCyanSapphire)" 
-          stroke-width="2.5" 
-          stroke-linejoin="round" />
-
-    <!-- D-Pad -->
-    <path d="M 40 57 L 44 57 L 44 53 L 48 53 L 48 57 L 52 57 L 52 61 L 48 61 L 48 65 L 44 65 L 44 61 L 40 61 Z" 
-          fill="#66c0f4" />
-
-    <!-- Action Buttons -->
-    <circle cx="76" cy="54" r="2.5" fill="#66c0f4" />
-    <circle cx="72" cy="59" r="2.5" fill="#1a9fff" />
-    <circle cx="80" cy="59" r="2.5" fill="#1a9fff" />
-    <circle cx="76" cy="64" r="2.5" fill="#66c0f4" />
-
-    <!-- Center Vault Nexus Dial -->
-    <circle cx="60" cy="59" r="6" fill="#16202d" stroke="#66c0f4" stroke-width="2" />
-    <!-- Play Core -->
-    <path d="M 58 56 L 64 59 L 58 62 Z" fill="#66c0f4" />
-  </g>
-
-  <!-- Typography: STEAMER -->
-  <text x="88" y="48" 
-        font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-        font-weight="900" 
-        font-size="36" 
-        letter-spacing="5" 
-        fill="url(#logoTextGrad)">
-    STEAMER
-  </text>
-
-  <!-- Tagline: OFFLINE GAMING VAULT with cyber accents -->
-  <line x1="88" y1="64" x2="108" y2="64" stroke="#2a475e" stroke-width="1.5" />
-  <text x="114" y="67" 
-        font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-        font-weight="700" 
-        font-size="9.5" 
-        letter-spacing="3.5" 
-        fill="#66c0f4">
-    OFFLINE GAMING VAULT
-  </text>
-  <line x1="268" y1="64" x2="288" y2="64" stroke="#2a475e" stroke-width="1.5" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 176">
+<defs>
+ <linearGradient id="shell" x1="10%" y1="5%" x2="90%" y2="95%"><stop stop-color="#FFF4FF"/><stop offset=".28" stop-color="#E8C3FF"/><stop offset=".62" stop-color="#C17AF4"/><stop offset="1" stop-color="#8739CA"/></linearGradient>
+ <linearGradient id="pink" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#FFE8FF"/><stop offset=".4" stop-color="#F2A0FF"/><stop offset="1" stop-color="#B74DEB"/></linearGradient>
+ <filter id="g" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g transform="translate(8 7) scale(.31)">
+<path d="M134 360 L235 260 Q253 242 273 221 L333 161 Q350 145 369 162 L390 183 Q408 201 392 219 L308 303 Q289 322 270 339 L177 421 Q157 438 139 420 L118 399 Q101 382 118 365 Z" fill="url(#shell)" stroke="#F9E7FF" stroke-width="7"/>
+<path d="M252 245 C220 222 185 204 150 169 C133 152 128 127 139 105 L168 53 Q178 34 196 45 L220 61 Q235 71 228 88 L207 133 L259 181 Q276 197 276 218 Z" fill="url(#shell)" stroke="#FFF0FF" stroke-width="7"/>
+<path d="M260 245 C291 221 327 200 361 166 C379 149 384 124 372 102 L344 52 Q334 33 316 44 L292 60 Q277 70 284 87 L305 132 L253 180 Q236 197 236 218 Z" fill="url(#pink)" stroke="#FFF0FF" stroke-width="7"/>
+<circle cx="256" cy="250" r="68" fill="url(#shell)" stroke="#FFF3FF" stroke-width="7"/><circle cx="256" cy="250" r="48" fill="#160327" stroke="#A257E6" stroke-width="10"/><circle cx="256" cy="250" r="33" fill="url(#pink)"/>
+<circle cx="134" cy="390" r="49" fill="url(#shell)" stroke="#FBEAFF" stroke-width="6"/><circle cx="134" cy="390" r="33" fill="#170429" stroke="#9348D6" stroke-width="8"/><circle cx="134" cy="390" r="21" fill="url(#pink)"/>
+</g>
+<text x="170" y="107" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-2" fill="#F6DFFF">Steamer</text>
+<text x="175" y="141" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#C58AF2"> </text>
 </svg>
