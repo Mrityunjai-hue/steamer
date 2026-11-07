@@ -214,7 +214,7 @@ export default async function HomePage() {
             </div>
             <div className="flex items-center gap-2">
               <span className="text-xs text-white font-bold bg-[#16202d] border border-emerald-500/40 px-3 py-1 rounded-full text-emerald-400">
-                ₹300 One-Time · Lifetime Access
+                ₹300 One-Time · Lifetime games access in your personal Steam
               </span>
             </div>
           </div>

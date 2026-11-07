@@ -240,7 +240,7 @@ export default function CheckoutPage() {
           <span className="w-3 h-3 rounded-full bg-[#5ba32b]" />
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-white">
-              Lifetime PC Setup Guide & Vault Access (265+ Titles)
+              Lifetime games access in your personal Steam (265+ Titles)
             </h3>
             <p className="text-[11px] text-[#8f98a0]">
               One-Time Payment · Permanent Personal PC Offline Setup · Zero Recurring Fees
@@ -356,7 +356,7 @@ export default function CheckoutPage() {
                   <span className="text-emerald-400">2.</span> Full Vault Access (265+ PC Titles)
                 </p>
                 <p className="text-[#8f98a0] text-[11px] leading-relaxed">
-                  Your ₹300 unlock grants lifetime access to our entire verified PC catalog of 265+ single-player blockbusters including Call of Duty, Spider-Man, Sekiro, Tekken, and more.
+                  Your ₹300 unlock grants lifetime games access in your personal Steam to our entire verified PC catalog of 265+ single-player blockbusters including Call of Duty, Spider-Man, Sekiro, Tekken, and more.
                 </p>
               </div>
 

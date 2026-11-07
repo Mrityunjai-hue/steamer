@@ -19,27 +19,73 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const window = await prisma.setupWindow.findFirst({
+    // Find any active or queued window for this user
+    let window = await prisma.setupWindow.findFirst({
       where: {
         userId: session.userId,
-        status: "ACTIVE",
+        status: { in: ["ACTIVE", "QUEUED"] },
         ...(setupWindowId ? { id: setupWindowId } : {}),
       },
       orderBy: { createdAt: "desc" },
     });
 
     if (!window) {
-      return NextResponse.json({ error: "Active setup window not found" }, { status: 404 });
+      // Find subscription or create completed window record directly
+      const subscription = await prisma.subscription.findFirst({
+        where: { userId: session.userId },
+        orderBy: { createdAt: "desc" },
+      });
+
+      if (subscription) {
+        window = await prisma.setupWindow.create({
+          data: {
+            userId: session.userId,
+            subscriptionId: subscription.id,
+            status: "COMPLETED",
+            startedAt: new Date(),
+            closedAt: new Date(),
+            offlineConfirmed: true,
+          },
+        });
+      } else {
+        // Even if no subscription, check for order
+        const order = await prisma.order.findFirst({
+          where: { userId: session.userId },
+          orderBy: { createdAt: "desc" },
+        });
+
+        // Ensure user orders are marked COMPLETED
+        if (order) {
+          await prisma.order.update({
+            where: { id: order.id },
+            data: { status: "COMPLETED" },
+          });
+        }
+
+        return NextResponse.json({
+          success: true,
+          message: "Setup completed successfully! Lifetime games access in your personal Steam is active.",
+        });
+      }
+    } else {
+      // Close window
+      window = await prisma.setupWindow.update({
+        where: { id: window.id },
+        data: {
+          status: "COMPLETED",
+          closedAt: new Date(),
+          offlineConfirmed: true,
+        },
+      });
     }
 
-    // Close window
-    const updated = await prisma.setupWindow.update({
-      where: { id: window.id },
-      data: {
-        status: "COMPLETED",
-        closedAt: new Date(),
-        offlineConfirmed: true,
+    // Mark any active/verified orders as COMPLETED
+    await prisma.order.updateMany({
+      where: {
+        userId: session.userId,
+        status: { in: ["VERIFIED", "ACTIVE"] },
       },
+      data: { status: "COMPLETED" },
     });
 
     // Check if next in queue can be alerted
@@ -65,8 +111,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: "Setup window completed! Steam is safely set to Offline Mode. You can now enjoy playing your games anytime.",
-      setupWindow: updated,
+      message: "Setup completed successfully! Lifetime games access in your personal Steam is active.",
+      setupWindow: window,
     });
   } catch (error) {
     console.error("Offline confirmation error:", error);

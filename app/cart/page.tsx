@@ -71,7 +71,7 @@ export default function CartPage() {
           <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-6 space-y-4 shadow-lg">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2a475e]/60 pb-3">
               <span className="bg-[#4c6b22] text-[#beee11] text-[10px] font-extrabold px-2.5 py-1 rounded-sm uppercase tracking-wider flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5" /> Lifetime All-Access Pass
+                <CheckCircle2 className="w-3.5 h-3.5" /> Lifetime games access in your personal Steam
               </span>
               <span className="text-xs text-[#8f98a0]">One-Time Payment · No Recurring Fees</span>
             </div>
@@ -168,7 +168,7 @@ export default function CartPage() {
             <div className="space-y-3 text-xs text-[#c7d5e0]">
               <div className="flex justify-between items-center">
                 <span className="text-[#8f98a0]">Plan:</span>
-                <strong className="text-white text-right">Lifetime All-Access Guide</strong>
+                <strong className="text-white text-right">Lifetime games access in your personal Steam</strong>
               </div>
 
               <div className="flex justify-between items-center">
@@ -178,7 +178,7 @@ export default function CartPage() {
 
               <div className="flex justify-between items-center">
                 <span className="text-[#8f98a0]">Access Type:</span>
-                <span className="text-white">One-Time / Lifetime</span>
+                <span className="text-white">Lifetime in personal Steam</span>
               </div>
 
               <div className="border-t border-[#2a475e]/60 pt-4 flex justify-between items-baseline">

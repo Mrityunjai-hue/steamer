@@ -160,7 +160,7 @@ export default async function GameDetailPage({
                 <span className="text-[10px] font-bold text-[#beee11] uppercase tracking-wider bg-[#4c6b22] px-2 py-0.5 rounded-sm">
                   INCLUDED IN GUIDE
                 </span>
-                <span className="text-[11px] text-[#8f98a0]">Lifetime Pass</span>
+                <span className="text-[11px] text-[#8f98a0]">Lifetime games access in your personal Steam</span>
               </div>
               <div className="flex items-baseline justify-between pt-1">
                 <div>

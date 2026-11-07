@@ -35,6 +35,7 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
   // Setup completion & timer state
   const [completing, setCompleting] = useState(false);
   const [completeSuccess, setCompleteSuccess] = useState(false);
+  const [completeError, setCompleteError] = useState<string | null>(null);
   const [showNavLockModal, setShowNavLockModal] = useState(false);
   const [remainingTime, setRemainingTime] = useState<number | null>(() => {
     if (typeof window !== "undefined") {
@@ -144,10 +145,8 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
   }, [isSetupActive]);
 
   const handleCompleteProcess = async () => {
-    const confirm = window.confirm("Confirm that you have completed all the setup steps?");
-    if (!confirm) return;
-
     setCompleting(true);
+    setCompleteError(null);
     try {
       const res = await fetch(`/api/orders/access/${orderId}`, {
         method: "POST",
@@ -159,10 +158,10 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
         setCompleteSuccess(true);
         fetchOrderAccess();
       } else {
-        alert(result.error || "Failed to confirm setup process");
+        setCompleteError(result.error || "Failed to confirm setup process. Please try again.");
       }
     } catch {
-      alert("Network error confirming setup process");
+      setCompleteError("Network error confirming setup process. Please check your connection.");
     } finally {
       setCompleting(false);
     }
@@ -407,7 +406,7 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded">
-                      Lifetime Pass Unlocked
+                      Lifetime games access in your personal Steam
                     </span>
                     <span className="text-[10px] font-bold uppercase tracking-wider bg-[#66c0f4]/20 text-[#66c0f4] border border-[#66c0f4]/40 px-2 py-0.5 rounded flex items-center gap-1">
                       <Shield className="w-3 h-3" /> Protected Walkthrough
@@ -570,6 +569,12 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
                   </div>
                 </div>
 
+                {completeError && (
+                  <div className="bg-red-950/80 border border-red-500/60 rounded-xl p-4 text-red-200 text-xs text-center font-bold">
+                    {completeError}
+                  </div>
+                )}
+
                 {/* 2. The Confirmation Button */}
                 <button
                   type="button"
@@ -640,7 +645,7 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
           <div className="p-4 bg-[#16202d] border border-[#2a475e] rounded-lg max-w-md mx-auto text-xs text-[#c7d5e0] space-y-1.5 text-left">
             <div className="flex justify-between">
               <span className="text-[#8f98a0]">Plan:</span>
-              <strong className="text-white">₹300 Lifetime All-Access Setup</strong>
+              <strong className="text-white">₹300 Lifetime games access in your personal Steam</strong>
             </div>
             {order.utr && (
               <div className="flex justify-between">
@@ -719,20 +724,32 @@ export default function OrderAccessPage({ params }: { params: { orderId: string 
             </div>
 
             <div className="bg-[#121922] p-3 rounded-lg border border-[#2a475e] text-[11px] text-[#8f98a0]">
-              Leaving early without confirming will keep your access locked. Once confirmed, navigation will unlock automatically.
+              Leaving early without confirming keeps your timer running. You can return anytime before it expires.
             </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                setShowNavLockModal(false);
-                const el = document.getElementById("process-completed-section");
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="w-full btn-steam-cta py-3 rounded-lg text-xs font-bold text-white shadow-ctaGlow flex items-center justify-center gap-2"
-            >
-              <CheckCircle2 className="w-4 h-4" /> Continue Setup &amp; Scroll to Confirmation
-            </button>
+            <div className="space-y-2 pt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowNavLockModal(false);
+                  const el = document.getElementById("process-completed-section");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="w-full btn-steam-cta py-3 rounded-lg text-xs font-bold text-white shadow-ctaGlow flex items-center justify-center gap-2"
+              >
+                <CheckCircle2 className="w-4 h-4" /> Continue Setup &amp; Scroll to Confirmation
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowNavLockModal(false);
+                  window.location.href = "/";
+                }}
+                className="w-full btn-steam-panel py-2.5 rounded-lg text-xs font-semibold text-[#8f98a0] hover:text-white border border-[#2a475e] flex items-center justify-center gap-2"
+              >
+                Leave Page Anyway (Return to Store)
+              </button>
+            </div>
           </div>
         </div>
       )}
