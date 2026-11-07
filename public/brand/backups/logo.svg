@@ -1,0 +1,103 @@
+<!-- Backup of public/brand/logo.svg before Steamer purple-pink branding update -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 84" width="360" height="84" fill="none">
+  <defs>
+    <!-- Background Shield Gradient -->
+    <linearGradient id="logoShieldPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b2838" />
+      <stop offset="50%" stop-color="#171a21" />
+      <stop offset="100%" stop-color="#0e141b" />
+    </linearGradient>
+
+    <!-- Cyber Neon Gradient -->
+    <linearGradient id="logoCyanSapphire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#66c0f4" />
+      <stop offset="60%" stop-color="#1a9fff" />
+      <stop offset="100%" stop-color="#0066cc" />
+    </linearGradient>
+
+    <!-- Lettering Gradient -->
+    <linearGradient id="logoTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#c7d5e0" />
+    </linearGradient>
+
+    <!-- Outer Neon Border Glow Filter -->
+    <filter id="logoNeonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Left Emblem (Scales from icon.svg) -->
+  <g transform="translate(6, 6) scale(0.6)">
+    <!-- Outer Cyber Armor Hex-Shield -->
+    <polygon points="60,6 108,28 108,82 60,114 12,82 12,28" 
+             fill="url(#logoShieldPlate)" 
+             stroke="#2a475e" 
+             stroke-width="2.5" 
+             stroke-linejoin="round" />
+
+    <!-- Inner Glowing Aegis Rim -->
+    <polygon points="60,14 100,33 100,77 60,105 20,77 20,33" 
+             fill="none" 
+             stroke="url(#logoCyanSapphire)" 
+             stroke-width="2" 
+             stroke-linejoin="round"
+             filter="url(#logoNeonGlow)" />
+
+    <!-- Shield Top Tech Accents -->
+    <line x1="42" y1="23" x2="78" y2="23" stroke="#66c0f4" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="60" cy="23" r="2.5" fill="#5ba32b" />
+
+    <!-- Controller Silhouette Body -->
+    <path d="M 38 45 
+             C 44 42, 76 42, 82 45 
+             C 92 50, 97 66, 92 81 
+             C 89 89, 81 91, 74 84 
+             C 69 79, 66 74, 60 74 
+             C 54 74, 51 79, 46 84 
+             C 39 91, 31 89, 28 81 
+             C 23 66, 28 50, 38 45 Z" 
+          fill="#101822" 
+          stroke="url(#logoCyanSapphire)" 
+          stroke-width="2.5" 
+          stroke-linejoin="round" />
+
+    <!-- D-Pad -->
+    <path d="M 40 57 L 44 57 L 44 53 L 48 53 L 48 57 L 52 57 L 52 61 L 48 61 L 48 65 L 44 65 L 44 61 L 40 61 Z" 
+          fill="#66c0f4" />
+
+    <!-- Action Buttons -->
+    <circle cx="76" cy="54" r="2.5" fill="#66c0f4" />
+    <circle cx="72" cy="59" r="2.5" fill="#1a9fff" />
+    <circle cx="80" cy="59" r="2.5" fill="#1a9fff" />
+    <circle cx="76" cy="64" r="2.5" fill="#66c0f4" />
+
+    <!-- Center Vault Nexus Dial -->
+    <circle cx="60" cy="59" r="6" fill="#16202d" stroke="#66c0f4" stroke-width="2" />
+    <!-- Play Core -->
+    <path d="M 58 56 L 64 59 L 58 62 Z" fill="#66c0f4" />
+  </g>
+
+  <!-- Typography: STEAMER -->
+  <text x="88" y="48" 
+        font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-weight="900" 
+        font-size="36" 
+        letter-spacing="5" 
+        fill="url(#logoTextGrad)">
+    STEAMER
+  </text>
+
+  <!-- Tagline: OFFLINE GAMING VAULT with cyber accents -->
+  <line x1="88" y1="64" x2="108" y2="64" stroke="#2a475e" stroke-width="1.5" />
+  <text x="114" y="67" 
+        font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-weight="700" 
+        font-size="9.5" 
+        letter-spacing="3.5" 
+        fill="#66c0f4">
+    OFFLINE GAMING VAULT
+  </text>
+  <line x1="268" y1="64" x2="288" y2="64" stroke="#2a475e" stroke-width="1.5" />
+</svg>
