@@ -13,12 +13,30 @@ function getDatabaseUrl(): string {
   if (isServerless) {
     const tmpDbPath = path.join("/tmp", "steamer.db");
 
-    // Copy to /tmp if it doesn't exist or is smaller than source
-    let shouldCopy = true;
-    if (fs.existsSync(tmpDbPath)) {
+    const candidates = [
+      path.join(process.cwd(), "prisma", "steamer.db"),
+      path.join(process.cwd(), "steamer.db"),
+      path.join(process.cwd(), "prisma_seed", "steamer.db"),
+      path.join(__dirname, "..", "prisma", "steamer.db"),
+      path.join(__dirname, "..", "steamer.db"),
+      "/var/task/prisma/steamer.db",
+      "/var/task/steamer.db",
+    ];
+
+    const sourcePath = candidates.find((p) => {
       try {
+        return fs.existsSync(p);
+      } catch {
+        return false;
+      }
+    });
+
+    let shouldCopy = true;
+    if (fs.existsSync(tmpDbPath) && sourcePath) {
+      try {
+        const srcStat = fs.statSync(sourcePath);
         const tmpStat = fs.statSync(tmpDbPath);
-        if (tmpStat.size > 500000) {
+        if (srcStat.size === tmpStat.size && srcStat.mtimeMs <= tmpStat.mtimeMs) {
           shouldCopy = false;
         }
       } catch {
@@ -26,27 +44,12 @@ function getDatabaseUrl(): string {
       }
     }
 
-    if (shouldCopy) {
-      const candidates = [
-        path.join(process.cwd(), "prisma", "steamer.db"),
-        path.join(process.cwd(), "steamer.db"),
-        path.join(process.cwd(), "prisma_seed", "steamer.db"),
-        path.join(__dirname, "..", "prisma", "steamer.db"),
-        path.join(__dirname, "..", "steamer.db"),
-        "/var/task/prisma/steamer.db",
-        "/var/task/steamer.db",
-      ];
-
-      for (const p of candidates) {
-        if (fs.existsSync(p)) {
-          try {
-            fs.copyFileSync(p, tmpDbPath);
-            console.log(`[Prisma Vercel] Initialized SQLite at ${tmpDbPath} from ${p}`);
-            break;
-          } catch (e) {
-            console.error(`[Prisma Vercel] Error copying from ${p}:`, e);
-          }
-        }
+    if (shouldCopy && sourcePath) {
+      try {
+        fs.copyFileSync(sourcePath, tmpDbPath);
+        console.log(`[Prisma Vercel] Initialized SQLite at ${tmpDbPath} from ${sourcePath}`);
+      } catch (e) {
+        console.error(`[Prisma Vercel] Error copying SQLite from ${sourcePath}:`, e);
       }
     }
 
