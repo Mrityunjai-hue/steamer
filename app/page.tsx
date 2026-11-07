@@ -118,7 +118,7 @@ export default async function HomePage() {
               </span>
               <p className="text-[#c7d5e0]">
                 <strong className="text-white">STEAMER ALL-ACCESS PASS:</strong>{" "}
-                <span className="text-[#5ba32b] font-bold">245+ Blockbuster Titles</span> · ₹300 Flat One-Time Unlock · Zero Account Sharing
+                <span className="text-[#5ba32b] font-bold">265+ Blockbuster Titles</span> · ₹300 Flat One-Time Unlock · Zero Account Sharing
               </p>
             </div>
             <div className="flex items-center gap-1.5 text-[#8f98a0]">
@@ -132,25 +132,25 @@ export default async function HomePage() {
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#2a475e]/50 border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400">
                 <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
-                <span>₹300 All-Access Pass • 245+ PC Games</span>
+                <span>₹300 All-Access Pass • 265+ PC Games</span>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
                 ALL-ACCESS PC GAMING PASS.{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66c0f4] via-[#1a9fff] to-emerald-400">
-                  245+ TITLES. ON YOUR OWN PC.
+                  265+ TITLES. ON YOUR OWN PC.
                 </span>
               </h1>
 
               <p className="text-sm sm:text-base text-[#c7d5e0] leading-relaxed max-w-2xl">
-                Stop paying thousands for individual titles or dealing with shared account collisions. Get instant access to the complete 245+ offline game vault and the step-by-step PC setup guide.
+                Stop paying thousands for individual titles or dealing with shared account collisions. Get instant access to the complete 265+ offline game vault and the step-by-step PC setup guide.
               </p>
 
               {/* Amenity Badges */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] text-[#c7d5e0] pt-1">
                 <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded">
                   <Gamepad2 className="w-3.5 h-3.5 text-[#66c0f4]" />
-                  <span>245+ Premium Titles</span>
+                  <span>265+ Premium Titles</span>
                 </div>
                 <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded">
                   <Zap className="w-3.5 h-3.5 text-amber-400" />
@@ -225,7 +225,7 @@ export default async function HomePage() {
               <div className="w-10 h-10 rounded-lg bg-[#66c0f4]/10 border border-[#66c0f4]/30 flex items-center justify-center text-[#66c0f4]">
                 <Gamepad2 className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-white text-sm">245+ AAA & Indie Games</h3>
+              <h3 className="font-bold text-white text-sm">265+ AAA & Indie Games</h3>
               <p className="text-xs text-[#8f98a0] leading-relaxed">
                 Play blockbusters like GTA V, RDR 2, Cyberpunk 2077, Elden Ring, Black Myth: Wukong, God of War, Spider-Man, and hundreds more without buying separate copies.
               </p>
@@ -297,7 +297,7 @@ export default async function HomePage() {
                 <span className="text-[#8f98a0] font-bold block">Buying Separately</span>
                 <p className="text-red-400 font-extrabold text-sm">₹50,000+ Total</p>
                 <p className="text-[11px] text-[#8f98a0]">
-                  Buying 245+ AAA games individually at retail costs a fortune.
+                  Buying 265+ AAA games individually at retail costs a fortune.
                 </p>
               </div>
               <div className="p-3 bg-[#171a21] border border-[#2a475e]/50 rounded space-y-1">
@@ -311,7 +311,7 @@ export default async function HomePage() {
                 <span className="text-emerald-400 font-bold block">Steamer All-Access Pass</span>
                 <p className="text-emerald-300 font-extrabold text-sm">₹300 One-Time Flat</p>
                 <p className="text-[11px] text-[#c7d5e0]">
-                  Your PC, offline forever, 245+ titles, and 48-Hour Money-Back Guarantee.
+                  Your PC, offline forever, 265+ titles, and 48-Hour Money-Back Guarantee.
                 </p>
               </div>
             </div>
@@ -374,7 +374,7 @@ export default async function HomePage() {
                 </span>
                 <span className="text-[10px] text-[#5ba32b] font-mono font-bold">READY</span>
               </div>
-              <h3 className="font-bold text-white text-xs sm:text-sm">Play 245+ Titles On Your PC</h3>
+              <h3 className="font-bold text-white text-xs sm:text-sm">Play 265+ Titles On Your PC</h3>
               <p className="text-[11px] text-[#8f98a0] leading-relaxed">
                 Follow the 10-minute visual guide. Play story modes offline with local saves on your PC without getting kicked off.
               </p>
@@ -413,14 +413,14 @@ export default async function HomePage() {
               GAMES YOU CAN PLAY WITH THIS SETUP
             </h2>
             <p className="text-xs text-[#8f98a0] mt-0.5">
-              All 245+ titles below are included with your ₹300 setup guide. No individual purchases needed.
+              All 265+ titles below are included with your ₹300 setup guide. No individual purchases needed.
             </p>
           </div>
           <Link
             href="/catalog"
             className="text-xs font-bold text-[#66c0f4] hover:underline flex items-center gap-1 self-start sm:self-auto"
           >
-            Browse All 245+ Titles <ChevronRight className="w-3.5 h-3.5" />
+            Browse All 265+ Titles <ChevronRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -581,7 +581,7 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-6 sm:p-8 text-center space-y-4 shadow-xl">
           <h2 className="text-xl sm:text-3xl font-black text-white tracking-wide">
-            Ready to Play Over 245+ PC Games On Your Own System?
+            Ready to Play Over 265+ PC Games On Your Own System?
           </h2>
           <p className="text-xs sm:text-sm text-[#c7d5e0] max-w-2xl mx-auto leading-relaxed">
             Get the full setup walkthrough, complete game library access, and play forever without paying thousands or fighting for shared accounts.

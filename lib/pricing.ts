@@ -20,7 +20,7 @@ export interface PricingCalculationResult {
 
 /**
  * Server-side single source of truth for pricing:
- * Flat ₹300 for Lifetime All-Access Guide & entire 245+ games catalog.
+ * Flat ₹300 for Lifetime All-Access Guide & entire 265+ games catalog.
  */
 export function calculatePlanPricing(
   games: GamePriceItem[] = [],
@@ -32,7 +32,7 @@ export function calculatePlanPricing(
     finalPrice: ALL_ACCESS_PRICE,
     savings: 0,
     planType: "ALL_ACCESS",
-    planLabel: "Complete Setup Guide & Lifetime Vault Access (245+ Titles)",
+    planLabel: "Complete Setup Guide & Lifetime Vault Access (265+ Titles)",
     isAllAccessBetterValue: false,
   };
 }

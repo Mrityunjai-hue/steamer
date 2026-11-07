@@ -141,7 +141,7 @@ export default async function GameDetailPage({
                 <strong>Offline Status:</strong> {isVerifiedOffline ? `Verified offline on ${game.testedOfflineOn ? new Date(game.testedOfflineOn).toLocaleDateString() : "test bench"}` : "Single-player story mode supported for offline play."}
               </li>
               <li>
-                <strong>Access:</strong> Included in the ₹300 Complete PC Setup Guide along with 245+ other games.
+                <strong>Access:</strong> Included in the ₹300 Complete PC Setup Guide along with 265+ other games.
               </li>
               {game.adminNote && (
                 <li className="text-amber-300 font-medium">
@@ -207,7 +207,7 @@ export default async function GameDetailPage({
                 href="/catalog"
                 className="w-full btn-steam-panel py-2.5 rounded-sm text-xs font-bold flex items-center justify-center gap-1.5 border border-[#2a475e]"
               >
-                Browse All 245+ Included Games
+                Browse All 265+ Included Games
               </Link>
             </div>
 

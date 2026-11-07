@@ -252,7 +252,7 @@ export default function CheckoutPage() {
           <span className="w-3 h-3 rounded-full bg-[#5ba32b]" />
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-white">
-              Lifetime PC Setup Guide & Vault Access (245+ Titles)
+              Lifetime PC Setup Guide & Vault Access (265+ Titles)
             </h3>
             <p className="text-[11px] text-[#8f98a0]">
               One-Time Payment · Permanent Personal PC Offline Setup · Zero Recurring Fees
@@ -388,7 +388,7 @@ export default function CheckoutPage() {
                 className="mt-0.5 rounded border-[#2a475e] text-[#66c0f4] focus:ring-0 bg-[#16202d] w-4 h-4"
               />
               <span>
-                <strong>All-Access Vault (245+ Titles):</strong> I understand my ₹300 pass unlocks access to all 245+ verified PC titles in the Steamer offline catalog.
+                <strong>All-Access Vault (265+ Titles):</strong> I understand my ₹300 pass unlocks access to all 265+ verified PC titles in the Steamer offline catalog.
               </span>
             </label>
 

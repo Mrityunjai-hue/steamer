@@ -26,7 +26,7 @@ export default function SetupWindowPage() {
             ZERO WAITING QUEUES
           </h1>
           <p className="text-xs text-[#8f98a0] max-w-lg mx-auto leading-relaxed">
-            Steamer has upgraded to independent personal PC setup. You do not need to wait in a queue or schedule a download slot. You have immediate, lifetime access to configure any title in our 245+ game vault.
+            Steamer has upgraded to independent personal PC setup. You do not need to wait in a queue or schedule a download slot. You have immediate, lifetime access to configure any title in our 265+ game vault.
           </p>
         </div>
 

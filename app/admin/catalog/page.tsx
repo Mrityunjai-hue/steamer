@@ -39,7 +39,7 @@ export default function AdminCatalogPage() {
             <FolderKanban className="w-6 h-6 text-[#66c0f4]" /> CATALOG & OFFLINE VERIFICATION MANAGER
           </h1>
           <p className="text-xs text-[#8f98a0]">
-            Review all 245+ games, manage pricing tiers, and certify offline testing dates per Rule 5.1.
+            Review all 265+ games, manage pricing tiers, and certify offline testing dates per Rule 5.1.
           </p>
         </div>
       </div>

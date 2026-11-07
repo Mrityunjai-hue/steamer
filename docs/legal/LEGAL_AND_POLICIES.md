@@ -27,7 +27,7 @@ Steamer is operated by [BUSINESS] ("we", "us"). We provide a paid, time-limited 
 You must be **18 or older** and able to enter a binding contract in India. You must give accurate details and verify your email and WhatsApp number. One person, one account.
 
 ## 3. What you are buying
-You are purchasing **The Complete PC Setup Guide & Lifetime Vault Access Pass** for a single one-time fee of ₹300. You receive our curated, step-by-step instructions for configuring and playing 245+ single-player PC games on your own system in offline mode. You are **not** buying game licenses or ownership of game software. We do not sell, crack, or distribute pirated software files.
+You are purchasing **The Complete PC Setup Guide & Lifetime Vault Access Pass** for a single one-time fee of ₹300. You receive our curated, step-by-step instructions for configuring and playing 265+ single-player PC games on your own system in offline mode. You are **not** buying game licenses or ownership of game software. We do not sell, crack, or distribute pirated software files.
 
 ## 4. No Account Sharing
 Unlike shared-account rental services where multiple users battle for the same login, our setup guide teaches you how to configure games directly on your personal computer so you never get kicked off by other players.
@@ -41,7 +41,7 @@ Upon completing your one-time ₹300 payment via direct UPI and submitting your 
 ## 7. Pricing and Payment
 - Pricing is flat ₹300 INR (one-time payment). There are **no recurring monthly fees or auto-renewals**.
 - Payment is collected via direct UPI to our verified UPI VPA with zero payment gateway processing fees.
-- Lifetime access to current and future guide updates for all 245+ supported catalog titles is included.
+- Lifetime access to current and future guide updates for all 265+ supported catalog titles is included.
 
 ## 8. Refunds & Guarantee
 If the setup guide fails to work on your compatible Windows PC and our admin support team cannot resolve the issue within 48 hours of purchase, you are eligible for a full refund via direct UPI.
@@ -103,7 +103,7 @@ Support: [SUPPORT_EMAIL] · WhatsApp: [WHATSAPP_NUMBER] · Grievance Officer: [G
 
 ☐ **Zero Account Sharing or Queues:** I understand this pass gives me direct, independent access on my PC without waiting in queues or sharing logins with other users.
 
-☐ **All-Access Vault (245+ Titles):** I understand my ₹300 pass unlocks access to all 245+ verified PC titles in the Steamer offline catalog.
+☐ **All-Access Vault (265+ Titles):** I understand my ₹300 pass unlocks access to all 265+ verified PC titles in the Steamer offline catalog.
 
 ☐ **System Compatibility:** I confirm my computer meets basic system requirements (Windows 10/11 64-bit with adequate disk space for game downloads).
 
@@ -185,7 +185,7 @@ Coupons are single-use unless stated, cannot be combined, and have no cash value
 5. **Direct Support:** Contact our team via WhatsApp for any 1-on-1 configuration or troubleshooting questions.
 
 ## D2. Quick-Start Onboarding Steps
-1. ☐ I understand all 245+ single-player PC games run 100% offline with permanent local saves on my PC.
+1. ☐ I understand all 265+ single-player PC games run 100% offline with permanent local saves on my PC.
 2. ☐ I will follow the click-by-click Setup Guide walkthrough in my dashboard to configure titles in my personal library.
 3. ☐ I understand this pass gives me direct, independent access on my PC with zero queues and zero account sharing.
 4. ☐ I will keep my secret access link confidential to protect my personal dashboard and setup guide access.

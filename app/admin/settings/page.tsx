@@ -290,7 +290,7 @@ export default function AdminSettingsPage() {
               <input
                 type="text"
                 disabled
-                value="245+ Verified Single-Player Titles"
+                value="265+ Verified Single-Player Titles"
                 className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white font-mono"
               />
             </div>

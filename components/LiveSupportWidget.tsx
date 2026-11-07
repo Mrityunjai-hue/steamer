@@ -26,7 +26,7 @@ export default function LiveSupportWidget() {
   }, []);
 
   const whatsappUrl = `https://wa.me/${contact.cleanPhone}?text=${encodeURIComponent(
-    "Hi Steamer Admin! I'm interested in the ₹300 Complete PC Setup Guide & 245+ Titles Vault. Can you help me with a quick question?"
+    "Hi Steamer Admin! I'm interested in the ₹300 Complete PC Setup Guide & 265+ Titles Vault. Can you help me with a quick question?"
   )}`;
 
   return (

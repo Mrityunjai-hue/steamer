@@ -192,7 +192,7 @@ export default function AdminDashboardPage() {
             </div>
             <div className="p-3 bg-[#16202d] border border-[#2a475e]/60 rounded space-y-1">
               <span className="text-[#8f98a0] text-[10px] uppercase font-bold block">Catalog Scope</span>
-              <p className="font-bold text-white">245+ Verified Single-Player Titles</p>
+              <p className="font-bold text-white">265+ Verified Single-Player Titles</p>
             </div>
           </div>
 

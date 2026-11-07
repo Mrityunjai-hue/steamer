@@ -123,7 +123,7 @@ export default function Navbar() {
             className="hidden sm:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400 hover:border-emerald-400 transition-all shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
-            <span>₹300 All-Access • 245+ Titles</span>
+            <span>₹300 All-Access • 265+ Titles</span>
           </Link>
 
           {/* Cart Icon */}
@@ -200,7 +200,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between py-2 border-b border-[#2a475e]/50">
             <span className="text-xs text-[#8f98a0]">All-Access Pass</span>
             <span className="text-xs font-bold text-[#5ba32b]">
-              ₹300 Instant Unlock (245+ Titles)
+              ₹300 Instant Unlock (265+ Titles)
             </span>
           </div>
           {navLinks.map((link) => (

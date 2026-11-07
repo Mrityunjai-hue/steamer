@@ -112,7 +112,7 @@ export default function DashboardPage() {
           <span>
             {activeSub
               ? "All-Access Pass: Unlocked & Active (Lifetime Access)"
-              : "No Active Plan — Unlock All 245+ Games for ₹300"}
+              : "No Active Plan — Unlock All 265+ Games for ₹300"}
           </span>
         </div>
       </div>
@@ -261,7 +261,7 @@ export default function DashboardPage() {
                   </Link>
                 </div>
                 <p className="text-xs text-[#8f98a0]">
-                  All 245+ verified PC titles are permanently included in your ₹300 setup plan.
+                  All 265+ verified PC titles are permanently included in your ₹300 setup plan.
                 </p>
               </div>
 
@@ -298,7 +298,7 @@ export default function DashboardPage() {
               Unlock the Complete PC Setup Guide
             </h2>
             <p className="text-sm text-[#8f98a0] max-w-lg mx-auto leading-relaxed">
-              Get the ultimate, step-by-step instructions to unlock and play 245+ premium PC games on your own system forever with zero account conflicts.
+              Get the ultimate, step-by-step instructions to unlock and play 265+ premium PC games on your own system forever with zero account conflicts.
             </p>
           </div>
 

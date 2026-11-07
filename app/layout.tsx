@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: `%s | ${brandConfig.name}`,
   },
   description:
-    "Steamer provides the complete PC setup guide & vault access to 245+ single-player PC games offline with local saves.",
+    "Steamer provides the complete PC setup guide & vault access to 265+ single-player PC games offline with local saves.",
   icons: {
     icon: "/brand/icon.svg",
     shortcut: "/brand/icon.svg",

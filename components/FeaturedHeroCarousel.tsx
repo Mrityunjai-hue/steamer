@@ -186,7 +186,7 @@ export default function FeaturedHeroCarousel({ games }: FeaturedHeroCarouselProp
         </div>
 
         <span className="text-[11px] text-[#8f98a0]">
-          245+ Titles Included with ₹300 Guide
+          265+ Titles Included with ₹300 Guide
         </span>
       </div>
     </div>
