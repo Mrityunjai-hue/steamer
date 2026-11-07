@@ -183,7 +183,11 @@ export default function AdminGuideEditorPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-6xl pb-16">
+    <AntiScreenshotShield
+      enabled={guide.protection?.antiScreenshot ?? true}
+      watermarkText="ADMIN PREVIEW • STEAMER PASS"
+    >
+      <div className="space-y-6 max-w-6xl pb-16">
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#2a475e]/60 pb-4">
         <div>
@@ -564,11 +568,7 @@ export default function AdminGuideEditorPage() {
         </div>
       ) : (
         /* LIVE PREVIEW TAB (Shows exact verified paid customer view) */
-        <AntiScreenshotShield
-          enabled={guide.protection?.antiScreenshot ?? true}
-          watermarkText="ADMIN PREVIEW • STEAMER PASS"
-        >
-          <div className="bg-[#171a21] border border-[#2a475e] rounded-lg p-6 sm:p-8 space-y-8 select-none">
+        <div className="bg-[#171a21] border border-[#2a475e] rounded-lg p-6 sm:p-8 space-y-8 select-none">
             <div className="border-b border-[#2a475e]/60 pb-4">
               <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded">
                 Verified User View
@@ -629,8 +629,8 @@ export default function AdminGuideEditorPage() {
               ))}
             </div>
           </div>
-        </AntiScreenshotShield>
       )}
     </div>
-  );
+  </AntiScreenshotShield>
+);
 }
