@@ -1,0 +1,79 @@
+{
+  "mismatches": [
+    {
+      "id": "e233f3d4-a582-4720-9b1b-8f7c2321fcaf",
+      "title": "007 First Light",
+      "steamAppId": "1659040",
+      "actualSteamName": "HITMAN World of Assassination",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg"
+    },
+    {
+      "id": "fa648d50-6f27-4a40-a2bc-eeb2010a9e39",
+      "title": "Alien vs Predator",
+      "steamAppId": "10680",
+      "actualSteamName": "Aliens vs. Predator™",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/10680/header.jpg"
+    },
+    {
+      "id": "77be2070-1ca3-4c5f-bdf4-734550eb10c1",
+      "title": "Hitman 3",
+      "steamAppId": "1659040",
+      "actualSteamName": "HITMAN World of Assassination",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg"
+    },
+    {
+      "id": "9cec0c16-de69-4ef0-a80a-292a73b195b7",
+      "title": "Naruto Shippuden: Ultimate Ninja Storm",
+      "steamAppId": "495140",
+      "actualSteamName": "NARUTO: Ultimate Ninja STORM",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/495140/header.jpg"
+    },
+    {
+      "id": "920628e3-21ab-45e1-a89c-03a340f92dce",
+      "title": "Pragmata",
+      "steamAppId": "2358720",
+      "actualSteamName": "Black Myth: Wukong",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg"
+    },
+    {
+      "id": "355fca8e-82e7-48ff-8214-04cb5fef01ad",
+      "title": "A Plague Tale: Requiem",
+      "steamAppId": "1452570",
+      "actualSteamName": "Fallen Angel Soundtrack",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1452570/header.jpg"
+    },
+    {
+      "id": "84e3c616-76e2-4984-8f0b-e39db49cf135",
+      "title": "Stellar Blade",
+      "steamAppId": "1888930",
+      "actualSteamName": "The Last of Us™ Part I",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg"
+    },
+    {
+      "id": "10339f1f-9674-4d93-84cd-fbebb7ceb92a",
+      "title": "Uncharted 4: A Thief's End",
+      "steamAppId": "1659420",
+      "actualSteamName": "UNCHARTED™: Legacy of Thieves Collection",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659420/header.jpg"
+    },
+    {
+      "id": "9b2c44b2-1995-4b49-82f9-b93d8c76efcc",
+      "title": "Uncharted: The Lost Legacy",
+      "steamAppId": "1659420",
+      "actualSteamName": "UNCHARTED™: Legacy of Thieves Collection",
+      "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659420/header.jpg"
+    }
+  ],
+  "invalidAppIds": [
+    {
+      "title": "Deadpool",
+      "steamAppId": "224060",
+      "reason": "AppId not found / delisted"
+    },
+    {
+      "title": "Hitman: Absolution",
+      "steamAppId": "205930",
+      "reason": "AppId not found / delisted"
+    }
+  ]
+}

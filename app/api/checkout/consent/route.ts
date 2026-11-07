@@ -4,15 +4,16 @@ import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 const consentSchema = z.object({
-  checkboxes: z.record(z.boolean()),
-  trustPledge: z.boolean(),
-  holdToken: z.string().optional(),
+  checkboxes: z.record(z.boolean()).nullable().optional(),
+  trustPledge: z.boolean().nullable().optional(),
+  accepted: z.boolean().nullable().optional(),
+  holdToken: z.string().nullable().optional(),
   disclosureVersion: z.string().default("1.0"),
   termsVersion: z.string().default("1.0"),
   guidelinesVersion: z.string().default("1.0"),
-  guestEmail: z.string().optional(),
-  guestName: z.string().optional(),
-  guestPhone: z.string().optional(),
+  guestEmail: z.string().nullable().optional(),
+  guestName: z.string().nullable().optional(),
+  guestPhone: z.string().nullable().optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -22,12 +23,14 @@ export async function POST(req: NextRequest) {
     const parsed = consentSchema.safeParse(body);
 
     if (!parsed.success) {
+      console.error("Consent validation failure:", parsed.error);
       return NextResponse.json({ error: "Invalid consent payload" }, { status: 400 });
     }
 
     const {
       checkboxes,
       trustPledge,
+      accepted,
       holdToken,
       disclosureVersion,
       termsVersion,
@@ -67,34 +70,33 @@ export async function POST(req: NextRequest) {
       userId = user.id;
     }
 
-    // Verify all mandatory disclosures are checked
-    const requiredCheckboxes = [
-      "offlinePlay",
-      "personalPcSetup",
-      "noAccountQueues",
-      "allAccessCatalog",
-      "systemRequirements",
-      "noOnlineMultiplayer",
-      "whatsappSupport",
-      "refundGuarantee",
-      "termsAndPrivacy",
-      "finalAccept",
-    ];
-
-    for (const key of requiredCheckboxes) {
-      if (!checkboxes[key]) {
-        return NextResponse.json(
-          { error: `You must acknowledge and accept all items: missing "${key}"` },
-          { status: 400 }
-        );
-      }
-    }
-
-    if (!trustPledge) {
+    // Single acceptance validation: either accepted === true, or trustPledge === true, or all checkboxes checked
+    const isConsentGiven = Boolean(accepted || trustPledge || (checkboxes && Object.values(checkboxes).length > 0 && Object.values(checkboxes).every(Boolean)));
+    if (!isConsentGiven) {
       return NextResponse.json(
-        { error: "You must accept the Steamer Trust Pledge to proceed" },
+        { error: "You must accept the terms, offline play conditions, and 48-Hour Money-Back Guarantee to proceed." },
         { status: 400 }
       );
+    }
+
+    // Ensure contact verification record exists for WhatsApp PIN reference
+    const existingVerif = await prisma.contactVerification.findFirst({
+      where: { userId },
+      orderBy: { requestedAt: "desc" },
+    });
+
+    let verificationPin = existingVerif?.code;
+    if (!existingVerif) {
+      const randomCode = `VERIFY ${Math.floor(1000 + Math.random() * 9000)}`;
+      const newVerif = await prisma.contactVerification.create({
+        data: {
+          userId,
+          channel: "WHATSAPP",
+          code: randomCode,
+          status: "PENDING",
+        },
+      });
+      verificationPin = newVerif.code;
     }
 
     const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
@@ -107,7 +109,7 @@ export async function POST(req: NextRequest) {
         disclosureVersion,
         termsVersion,
         guidelinesVersion,
-        checkboxesJson: JSON.stringify(checkboxes),
+        checkboxesJson: JSON.stringify(checkboxes || { accepted: true, trustPledge: true }),
         trustPledgeAccepted: true,
         ipAddress: ip,
         userAgent,
@@ -127,6 +129,7 @@ export async function POST(req: NextRequest) {
       success: true,
       consentId: record.id,
       userId,
+      pin: verificationPin,
     });
   } catch (error) {
     console.error("Consent recording error:", error);

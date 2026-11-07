@@ -35,7 +35,10 @@ export async function GET(
       return NextResponse.json({ error: "Order not found" }, { status: 404 });
     }
 
-    const isVerified = order.status === "ACTIVE" || order.status === "COMPLETED";
+    const isVerified =
+      order.status === "VERIFIED" ||
+      order.status === "ACTIVE" ||
+      order.status === "COMPLETED";
 
     // Load guide if verified
     let guide: GuideConfig = DEFAULT_GUIDE_CONFIG;

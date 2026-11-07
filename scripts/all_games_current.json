@@ -1,0 +1,1472 @@
+[
+  {
+    "id": "e233f3d4-a582-4720-9b1b-8f7c2321fcaf",
+    "title": "007 First Light",
+    "steamAppId": "1659040",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg"
+  },
+  {
+    "id": "d0a465aa-b44e-4e3a-b712-1ddb95ed815c",
+    "title": "A Plague Tale: Innocence",
+    "steamAppId": "752590",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/752590/header.jpg"
+  },
+  {
+    "id": "355fca8e-82e7-48ff-8214-04cb5fef01ad",
+    "title": "A Plague Tale: Requiem",
+    "steamAppId": "1452570",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1452570/header.jpg"
+  },
+  {
+    "id": "17436050-e30a-42d3-92cc-16490355c3c6",
+    "title": "ARK: Survival Ascended",
+    "steamAppId": "2399830",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2399830/header.jpg"
+  },
+  {
+    "id": "3336acbd-c0cd-4536-a18f-787ba168b5e9",
+    "title": "Alan Wake 1",
+    "steamAppId": "108710",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/108710/header.jpg"
+  },
+  {
+    "id": "fa648d50-6f27-4a40-a2bc-eeb2010a9e39",
+    "title": "Alien vs Predator",
+    "steamAppId": "10680",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/10680/header.jpg"
+  },
+  {
+    "id": "8769bd63-6d24-46ec-83a6-f64f486a6c00",
+    "title": "Alien: Isolation",
+    "steamAppId": "214490",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/214490/header.jpg"
+  },
+  {
+    "id": "12ca6131-9586-43cd-b16b-d200cdb11beb",
+    "title": "Assassin's Creed 1",
+    "steamAppId": "15100",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/15100/header.jpg"
+  },
+  {
+    "id": "c80d7b6f-bb85-4ca9-948d-eeaf39664339",
+    "title": "Assassin's Creed 2",
+    "steamAppId": "33230",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/33230/header.jpg"
+  },
+  {
+    "id": "b1eea0aa-708d-4877-aece-a50b52ad365d",
+    "title": "Assassin's Creed 3",
+    "steamAppId": "208480",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/208480/header.jpg"
+  },
+  {
+    "id": "3882cd8d-622d-45d4-942c-d84151e2a3c5",
+    "title": "Assassin's Creed 3: Remastered",
+    "steamAppId": "911400",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/911400/header.jpg"
+  },
+  {
+    "id": "391be1d6-2eaf-450a-9a7e-973255dec245",
+    "title": "Assassin's Creed 4: Black Flag",
+    "steamAppId": "242050",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/242050/header.jpg"
+  },
+  {
+    "id": "6a94c1b2-d101-4f80-95a8-fdd38478d121",
+    "title": "Assassin's Creed Chronicles: China",
+    "steamAppId": "354380",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/354380/header.jpg"
+  },
+  {
+    "id": "4e92caf3-0e6d-4067-a605-d911f730e04a",
+    "title": "Assassin's Creed Chronicles: India",
+    "steamAppId": "359610",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/359610/header.jpg"
+  },
+  {
+    "id": "fba140e9-3c11-4b85-af8e-549adea2ede7",
+    "title": "Assassin's Creed: Black Flag Resynced",
+    "steamAppId": "242050",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/242050/header.jpg"
+  },
+  {
+    "id": "530408a1-b56c-4441-aa6c-25b874ff8e60",
+    "title": "Assassin's Creed: Brotherhood",
+    "steamAppId": "48190",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/48190/header.jpg"
+  },
+  {
+    "id": "01224ac9-66c1-48d5-a778-7b2213517d83",
+    "title": "Assassin's Creed: Mirage",
+    "steamAppId": "3035570",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3035570/header.jpg"
+  },
+  {
+    "id": "28b23c02-0546-46c9-bedf-0b7ab4174c40",
+    "title": "Assassin's Creed: Odyssey",
+    "steamAppId": "812140",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/812140/header.jpg"
+  },
+  {
+    "id": "762f3034-eb25-454f-aa2c-7542b046950a",
+    "title": "Assassin's Creed: Origins",
+    "steamAppId": "582160",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/582160/header.jpg"
+  },
+  {
+    "id": "3045029f-6be3-4747-b98d-2e4ffa674f57",
+    "title": "Assassin's Creed: Revelations",
+    "steamAppId": "201870",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/201870/header.jpg"
+  },
+  {
+    "id": "596dbf1a-0373-4bdf-90ee-a678baa97e4f",
+    "title": "Assassin's Creed: Rogue",
+    "steamAppId": "311560",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/311560/header.jpg"
+  },
+  {
+    "id": "eeacfe7d-6f00-4067-bc60-0a50cee7e961",
+    "title": "Assassin's Creed: Shadows",
+    "steamAppId": "3159330",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3159330/header.jpg"
+  },
+  {
+    "id": "b57dc29a-3556-42c6-9ff6-d598823c7f04",
+    "title": "Assassin's Creed: Syndicate",
+    "steamAppId": "368500",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/368500/header.jpg"
+  },
+  {
+    "id": "25f6e530-d7f0-40d4-b2c5-aabd704b7b75",
+    "title": "Assassin's Creed: Unity",
+    "steamAppId": "289650",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/289650/header.jpg"
+  },
+  {
+    "id": "125a48b2-159a-4445-b86f-5e4cae631fc2",
+    "title": "Assassin's Creed: Valhalla",
+    "steamAppId": "2208920",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/header.jpg"
+  },
+  {
+    "id": "165551f1-f07a-46e2-bdb2-b4b06cb23959",
+    "title": "Batman: Arkham Asylum",
+    "steamAppId": "35140",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/35140/header.jpg"
+  },
+  {
+    "id": "ef6d3964-7dd8-4e05-ba85-890a4aba66aa",
+    "title": "Batman: Arkham City",
+    "steamAppId": "200260",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/200260/header.jpg"
+  },
+  {
+    "id": "bb878a11-7c1e-48ca-9c67-223727799230",
+    "title": "Batman: Arkham Knight",
+    "steamAppId": "208650",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/208650/header.jpg"
+  },
+  {
+    "id": "bd673909-c041-4020-b8dd-ce82a77e2b97",
+    "title": "Batman: Arkham Origins",
+    "steamAppId": "209000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/209000/header.jpg"
+  },
+  {
+    "id": "e1d1a272-6440-49e6-9d5b-37deafa621a8",
+    "title": "Battlefield 2042",
+    "steamAppId": "1517290",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1517290/header.jpg"
+  },
+  {
+    "id": "48b01b2c-315f-4f85-93f4-feb6a8c418d8",
+    "title": "Battlefield 3 Premium Edition",
+    "steamAppId": "1238820",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1238820/header.jpg"
+  },
+  {
+    "id": "9a4da999-4265-4e0e-8fdd-ab33519ae702",
+    "title": "Battlefield 4 Premium Edition",
+    "steamAppId": "1238860",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1238860/header.jpg"
+  },
+  {
+    "id": "6595de27-511f-466f-bf41-647d9ca2fba4",
+    "title": "Battlefield Hardline Ultimate Edition",
+    "steamAppId": "1238880",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1238880/header.jpg"
+  },
+  {
+    "id": "4d407123-c134-4d36-8120-2030a2eab64a",
+    "title": "Battlefield V Definitive Edition",
+    "steamAppId": "1238810",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1238810/header.jpg"
+  },
+  {
+    "id": "85ba82a1-4a34-4f2a-92c5-6455315467f2",
+    "title": "Black Myth: Wukong",
+    "steamAppId": "2358720",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg"
+  },
+  {
+    "id": "961eb223-bc21-4414-98a3-fd460326795f",
+    "title": "Bully: Scholarship Edition",
+    "steamAppId": "12200",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/12200/header.jpg"
+  },
+  {
+    "id": "f2e579fa-134a-4411-99bf-c16db543f4e9",
+    "title": "Clair Obscur: Expedition 33",
+    "steamAppId": "1903340",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1903340/header.jpg"
+  },
+  {
+    "id": "a7fd74cb-5c10-4b03-b072-253aaeda2476",
+    "title": "Control Ultimate Edition",
+    "steamAppId": "870780",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/870780/header.jpg"
+  },
+  {
+    "id": "fe916ed1-3075-4741-9d8a-d957e54c7a0d",
+    "title": "Crimson Desert",
+    "steamAppId": "3321460",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3321460/header.jpg"
+  },
+  {
+    "id": "f98e7397-46b5-473e-9949-77af1d4bbb81",
+    "title": "Darwin's Paradox",
+    "steamAppId": "2989180",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2989180/header.jpg"
+  },
+  {
+    "id": "16c16b91-3c55-4151-8cb1-a4928efbdbd2",
+    "title": "Days Gone",
+    "steamAppId": "1259420",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1259420/header.jpg"
+  },
+  {
+    "id": "ff39a75b-c5f4-4c0b-aefa-b3f60f1b7283",
+    "title": "Deadpool",
+    "steamAppId": "224060",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/224060/header.jpg"
+  },
+  {
+    "id": "1e4ab63f-456d-4795-bcf4-ff1e383a70a3",
+    "title": "Doom",
+    "steamAppId": "379720",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/379720/header.jpg"
+  },
+  {
+    "id": "d75c94d7-b4f0-4e4f-a0cd-db4762c4e532",
+    "title": "Doom Eternal",
+    "steamAppId": "782330",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/782330/header.jpg"
+  },
+  {
+    "id": "299c1e7d-52d7-4c18-9e7b-b9f5537cb6ef",
+    "title": "Doom: The Dark Ages",
+    "steamAppId": "3017860",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3017860/header.jpg"
+  },
+  {
+    "id": "a4f3c49f-b708-41e9-84f4-bb7607be242c",
+    "title": "Dragon Ball Xenoverse",
+    "steamAppId": "323470",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/323470/header.jpg"
+  },
+  {
+    "id": "dba8728a-cd35-4398-8a71-c5b38a5573b0",
+    "title": "Dragon Ball Xenoverse 2",
+    "steamAppId": "454650",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/454650/header.jpg"
+  },
+  {
+    "id": "6762ec11-889f-42dd-838b-0a906156fdc4",
+    "title": "Dragon Ball Z: Kakarot",
+    "steamAppId": "851850",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/851850/header.jpg"
+  },
+  {
+    "id": "0c4f3d46-7c2b-437c-befc-41ad8066e91e",
+    "title": "Dragon Ball: FighterZ",
+    "steamAppId": "678950",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/678950/header.jpg"
+  },
+  {
+    "id": "872cc4e6-edf8-498a-9b9e-f10f1245d789",
+    "title": "Dragon Ball: Sparking! Zero",
+    "steamAppId": "1790600",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1790600/header.jpg"
+  },
+  {
+    "id": "431a0b8d-1cd8-43c3-84d2-50fd96640f7c",
+    "title": "Dying Light",
+    "steamAppId": "239140",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg"
+  },
+  {
+    "id": "7614a906-9f9b-468d-b007-a2745dace96c",
+    "title": "Dying Light 2: Stay Human",
+    "steamAppId": "534380",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/534380/header.jpg"
+  },
+  {
+    "id": "9a2656cc-cddf-496e-8a09-c2bd36afb113",
+    "title": "Dying Light: The Beast",
+    "steamAppId": "3008130",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3008130/header.jpg"
+  },
+  {
+    "id": "dc80854d-00f1-4592-af16-26344fac46e1",
+    "title": "Far Cry",
+    "steamAppId": "13520",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/13520/header.jpg"
+  },
+  {
+    "id": "10e0a419-8d2f-4642-a74c-ee61fadcca16",
+    "title": "Far Cry 2",
+    "steamAppId": "19900",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/19900/header.jpg"
+  },
+  {
+    "id": "7bec6069-d676-4cf9-8841-f05042bed6fe",
+    "title": "Far Cry 3",
+    "steamAppId": "220240",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/220240/header.jpg"
+  },
+  {
+    "id": "728858a7-025a-47b4-92af-16070f967bae",
+    "title": "Far Cry 3: Blood Dragon",
+    "steamAppId": "233270",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/233270/header.jpg"
+  },
+  {
+    "id": "10eb5968-96d0-4ca1-af31-13174a0290a3",
+    "title": "Far Cry 4",
+    "steamAppId": "298110",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/298110/header.jpg"
+  },
+  {
+    "id": "75b9b9bb-10d5-458c-ab91-60c2a2ef4c6b",
+    "title": "Far Cry 5",
+    "steamAppId": "552520",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/552520/header.jpg"
+  },
+  {
+    "id": "715e947e-67cd-46b8-a6a1-7d336873c6bc",
+    "title": "Far Cry 6",
+    "steamAppId": "2369390",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2369390/header.jpg"
+  },
+  {
+    "id": "f0afacfb-d6b4-4d62-a721-38e5e5a7219c",
+    "title": "Far Cry: New Dawn",
+    "steamAppId": "939960",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/939960/header.jpg"
+  },
+  {
+    "id": "a1caa7a9-7b0d-4e6a-961a-33e7e2d49fdf",
+    "title": "Far Cry: Primal",
+    "steamAppId": "371660",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/371660/header.jpg"
+  },
+  {
+    "id": "d27eeef2-def8-42af-8385-08d82f008afc",
+    "title": "Five Nights at Freddy's",
+    "steamAppId": "319510",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/319510/header.jpg"
+  },
+  {
+    "id": "f4bc2c9b-9e74-4d12-b9f0-21bce4ed5d7a",
+    "title": "Five Nights at Freddy's 2",
+    "steamAppId": "332800",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/332800/header.jpg"
+  },
+  {
+    "id": "3282319b-111d-4aa3-9b32-c6d38608baf0",
+    "title": "Five Nights at Freddy's 3",
+    "steamAppId": "354140",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/354140/header.jpg"
+  },
+  {
+    "id": "ad947020-cfcf-4818-ad39-d2cff848dfd3",
+    "title": "Five Nights at Freddy's: Help Wanted",
+    "steamAppId": "732690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/732690/header.jpg"
+  },
+  {
+    "id": "19c0a0e0-e623-4882-b125-30c6eafe7497",
+    "title": "Five Nights at Freddy's: Help Wanted 2",
+    "steamAppId": "2287520",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2287520/header.jpg"
+  },
+  {
+    "id": "55a86d2f-c207-4582-a075-a183e3e2d1e5",
+    "title": "Five Nights at Freddy's: Security Breach",
+    "steamAppId": "747660",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/747660/header.jpg"
+  },
+  {
+    "id": "5f60d26a-197b-4dde-9379-b2016878b3c8",
+    "title": "Forza Horizon 4",
+    "steamAppId": "1293830",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1293830/header.jpg"
+  },
+  {
+    "id": "e4628283-eda0-4e09-8b2b-c4a3d38ef2f8",
+    "title": "Forza Horizon 5",
+    "steamAppId": "1551360",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg"
+  },
+  {
+    "id": "b36611ef-2249-430d-a918-0b0a3ec18db1",
+    "title": "Forza Horizon 6",
+    "steamAppId": "1551360",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg"
+  },
+  {
+    "id": "707822cf-6aaa-494c-9ac4-bb52f2eaba86",
+    "title": "Forza Motorsport",
+    "steamAppId": "2440510",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2440510/header.jpg"
+  },
+  {
+    "id": "8e7df340-2a85-44cb-aaf7-aec14b57e026",
+    "title": "Garry's Mod",
+    "steamAppId": "4000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/4000/header.jpg"
+  },
+  {
+    "id": "101e523e-e47e-46b5-8347-0855b49d6ce6",
+    "title": "Geometry Dash",
+    "steamAppId": "322170",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/322170/header.jpg"
+  },
+  {
+    "id": "36f76882-bf2d-4f6a-afbd-ab9eff1b735e",
+    "title": "Getting Over It with Bennett Foddy",
+    "steamAppId": "240720",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/240720/header.jpg"
+  },
+  {
+    "id": "ef580efd-8420-49fa-905f-b44cecc7cb4c",
+    "title": "Ghost of Tsushima Director's Cut",
+    "steamAppId": "2215430",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
+  },
+  {
+    "id": "86a3bb31-c637-4b0c-80f9-343329af7918",
+    "title": "Ghostrunner",
+    "steamAppId": "1139900",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1139900/header.jpg"
+  },
+  {
+    "id": "9537bb88-45e4-404b-8438-bd0020743d66",
+    "title": "Ghostrunner 2",
+    "steamAppId": "2144740",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2144740/header.jpg"
+  },
+  {
+    "id": "f76f44df-7f64-4b79-948a-6c9b2100e158",
+    "title": "God of War",
+    "steamAppId": "1593500",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg"
+  },
+  {
+    "id": "ddb09a71-e3af-4795-a968-c93c5557879e",
+    "title": "Grand Theft Auto III - The Definitive Edition",
+    "steamAppId": "1546970",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1546970/header.jpg"
+  },
+  {
+    "id": "85651db6-6cb7-4e4c-898e-e9120dacaf1c",
+    "title": "Grand Theft Auto IV: The Complete Edition",
+    "steamAppId": "12210",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/12210/header.jpg"
+  },
+  {
+    "id": "1089c8d6-ae4e-4025-ae64-dd3253351e98",
+    "title": "Grand Theft Auto V",
+    "steamAppId": "271590",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
+  },
+  {
+    "id": "d9d0edbc-78fb-4010-adb1-52a0ce4f6f93",
+    "title": "Grand Theft Auto: San Andreas - The Definitive Edition",
+    "steamAppId": "1547000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1547000/header.jpg"
+  },
+  {
+    "id": "87d2a46c-072d-4f54-860c-7c5cdcdb0747",
+    "title": "Grand Theft Auto: Vice City - The Definitive Edition",
+    "steamAppId": "1546990",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1546990/header.jpg"
+  },
+  {
+    "id": "ccb06bcf-a2ef-4cd3-88f9-6782e394117b",
+    "title": "Granny",
+    "steamAppId": "962400",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/962400/header.jpg"
+  },
+  {
+    "id": "22e48474-b46e-4b04-8efc-635af6b72ffb",
+    "title": "Granny Remake",
+    "steamAppId": "2110820",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2110820/header.jpg"
+  },
+  {
+    "id": "b948c6ec-7541-407c-b965-873250e05007",
+    "title": "Green Hell",
+    "steamAppId": "815370",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/815370/header.jpg"
+  },
+  {
+    "id": "6bf40345-a838-4ccb-9653-c938c6b03882",
+    "title": "Hitman",
+    "steamAppId": "236870",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/236870/header.jpg"
+  },
+  {
+    "id": "86d639e7-2d60-4a5d-b5bb-4d06e3082db8",
+    "title": "Hitman 2",
+    "steamAppId": "863550",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/863550/header.jpg"
+  },
+  {
+    "id": "98f86aea-395a-4089-b39c-4e37fd51531c",
+    "title": "Hitman 2: Silent Assassin",
+    "steamAppId": "6850",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/6850/header.jpg"
+  },
+  {
+    "id": "77be2070-1ca3-4c5f-bdf4-734550eb10c1",
+    "title": "Hitman 3",
+    "steamAppId": "1659040",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg"
+  },
+  {
+    "id": "f85f6155-6411-43b9-ad2a-dbe9fb9b9dcc",
+    "title": "Hitman: Absolution",
+    "steamAppId": "205930",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/205930/header.jpg"
+  },
+  {
+    "id": "89d43f07-3a2d-4c93-b9ff-b6fd5ba99c52",
+    "title": "Hitman: Blood Money",
+    "steamAppId": "6860",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/6860/header.jpg"
+  },
+  {
+    "id": "ef9d3622-e4bd-46cb-9f7c-3fd1b8da99f6",
+    "title": "Hitman: Codename 47",
+    "steamAppId": "6900",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/6900/header.jpg"
+  },
+  {
+    "id": "d9793d58-4ced-43c3-9765-4caaf1e0d18a",
+    "title": "Hogwarts Legacy",
+    "steamAppId": "990080",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg"
+  },
+  {
+    "id": "363e4b76-b61c-489c-9210-a41ce0823e00",
+    "title": "Inside",
+    "steamAppId": "304430",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/304430/header.jpg"
+  },
+  {
+    "id": "e3af0c89-9aba-4572-bb3e-642b23de4873",
+    "title": "Internet Cafe & Supermarket Simulator",
+    "steamAppId": "2670630",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2670630/header.jpg"
+  },
+  {
+    "id": "402dea4d-8143-43b6-9daf-14e22f4c5c1d",
+    "title": "It Takes Two",
+    "steamAppId": "1426210",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1426210/header.jpg"
+  },
+  {
+    "id": "d01dae3c-025f-4577-9afc-debddc6e4e2e",
+    "title": "Jurassic World Evolution",
+    "steamAppId": "648350",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/648350/header.jpg"
+  },
+  {
+    "id": "98a6a6bc-b244-427e-9cf8-d6bcc4da9f9a",
+    "title": "Jurassic World Evolution 2",
+    "steamAppId": "1244460",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1244460/header.jpg"
+  },
+  {
+    "id": "b6fbd234-ce24-47ca-a67f-31ab99e14214",
+    "title": "Jurassic World Evolution 3",
+    "steamAppId": "1244460",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1244460/header.jpg"
+  },
+  {
+    "id": "9257447c-921c-4188-8fed-733a9c7bfdcb",
+    "title": "Just Cause",
+    "steamAppId": "6880",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/6880/header.jpg"
+  },
+  {
+    "id": "db37a89d-6486-4c0b-933a-f6e9392bc564",
+    "title": "Just Cause 2",
+    "steamAppId": "8190",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/8190/header.jpg"
+  },
+  {
+    "id": "c278b2a6-08ac-4891-937c-2b753921c88c",
+    "title": "Just Cause 3",
+    "steamAppId": "225540",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225540/header.jpg"
+  },
+  {
+    "id": "36f7bafe-0702-436d-a9bf-69b339a48cc0",
+    "title": "Just Cause 4",
+    "steamAppId": "517630",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/517630/header.jpg"
+  },
+  {
+    "id": "e0da8af3-a6cb-4102-8519-7c16bb0600ca",
+    "title": "LEGO Batman 2: DC Super Heroes",
+    "steamAppId": "213330",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/213330/header.jpg"
+  },
+  {
+    "id": "f4d5c9aa-5fa3-4249-8f5a-219333359bf4",
+    "title": "LEGO Batman 3: Beyond Gotham",
+    "steamAppId": "313690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/313690/header.jpg"
+  },
+  {
+    "id": "78eae881-b0e5-40c4-aafc-ca07d5ce8294",
+    "title": "LEGO Batman: Legacy of the Dark Knight",
+    "steamAppId": "313690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/313690/header.jpg"
+  },
+  {
+    "id": "2345ba00-5858-4b1e-a7f7-9e56b6a21b9a",
+    "title": "LEGO Batman: The Videogame",
+    "steamAppId": "21000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/21000/header.jpg"
+  },
+  {
+    "id": "db517be4-2421-46d0-95a1-d5eea211e62d",
+    "title": "LEGO Brawls",
+    "steamAppId": "1731460",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1731460/header.jpg"
+  },
+  {
+    "id": "3819962d-99eb-4297-b0ee-34be0c59c5df",
+    "title": "LEGO DC Super-Villains",
+    "steamAppId": "829110",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/829110/header.jpg"
+  },
+  {
+    "id": "134ef789-0efb-4df3-80cb-47e01eb44fee",
+    "title": "LEGO Marvel Super Heroes 2",
+    "steamAppId": "647830",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/647830/header.jpg"
+  },
+  {
+    "id": "f101975e-6132-4aba-b477-2c4c27c41d7a",
+    "title": "LEGO Marvel's Avengers",
+    "steamAppId": "405310",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/405310/header.jpg"
+  },
+  {
+    "id": "346deb52-28c3-4c97-989f-a99edb5233e4",
+    "title": "LEGO Star Wars III: The Clone Wars",
+    "steamAppId": "32510",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/32510/header.jpg"
+  },
+  {
+    "id": "d8496b62-bb0a-4f0f-b936-98e4a8f85588",
+    "title": "LEGO Star Wars: The Complete Saga",
+    "steamAppId": "32440",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/32440/header.jpg"
+  },
+  {
+    "id": "5f91da71-63fa-4718-9378-1a3f9ebc572b",
+    "title": "LEGO Star Wars: The Skywalker Saga",
+    "steamAppId": "920210",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/920210/header.jpg"
+  },
+  {
+    "id": "e0af0146-4d45-42c8-b9f1-9e3b7437a504",
+    "title": "LEGO The Hobbit",
+    "steamAppId": "285160",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/285160/header.jpg"
+  },
+  {
+    "id": "288c90a6-b0e2-4b1b-ac0c-5afed6ca12c6",
+    "title": "LEGO The Lord of the Rings",
+    "steamAppId": "214510",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/214510/header.jpg"
+  },
+  {
+    "id": "10673ecc-f832-42e5-93f9-4d86f0fc6378",
+    "title": "Lethal Company",
+    "steamAppId": "1966720",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1966720/header.jpg"
+  },
+  {
+    "id": "a15fff75-d4c7-4b4f-a27e-595e00ea6a9b",
+    "title": "Life is Strange",
+    "steamAppId": "319630",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/319630/header.jpg"
+  },
+  {
+    "id": "25c09d20-e129-4538-995d-6f4a4aed85a3",
+    "title": "Life is Strange 2",
+    "steamAppId": "532210",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/532210/header.jpg"
+  },
+  {
+    "id": "398c21b1-5706-4489-89c6-e0e9eb7210df",
+    "title": "Life is Strange: Double Exposure",
+    "steamAppId": "1874000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1874000/header.jpg"
+  },
+  {
+    "id": "6ad52bb1-4347-4be4-bd62-a248c74eab9c",
+    "title": "Limbo",
+    "steamAppId": "48000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/48000/header.jpg"
+  },
+  {
+    "id": "9e22bb17-36ec-4e30-8679-d81fc5e599fa",
+    "title": "Little Nightmares",
+    "steamAppId": "424840",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/424840/header.jpg"
+  },
+  {
+    "id": "d775d2c9-65a7-406b-93df-ee4c34779c17",
+    "title": "Little Nightmares II",
+    "steamAppId": "860510",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/860510/header.jpg"
+  },
+  {
+    "id": "ccfe88c3-3f2a-40d0-81fd-0932d52cf4a6",
+    "title": "Lost Soul Aside",
+    "steamAppId": "3378960",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3378960/header.jpg"
+  },
+  {
+    "id": "75cf1fc2-f1e2-4b73-af68-2e55ca252e5d",
+    "title": "Mad Max",
+    "steamAppId": "234140",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/234140/header.jpg"
+  },
+  {
+    "id": "1296cdab-3a8d-41d7-b665-60653ae4e989",
+    "title": "Mafia (Classic)",
+    "steamAppId": "40990",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/40990/header.jpg"
+  },
+  {
+    "id": "66311f04-b68b-4a10-9d9f-03f90f07924e",
+    "title": "Mafia II (Classic)",
+    "steamAppId": "50130",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/50130/header.jpg"
+  },
+  {
+    "id": "0185afab-799e-4c2c-877c-fb3e5594dcba",
+    "title": "Mafia II: Definitive Edition",
+    "steamAppId": "1030830",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1030830/header.jpg"
+  },
+  {
+    "id": "5fa8e312-8de0-494c-ba3f-a5d7a1eacd1e",
+    "title": "Mafia III: Definitive Edition",
+    "steamAppId": "360430",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/360430/header.jpg"
+  },
+  {
+    "id": "fb6261f1-d866-489b-904e-1cd684de40d1",
+    "title": "Mafia: Definitive Edition",
+    "steamAppId": "1030840",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1030840/header.jpg"
+  },
+  {
+    "id": "41efcb88-cddf-4958-9025-5597fabfee77",
+    "title": "Mafia: The Old Country",
+    "steamAppId": "1941540",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1941540/header.jpg"
+  },
+  {
+    "id": "d8b880a2-5620-4724-9873-f12cc23abbab",
+    "title": "Marvel's Spider-Man 2",
+    "steamAppId": "2651280",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/header.jpg"
+  },
+  {
+    "id": "22e0544c-0a89-4756-94db-e8604cae8646",
+    "title": "Marvel's Spider-Man Remastered",
+    "steamAppId": "1817070",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg"
+  },
+  {
+    "id": "b9826640-3c09-4d70-829c-4112deed6029",
+    "title": "Marvel's Spider-Man: Miles Morales",
+    "steamAppId": "1817190",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1817190/header.jpg"
+  },
+  {
+    "id": "459c4658-5b50-4f14-a9a0-cfabb0f917af",
+    "title": "Max Payne 2: The Fall of Max Payne",
+    "steamAppId": "12150",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/12150/header.jpg"
+  },
+  {
+    "id": "7ffb8cb1-42fb-4ab6-ab85-31b6f031ecf0",
+    "title": "Max Payne 3",
+    "steamAppId": "204100",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/204100/header.jpg"
+  },
+  {
+    "id": "caf9e013-c4ae-4fdc-b5d3-8b89df598b36",
+    "title": "Metal Gear Rising: Revengeance",
+    "steamAppId": "235460",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/235460/header.jpg"
+  },
+  {
+    "id": "06795630-dc8a-431f-8594-9cd64793a32b",
+    "title": "Metal Gear Solid",
+    "steamAppId": "2131630",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2131630/header.jpg"
+  },
+  {
+    "id": "a53a1d68-f0cc-443f-aae2-16cbded1916b",
+    "title": "Metal Gear Solid 2: Sons of Liberty",
+    "steamAppId": "2131640",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2131640/header.jpg"
+  },
+  {
+    "id": "caff1889-56ca-4003-afb7-0dbcf2354705",
+    "title": "Metal Gear Solid V: Ground Zeroes",
+    "steamAppId": "311340",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/311340/header.jpg"
+  },
+  {
+    "id": "0f82b457-a255-4542-b3a9-60753eb604c4",
+    "title": "Metal Gear Solid V: The Phantom Pain",
+    "steamAppId": "287700",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/287700/header.jpg"
+  },
+  {
+    "id": "f6d0de1b-14a1-46e7-a71f-a4daca1f0703",
+    "title": "Metro 2033 Redux",
+    "steamAppId": "286690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/286690/header.jpg"
+  },
+  {
+    "id": "2f9c3c86-e848-40ab-9511-e5afe6ac0e3d",
+    "title": "Metro Exodus",
+    "steamAppId": "412020",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/header.jpg"
+  },
+  {
+    "id": "cc0f606b-9a2d-4904-a5e6-673b346e702a",
+    "title": "Middle-earth: Shadow of Mordor",
+    "steamAppId": "241930",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/241930/header.jpg"
+  },
+  {
+    "id": "b3140d2b-4c3c-45ff-8140-266aa174637e",
+    "title": "Middle-earth: Shadow of War",
+    "steamAppId": "356190",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/356190/header.jpg"
+  },
+  {
+    "id": "25bd469a-afc4-46a8-982a-cc5161f1457f",
+    "title": "Mortal Kombat 11",
+    "steamAppId": "976310",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/976310/header.jpg"
+  },
+  {
+    "id": "cd3bf4dd-fd8d-4fb5-b0c8-bd47bfbb0668",
+    "title": "Mortal Kombat X",
+    "steamAppId": "307780",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/307780/header.jpg"
+  },
+  {
+    "id": "5d0180a3-d26a-4ae7-ac20-81272d81efe5",
+    "title": "Mount & Blade",
+    "steamAppId": "22100",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/22100/header.jpg"
+  },
+  {
+    "id": "a612bba8-fbcd-4679-aa52-d9cab5d8f13f",
+    "title": "Mount & Blade II: Bannerlord",
+    "steamAppId": "261550",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/261550/header.jpg"
+  },
+  {
+    "id": "3bc0ebe7-5bc4-429f-b37a-a90984d22678",
+    "title": "Mount & Blade: Warband",
+    "steamAppId": "48700",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/48700/header.jpg"
+  },
+  {
+    "id": "ca01415b-225f-4d67-bb72-e08632c8126c",
+    "title": "Mount & Blade: With Fire & Sword",
+    "steamAppId": "48720",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/48720/header.jpg"
+  },
+  {
+    "id": "9cec0c16-de69-4ef0-a80a-292a73b195b7",
+    "title": "Naruto Shippuden: Ultimate Ninja Storm",
+    "steamAppId": "495140",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/495140/header.jpg"
+  },
+  {
+    "id": "0d1496ba-dc2d-416e-b26a-030b9ed3b653",
+    "title": "Naruto Shippuden: Ultimate Ninja Storm 2",
+    "steamAppId": "543870",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/543870/header.jpg"
+  },
+  {
+    "id": "e3a27d24-6e4e-4121-a769-7d044a1a5e70",
+    "title": "Naruto Shippuden: Ultimate Ninja Storm 3",
+    "steamAppId": "234670",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/234670/header.jpg"
+  },
+  {
+    "id": "25dd22ae-b361-424a-992c-463a5bafd50d",
+    "title": "Naruto Shippuden: Ultimate Ninja Storm 4",
+    "steamAppId": "349040",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/349040/header.jpg"
+  },
+  {
+    "id": "bf30d13e-ed0e-4a6f-9d8e-5e5567a0a478",
+    "title": "Need for Speed (2016)",
+    "steamAppId": "1262540",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1262540/header.jpg"
+  },
+  {
+    "id": "f07b4e8f-2805-45c9-bc8a-02df90299943",
+    "title": "Need for Speed Heat Deluxe Edition",
+    "steamAppId": "1222680",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1222680/header.jpg"
+  },
+  {
+    "id": "5ca64433-7366-41c7-a382-7cb7713ee7e9",
+    "title": "Need for Speed: Hot Pursuit Remastered",
+    "steamAppId": "1328660",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1328660/header.jpg"
+  },
+  {
+    "id": "548eb996-b609-47d9-9205-fd21e5908c78",
+    "title": "Need for Speed: Most Wanted (2012)",
+    "steamAppId": "1262560",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg"
+  },
+  {
+    "id": "dec8d576-448c-490e-9740-96dbc4741036",
+    "title": "Need for Speed: Rivals Complete Edition",
+    "steamAppId": "1262600",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1262600/header.jpg"
+  },
+  {
+    "id": "9472677c-b06e-45be-b6dd-8b191185c23f",
+    "title": "Outlast",
+    "steamAppId": "238320",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/238320/header.jpg"
+  },
+  {
+    "id": "9f765444-656a-4556-ae5f-b89288cfd3ba",
+    "title": "Outlast 2",
+    "steamAppId": "414700",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/414700/header.jpg"
+  },
+  {
+    "id": "f2c34d3f-a47c-4ad2-b9d7-69e153a5fd49",
+    "title": "Poppy Playtime",
+    "steamAppId": "1721470",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1721470/header.jpg"
+  },
+  {
+    "id": "920628e3-21ab-45e1-a89c-03a340f92dce",
+    "title": "Pragmata",
+    "steamAppId": "2358720",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg"
+  },
+  {
+    "id": "62c0116f-890c-4ac3-98f8-a0c4108cb642",
+    "title": "Prince of Persia (2008)",
+    "steamAppId": "19980",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/19980/header.jpg"
+  },
+  {
+    "id": "58357b99-d750-4fd1-9f04-e2417c06fc25",
+    "title": "Prince of Persia: The Forgotten Sands",
+    "steamAppId": "33320",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/33320/header.jpg"
+  },
+  {
+    "id": "ffcce9c9-6781-44a6-beb7-6cfe0a1542f4",
+    "title": "Prince of Persia: The Lost Crown",
+    "steamAppId": "2751000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2751000/header.jpg"
+  },
+  {
+    "id": "5ec7a8b2-7d46-49d1-8f49-4f24f1ae94a2",
+    "title": "Prince of Persia: The Sands of Time",
+    "steamAppId": "13600",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/13600/header.jpg"
+  },
+  {
+    "id": "06e7ecfb-e026-4d71-a8a8-7cb97c9c2975",
+    "title": "Prince of Persia: The Two Thrones",
+    "steamAppId": "13530",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/13530/header.jpg"
+  },
+  {
+    "id": "b9acd514-3ead-472f-a17d-483f592cf77a",
+    "title": "Prince of Persia: Warrior Within",
+    "steamAppId": "13500",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/13500/header.jpg"
+  },
+  {
+    "id": "5bf28160-c553-4958-80a0-129679a38c0d",
+    "title": "Rain World",
+    "steamAppId": "312520",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/312520/header.jpg"
+  },
+  {
+    "id": "51d11af9-f60f-4431-9ad6-6638f9b40d5d",
+    "title": "Ready or Not",
+    "steamAppId": "1144200",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/header.jpg"
+  },
+  {
+    "id": "b4231cfd-9abe-485a-b089-def765668d05",
+    "title": "Red Dead Redemption",
+    "steamAppId": "2668510",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2668510/header.jpg"
+  },
+  {
+    "id": "56d02480-9989-4807-80f4-23a4662833c4",
+    "title": "Red Dead Redemption 2",
+    "steamAppId": "1174180",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+  },
+  {
+    "id": "6f91fb9d-919c-458a-b836-094018899e89",
+    "title": "Resident Evil (1996)",
+    "steamAppId": "304240",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/304240/header.jpg"
+  },
+  {
+    "id": "46f816a0-4b2a-4479-b159-7b1349802395",
+    "title": "Resident Evil 0",
+    "steamAppId": "339340",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/339340/header.jpg"
+  },
+  {
+    "id": "c12245e6-3991-4bbe-8924-5ba797d1000d",
+    "title": "Resident Evil 2 (1998)",
+    "steamAppId": "883710",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/883710/header.jpg"
+  },
+  {
+    "id": "083107d5-ae17-41fd-a4b4-87027fdb4e6f",
+    "title": "Resident Evil 2 (Remake)",
+    "steamAppId": "883710",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/883710/header.jpg"
+  },
+  {
+    "id": "715d9c28-60a7-4e7b-b51d-c5e1ad8a613d",
+    "title": "Resident Evil 3 (Remake)",
+    "steamAppId": "952060",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/952060/header.jpg"
+  },
+  {
+    "id": "f99176de-7e45-41ed-8df4-da3f726c0925",
+    "title": "Resident Evil 3: Nemesis (1999)",
+    "steamAppId": "209100",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/209100/header.jpg"
+  },
+  {
+    "id": "a273d3fa-2e9f-4fce-a39d-140b37263dd3",
+    "title": "Resident Evil 4 (2005)",
+    "steamAppId": "254700",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/254700/header.jpg"
+  },
+  {
+    "id": "a5f870cf-dd0a-4534-9c78-2ad678dc133f",
+    "title": "Resident Evil 4 (Remake)",
+    "steamAppId": "2050650",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg"
+  },
+  {
+    "id": "00626d18-f81a-4446-b835-a9ba8aab4956",
+    "title": "Resident Evil 5",
+    "steamAppId": "21690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/21690/header.jpg"
+  },
+  {
+    "id": "ca5c31e9-5427-4b5c-addf-5a3349f94eeb",
+    "title": "Resident Evil 6",
+    "steamAppId": "221040",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/221040/header.jpg"
+  },
+  {
+    "id": "703d7a3a-ac99-4c5b-b7ea-28b350509982",
+    "title": "Resident Evil 7: Biohazard",
+    "steamAppId": "418370",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/418370/header.jpg"
+  },
+  {
+    "id": "5c65034c-b7ab-407a-8b58-d338dfb211fb",
+    "title": "Resident Evil HD Remaster",
+    "steamAppId": "304240",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/304240/header.jpg"
+  },
+  {
+    "id": "8dccc983-dbf0-4787-9cbe-e2cc5048e02c",
+    "title": "Resident Evil Village",
+    "steamAppId": "1196590",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/header.jpg"
+  },
+  {
+    "id": "7b22cea5-02f9-4113-b458-544712c4e752",
+    "title": "Resident Evil: Revelations",
+    "steamAppId": "222480",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/222480/header.jpg"
+  },
+  {
+    "id": "814afb51-9064-492f-b101-480c33f8cd8a",
+    "title": "Resident Evil: Revelations 2",
+    "steamAppId": "287290",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/287290/header.jpg"
+  },
+  {
+    "id": "b6c06c34-8aaf-4603-9b0f-cbed6d59254a",
+    "title": "Rise of the Tomb Raider",
+    "steamAppId": "391220",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/391220/header.jpg"
+  },
+  {
+    "id": "58d69576-a17c-4e1c-9fd8-8a7938ffdaee",
+    "title": "Saints Row",
+    "steamAppId": "742420",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/742420/header.jpg"
+  },
+  {
+    "id": "223bce9f-d376-4eaf-96e7-f4729c6c53f2",
+    "title": "Sekiro: Shadows Die Twice",
+    "steamAppId": "814380",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/814380/header.jpg"
+  },
+  {
+    "id": "6581c408-8911-46a1-89a6-5cefdc5638c9",
+    "title": "Shadow of the Tomb Raider",
+    "steamAppId": "750920",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/750920/header.jpg"
+  },
+  {
+    "id": "c0649188-4d4a-4aa8-b6de-d025c838feb6",
+    "title": "Shin chan: Me and the Professor on Summer Vacation",
+    "steamAppId": "2061250",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2061250/header.jpg"
+  },
+  {
+    "id": "9845d6ae-474f-426c-afad-f3b2d2325419",
+    "title": "Shin chan: Shiro and the Coal Town",
+    "steamAppId": "2699820",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2699820/header.jpg"
+  },
+  {
+    "id": "c37bfb5d-64d7-4f49-91d3-6a2b341e6f69",
+    "title": "Silent Hill 2",
+    "steamAppId": "2124490",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/header.jpg"
+  },
+  {
+    "id": "c2e773e3-8ad3-4e13-833f-42f6a21e9d71",
+    "title": "Silent Hill f",
+    "steamAppId": "2947440",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2947440/header.jpg"
+  },
+  {
+    "id": "a4d18474-cda7-4a32-a953-90ec75995f8f",
+    "title": "Sleeping Dogs",
+    "steamAppId": "307690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/307690/header.jpg"
+  },
+  {
+    "id": "5b36a163-e0ff-476f-99b6-a65bd268757e",
+    "title": "Sniper Elite 4",
+    "steamAppId": "312660",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/312660/header.jpg"
+  },
+  {
+    "id": "d5dc6c6e-180c-4ba9-98cd-76794b3a0f95",
+    "title": "Sniper Elite 5",
+    "steamAppId": "1029690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1029690/header.jpg"
+  },
+  {
+    "id": "caee6014-7cec-406c-8f77-77465ed70866",
+    "title": "SnowRunner",
+    "steamAppId": "1465360",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1465360/header.jpg"
+  },
+  {
+    "id": "48e29e4f-17ea-4580-b3b5-c1ae3108e28e",
+    "title": "Sonic Frontiers",
+    "steamAppId": "1237320",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1237320/header.jpg"
+  },
+  {
+    "id": "3c2b2d68-c4b3-48b5-bc6d-f5a96106aa6c",
+    "title": "Star Wars Battlefront II (Celebration Edition)",
+    "steamAppId": "1237950",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1237950/header.jpg"
+  },
+  {
+    "id": "3afbde8f-747c-44a4-9593-ef9c4135ad9e",
+    "title": "Star Wars Jedi: Fallen Order",
+    "steamAppId": "1172380",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1172380/header.jpg"
+  },
+  {
+    "id": "ce73daaa-f63a-4b98-8fb2-39355c8d60c3",
+    "title": "Star Wars Jedi: Survivor",
+    "steamAppId": "1774580",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1774580/header.jpg"
+  },
+  {
+    "id": "84e3c616-76e2-4984-8f0b-e39db49cf135",
+    "title": "Stellar Blade",
+    "steamAppId": "1888930",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg"
+  },
+  {
+    "id": "59d9c027-8794-4d6f-9567-5f69ce77d7e9",
+    "title": "Stellaris",
+    "steamAppId": "281990",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/281990/header.jpg"
+  },
+  {
+    "id": "0ec783ba-9379-42eb-ba38-a092010493a9",
+    "title": "Subnautica",
+    "steamAppId": "264710",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/264710/header.jpg"
+  },
+  {
+    "id": "2ae9d425-cf34-40ce-9d01-81935505fcdd",
+    "title": "Tekken 7",
+    "steamAppId": "389730",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/389730/header.jpg"
+  },
+  {
+    "id": "bc680424-3b19-4855-8aee-c9168f294f1c",
+    "title": "Tekken 8",
+    "steamAppId": "1778820",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg"
+  },
+  {
+    "id": "0c67c094-a291-4040-a326-eba7ee12fd9b",
+    "title": "The Last of Us Part I",
+    "steamAppId": "1888930",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg"
+  },
+  {
+    "id": "fe99addc-6228-4386-9273-32dd4bfa6096",
+    "title": "The Last of Us Part II Remastered",
+    "steamAppId": "2531310",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2531310/header.jpg"
+  },
+  {
+    "id": "a2066404-bb82-4c0b-9318-a885673f7042",
+    "title": "The Outlast Trials",
+    "steamAppId": "1304930",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1304930/header.jpg"
+  },
+  {
+    "id": "dc06c2d4-f56b-444c-9255-74ba6f23f502",
+    "title": "The Walking Dead",
+    "steamAppId": "207610",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/207610/header.jpg"
+  },
+  {
+    "id": "93b26804-6351-4503-99ac-b8787287e3a4",
+    "title": "The Walking Dead: A New Frontier",
+    "steamAppId": "536220",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/536220/header.jpg"
+  },
+  {
+    "id": "341cfbe3-e61a-4289-91a2-d4d82e711549",
+    "title": "The Walking Dead: Michonne",
+    "steamAppId": "429570",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/429570/header.jpg"
+  },
+  {
+    "id": "f1305ee9-3f7e-4159-8fed-15c6a941f54c",
+    "title": "The Walking Dead: Season Two",
+    "steamAppId": "261030",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/261030/header.jpg"
+  },
+  {
+    "id": "caca0fca-0c4a-4730-9db1-cb4d8b3eecf8",
+    "title": "The Walking Dead: The Final Season",
+    "steamAppId": "866800",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/866800/header.jpg"
+  },
+  {
+    "id": "9fa641bc-0dc3-42f6-8668-6d85d5d4a08a",
+    "title": "The Walking Dead: The Telltale Definitive Series",
+    "steamAppId": "1449690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1449690/header.jpg"
+  },
+  {
+    "id": "94ec5853-df77-4ea9-82de-caa2f5c2dd30",
+    "title": "The Witcher 2: Assassins of Kings Enhanced Edition",
+    "steamAppId": "20920",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/20920/header.jpg"
+  },
+  {
+    "id": "c1905035-f5ba-450a-a78d-98b6b797ac69",
+    "title": "The Witcher 3: Wild Hunt",
+    "steamAppId": "292030",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg"
+  },
+  {
+    "id": "a75ace26-396c-4195-9d04-3d196043d48c",
+    "title": "The Witcher: Enhanced Edition",
+    "steamAppId": "20900",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/20900/header.jpg"
+  },
+  {
+    "id": "860c5640-2a07-4159-904b-8414951b80c9",
+    "title": "Tomb Raider (2013) GOTY Edition",
+    "steamAppId": "203160",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/203160/header.jpg"
+  },
+  {
+    "id": "19f7b3d8-dd0c-40fe-b2d5-735bd519613d",
+    "title": "Tomb Raider I Remastered",
+    "steamAppId": "224960",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/224960/header.jpg"
+  },
+  {
+    "id": "bbe28182-a7e1-4050-b3fe-185aac07a55f",
+    "title": "Tomb Raider II Remastered",
+    "steamAppId": "225300",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225300/header.jpg"
+  },
+  {
+    "id": "e51e6760-dc29-4b33-ae3e-54d30a5163c3",
+    "title": "Tomb Raider III Remastered",
+    "steamAppId": "225320",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225320/header.jpg"
+  },
+  {
+    "id": "0fb3a734-bc57-4f8b-a300-b060021f8e52",
+    "title": "Tomb Raider IV Remastered",
+    "steamAppId": "224980",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/224980/header.jpg"
+  },
+  {
+    "id": "5adadd16-6ed8-4ddb-ba72-6abda0afe38d",
+    "title": "Tomb Raider V Remastered",
+    "steamAppId": "225000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225000/header.jpg"
+  },
+  {
+    "id": "962bd901-38e0-4e01-a5e7-e78296dc9ac0",
+    "title": "Tomb Raider VI Remastered",
+    "steamAppId": "225020",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225020/header.jpg"
+  },
+  {
+    "id": "9a4fdd56-d67a-496a-a779-30ff0a373f23",
+    "title": "Tomb Raider: Chronicles",
+    "steamAppId": "225000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225000/header.jpg"
+  },
+  {
+    "id": "a7cdcf85-3fe0-4082-98d5-1802f43ca117",
+    "title": "Tomb Raider: Legend",
+    "steamAppId": "7000",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/7000/header.jpg"
+  },
+  {
+    "id": "3b58f401-f8d1-43b7-a7b1-164b8fec7170",
+    "title": "Tomb Raider: Underworld",
+    "steamAppId": "8140",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/8140/header.jpg"
+  },
+  {
+    "id": "10339f1f-9674-4d93-84cd-fbebb7ceb92a",
+    "title": "Uncharted 4: A Thief's End",
+    "steamAppId": "1659420",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659420/header.jpg"
+  },
+  {
+    "id": "9b2c44b2-1995-4b49-82f9-b93d8c76efcc",
+    "title": "Uncharted: The Lost Legacy",
+    "steamAppId": "1659420",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659420/header.jpg"
+  },
+  {
+    "id": "265ae8ae-2b29-4835-a508-1929f9b61484",
+    "title": "Unravel",
+    "steamAppId": "1225560",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1225560/header.jpg"
+  },
+  {
+    "id": "e4048bb2-07a6-430f-8397-9ed82566bd6f",
+    "title": "Unravel Two",
+    "steamAppId": "1225570",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1225570/header.jpg"
+  },
+  {
+    "id": "e5a2dc7c-599a-48dc-8c65-8e8940af5aa6",
+    "title": "Until Dawn",
+    "steamAppId": "2172010",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2172010/header.jpg"
+  },
+  {
+    "id": "431cb7b4-f00f-410d-aab4-136379cf603a",
+    "title": "WWE 2K24",
+    "steamAppId": "2315690",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2315690/header.jpg"
+  },
+  {
+    "id": "4f885432-ba9f-46be-bd68-a3d017e99f0f",
+    "title": "WWE 2K25",
+    "steamAppId": "2878960",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2878960/header.jpg"
+  },
+  {
+    "id": "697d2800-fec5-4e4b-bd24-5a96fdfcdbb8",
+    "title": "Watch Dogs",
+    "steamAppId": "243470",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/243470/header.jpg"
+  },
+  {
+    "id": "1d449c01-4287-41b0-a73a-8de9b961f32d",
+    "title": "Watch Dogs 2",
+    "steamAppId": "447040",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/447040/header.jpg"
+  },
+  {
+    "id": "9d34d942-ed95-4ef5-8f8d-ee23db544ea3",
+    "title": "Watch Dogs: Legion",
+    "steamAppId": "2239550",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2239550/header.jpg"
+  },
+  {
+    "id": "16ec9e63-1f57-48c7-b61a-afaaa121a3d4",
+    "title": "World War Z",
+    "steamAppId": "699130",
+    "headerImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/699130/header.jpg"
+  }
+]

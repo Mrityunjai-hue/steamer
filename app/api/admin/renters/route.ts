@@ -29,6 +29,11 @@ export async function GET(req: NextRequest) {
       include: {
         profile: true,
         devices: true,
+        orders: {
+          select: { orderId: true, status: true, amount: true },
+          orderBy: { createdAt: "desc" },
+          take: 1,
+        },
         subscriptions: {
           orderBy: { createdAt: "desc" },
           take: 1,
@@ -68,14 +73,16 @@ export async function GET(req: NextRequest) {
         whatsapp: u.whatsappNumber ? maskPhoneNumber(u.whatsappNumber) : "—",
         rawWhatsapp: u.whatsappNumber,
         isWhatsappVerified: u.isWhatsappVerified,
-        planType: activeSub?.type || "None",
-        games: activeSub ? activeSub.planGames.map((pg) => pg.game.title).join(", ") || "All-Access Pass" : "—",
+        latestOrderId: u.orders[0]?.orderId || null,
+        latestOrderStatus: u.orders[0]?.status || null,
+        planType: activeSub?.type || "All-Access Pass",
+        games: activeSub ? activeSub.planGames.map((pg) => pg.game.title).join(", ") || "All 265+ Vault Titles" : "—",
         deviceLabel: activeSub?.device?.deviceLabel || u.devices[0]?.deviceLabel || "Primary PC",
         startDate: activeSub ? activeSub.startDate : null,
         endDate: activeSub ? activeSub.endDate : null,
         daysLeft,
         status,
-        lastCredentialRelay: activeSub?.grants[0]?.lastCredentialRelayAt || null,
+        isSuspended: u.isSuspended,
       };
     });
 
@@ -102,3 +109,118 @@ export async function GET(req: NextRequest) {
   }
 }
 
+export async function POST(req: NextRequest) {
+  try {
+    const session = await getSession();
+    if (!session || session.role !== "ADMIN") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await req.json();
+    const { userId, action } = body;
+
+    if (!userId) {
+      return NextResponse.json({ error: "User ID is required" }, { status: 400 });
+    }
+
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      include: { orders: { orderBy: { createdAt: "desc" } } },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    if (action === "VERIFY") {
+      const startDate = new Date();
+      const endDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
+
+      await prisma.$transaction(async (tx) => {
+        // Mark user verified and RENTER
+        await tx.user.update({
+          where: { id: userId },
+          data: {
+            isWhatsappVerified: true,
+            role: "RENTER",
+            isSuspended: false,
+          },
+        });
+
+        // Update contact verifications
+        await tx.contactVerification.updateMany({
+          where: { userId, status: "PENDING" },
+          data: {
+            status: "VERIFIED",
+            verifiedAt: new Date(),
+            verifiedBy: session.email,
+          },
+        });
+
+        // Update latest order if pending
+        const pendingOrder = user.orders.find((o) => o.status === "PENDING_PAYMENT" || o.status === "PAYMENT_SUBMITTED");
+        if (pendingOrder) {
+          await tx.order.update({
+            where: { orderId: pendingOrder.orderId },
+            data: { status: "VERIFIED" },
+          });
+
+          let sub = await tx.subscription.findUnique({
+            where: { orderId: pendingOrder.orderId },
+          });
+
+          if (!sub) {
+            let device = await tx.device.findFirst({ where: { userId } });
+            if (!device) {
+              device = await tx.device.create({
+                data: { userId, deviceLabel: "Primary Gaming PC", isApproved: true },
+              });
+            }
+
+            await tx.subscription.create({
+              data: {
+                userId,
+                orderId: pendingOrder.orderId,
+                type: "ALL_ACCESS",
+                priceINR: pendingOrder.amount,
+                startDate,
+                endDate,
+                deviceId: device.id,
+                status: "ACTIVE",
+              },
+            });
+          }
+        }
+
+        await tx.auditLog.create({
+          data: {
+            adminId: session.userId,
+            action: "ADMIN_MANUAL_VERIFY_RENTER",
+            targetType: "USER",
+            targetId: userId,
+          },
+        });
+      });
+
+      return NextResponse.json({ success: true, message: `Renter ${user.email} verified and activated!` });
+    }
+
+    if (action === "TOGGLE_SUSPEND") {
+      const newSuspended = !user.isSuspended;
+      await prisma.user.update({
+        where: { id: userId },
+        data: { isSuspended: newSuspended },
+      });
+
+      return NextResponse.json({
+        success: true,
+        message: `Renter ${user.email} is now ${newSuspended ? "Suspended" : "Active"}.`,
+      });
+    }
+
+    return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+  } catch (error) {
+    console.error("Admin renter update error:", error);
+    return NextResponse.json({ error: "Failed to update renter" }, { status: 500 });
+  }
+}

@@ -79,6 +79,26 @@ export async function POST(req: NextRequest) {
           data: { status: "VERIFIED" },
         });
 
+        // Also mark user verified as active RENTER
+        await tx.user.update({
+          where: { id: order.userId },
+          data: {
+            isWhatsappVerified: true,
+            role: "RENTER",
+            isSuspended: false,
+          },
+        });
+
+        // Mark any pending contact verification as verified
+        await tx.contactVerification.updateMany({
+          where: { userId: order.userId, status: "PENDING" },
+          data: {
+            status: "VERIFIED",
+            verifiedAt: new Date(),
+            verifiedBy: session.email,
+          },
+        });
+
         if (order.submission) {
           await tx.paymentSubmission.update({
             where: { id: order.submission.id },
