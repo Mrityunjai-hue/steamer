@@ -15,15 +15,15 @@ export async function GET() {
     const whatsapp = map["admin_whatsapp"] || brandConfig.whatsappNumber;
     const email = map["admin_email"] || brandConfig.supportEmail;
 
-    const cleanPhone = whatsapp.replace(/\D/g, "");
+    const cleanPhone = (whatsapp || phone || "").replace(/\D/g, "");
 
     return NextResponse.json({
-      phone: brandConfig.whatsappDisplay,
-      whatsapp: brandConfig.whatsappDisplay,
+      phone,
+      whatsapp,
       email,
       cleanPhone,
-      displayPhone: "WhatsApp Support (Primary Channel)",
-      whatsappUrl: `https://wa.me/${cleanPhone}`,
+      displayPhone: phone || brandConfig.whatsappDisplay,
+      whatsappUrl: cleanPhone ? `https://wa.me/${cleanPhone}` : brandConfig.whatsappHelpUrl,
     });
   } catch (error) {
     return NextResponse.json({

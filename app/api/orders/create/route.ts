@@ -76,9 +76,22 @@ export async function POST(req: NextRequest) {
       where: { key: { in: ["upi_vpa", "upi_payee_name", "upi_static_qr_path"] } },
     });
 
-    const vpa = upiSettings.find((s) => s.key === "upi_vpa")?.value || "steamer@upi";
-    const payeeName = upiSettings.find((s) => s.key === "upi_payee_name")?.value || brandConfig.legalBusinessName;
+    let vpa = upiSettings.find((s) => s.key === "upi_vpa")?.value;
+    let payeeName = upiSettings.find((s) => s.key === "upi_payee_name")?.value;
     const staticQrPath = upiSettings.find((s) => s.key === "upi_static_qr_path")?.value || "";
+
+    try {
+      const cachePath = "/tmp/admin_settings_cache.json";
+      const fs = await import("fs");
+      if (fs.existsSync(cachePath)) {
+        const cached = JSON.parse(fs.readFileSync(cachePath, "utf-8"));
+        if (!vpa && cached.upi_vpa) vpa = cached.upi_vpa;
+        if (!payeeName && cached.upi_payee_name) payeeName = cached.upi_payee_name;
+      }
+    } catch {}
+
+    vpa = vpa || "steamer@upi";
+    payeeName = payeeName || brandConfig.legalBusinessName;
 
     // Standard UPI deep link: upi://pay?pa=<VPA>&pn=<PAYEE>&am=<AMOUNT>&cu=INR&tn=<ORDER ID>
     const upiDeepLink = `upi://pay?pa=${encodeURIComponent(vpa)}&pn=${encodeURIComponent(payeeName)}&am=${pricing.finalPrice}&cu=INR&tn=${encodeURIComponent(orderId)}`;

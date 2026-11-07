@@ -9,11 +9,11 @@ export default function MobileNav() {
   const pathname = usePathname();
 
   const links = [
-    { name: "Store", href: "/", icon: Store },
-    { name: "Catalog", href: "/catalog", icon: Compass },
-    { name: "Library", href: "/dashboard", icon: Library },
-    { name: "Community", href: "/community", icon: MessageCircle },
-    { name: "Support", href: "/support", icon: HelpCircle },
+    { name: "Store", href: "/", icon: Store, isLiveSupport: false },
+    { name: "Catalog", href: "/catalog", icon: Compass, isLiveSupport: false },
+    { name: "Library", href: "/dashboard", icon: Library, isLiveSupport: false },
+    { name: "Community", href: "/community", icon: MessageCircle, isLiveSupport: false },
+    { name: "Support", href: "/support", icon: HelpCircle, isLiveSupport: true },
   ];
 
   return (
@@ -29,7 +29,12 @@ export default function MobileNav() {
               active ? "text-[#66c0f4] bg-[#2a475e]/60" : "text-[#8f98a0] hover:text-[#c7d5e0]"
             }`}
           >
-            <Icon className={`w-4 h-4 ${active ? "text-[#66c0f4]" : "text-[#8f98a0]"}`} />
+            <div className="relative">
+              <Icon className={`w-4 h-4 ${active ? "text-[#66c0f4]" : "text-[#8f98a0]"}`} />
+              {link.isLiveSupport && (
+                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-[#25d366] ring-2 ring-[#171a21]" />
+              )}
+            </div>
             <span>{link.name}</span>
           </Link>
         );

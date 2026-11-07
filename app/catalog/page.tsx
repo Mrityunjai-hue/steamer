@@ -98,10 +98,10 @@ export default function CatalogPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2a475e]/60 pb-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-white tracking-wide">
-            GAMES YOU CAN PLAY WITH THIS SETUP ({totalGames} TITLES)
+            GET 265 GAMES OF YOUR CHOICE FOR ₹300 ({totalGames} TITLES)
           </h1>
           <p className="text-xs sm:text-sm text-[#8f98a0]">
-            Browse our full vault of {totalGames || "265+"} offline-ready single-player PC games included in the ₹300 Complete Setup Guide.
+            Browse our full vault of {totalGames || "265+"} offline-ready single-player PC games included directly on your Steam account.
           </p>
         </div>
 
@@ -155,7 +155,7 @@ export default function CatalogPage() {
           href="/checkout"
           className="btn-steam-cta px-5 py-2.5 rounded-sm text-xs font-bold whitespace-nowrap shadow-ctaGlow"
         >
-          Unlock the Full Guide – ₹300
+          Get 265 Games for ₹300
         </a>
       </div>
 

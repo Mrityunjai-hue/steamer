@@ -1,11 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
 import LiveSupportWidget from "@/components/LiveSupportWidget";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 import { brandConfig } from "@/config/brand";
 import { getAppUrl } from "@/lib/url";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(getAppUrl()),
@@ -34,6 +42,7 @@ export default function RootLayout({
         <Footer />
         <MobileNav />
         <LiveSupportWidget />
+        <CookieConsentBanner />
       </body>
     </html>
   );

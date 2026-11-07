@@ -30,7 +30,7 @@ export default function LiveSupportWidget() {
   )}`;
 
   return (
-    <div className="fixed bottom-20 md:bottom-6 right-3 sm:right-6 z-50 flex flex-col items-end">
+    <div className="hidden md:flex fixed md:bottom-6 right-3 sm:right-6 z-50 flex-col items-end">
       {/* Expanded Trust Card */}
       {isOpen && (
         <div className="mb-3 w-[calc(100vw-1.5rem)] max-w-sm bg-[#171a21] border border-[#2a475e] rounded-xl shadow-2xl p-5 text-xs space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-200">

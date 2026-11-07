@@ -299,7 +299,7 @@ export default function CheckoutPage() {
                   value={guestEmail}
                   onChange={(e) => setGuestEmail(e.target.value)}
                   disabled={!!currentUser}
-                  className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white disabled:opacity-60 focus:outline-none focus:border-[#66c0f4]"
+                  className="w-full bg-[#121922] border border-[#2a475e] rounded px-3 py-2.5 text-base sm:text-xs text-white disabled:opacity-60 focus:outline-none focus:border-[#66c0f4]"
                 />
               </div>
 
@@ -311,7 +311,7 @@ export default function CheckoutPage() {
                   placeholder="e.g. Rahul S."
                   value={guestName}
                   onChange={(e) => setGuestName(e.target.value)}
-                  className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white focus:outline-none focus:border-[#66c0f4]"
+                  className="w-full bg-[#121922] border border-[#2a475e] rounded px-3 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-[#66c0f4]"
                 />
               </div>
 
@@ -324,7 +324,7 @@ export default function CheckoutPage() {
                   placeholder="e.g. +91 98765 43210"
                   value={guestPhone}
                   onChange={(e) => setGuestPhone(e.target.value)}
-                  className="w-full bg-[#121922] border border-[#2a475e] rounded p-2 text-white focus:outline-none focus:border-[#66c0f4]"
+                  className="w-full bg-[#121922] border border-[#2a475e] rounded px-3 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-[#66c0f4]"
                 />
               </div>
             </div>
@@ -416,7 +416,7 @@ export default function CheckoutPage() {
               value={deviceLabel}
               onChange={(e) => setDeviceLabel(e.target.value)}
               placeholder="e.g. My Gaming Rig / Windows 11 Laptop"
-              className="w-full bg-[#171a21] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
+              className="w-full bg-[#171a21] border border-[#2a475e] rounded px-3 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-[#66c0f4]"
             />
           </div>
 
@@ -564,7 +564,7 @@ export default function CheckoutPage() {
                     onChange={(e) => setUtr(e.target.value.replace(/\D/g, ""))}
                     placeholder="e.g. 512345678901"
                     required
-                    className="w-full bg-[#121922] border border-[#2a475e] rounded px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-[#66c0f4]"
+                    className="w-full bg-[#121922] border border-[#2a475e] rounded px-3 py-2.5 text-base sm:text-xs text-white font-mono focus:outline-none focus:border-[#66c0f4]"
                   />
                   <p className="text-[10px] text-[#8f98a0]">Must be exactly 12 numeric digits.</p>
                 </div>
@@ -579,7 +579,7 @@ export default function CheckoutPage() {
                     onChange={(e) => setPayerName(e.target.value)}
                     placeholder="e.g. Rahul Sharma"
                     required
-                    className="w-full bg-[#121922] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
+                    className="w-full bg-[#121922] border border-[#2a475e] rounded px-3 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-[#66c0f4]"
                   />
                 </div>
               </div>

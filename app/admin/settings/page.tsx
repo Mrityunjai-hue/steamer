@@ -21,13 +21,26 @@ export default function AdminSettingsPage() {
   const [settings, setSettings] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [playbookResult, setPlaybookResult] = useState<any | null>(null);
 
   const fetchSettings = () => {
+    setLoading(true);
     fetch("/api/admin/settings")
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data?.settings) setSettings(data.settings);
+        if (data?.settings) {
+          // Pre-populate missing keys with brandConfig defaults
+          setSettings({
+            upi_vpa: "steamer@upi",
+            upi_payee_name: brandConfig.legalBusinessName,
+            admin_phone: brandConfig.whatsappNumber,
+            admin_whatsapp: brandConfig.whatsappNumber,
+            admin_email: brandConfig.supportEmail,
+            payment_instructions: "Scan the QR code with GPay, PhonePe, Paytm or BHIM. Enter your Order ID in remarks. Enter the 12-digit UTR below.",
+            ...data.settings,
+          });
+        }
       })
       .finally(() => setLoading(false));
   };
@@ -43,6 +56,7 @@ export default function AdminSettingsPage() {
   const handleSaveSettings = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
+    setStatusMessage(null);
     try {
       const res = await fetch("/api/admin/settings", {
         method: "POST",
@@ -51,11 +65,19 @@ export default function AdminSettingsPage() {
       });
       const data = await res.json();
       if (res.ok) {
-        alert("Settings saved successfully!");
-        fetchSettings();
+        setStatusMessage({
+          type: "success",
+          text: "Settings saved successfully! Changes are active immediately across checkout UPI QR codes and support.",
+        });
+        setTimeout(() => setStatusMessage(null), 6000);
       } else {
-        alert(data.error || "Failed to save settings");
+        setStatusMessage({
+          type: "error",
+          text: data.error || "Failed to save settings. Please verify you are signed in as Admin.",
+        });
       }
+    } catch (err: any) {
+      setStatusMessage({ type: "error", text: err.message || "Network error while saving settings." });
     } finally {
       setSaving(false);
     }
@@ -80,14 +102,14 @@ export default function AdminSettingsPage() {
         setPlaybookResult(data);
         fetchSettings();
       } else {
-        alert(data.error || "Playbook execution failed");
+        setStatusMessage({ type: "error", text: data.error || "Playbook execution failed" });
       }
     } catch {
-      alert("Error triggering playbook");
+      setStatusMessage({ type: "error", text: "Error triggering playbook" });
     }
   };
 
-  if (loading) {
+  if (loading && Object.keys(settings).length === 0) {
     return (
       <div className="py-20 flex justify-center">
         <RefreshCw className="w-8 h-8 text-[#66c0f4] animate-spin" />
@@ -97,14 +119,42 @@ export default function AdminSettingsPage() {
 
   return (
     <div className="space-y-8 max-w-4xl">
-      <div className="border-b border-[#2a475e]/60 pb-4">
-        <h1 className="text-xl sm:text-2xl font-black text-white tracking-wide flex items-center gap-2">
-          <Settings className="w-6 h-6 text-[#66c0f4]" /> SYSTEM SETTINGS & PLATFORM CONTROLS
-        </h1>
-        <p className="text-xs text-[#8f98a0]">
-          Configure UPI collection VPAs, contact channels, platform scale, and emergency broadcast playbooks.
-        </p>
+      <div className="border-b border-[#2a475e]/60 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h1 className="text-xl sm:text-2xl font-black text-white tracking-wide flex items-center gap-2">
+            <Settings className="w-6 h-6 text-[#66c0f4]" /> SYSTEM SETTINGS & PLATFORM CONTROLS
+          </h1>
+          <p className="text-xs text-[#8f98a0]">
+            Configure UPI collection VPAs, contact channels, platform scale, and emergency broadcast playbooks.
+          </p>
+        </div>
+        <button
+          onClick={fetchSettings}
+          disabled={loading}
+          className="btn-steam-panel px-3 py-1.5 rounded text-xs font-bold border border-[#2a475e] text-[#c7d5e0] hover:text-white flex items-center gap-1.5 self-start sm:self-auto"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
+          <span>Refresh Settings</span>
+        </button>
       </div>
+
+      {/* Inline Status Message Banner */}
+      {statusMessage && (
+        <div
+          className={`p-4 rounded-xl border text-xs flex items-center gap-3 animate-in fade-in duration-200 ${
+            statusMessage.type === "success"
+              ? "bg-emerald-950/60 border-emerald-500/60 text-emerald-300"
+              : "bg-red-950/60 border-red-500/60 text-red-300"
+          }`}
+        >
+          {statusMessage.type === "success" ? (
+            <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-400" />
+          ) : (
+            <AlertTriangle className="w-5 h-5 flex-shrink-0 text-red-400" />
+          )}
+          <span className="font-semibold">{statusMessage.text}</span>
+        </div>
+      )}
 
       {/* Emergency Store Maintenance Playbook */}
       <div className="bg-red-950/40 border border-red-500/60 rounded-xl p-6 space-y-4 shadow-xl">

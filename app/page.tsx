@@ -411,10 +411,10 @@ export default async function HomePage() {
         <div className="border-b border-[#2a475e] pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h2 className="text-xl sm:text-2xl font-black text-white tracking-wide">
-              GAMES YOU CAN PLAY WITH THIS SETUP
+              GET 265 GAMES OF YOUR CHOICE FOR ₹300
             </h2>
             <p className="text-xs text-[#8f98a0] mt-0.5">
-              All 265+ titles below are included with your ₹300 setup guide. No individual purchases needed.
+              All 265+ blockbuster titles below are included directly on your Steam account. No individual purchases needed.
             </p>
           </div>
           <Link
@@ -595,7 +595,7 @@ export default async function HomePage() {
               href="/checkout"
               className="btn-steam-cta text-sm px-8 py-3.5 rounded-sm font-bold shadow-ctaGlow inline-flex items-center gap-2 text-white"
             >
-              <span>Unlock the Full Guide – ₹300</span>
+              <span>Get 265 Games of Your Choice for ₹300</span>
               <ChevronRight className="w-4 h-4" />
             </Link>
           </div>

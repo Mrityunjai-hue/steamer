@@ -1,6 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import fs from "fs";
+import path from "path";
+
+const CACHE_FILE = path.join("/tmp", "admin_settings_cache.json");
+
+function readCachedSettings(): Record<string, string> {
+  try {
+    if (fs.existsSync(CACHE_FILE)) {
+      return JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
+    }
+  } catch {}
+  return {};
+}
+
+function writeCachedSettings(settings: Record<string, string>) {
+  try {
+    const existing = readCachedSettings();
+    const merged = { ...existing, ...settings };
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(merged, null, 2), "utf-8");
+  } catch {}
+}
 
 export async function GET() {
   try {
@@ -10,7 +31,11 @@ export async function GET() {
     }
 
     const settings = await prisma.systemSetting.findMany();
-    const settingsMap = Object.fromEntries(settings.map((s) => [s.key, s.value]));
+    const dbMap = Object.fromEntries(settings.map((s) => [s.key, s.value]));
+    const cachedMap = readCachedSettings();
+
+    // Merge cached and DB settings (DB takes precedence if present, cached covers cold restarts)
+    const settingsMap = { ...cachedMap, ...dbMap };
 
     return NextResponse.json({ settings: settingsMap });
   } catch (error) {
@@ -37,6 +62,7 @@ export async function POST(req: NextRequest) {
         update: { value: "true", updatedAt: new Date() },
         create: { key: "onboarding_paused", value: "true", description: "Account-lost emergency pause" },
       });
+      writeCachedSettings({ onboarding_paused: "true" });
 
       // 2. Fetch all active subscribers
       const activeSubs = await prisma.subscription.findMany({
@@ -76,7 +102,9 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Standard settings update
+    // Standard settings update: write to local cache and DB
+    writeCachedSettings(settings);
+
     for (const [key, value] of Object.entries(settings)) {
       if (typeof value === "string") {
         await prisma.systemSetting.upsert({
