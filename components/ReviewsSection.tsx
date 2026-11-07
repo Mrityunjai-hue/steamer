@@ -29,8 +29,8 @@ interface Review {
 
 export default function ReviewsSection() {
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [averageRating, setAverageRating] = useState(4.9);
-  const [totalCount, setTotalCount] = useState(185);
+  const [averageRating, setAverageRating] = useState(5.0);
+  const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<"ALL" | "PROOF" | "5STAR">("ALL");
 
@@ -164,19 +164,21 @@ export default function ReviewsSection() {
 
         {/* Rating Score Pill & Write Button */}
         <div className="flex flex-wrap items-center gap-4">
-          <div className="bg-[#16202d] border border-[#2a475e] p-4 rounded-xl flex items-center gap-3.5 shadow-inner">
-            <div className="text-3xl font-black text-amber-400">{averageRating}</div>
-            <div className="space-y-0.5">
-              <div className="flex items-center gap-0.5">
-                {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                ))}
+          {totalCount > 0 && (
+            <div className="bg-[#16202d] border border-[#2a475e] p-4 rounded-xl flex items-center gap-3.5 shadow-inner">
+              <div className="text-3xl font-black text-amber-400">{averageRating}</div>
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-[11px] text-[#8f98a0]">
+                  Based on <strong className="text-white">{totalCount}</strong> verified reviews
+                </p>
               </div>
-              <p className="text-[11px] text-[#8f98a0]">
-                Based on <strong className="text-white">{totalCount}+</strong> setups
-              </p>
             </div>
-          </div>
+          )}
 
           <button
             onClick={() => setIsModalOpen(true)}
@@ -238,9 +240,20 @@ export default function ReviewsSection() {
         </div>
       ) : filteredReviews.length === 0 ? (
         <div className="bg-[#171a21] border border-[#2a475e] p-12 text-center rounded-xl space-y-3">
-          <p className="text-white font-bold">No reviews found in this filter.</p>
-          <button onClick={() => setFilter("ALL")} className="btn-steam-cta text-xs px-4 py-2 rounded">
-            View All Reviews
+          <p className="text-white font-bold">
+            {reviews.length === 0 ? "No reviews yet." : "No reviews found in this filter."}
+          </p>
+          <p className="text-xs text-[#8f98a0] max-w-sm mx-auto">
+            {reviews.length === 0
+              ? "Be the first customer to share your setup review or gameplay screenshot!"
+              : "Try switching back to all reviews."}
+          </p>
+          <button
+            onClick={() => (reviews.length === 0 ? setIsModalOpen(true) : setFilter("ALL"))}
+            className="btn-steam-cta text-xs px-4 py-2 rounded inline-flex items-center gap-1.5 font-bold"
+          >
+            <Camera className="w-3.5 h-3.5" />
+            <span>{reviews.length === 0 ? "Write the First Review" : "View All Reviews"}</span>
           </button>
         </div>
       ) : (
