@@ -18,9 +18,10 @@ export default function GuideVideoPlayer({
 
   if (!videoUrl) return null;
 
-  // Helper to determine if it's YouTube, Vimeo, or direct HTML5 video
+  // Helper to determine if it's YouTube, Vimeo, Google Drive, or direct HTML5 video
   const isYouTube = videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be");
   const isVimeo = videoUrl.includes("vimeo.com");
+  const isGoogleDrive = videoUrl.includes("drive.google.com") || videoUrl.includes("docs.google.com");
 
   let embedUrl = "";
   if (isYouTube) {
@@ -39,6 +40,14 @@ export default function GuideVideoPlayer({
     const vimeoId = videoUrl.split("vimeo.com/")[1]?.split("?")[0] || "";
     if (vimeoId) {
       embedUrl = `https://player.vimeo.com/video/${vimeoId}`;
+    }
+  } else if (isGoogleDrive) {
+    const driveMatch =
+      videoUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+      videoUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    const driveId = driveMatch ? driveMatch[1] : "";
+    if (driveId) {
+      embedUrl = `https://drive.google.com/file/d/${driveId}/preview`;
     }
   }
 
@@ -86,8 +95,8 @@ export default function GuideVideoPlayer({
             src={embedUrl}
             title={title}
             className="w-full h-full border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            sandbox="allow-scripts allow-same-origin allow-presentation"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowFullScreen
           />
         ) : (
           <video

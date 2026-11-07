@@ -374,9 +374,12 @@ export default function AdminGuideEditorPage() {
                   type="text"
                   value={guide.videoUrl || ""}
                   onChange={(e) => setGuide({ ...guide, videoUrl: e.target.value })}
-                  placeholder="Paste direct MP4 URL, YouTube URL, Vimeo, or upload a video file above"
+                  placeholder="Paste Google Drive link, YouTube, Vimeo, direct MP4 URL, or upload file above"
                   className="w-full bg-[#16202d] border border-[#2a475e] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#66c0f4]"
                 />
+                <p className="text-[10px] text-[#8f98a0]">
+                  Supports Google Drive (<span className="text-white">view</span> or <span className="text-white">preview</span> link), YouTube, Vimeo, or direct MP4. For Google Drive, ensure file sharing is set to &ldquo;Anyone with the link can view&rdquo;.
+                </p>
               </div>
             </div>
 
