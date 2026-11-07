@@ -3,7 +3,6 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { hashPassword, signToken, getSessionCookieOptions } from "@/lib/auth";
 import { brandConfig } from "@/config/brand";
-import { registerUserInCloud } from "@/lib/cloud-sync";
 
 const registerSchema = z.object({
   email: z.string().email("Please provide a valid email address"),
@@ -79,20 +78,6 @@ export async function POST(req: NextRequest) {
 
       return newUser;
     });
-
-    // Ensure user is permanently backed up to the central cloud vault
-    try {
-      await registerUserInCloud({
-        id: user.id,
-        email: user.email,
-        passwordHash,
-        role: "RENTER",
-        whatsappNumber: formattedPhone,
-        displayName,
-      });
-    } catch (syncErr) {
-      console.warn("Cloud sync non-fatal warning on register:", syncErr);
-    }
 
     // Create session token
     const token = signToken({

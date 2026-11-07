@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { verifyPassword, hashPassword, signToken, getSessionCookieOptions } from "@/lib/auth";
-import { syncCloudToDatabase } from "@/lib/cloud-sync";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -34,13 +33,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (!user) {
-      try {
-        await syncCloudToDatabase();
-        user = await prisma.user.findUnique({
-          where: { email: cleanEmail },
-          include: { profile: true },
-        });
-      } catch {}
+      // With PostgreSQL, user simply doesn't exist
     }
 
     // Auto-bootstrap admin user record if missing

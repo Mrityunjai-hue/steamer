@@ -191,8 +191,8 @@ async function main() {
       const genres = knownInfo?.genres || null;
 
       // Construct official Steam CDN artwork urls (hotlinked per Rule 5.4)
-      const headerImage = steamAppId ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamAppId}/header.jpg` : null;
-      const capsuleImage = steamAppId ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamAppId}/library_600x900.jpg` : null;
+      const headerImage = knownInfo?.headerImage || (steamAppId ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamAppId}/header.jpg` : null);
+      const capsuleImage = knownInfo?.capsuleImage || (steamAppId ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamAppId}/library_600x900.jpg` : null);
 
       // Upsert Series
       const series = await prisma.series.upsert({

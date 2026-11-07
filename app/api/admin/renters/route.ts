@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { maskPhoneNumber } from "@/lib/encryption";
-import { syncCloudToDatabase } from "@/lib/cloud-sync";
 
 export async function GET(req: NextRequest) {
   try {
@@ -10,11 +9,6 @@ export async function GET(req: NextRequest) {
     if (!session || session.role !== "ADMIN") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
-    // Auto-sync persistent cloud vault so all newly registered users appear immediately
-    try {
-      await syncCloudToDatabase();
-    } catch {}
 
     const { searchParams } = new URL(req.url);
     const search = searchParams.get("search")?.trim() || "";
@@ -121,11 +115,6 @@ export async function POST(req: NextRequest) {
     if (!session || session.role !== "ADMIN") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
-    // Auto-sync persistent cloud vault so all newly registered users appear immediately
-    try {
-      await syncCloudToDatabase();
-    } catch {}
 
     const body = await req.json();
     const { userId, action } = body;

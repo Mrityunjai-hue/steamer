@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { syncCloudToDatabase } from "@/lib/cloud-sync";
 
 export async function GET() {
   try {
@@ -9,10 +8,6 @@ export async function GET() {
     if (!session || session.role !== "ADMIN") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
-    try {
-      await syncCloudToDatabase();
-    } catch {}
 
     const verifications = await prisma.contactVerification.findMany({
       orderBy: { requestedAt: "desc" },
