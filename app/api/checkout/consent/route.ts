@@ -131,8 +131,8 @@ export async function POST(req: NextRequest) {
       userId,
       pin: verificationPin,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Consent recording error:", error);
-    return NextResponse.json({ error: "Failed to record consent" }, { status: 500 });
+    return NextResponse.json({ error: error?.message || "Failed to record consent" }, { status: 500 });
   }
 }
