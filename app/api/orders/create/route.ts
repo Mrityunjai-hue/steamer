@@ -25,7 +25,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const userId = session?.userId || consent.userId;
+    // Prioritize consent.userId which was just created and verified in the database
+    let user = await prisma.user.findUnique({ where: { id: consent.userId } });
+    if (!user && session?.userId) {
+      user = await prisma.user.findUnique({ where: { id: session.userId } });
+    }
+
+    if (!user) {
+      return NextResponse.json(
+        { error: "User account could not be found for this order. Please try again." },
+        { status: 400 }
+      );
+    }
+    const userId = user.id;
 
     // Verify slot hold if provided
     if (holdToken) {

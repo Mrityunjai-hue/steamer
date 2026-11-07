@@ -75,13 +75,18 @@ export async function POST(req: NextRequest) {
     // Find order
     const order = await prisma.order.findUnique({
       where: { orderId },
+      include: { user: true },
     });
 
     if (!order) {
       return NextResponse.json({ error: "Order not found" }, { status: 404 });
     }
 
-    if (session && order.userId !== session.userId) {
+    const isGuestOrder = order.user?.role === "GUEST_RENTER";
+    const isAdmin = session?.role === "ADMIN";
+    const isOwner = session?.userId === order.userId;
+
+    if (session && !isGuestOrder && !isAdmin && !isOwner) {
       return NextResponse.json({ error: "Unauthorized access to this order" }, { status: 403 });
     }
 

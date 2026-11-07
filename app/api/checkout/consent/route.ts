@@ -40,10 +40,13 @@ export async function POST(req: NextRequest) {
       guestPhone,
     } = parsed.data;
 
-    let userId = session?.userId;
+    let user = null;
+    if (session?.userId) {
+      user = await prisma.user.findUnique({ where: { id: session.userId } });
+    }
 
-    if (!userId) {
-      const cleanEmail = (guestEmail || "").toLowerCase().trim();
+    if (!user) {
+      const cleanEmail = (guestEmail || session?.email || "").toLowerCase().trim();
       if (!cleanEmail || !cleanEmail.includes("@")) {
         return NextResponse.json(
           { error: "A valid email address is required so we can deliver your access link" },
@@ -51,7 +54,7 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      let user = await prisma.user.findUnique({ where: { email: cleanEmail } });
+      user = await prisma.user.findUnique({ where: { email: cleanEmail } });
       if (!user) {
         user = await prisma.user.create({
           data: {
@@ -61,14 +64,20 @@ export async function POST(req: NextRequest) {
             role: "GUEST_RENTER",
             profile: {
               create: {
-                displayName: guestName?.trim() || "Steamer Buyer",
+                displayName: guestName?.trim() || cleanEmail.split("@")[0] || "Steamer Buyer",
               },
             },
           },
         });
+      } else if (guestPhone?.trim() && !user.whatsappNumber) {
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { whatsappNumber: guestPhone.trim() },
+        });
       }
-      userId = user.id;
     }
+
+    const userId = user.id;
 
     // Single acceptance validation: either accepted === true, or trustPledge === true, or all checkboxes checked
     const isConsentGiven = Boolean(accepted || trustPledge || (checkboxes && Object.values(checkboxes).length > 0 && Object.values(checkboxes).every(Boolean)));
@@ -80,23 +89,28 @@ export async function POST(req: NextRequest) {
     }
 
     // Ensure contact verification record exists for WhatsApp PIN reference
-    const existingVerif = await prisma.contactVerification.findFirst({
-      where: { userId },
-      orderBy: { requestedAt: "desc" },
-    });
-
-    let verificationPin = existingVerif?.code;
-    if (!existingVerif) {
-      const randomCode = `VERIFY ${Math.floor(1000 + Math.random() * 9000)}`;
-      const newVerif = await prisma.contactVerification.create({
-        data: {
-          userId,
-          channel: "WHATSAPP",
-          code: randomCode,
-          status: "PENDING",
-        },
+    let verificationPin = `VERIFY ${Math.floor(1000 + Math.random() * 9000)}`;
+    try {
+      const existingVerif = await prisma.contactVerification.findFirst({
+        where: { userId },
+        orderBy: { requestedAt: "desc" },
       });
-      verificationPin = newVerif.code;
+
+      if (existingVerif) {
+        verificationPin = existingVerif.code;
+      } else {
+        const newVerif = await prisma.contactVerification.create({
+          data: {
+            userId,
+            channel: "WHATSAPP",
+            code: verificationPin,
+            status: "PENDING",
+          },
+        });
+        verificationPin = newVerif.code;
+      }
+    } catch (verifErr) {
+      console.warn("Contact verification non-fatal warning:", verifErr);
     }
 
     const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
@@ -117,13 +131,17 @@ export async function POST(req: NextRequest) {
     });
 
     // Also record legal document acceptance
-    await prisma.legalAcceptance.createMany({
-      data: [
-        { userId, documentSlug: "terms", version: termsVersion, ipAddress: ip, userAgent },
-        { userId, documentSlug: "disclosure", version: disclosureVersion, ipAddress: ip, userAgent },
-        { userId, documentSlug: "guidelines", version: guidelinesVersion, ipAddress: ip, userAgent },
-      ],
-    });
+    try {
+      await prisma.legalAcceptance.createMany({
+        data: [
+          { userId, documentSlug: "terms", version: termsVersion, ipAddress: ip, userAgent },
+          { userId, documentSlug: "disclosure", version: disclosureVersion, ipAddress: ip, userAgent },
+          { userId, documentSlug: "guidelines", version: guidelinesVersion, ipAddress: ip, userAgent },
+        ],
+      });
+    } catch (legalErr) {
+      console.warn("Legal acceptance non-fatal warning:", legalErr);
+    }
 
     return NextResponse.json({
       success: true,

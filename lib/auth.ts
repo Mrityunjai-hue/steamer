@@ -1,10 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { PrismaClient } from "@prisma/client";
-
-const globalForAuth = global as unknown as { prisma: PrismaClient | undefined };
-const prisma = globalForAuth.prisma || new PrismaClient();
-if (process.env.NODE_ENV !== "production") globalForAuth.prisma = prisma;
+import { prisma } from "./prisma";
 
 type NextRequest = any;
 
@@ -60,7 +56,22 @@ export async function getSession(): Promise<SessionPayload | null> {
     const cookieStore = cookies();
     const token = cookieStore.get(COOKIE_NAME)?.value;
     if (!token) return null;
-    return verifyToken(token);
+    const payload = verifyToken(token);
+    if (!payload?.userId) return null;
+
+    // Verify user actually exists in the database to prevent foreign key errors from stale JWT cookies
+    const user = await prisma.user.findUnique({
+      where: { id: payload.userId },
+      select: { id: true, email: true, role: true },
+    });
+    if (!user) return null;
+
+    return {
+      userId: user.id,
+      email: user.email,
+      role: (user.role as any) || payload.role,
+      twoFactorVerified: payload.twoFactorVerified,
+    };
   } catch {
     return null;
   }
