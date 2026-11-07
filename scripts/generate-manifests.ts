@@ -332,8 +332,20 @@ function generateAcfContent(appId: string, title: string): string {
 `;
 }
 
+function generateLuaContent(appId: string, title: string, launchArgs?: string): string {
+  const cleanTitle = title.replace(/"/g, "");
+  return `-- LuaTools / Steamer manifest plugin script
+-- AppID: ${appId}
+-- Title: ${cleanTitle}
+-- Target Directory: Steam/config/stplug-in/ or Steam/config/lua/
+
+addappid(${appId})
+${launchArgs ? `-- Recommended Launch Arguments: ${launchArgs}` : ""}
+`;
+}
+
 async function main() {
-  console.log("Generating self-hosted manifest files and database records...");
+  console.log("Generating self-hosted manifest files (.acf and .lua) and database records...");
 
   // 1. Fetch all games that have steamAppId
   const games = await prisma.game.findMany({
@@ -367,13 +379,19 @@ async function main() {
     const sourceToolkit = spec.sourceToolkit || "lua.tool";
     const instructions =
       spec.instructions ||
-      `${title} — Place appmanifest_${appId}.acf into your Steam installation folder (C:\\Program Files (x86)\\Steam\\steamapps\\). Switch Steam to Offline Mode to play without shared queues.`;
+      `${title} — Place appmanifest_${appId}.acf into your Steam installation folder (C:\\Program Files (x86)\\Steam\\steamapps\\) and place ${appId}.lua into (Steam\\config\\stplug-in\\). Switch Steam to Offline Mode to play without shared queues.`;
 
-    // Generate physical .acf manifest file in public/manifests/
+    // 1. Generate physical .acf manifest file in public/manifests/
     const acfFileName = `appmanifest_${appId}.acf`;
     const acfFilePath = path.join(MANIFESTS_DIR, acfFileName);
     const acfContent = generateAcfContent(appId, title);
     fs.writeFileSync(acfFilePath, acfContent, "ascii");
+
+    // 2. Generate physical .lua script in public/manifests/ (for LuaTools / SteamTools)
+    const luaFileName = `${appId}.lua`;
+    const luaFilePath = path.join(MANIFESTS_DIR, luaFileName);
+    const luaContent = generateLuaContent(appId, title, launchArguments);
+    fs.writeFileSync(luaFilePath, luaContent, "utf-8");
 
     const fileSizeBytes = Buffer.byteLength(acfContent, "ascii");
     const downloadUrl = `/manifests/${acfFileName}`;
@@ -421,7 +439,7 @@ async function main() {
     createdCount++;
   }
 
-  console.log(`✓ Successfully generated and seeded ${createdCount} self-hosted game fix manifests in /public/manifests!`);
+  console.log(`✓ Successfully generated ${createdCount} .acf manifests and ${createdCount} .lua scripts in /public/manifests!`);
 }
 
 main()

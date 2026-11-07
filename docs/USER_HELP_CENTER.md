@@ -115,6 +115,9 @@ Some games in the catalog require secondary launcher accounts:
 ### Q: What happens if my setup window expires before my download finishes?
 **A:** If you are downloading a huge 100 GB+ game on a slower internet connection, message the admin on WhatsApp **before** your 3 hours are up. The admin can grant an extension on the console if no other renter is immediately waiting.
 
+### Q: What if a game launch fails or a manifest does not register?
+**A:** Refer this link in case of failures: [https://lua.tools/fixes](https://lua.tools/fixes)
+
 ---
 
 ## 7. Steamer Community Rules & Trust Pledge Summary

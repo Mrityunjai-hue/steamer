@@ -124,6 +124,21 @@ export default function GameHelpPage() {
             <p className="text-xs sm:text-sm text-[#c7d5e0] leading-relaxed">
               Fixes, depot manifests, and launcher bypasses for games requiring third-party clients (Ubisoft Connect for Assassin&apos;s Creed titles, EA Desktop, Rockstar Social Club, and PlayStation PC). Verified via <strong>lua.tool</strong> and our testing team.
             </p>
+            <div className="flex items-center gap-2 p-2.5 bg-[#121922] border border-[#2a475e] rounded text-xs text-[#c7d5e0]">
+              <AlertCircle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+              <span>
+                Refer this link in case of failures:{" "}
+                <a
+                  href="https://lua.tools/fixes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#66c0f4] hover:underline font-bold inline-flex items-center gap-1"
+                >
+                  https://lua.tools/fixes
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </span>
+            </div>
           </div>
 
           {/* 1-Click Helper Download Button */}
