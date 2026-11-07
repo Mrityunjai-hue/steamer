@@ -25,8 +25,8 @@ export interface GuideConfig {
 export const DEFAULT_GUIDE_CONFIG: GuideConfig = {
   title: "Complete PC Setup Walkthrough",
   description: "Follow the visual, click-by-click instructions and video walkthrough below to configure your titles.",
-  videoUrl: "",
-  videoTitle: "Full Video Walkthrough & Setup Demo",
+  videoUrl: "https://drive.google.com/file/d/1uW1L51h0L0Nc6JFUuL1wBX2D_RsW_3-0/view?usp=drivesdk",
+  videoTitle: "Complete Step-by-Step Video Walkthrough",
   protection: {
     disableCopy: true,
     disableRightClick: true,
