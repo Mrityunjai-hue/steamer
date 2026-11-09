@@ -51,8 +51,15 @@ export default function LoginPage() {
   return (
     <div className="max-w-md mx-auto px-4 py-16 space-y-6">
       <div className="text-center space-y-2">
-        <div className="w-12 h-12 mx-auto relative">
-          <Image src="/brand/icon.svg" alt="Steamer" width={48} height={48} priority />
+        <div className="w-14 h-14 mx-auto relative">
+          <Image
+            src="/brand/logo.png"
+            alt="Steamer"
+            width={56}
+            height={56}
+            className="w-full h-full object-contain rounded-full shadow-[0_0_15px_rgba(168,85,247,0.45)]"
+            priority
+          />
         </div>
         <h1 className="text-2xl font-black text-white tracking-wide">SIGN IN TO STEAMER</h1>
         <p className="text-xs text-[#8f98a0]">

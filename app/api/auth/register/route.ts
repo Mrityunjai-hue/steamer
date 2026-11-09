@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
           profile: {
             create: {
               displayName,
-              avatarUrl: "/brand/icon.svg",
+              avatarUrl: "/brand/logo.png",
             },
           },
         },

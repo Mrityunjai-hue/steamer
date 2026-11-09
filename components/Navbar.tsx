@@ -77,11 +77,11 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
             <div className="relative w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0 transition-transform group-hover:scale-105">
               <Image
-                src="/brand/icon.svg"
+                src="/brand/logo.png"
                 alt="Steamer Logo"
                 width={36}
                 height={36}
-                className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(102,192,244,0.35)]"
+                className="w-full h-full object-contain rounded-full shadow-[0_0_10px_rgba(168,85,247,0.4)]"
                 priority
               />
             </div>

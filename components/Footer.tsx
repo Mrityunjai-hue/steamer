@@ -14,11 +14,11 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 flex-shrink-0">
                 <Image
-                  src="/brand/icon.svg"
+                  src="/brand/logo.png"
                   alt="Steamer Icon"
                   width={32}
                   height={32}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain rounded-full shadow-[0_0_8px_rgba(168,85,247,0.35)]"
                 />
               </div>
               <span className="text-lg font-black tracking-widest text-white">STEAMER</span>
