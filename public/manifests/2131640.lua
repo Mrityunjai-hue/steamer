@@ -1,6 +1,6 @@
 -- LuaTools / Steamer manifest plugin script
 -- AppID: 2131640
--- Title: Borderlands 4
+-- Title: Metal Gear Solid 2: Sons of Liberty - Master Collection
 -- Target Directory: Steam/config/stplug-in/ or Steam/config/lua/
 
 addappid(2131640)

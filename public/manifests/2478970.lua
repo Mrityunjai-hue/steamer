@@ -1,6 +1,6 @@
 -- LuaTools / Steamer manifest plugin script
 -- AppID: 2478970
--- Title: Tomb Raider III Remastered
+-- Title: Tomb Raider I Remastered
 -- Target Directory: Steam/config/stplug-in/ or Steam/config/lua/
 
 addappid(2478970)

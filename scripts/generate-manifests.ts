@@ -344,7 +344,7 @@ ${launchArgs ? `-- Recommended Launch Arguments: ${launchArgs}` : ""}
 `;
 }
 
-async function main() {
+export async function generateManifests() {
   console.log("Generating self-hosted manifest files (.acf and .lua) and database records...");
 
   // 1. Fetch all games that have steamAppId
@@ -363,91 +363,102 @@ async function main() {
   console.log(`Found ${games.length} games in database with Steam AppIDs.`);
 
   let createdCount = 0;
+  const validGames = games.filter((g) => {
+    const appId = g.steamAppId?.trim();
+    return appId && !isNaN(Number(appId));
+  });
 
-  for (const game of games) {
-    const appId = game.steamAppId!.trim();
-    if (!appId || isNaN(Number(appId))) continue;
+  // Process in concurrent chunks of 20 for rapid Neon DB execution
+  const chunkSize = 20;
+  for (let i = 0; i < validGames.length; i += chunkSize) {
+    const chunk = validGames.slice(i, i + chunkSize);
+    await Promise.all(
+      chunk.map(async (game) => {
+        const appId = game.steamAppId!.trim();
+        const spec = manifestSpecs[appId] || {};
 
-    const spec = manifestSpecs[appId] || {};
+        const title = spec.title || game.title;
+        const launcher = spec.launcher || (game.launcher ? game.launcher : "Steam only");
+        const fixType = spec.fixType || "MANIFEST_ACF";
+        const manifestVersion = spec.manifestVersion || "v1.0 (lua.tool verified)";
+        const launchArguments = spec.launchArguments || "-offline";
+        const targetDirectory = spec.targetDirectory || "Steam/steamapps";
+        const sourceToolkit = spec.sourceToolkit || "lua.tool";
+        const instructions =
+          spec.instructions ||
+          `${title} — Place appmanifest_${appId}.acf into your Steam installation folder (C:\\Program Files (x86)\\Steam\\steamapps\\) and place ${appId}.lua into (Steam\\config\\stplug-in\\). Switch Steam to Offline Mode to play without shared queues.`;
 
-    const title = spec.title || game.title;
-    const launcher = spec.launcher || (game.launcher ? game.launcher : "Steam only");
-    const fixType = spec.fixType || "MANIFEST_ACF";
-    const manifestVersion = spec.manifestVersion || "v1.0 (lua.tool verified)";
-    const launchArguments = spec.launchArguments || "-offline";
-    const targetDirectory = spec.targetDirectory || "Steam/steamapps";
-    const sourceToolkit = spec.sourceToolkit || "lua.tool";
-    const instructions =
-      spec.instructions ||
-      `${title} — Place appmanifest_${appId}.acf into your Steam installation folder (C:\\Program Files (x86)\\Steam\\steamapps\\) and place ${appId}.lua into (Steam\\config\\stplug-in\\). Switch Steam to Offline Mode to play without shared queues.`;
+        // 1. Generate physical .acf manifest file in public/manifests/
+        const acfFileName = `appmanifest_${appId}.acf`;
+        const acfFilePath = path.join(MANIFESTS_DIR, acfFileName);
+        const acfContent = generateAcfContent(appId, title);
+        fs.writeFileSync(acfFilePath, acfContent, "ascii");
 
-    // 1. Generate physical .acf manifest file in public/manifests/
-    const acfFileName = `appmanifest_${appId}.acf`;
-    const acfFilePath = path.join(MANIFESTS_DIR, acfFileName);
-    const acfContent = generateAcfContent(appId, title);
-    fs.writeFileSync(acfFilePath, acfContent, "ascii");
+        // 2. Generate physical .lua script in public/manifests/ (for LuaTools / SteamTools)
+        const luaFileName = `${appId}.lua`;
+        const luaFilePath = path.join(MANIFESTS_DIR, luaFileName);
+        const luaContent = generateLuaContent(appId, title, launchArguments);
+        fs.writeFileSync(luaFilePath, luaContent, "utf-8");
 
-    // 2. Generate physical .lua script in public/manifests/ (for LuaTools / SteamTools)
-    const luaFileName = `${appId}.lua`;
-    const luaFilePath = path.join(MANIFESTS_DIR, luaFileName);
-    const luaContent = generateLuaContent(appId, title, launchArguments);
-    fs.writeFileSync(luaFilePath, luaContent, "utf-8");
+        const fileSizeBytes = Buffer.byteLength(acfContent, "ascii");
+        const downloadUrl = `/manifests/${acfFileName}`;
+        const mirrorUrl = `/api/manifests/download/${appId}`;
 
-    const fileSizeBytes = Buffer.byteLength(acfContent, "ascii");
-    const downloadUrl = `/manifests/${acfFileName}`;
-    const mirrorUrl = `/api/manifests/download/${appId}`;
+        // Upsert into GameFixManifest
+        await prisma.gameFixManifest.upsert({
+          where: {
+            id: `manifest-${appId}`,
+          },
+          update: {
+            title,
+            launcher,
+            fixType,
+            manifestVersion,
+            downloadUrl,
+            mirrorUrl,
+            fileSizeBytes,
+            sha256: `sha256-verified-steamer-${appId}`,
+            instructions,
+            launchArguments,
+            targetDirectory,
+            sourceToolkit,
+            gameId: game.id,
+          },
+          create: {
+            id: `manifest-${appId}`,
+            steamAppId: appId,
+            title,
+            launcher,
+            fixType,
+            manifestVersion,
+            downloadUrl,
+            mirrorUrl,
+            fileSizeBytes,
+            sha256: `sha256-verified-steamer-${appId}`,
+            instructions,
+            launchArguments,
+            targetDirectory,
+            sourceToolkit,
+            gameId: game.id,
+          },
+        });
 
-    // Upsert into GameFixManifest
-    await prisma.gameFixManifest.upsert({
-      where: {
-        id: `manifest-${appId}`,
-      },
-      update: {
-        title,
-        launcher,
-        fixType,
-        manifestVersion,
-        downloadUrl,
-        mirrorUrl,
-        fileSizeBytes,
-        sha256: `sha256-verified-steamer-${appId}`,
-        instructions,
-        launchArguments,
-        targetDirectory,
-        sourceToolkit,
-        gameId: game.id,
-      },
-      create: {
-        id: `manifest-${appId}`,
-        steamAppId: appId,
-        title,
-        launcher,
-        fixType,
-        manifestVersion,
-        downloadUrl,
-        mirrorUrl,
-        fileSizeBytes,
-        sha256: `sha256-verified-steamer-${appId}`,
-        instructions,
-        launchArguments,
-        targetDirectory,
-        sourceToolkit,
-        gameId: game.id,
-      },
-    });
-
-    createdCount++;
+        createdCount++;
+      })
+    );
   }
 
   console.log(`✓ Successfully generated ${createdCount} .acf manifests and ${createdCount} .lua scripts in /public/manifests!`);
 }
 
-main()
-  .catch((e) => {
-    console.error("Generator error:", e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+if (require.main === module) {
+  generateManifests()
+    .catch((e) => {
+      console.error("Generator error:", e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}
 

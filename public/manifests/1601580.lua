@@ -1,6 +1,6 @@
 -- LuaTools / Steamer manifest plugin script
 -- AppID: 1601580
--- Title: RoboCop: Rogue City
+-- Title: Frostpunk 2
 -- Target Directory: Steam/config/stplug-in/ or Steam/config/lua/
 
 addappid(1601580)

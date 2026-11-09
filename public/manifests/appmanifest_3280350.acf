@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"3280350"
+	"Universe"		"1"
+	"name"		"Death Stranding 2: On the Beach"
+	"StateFlags"		"4"
+	"installdir"		"Death Stranding 2: On the Beach"
+	"LastUpdated"		"1794244873"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

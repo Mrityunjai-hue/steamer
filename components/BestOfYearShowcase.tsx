@@ -247,11 +247,13 @@ function TierSection({
 function TierGameCard({ game }: { game: GameData }) {
   const [imgError, setImgError] = useState(false);
 
-  // Steam CDN primary header image
-  const steamAppId = game.steamAppId;
-  const headerUrl = steamAppId
-    ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamAppId}/header.jpg`
-    : game.headerImage || "/brand/logo.png";
+  // Prefer explicit verified headerImage from database, or fallback to Steam CDN by numeric appId
+  const headerUrl =
+    game.headerImage && (game.headerImage.startsWith("/") || game.headerImage.startsWith("http"))
+      ? game.headerImage
+      : game.steamAppId && !game.steamAppId.startsWith("custom-")
+      ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.steamAppId}/header.jpg`
+      : "/brand/logo.png";
 
   return (
     <Link
