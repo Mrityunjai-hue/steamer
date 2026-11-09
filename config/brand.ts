@@ -38,7 +38,7 @@ export const brandConfig: BrandConfig = {
   whatsappNumber: envPhone,
   whatsappDisplay: "WhatsApp Direct (Primary Support Channel)",
   whatsappHelpUrl: cleanEnvPhone ? `https://wa.me/${cleanEnvPhone}` : "/support",
-  grievanceOfficer: "Vikram Malhotra",
+  grievanceOfficer: "Steamer Support Desk",
   grievanceEmail: "steamer.support365@gmail.com",
   effectiveDate: "November 1, 2026",
   supportHours: "10:00 AM – 11:00 PM IST (Monday to Sunday)",

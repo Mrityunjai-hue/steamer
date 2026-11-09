@@ -14,7 +14,11 @@ export async function GET(req: NextRequest) {
 
     const where: any = {};
     if (status !== "ALL") {
-      where.status = status;
+      if (status === "VERIFIED") {
+        where.status = { in: ["VERIFIED", "ACTIVE", "COMPLETED"] };
+      } else {
+        where.status = status;
+      }
     }
 
     const orders = await prisma.order.findMany({

@@ -108,9 +108,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Personal Contact & Jurisdiction (Addendum 6) */}
+          {/* Support & Jurisdiction */}
           <div>
-            <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4">Contact & Grievance</h4>
+            <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4">Contact & Support</h4>
             <div className="space-y-2 text-[11px] text-[#8f98a0]">
               <p className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#66c0f4]" />
@@ -134,8 +134,7 @@ export default function Footer() {
                 </a>
               </p>
               <div className="pt-2 text-[10px] text-[#8f98a0]/80">
-                <p><strong>Grievance Officer:</strong> {brandConfig.grievanceOfficer}</p>
-                <p><strong>Email:</strong> {brandConfig.grievanceEmail}</p>
+                <p><strong>Support &amp; Grievance Email:</strong> {brandConfig.grievanceEmail}</p>
                 <p><strong>Jurisdiction:</strong> Courts at {brandConfig.city}, {brandConfig.country}</p>
                 <p><strong>Support Hours:</strong> {brandConfig.supportHours}</p>
               </div>

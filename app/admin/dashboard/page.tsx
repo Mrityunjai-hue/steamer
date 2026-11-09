@@ -226,13 +226,15 @@ export default function AdminDashboardPage() {
 
         <div className="bg-[#171a21] border border-[#2a475e] p-5 rounded-xl space-y-2 shadow-sm">
           <div className="flex items-center justify-between text-xs text-[#8f98a0]">
-            <span className="font-bold uppercase">Revenue This Month</span>
+            <span className="font-bold uppercase">Total Revenue</span>
             <TrendingUp className="w-4 h-4 text-[#5ba32b]" />
           </div>
           <div className="text-3xl font-black text-[#5ba32b]">
-            ₹{(data?.monthlyRevenue || 0).toLocaleString("en-IN")}
+            ₹{((data?.totalRevenue ?? data?.monthlyRevenue) || 0).toLocaleString("en-IN")}
           </div>
-          <p className="text-[11px] text-[#8f98a0]">Direct UPI collections</p>
+          <p className="text-[11px] text-[#8f98a0]">
+            ₹{(data?.monthlyRevenue || 0).toLocaleString("en-IN")} this month · Direct UPI
+          </p>
         </div>
       </div>
 

@@ -57,16 +57,38 @@ export async function GET() {
       where: { status: "PENDING" },
     });
 
-    // Revenue this month (from verified orders)
+    // Revenue calculations: include all verified, active, and completed orders
+    const paidStatuses = ["VERIFIED", "ACTIVE", "COMPLETED"];
     const startOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
-    const monthOrders = await prisma.order.findMany({
-      where: {
-        status: { in: ["VERIFIED", "ACTIVE"] },
-        createdAt: { gte: startOfMonth },
-      },
-      select: { amount: true },
-    });
-    const monthlyRevenue = monthOrders.reduce((sum, o) => sum + o.amount, 0);
+
+    const [monthOrders, allPaidOrders, allSubs] = await Promise.all([
+      prisma.order.findMany({
+        where: {
+          status: { in: paidStatuses },
+          createdAt: { gte: startOfMonth },
+        },
+        select: { amount: true },
+      }),
+      prisma.order.findMany({
+        where: {
+          status: { in: paidStatuses },
+        },
+        select: { amount: true },
+      }),
+      prisma.subscription.findMany({
+        select: { priceINR: true, createdAt: true },
+      }),
+    ]);
+
+    const orderMonthlyRevenue = monthOrders.reduce((sum, o) => sum + o.amount, 0);
+    const subMonthlyRevenue = allSubs
+      .filter((s) => new Date(s.createdAt) >= startOfMonth)
+      .reduce((sum, s) => sum + s.priceINR, 0);
+    const monthlyRevenue = Math.max(orderMonthlyRevenue, subMonthlyRevenue);
+
+    const orderTotalRevenue = allPaidOrders.reduce((sum, o) => sum + o.amount, 0);
+    const subTotalRevenue = allSubs.reduce((sum, s) => sum + s.priceINR, 0);
+    const totalRevenue = Math.max(orderTotalRevenue, subTotalRevenue);
 
     // Latest presence alert
     const latestPresence = await prisma.steamPresenceSnapshot.findFirst({
@@ -96,6 +118,7 @@ export async function GET() {
       pendingPaymentsCount,
       pendingVerificationsCount,
       monthlyRevenue,
+      totalRevenue,
       expiringSoon: expiringSoon.map((sub) => ({
         id: sub.id,
         email: sub.user.email,
