@@ -100,6 +100,7 @@ export default function SteamCategoryRow({
               testedOfflineOn={game.testedOfflineOn}
               launcher={game.launcher}
               headerImage={game.headerImage}
+              steamAppId={game.steamAppId}
             />
           </div>
         ))}

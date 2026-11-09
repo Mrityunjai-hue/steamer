@@ -1,6 +1,6 @@
 -- LuaTools / Steamer manifest plugin script
 -- AppID: 1817190
--- Title: Marvel's Spider-Man: Miles Morales
+-- Title: Spider-Man: Miles Morales
 -- Target Directory: Steam/config/stplug-in/ or Steam/config/lua/
 
 addappid(1817190)

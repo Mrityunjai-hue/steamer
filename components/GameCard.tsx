@@ -16,6 +16,7 @@ export interface GameCardProps {
   testedOfflineOn?: string | Date | null;
   launcher: string;
   headerImage?: string | null;
+  steamAppId?: string | null;
   purchasableAsSingle?: boolean;
 }
 
@@ -29,8 +30,25 @@ export default function GameCard({
   testedOfflineOn,
   launcher,
   headerImage,
+  steamAppId,
 }: GameCardProps) {
   const [imageError, setImageError] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(
+    headerImage
+      ? headerImage.replace("shared.akamaized.net", "shared.akamai.steamstatic.com")
+      : steamAppId && /^\d+$/.test(steamAppId)
+      ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamAppId}/header.jpg`
+      : ""
+  );
+
+  const handleImageError = () => {
+    // If primary failed and we have a numeric Steam AppID, try secondary Cloudflare CDN
+    if (steamAppId && /^\d+$/.test(steamAppId) && !currentSrc.includes("cdn.cloudflare.steamstatic.com")) {
+      setCurrentSrc(`https://cdn.cloudflare.steamstatic.com/steam/apps/${steamAppId}/header.jpg`);
+    } else {
+      setImageError(true);
+    }
+  };
 
   const isVerifiedOffline = offlineTag === "Offline OK" && !!testedOfflineOn;
 
@@ -85,15 +103,16 @@ export default function GameCard({
     >
       {/* Cover Artwork Container (460x215 Steam Ratio with High-Visibility Sheen Sweep) */}
       <div className="steam-sheen relative aspect-[460/215] w-full bg-[#0d131b] overflow-hidden flex-shrink-0">
-        {headerImage && !imageError ? (
+        {currentSrc && !imageError ? (
           <Image
-            src={headerImage}
+            src={currentSrc}
             alt={title}
             fill
+            unoptimized
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
             className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
             loading="lazy"
-            onError={() => setImageError(true)}
+            onError={handleImageError}
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#1b2838] to-[#0e1620] p-2 text-center select-none">

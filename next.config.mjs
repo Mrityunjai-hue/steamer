@@ -8,6 +8,7 @@ const nextConfig = {
     },
   },
   images: {
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -32,6 +33,18 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'steamcdn-a.akamaihd.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'shared.akamaized.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.steamstatic.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'clan.cloudflare.steamstatic.com',
       },
       {
         protocol: 'https',

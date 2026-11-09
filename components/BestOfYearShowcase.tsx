@@ -247,33 +247,42 @@ function TierSection({
 function TierGameCard({ game }: { game: GameData }) {
   const [imgError, setImgError] = useState(false);
 
-  // Prefer explicit verified headerImage from database, or fallback to Steam CDN by numeric appId
-  const headerUrl =
+  const initialUrl =
     game.headerImage && (game.headerImage.startsWith("/") || game.headerImage.startsWith("http"))
-      ? game.headerImage
-      : game.steamAppId && !game.steamAppId.startsWith("custom-")
+      ? game.headerImage.replace("shared.akamaized.net", "shared.akamai.steamstatic.com")
+      : game.steamAppId && /^\d+$/.test(game.steamAppId)
       ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.steamAppId}/header.jpg`
       : "/brand/logo.png";
+
+  const [currentUrl, setCurrentUrl] = useState(initialUrl);
+
+  const handleImgError = () => {
+    if (game.steamAppId && /^\d+$/.test(game.steamAppId) && !currentUrl.includes("cdn.cloudflare.steamstatic.com")) {
+      setCurrentUrl(`https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/header.jpg`);
+    } else {
+      setImgError(true);
+    }
+  };
 
   return (
     <Link
       href={`/game/${game.id}`}
-      className="group block bg-[#16202d] hover:bg-[#1f2d3d] rounded-md overflow-hidden border border-[#2a475e]/70 hover:border-[#66c0f4] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+      className="group block bg-[#16202d] hover:bg-[#1f2d3d] rounded-md overflow-hidden border border-[#2a475e]/70 hover:border-[#66c0f4] transition-all duration-300 shadow-md hover:shadow-[0_12px_28px_rgba(0,0,0,0.7),0_0_20px_rgba(102,192,244,0.35)] hover:-translate-y-1.5 flex flex-col justify-between"
     >
       {/* Capsule Banner Image */}
       <div className="relative aspect-[460/215] w-full bg-[#0d131b] overflow-hidden">
         {imgError ? (
-          <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-[#171a21]">
-            <span className="text-xs font-bold text-white line-clamp-2">{game.title}</span>
-            <span className="text-[10px] text-[#8f98a0] mt-1">{game.genres || "Action"}</span>
+          <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#1b2838] to-[#0e1620]">
+            <span className="text-xs font-bold text-[#c7d5e0] line-clamp-2">{game.title}</span>
+            <span className="text-[10px] text-[#66c0f4] mt-1 font-semibold uppercase tracking-wider">{game.genres || "PC Game"}</span>
           </div>
         ) : (
           <img
-            src={headerUrl}
+            src={currentUrl}
             alt={game.title}
             loading="lazy"
             decoding="async"
-            onError={() => setImgError(true)}
+            onError={handleImgError}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         )}
