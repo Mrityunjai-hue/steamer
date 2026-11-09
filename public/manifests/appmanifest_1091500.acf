@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1091500"
+	"Universe"		"1"
+	"name"		"Cyberpunk 2077"
+	"StateFlags"		"4"
+	"installdir"		"Cyberpunk 2077"
+	"LastUpdated"		"1794245619"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}
