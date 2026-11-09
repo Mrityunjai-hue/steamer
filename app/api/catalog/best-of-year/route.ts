@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 300; // 5 minutes cache for blazing fast performance
+// shortcut: revalidate ignored when force-dynamic is set, explicit for clarity
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 
@@ -17,42 +17,19 @@ const GOTY_TIERS: Record<
   }
 > = {
   "2026": {
+    // Only confirmed Steam PC titles with Steam pages for 2026
     platinum: [
-      "grand theft auto vi",
       "the witcher 4 (polaris)",
       "the witcher 4",
-      "max payne 1 & 2 remake",
-      "marvel's wolverine",
-      "control 2",
-      "judas",
-      "ark ii",
-      "mass effect 5",
       "crimson desert",
-      "phantom blade zero",
-      "tomb raider next",
-      "resident evil 9",
     ],
     gold: [
-      "the elder scrolls vi",
-      "light no fire",
+      "phantom blade zero",
       "subnautica 2",
-      "project 007",
-      "clockwork revolution",
-      "pragmata",
-      "forza horizon 6",
-      "fable",
-      "bioshock 4",
-      "blade",
-      "perfect dark",
-      "star wars eclipse",
+      "death stranding 2: on the beach",
+      "max payne 1 & 2 remake",
     ],
-    silver: [
-      "beyond good and evil 2",
-      "half-life 3",
-      "fallout: new vegas remastered",
-      "halo: campaign next",
-      "saros",
-    ],
+    silver: [],
   },
   "2025": {
     platinum: [
@@ -67,7 +44,6 @@ const GOTY_TIERS: Record<
       "elden ring nightreign",
       "the elder scrolls iv: oblivion remastered",
       "monster hunter wilds",
-      "grand theft auto vi",
       "kingdom come: deliverance ii",
       "avowed",
     ],
@@ -87,7 +63,6 @@ const GOTY_TIERS: Record<
       "gothic 1 remake",
     ],
     silver: [
-      "the last of us part ii remastered",
       "jurassic world evolution 3",
       "mafia: the old country",
       "final fantasy vii rebirth",
@@ -96,9 +71,9 @@ const GOTY_TIERS: Record<
       "death stranding 2: on the beach",
       "lost soul aside",
       "darwin's paradox",
-      "tomb raider iv remastered",
-      "tomb raider v remastered",
-      "tomb raider vi remastered",
+      "phantom blade zero",
+      "subnautica 2",
+      "max payne 1 & 2 remake",
     ],
     bronze: [
       "atelier yumia",
