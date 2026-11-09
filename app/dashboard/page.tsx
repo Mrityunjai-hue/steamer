@@ -229,7 +229,7 @@ export default function DashboardPage() {
           <span>
             {activeSub
               ? "All-Access Pass: Lifetime games access in your personal Steam"
-              : "No Active Plan — Unlock All 265+ Games for ₹300"}
+              : "No Active Plan — Unlock All 370+ Games for ₹300"}
           </span>
         </div>
       </div>
@@ -250,7 +250,7 @@ export default function DashboardPage() {
                 ALL-ACCESS VAULT ACTIVE ON YOUR PC
               </h2>
               <p className="text-xs sm:text-sm text-[#8f98a0] max-w-xl mx-auto leading-relaxed">
-                Your personal PC is independently configured for offline gameplay across all 265+ titles. To protect vault access and maintain account integrity, setup credentials and walkthrough materials are now safely locked.
+                Your personal PC is independently configured for offline gameplay across all 370+ titles. To protect vault access and maintain account integrity, setup credentials and walkthrough materials are now safely locked.
               </p>
             </div>
 
@@ -265,7 +265,7 @@ export default function DashboardPage() {
                 href="/catalog"
                 className="w-full sm:w-auto btn-steam-cta text-xs px-6 py-3 rounded-lg font-bold flex items-center justify-center gap-2 text-white shadow-ctaGlow"
               >
-                <Gamepad2 className="w-4 h-4" /> Browse Included 265+ Games
+                <Gamepad2 className="w-4 h-4" /> Browse Included 370+ Games
               </Link>
               <Link
                 href="/checkout?renew=true"
@@ -498,7 +498,7 @@ export default function DashboardPage() {
                     </Link>
                   </div>
                   <p className="text-xs text-[#8f98a0]">
-                    All 265+ verified PC titles are permanently included in your ₹300 setup plan.
+                    All 370+ verified PC titles are permanently included in your ₹300 setup plan.
                   </p>
                 </div>
 
@@ -557,7 +557,7 @@ export default function DashboardPage() {
               Unlock the Complete PC Setup Guide
             </h2>
             <p className="text-sm text-[#8f98a0] max-w-lg mx-auto leading-relaxed">
-              Get the ultimate, step-by-step instructions to unlock and play 265+ premium PC games directly on your Steam account forever with zero account conflicts.
+              Get the ultimate, step-by-step instructions to unlock and play 370+ premium PC games directly on your Steam account forever with zero account conflicts.
             </p>
           </div>
 

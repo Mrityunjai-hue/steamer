@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1158310"
+	"Universe"		"1"
+	"name"		"Crusader Kings III"
+	"StateFlags"		"4"
+	"installdir"		"Crusader Kings III"
+	"LastUpdated"		"1794241104"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

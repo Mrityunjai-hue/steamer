@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2883000"
+	"Universe"		"1"
+	"name"		"Assassin's Creed Shadows"
+	"StateFlags"		"4"
+	"installdir"		"Assassin's Creed Shadows"
+	"LastUpdated"		"1794241080"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

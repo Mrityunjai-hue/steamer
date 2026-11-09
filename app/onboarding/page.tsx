@@ -9,7 +9,7 @@ export default function OnboardingPage() {
   const router = useRouter();
 
   const steps = [
-    "I understand all 265+ single-player PC games run 100% offline with permanent local saves on my PC.",
+    "I understand all 370+ single-player PC games run 100% offline with permanent local saves on my PC.",
     "I will follow the click-by-click Setup Guide walkthrough in my dashboard to configure titles in my personal library.",
     "I understand this pass gives me direct, independent access on my PC with zero queues and zero account sharing.",
     "I will keep my secret access link confidential to protect my personal dashboard and setup guide access.",

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1325200"
+	"Universe"		"1"
+	"name"		"Nioh 2: The Complete Edition"
+	"StateFlags"		"4"
+	"installdir"		"Nioh 2: The Complete Edition"
+	"LastUpdated"		"1794241103"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

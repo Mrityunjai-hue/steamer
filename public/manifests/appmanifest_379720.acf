@@ -2,10 +2,10 @@
 {
 	"appid"		"379720"
 	"Universe"		"1"
-	"name"		"Doom"
+	"name"		"DOOM (2016)"
 	"StateFlags"		"4"
-	"installdir"		"Doom"
-	"LastUpdated"		"1794076047"
+	"installdir"		"DOOM (2016)"
+	"LastUpdated"		"1794241077"
 	"UpdateResult"		"0"
 	"BytesToDownload"		"0"
 	"BytesDownloaded"		"0"

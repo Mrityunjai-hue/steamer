@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import GameCard from "@/components/GameCard";
-import { Search, Filter, RefreshCw, ChevronLeft, ChevronRight, SlidersHorizontal, X } from "lucide-react";
+import BestOfYearShowcase from "@/components/BestOfYearShowcase";
+import { Search, Filter, RefreshCw, ChevronLeft, ChevronRight, SlidersHorizontal, X, Trophy, LayoutGrid, Sparkles } from "lucide-react";
 
 interface GameItem {
   id: string;
@@ -19,6 +20,7 @@ interface GameItem {
 }
 
 export default function CatalogPage() {
+  const [activeView, setActiveView] = useState<"BEST_OF_YEAR" | "ALL_GAMES">("BEST_OF_YEAR");
   const [games, setGames] = useState<GameItem[]>([]);
   const [seriesList, setSeriesList] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,6 +35,15 @@ export default function CatalogPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [totalGames, setTotalGames] = useState(0);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const view = params.get("view");
+      if (view === "all") setActiveView("ALL_GAMES");
+      else if (view === "best-of-year") setActiveView("BEST_OF_YEAR");
+    }
+  }, []);
 
   const fetchGames = useCallback(async () => {
     setLoading(true);
@@ -93,75 +104,122 @@ export default function CatalogPage() {
   const hasActiveFilters = !!(search || selectedTier || selectedSeries || selectedLauncher || selectedOfflineTag || includeOnlineOnly);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-      {/* Header and Search */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2a475e]/60 pb-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      {/* Primary Catalog View Switcher Header */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[#2a475e]/70 pb-5">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-wide">
-            GET 265 GAMES OF YOUR CHOICE FOR ₹300 ({totalGames} TITLES)
+          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2">
+            STEAM VAULT CATALOG ({totalGames || 371} TITLES)
           </h1>
           <p className="text-xs sm:text-sm text-[#8f98a0]">
-            Browse our full vault of {totalGames || "265+"} offline-ready single-player PC games included directly on your Steam account.
+            Browse official Steam Best of the Year rankings or search our entire vault of 370+ single-player PC games.
           </p>
         </div>
 
-        {/* Live Search and Filter Toggle */}
-        <div className="flex items-center gap-3">
-          <div className="relative flex-1 sm:w-80">
-            <Search className="w-4 h-4 text-[#8f98a0] absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setPage(1);
-              }}
-              placeholder="Search by game or series..."
-              className="w-full bg-[#16202d] border border-[#2a475e] rounded-lg pl-9 pr-4 py-2 text-xs text-white placeholder-[#8f98a0] focus:outline-none focus:border-[#66c0f4] transition-colors"
-            />
-            {search && (
-              <button
-                onClick={() => setSearch("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8f98a0] hover:text-white"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
+        {/* View Switcher Controls */}
+        <div className="flex items-center gap-2 bg-[#121922] p-1.5 rounded-lg border border-[#2a475e] shadow-sm flex-shrink-0">
+          <button
+            onClick={() => setActiveView("BEST_OF_YEAR")}
+            className={`px-4 py-2 rounded text-xs font-black tracking-wide flex items-center gap-2 transition-all ${
+              activeView === "BEST_OF_YEAR"
+                ? "bg-gradient-to-r from-[#d4af37] via-[#ffd700] to-[#b8860b] text-[#171a21] shadow-md"
+                : "text-[#c7d5e0] hover:text-white hover:bg-[#1b2838]"
+            }`}
+          >
+            <Trophy className="w-4 h-4" />
+            <span>Best of the Year (Top 100)</span>
+          </button>
 
           <button
-            onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
-            className="md:hidden p-2 bg-[#2a475e] text-white rounded-lg flex items-center gap-1.5 text-xs font-bold"
+            onClick={() => setActiveView("ALL_GAMES")}
+            className={`px-4 py-2 rounded text-xs font-black tracking-wide flex items-center gap-2 transition-all ${
+              activeView === "ALL_GAMES"
+                ? "bg-[#66c0f4] text-[#171a21] shadow-md"
+                : "text-[#c7d5e0] hover:text-white hover:bg-[#1b2838]"
+            }`}
           >
-            <SlidersHorizontal className="w-4 h-4" /> Filters
+            <LayoutGrid className="w-4 h-4" />
+            <span>All Games ({totalGames || 371})</span>
           </button>
         </div>
       </div>
 
-      {/* Showcase Value Callout Banner (Steam style) */}
-      <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow">
-        <div className="space-y-0.5 text-center sm:text-left">
-          <div className="inline-flex items-center gap-1.5 text-[#5ba32b] text-[11px] font-bold uppercase">
-            <span>● 265+ Titles Included</span>
-          </div>
-          <p className="text-sm font-bold text-white">
-            Stop paying thousands for individual titles. Learn the setup once and play on your Steam account directly forever.
-          </p>
-          <p className="text-xs text-[#8f98a0]">
-            No account sharing · Local saves · Offline play · Single one-time ₹300 unlock
-          </p>
+      {/* VIEW 1: BEST OF THE YEAR STEAM TOP 100 */}
+      {activeView === "BEST_OF_YEAR" ? (
+        <div className="space-y-6">
+          <BestOfYearShowcase />
         </div>
-        <a
-          href="/checkout"
-          className="btn-steam-cta px-5 py-2.5 rounded-sm text-xs font-bold whitespace-nowrap shadow-ctaGlow"
-        >
-          Get 265 Games for ₹300
-        </a>
-      </div>
+      ) : (
+        /* VIEW 2: SEARCHABLE / FILTERABLE FULL VAULT GRID */
+        <div className="space-y-6">
+          {/* Header and Search */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2a475e]/60 pb-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-wide">
+                GET 370+ GAMES FOR ₹300 ({totalGames || 371} TITLES)
+              </h2>
+              <p className="text-xs sm:text-sm text-[#8f98a0]">
+                Search and filter through our full vault of {totalGames || "370+"} offline-ready single-player PC games.
+              </p>
+            </div>
 
-      {/* Main Layout: Sidebar Filters + Game Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Filter Sidebar (Desktop) */}
+            {/* Live Search and Filter Toggle */}
+            <div className="flex items-center gap-3">
+              <div className="relative flex-1 sm:w-80">
+                <Search className="w-4 h-4 text-[#8f98a0] absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                    setPage(1);
+                  }}
+                  placeholder="Search by game or series..."
+                  className="w-full bg-[#16202d] border border-[#2a475e] rounded-lg pl-9 pr-4 py-2 text-xs text-white placeholder-[#8f98a0] focus:outline-none focus:border-[#66c0f4] transition-colors"
+                />
+                {search && (
+                  <button
+                    onClick={() => setSearch("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8f98a0] hover:text-white"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
+
+              <button
+                onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
+                className="md:hidden p-2 bg-[#2a475e] text-white rounded-lg flex items-center gap-1.5 text-xs font-bold"
+              >
+                <SlidersHorizontal className="w-4 h-4" /> Filters
+              </button>
+            </div>
+          </div>
+
+          {/* Showcase Value Callout Banner (Steam style) */}
+          <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow">
+            <div className="space-y-0.5 text-center sm:text-left">
+              <div className="inline-flex items-center gap-1.5 text-[#5ba32b] text-[11px] font-bold uppercase">
+                <span>● 370+ Titles Included</span>
+              </div>
+              <p className="text-sm font-bold text-white">
+                Stop paying thousands for individual titles. Learn the setup once and play on your Steam account directly forever.
+              </p>
+              <p className="text-xs text-[#8f98a0]">
+                No account sharing · Local saves · Offline play · Single one-time ₹300 unlock
+              </p>
+            </div>
+            <a
+              href="/checkout"
+              className="btn-steam-cta px-5 py-2.5 rounded-sm text-xs font-bold whitespace-nowrap shadow-ctaGlow"
+            >
+              Get 370+ Games for ₹300
+            </a>
+          </div>
+
+          {/* Main Layout: Sidebar Filters + Game Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Filter Sidebar (Desktop) */}
         <aside
           className={`space-y-6 bg-[#171a21] border border-[#2a475e]/60 p-5 rounded-lg h-fit ${
             isMobileFilterOpen ? "block" : "hidden md:block"
@@ -418,8 +476,10 @@ export default function CatalogPage() {
               )}
             </>
           )}
+          </div>
         </div>
-      </div>
+        </div>
+      )}
     </div>
   );
 }

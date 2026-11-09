@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1446780"
+	"Universe"		"1"
+	"name"		"Monster Hunter Rise"
+	"StateFlags"		"4"
+	"installdir"		"Monster Hunter Rise"
+	"LastUpdated"		"1794241104"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

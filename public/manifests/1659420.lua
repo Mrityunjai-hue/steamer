@@ -1,6 +1,6 @@
 -- LuaTools / Steamer manifest plugin script
 -- AppID: 1659420
--- Title: Uncharted: The Lost Legacy
+-- Title: Uncharted: Legacy of Thieves Collection
 -- Target Directory: Steam/config/stplug-in/ or Steam/config/lua/
 
 addappid(1659420)

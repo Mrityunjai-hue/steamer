@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2990000"
+	"Universe"		"1"
+	"name"		"Marvel's Wolverine"
+	"StateFlags"		"4"
+	"installdir"		"Marvel's Wolverine"
+	"LastUpdated"		"1794241085"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

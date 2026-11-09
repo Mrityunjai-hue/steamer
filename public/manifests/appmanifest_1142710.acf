@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1142710"
+	"Universe"		"1"
+	"name"		"Total War: WARHAMMER III"
+	"StateFlags"		"4"
+	"installdir"		"Total War: WARHAMMER III"
+	"LastUpdated"		"1794241104"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

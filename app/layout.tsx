@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s | ${brandConfig.name}`,
   },
   description:
-    "Steamer provides the complete PC setup guide & vault access to 265+ single-player PC games offline with local saves.",
+    "Steamer provides the complete PC setup guide & vault access to 370+ single-player PC games offline with local saves.",
   applicationName: "Steamer",
   manifest: "/manifest.webmanifest",
   themeColor: "#0B0018",

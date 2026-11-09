@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1895810"
+	"Universe"		"1"
+	"name"		"Ratchet & Clank: Rift Apart"
+	"StateFlags"		"4"
+	"installdir"		"Ratchet & Clank: Rift Apart"
+	"LastUpdated"		"1794241107"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1888110"
+	"Universe"		"1"
+	"name"		"Armored Core VI: Fires of Rubicon"
+	"StateFlags"		"4"
+	"installdir"		"Armored Core VI: Fires of Rubicon"
+	"LastUpdated"		"1794241094"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

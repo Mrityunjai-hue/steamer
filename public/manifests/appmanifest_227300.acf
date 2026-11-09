@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"227300"
+	"Universe"		"1"
+	"name"		"Euro Truck Simulator 2: Nordic Horizons"
+	"StateFlags"		"4"
+	"installdir"		"Euro Truck Simulator 2: Nordic Horizons"
+	"LastUpdated"		"1794241089"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

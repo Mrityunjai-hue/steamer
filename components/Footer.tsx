@@ -43,7 +43,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/catalog" className="hover:text-[#66c0f4] transition-colors">
-                  Game Catalog (265+ Titles)
+                  Game Catalog (370+ Titles)
                 </Link>
               </li>
               <li>

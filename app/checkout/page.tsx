@@ -252,8 +252,8 @@ export default function CheckoutPage() {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-white">
               {isRenewal
-                ? "Setup Window Renewal & Device Re-Activation (265+ Titles)"
-                : "Lifetime games access in your personal Steam (265+ Titles)"}
+                ? "Setup Window Renewal & Device Re-Activation (370+ Titles)"
+                : "Lifetime games access in your personal Steam (370+ Titles)"}
             </h3>
             <p className="text-[11px] text-[#8f98a0]">
               {isRenewal
@@ -368,10 +368,10 @@ export default function CheckoutPage() {
 
               <div className="p-2.5 bg-[#16202d] rounded border border-[#2a475e]/40 space-y-1">
                 <p className="font-bold text-white flex items-center gap-1.5">
-                  <span className="text-emerald-400">2.</span> Full Vault Access (265+ PC Titles)
+                  <span className="text-emerald-400">2.</span> Full Vault Access (370+ PC Titles)
                 </p>
                 <p className="text-[#8f98a0] text-[11px] leading-relaxed">
-                  Your ₹300 unlock grants lifetime games access in your personal Steam to our entire verified PC catalog of 265+ single-player blockbusters including Call of Duty, Spider-Man, Sekiro, Tekken, and more.
+                  Your ₹300 unlock grants lifetime games access in your personal Steam to our entire verified PC catalog of 370+ single-player blockbusters including Call of Duty, Spider-Man, Sekiro, Tekken, and more.
                 </p>
               </div>
 
@@ -454,7 +454,7 @@ export default function CheckoutPage() {
                 className="mt-0.5 rounded border-emerald-500 text-emerald-500 focus:ring-0 bg-[#121922] w-5 h-5 flex-shrink-0 cursor-pointer"
               />
               <span className="font-semibold">
-                I have read, understood, and accept all the conditions above — including <strong>Offline Play requirements</strong>, <strong>265+ Vault Access</strong>, the <strong>Steamer Fair-Play Pledge</strong>, the <strong>48-Hour Money-Back Guarantee</strong>, and the <strong>Single-Use Setup Window Policy</strong>.
+                I have read, understood, and accept all the conditions above — including <strong>Offline Play requirements</strong>, <strong>370+ Vault Access</strong>, the <strong>Steamer Fair-Play Pledge</strong>, the <strong>48-Hour Money-Back Guarantee</strong>, and the <strong>Single-Use Setup Window Policy</strong>.
               </span>
             </label>
           </div>

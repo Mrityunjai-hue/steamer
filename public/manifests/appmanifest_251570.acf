@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"251570"
+	"Universe"		"1"
+	"name"		"7 Days to Die"
+	"StateFlags"		"4"
+	"installdir"		"7 Days to Die"
+	"LastUpdated"		"1794241098"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

@@ -70,7 +70,7 @@ export default function MyGamesPage() {
           <h3 className="text-lg font-bold text-white">No Games in Your Plan</h3>
           <p className="text-xs text-[#8f98a0]">
             {activeSub?.type === "ALL_ACCESS"
-              ? "With All-Access, you can configure and play any of the 265+ games in the catalog on your Steam account directly!"
+              ? "With All-Access, you can configure and play any of the 370+ games in the catalog on your Steam account directly!"
               : "Unlock the All-Access Pass to start playing."}
           </p>
           <Link href="/catalog" className="btn-steam-cta inline-block px-5 py-2.5 rounded text-xs font-bold">

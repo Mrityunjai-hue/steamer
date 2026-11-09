@@ -63,7 +63,7 @@ export default function CartPage() {
               YOUR ACCESS SELECTION
             </h1>
             <p className="text-xs text-[#8f98a0]">
-              Unlock the complete setup guide and play 265+ premium PC titles forever.
+              Unlock the complete setup guide and play 370+ premium PC titles forever.
             </p>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function CartPage() {
 
             <div className="space-y-2">
               <h2 className="text-xl sm:text-2xl font-black text-white">
-                Complete PC Setup Guide & 265+ Titles Vault
+                Complete PC Setup Guide & 370+ Titles Vault
               </h2>
               <p className="text-xs sm:text-sm text-[#c7d5e0] leading-relaxed">
                 Stop paying thousands for individual titles or dealing with shared accounts. Get the ultimate, step-by-step guide to unlocking and playing premium PC games forever directly on your Steam account.
@@ -114,7 +114,7 @@ export default function CartPage() {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <h3 className="text-xs font-bold uppercase tracking-wider text-[#8f98a0]">
-                {cart.length > 0 ? `Games in Your Preview List (${cart.length})` : "All 265+ Games Included"}
+                {cart.length > 0 ? `Games in Your Preview List (${cart.length})` : "All 370+ Games Included"}
               </h3>
               <Link href="/catalog" className="text-xs text-[#66c0f4] hover:underline">
                 Browse Full Catalog →
@@ -124,7 +124,7 @@ export default function CartPage() {
             {cart.length === 0 ? (
               <div className="bg-[#171a21] border border-[#2a475e] rounded-lg p-6 text-center space-y-2">
                 <p className="text-xs text-[#8f98a0]">
-                  You have not bookmarked any individual titles yet, but <strong>all 265+ games in our vault are automatically included</strong> with your ₹{ALL_ACCESS_PRICE} setup guide.
+                  You have not bookmarked any individual titles yet, but <strong>all 370+ games in our vault are automatically included</strong> with your ₹{ALL_ACCESS_PRICE} setup guide.
                 </p>
               </div>
             ) : (
@@ -190,7 +190,7 @@ export default function CartPage() {
 
               <div className="flex justify-between items-center">
                 <span className="text-[#8f98a0]">Catalog Coverage:</span>
-                <span className="text-emerald-400 font-semibold">265+ Titles Included</span>
+                <span className="text-emerald-400 font-semibold">370+ Titles Included</span>
               </div>
 
               <div className="flex justify-between items-center">
@@ -241,7 +241,7 @@ export default function CartPage() {
                     href="/catalog"
                     className="w-full btn-steam-panel py-2 rounded text-xs font-bold flex items-center justify-center border border-[#2a475e]"
                   >
-                    Browse All 265+ Games
+                    Browse All 370+ Games
                   </Link>
                 </>
               )}

@@ -142,7 +142,7 @@ export default async function HomePage() {
               </span>
               <p className="text-[#c7d5e0]">
                 <strong className="text-white">STEAMER ALL-ACCESS PASS:</strong>{" "}
-                <span className="text-[#5ba32b] font-bold">265+ Blockbuster Titles</span> · ₹300 Flat One-Time Unlock · Zero Account Sharing
+                <span className="text-[#5ba32b] font-bold">370+ Blockbuster Titles</span> · ₹300 Flat One-Time Unlock · Zero Account Sharing
               </p>
             </div>
             <div className="flex items-center gap-1.5 text-[#8f98a0]">
@@ -156,25 +156,25 @@ export default async function HomePage() {
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#2a475e]/50 border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400">
                 <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
-                <span>Get 265 Games of Your Choice for ₹300</span>
+                <span>Get 370+ Games of Your Choice for ₹300</span>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                GET 265 GAMES OF YOUR CHOICE{" "}
+                GET 370+ GAMES OF YOUR CHOICE{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66c0f4] via-[#1a9fff] to-emerald-400">
                   FOR ₹300.
                 </span>
               </h1>
 
               <p className="text-sm sm:text-base text-[#c7d5e0] leading-relaxed max-w-2xl">
-                Stop paying thousands for individual titles or dealing with shared account collisions. Choose any of our 265+ blockbuster PC games and play them on your Steam account directly with permanent local saves.
+                Stop paying thousands for individual titles or dealing with shared account collisions. Choose any of our 370+ blockbuster PC games and play them on your Steam account directly with permanent local saves.
               </p>
 
               {/* Amenity Badges */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] text-[#c7d5e0] pt-1">
                 <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded hover:border-[#66c0f4]/80 hover:bg-[#1f2f42] hover:scale-[1.02] transition-all duration-200 cursor-default">
                   <Gamepad2 className="w-3.5 h-3.5 text-[#66c0f4]" />
-                  <span>265+ Premium Titles</span>
+                  <span>370+ Premium Titles</span>
                 </div>
                 <div className="flex items-center gap-1.5 bg-[#16202d] border border-[#2a475e]/60 px-2.5 py-1.5 rounded hover:border-amber-400/80 hover:bg-[#1f2f42] hover:scale-[1.02] transition-all duration-200 cursor-default">
                   <Zap className="w-3.5 h-3.5 text-amber-400" />
@@ -221,7 +221,7 @@ export default async function HomePage() {
                       href="/checkout"
                       className="btn-steam-cta px-7 py-3 rounded text-sm font-bold shadow-ctaGlow flex items-center gap-2 text-white"
                     >
-                      <span>Get 265 Games for ₹300</span>
+                      <span>Get 370+ Games for ₹300</span>
                       <ChevronRight className="w-4 h-4" />
                     </Link>
                     <a
@@ -272,7 +272,7 @@ export default async function HomePage() {
               <div className="w-10 h-10 rounded-lg bg-[#66c0f4]/10 border border-[#66c0f4]/30 flex items-center justify-center text-[#66c0f4] group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(102,192,244,0.5)] transition-all duration-300">
                 <Gamepad2 className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-white text-sm group-hover:text-[#66c0f4] transition-colors">265+ AAA &amp; Indie Games</h3>
+              <h3 className="font-bold text-white text-sm group-hover:text-[#66c0f4] transition-colors">370+ AAA &amp; Indie Games</h3>
               <p className="text-xs text-[#8f98a0] leading-relaxed">
                 Play blockbusters like GTA V, RDR 2, Cyberpunk 2077, Elden Ring, Black Myth: Wukong, God of War, Spider-Man, and hundreds more without buying separate copies.
               </p>
@@ -344,7 +344,7 @@ export default async function HomePage() {
                 <span className="text-[#8f98a0] font-bold block">Buying Separately</span>
                 <p className="text-red-400 font-extrabold text-sm">₹50,000+ Total</p>
                 <p className="text-[11px] text-[#8f98a0]">
-                  Buying 265+ AAA games individually at retail costs a fortune.
+                  Buying 370+ AAA games individually at retail costs a fortune.
                 </p>
               </div>
               <div className="p-3 bg-[#171a21] border border-[#2a475e]/50 rounded space-y-1 hover:border-amber-400/40 transition-colors">
@@ -358,7 +358,7 @@ export default async function HomePage() {
                 <span className="text-emerald-400 font-bold block">Steamer All-Access Pass</span>
                 <p className="text-emerald-300 font-extrabold text-sm">₹300 One-Time Flat</p>
                 <p className="text-[11px] text-[#c7d5e0]">
-                  Directly to your Steam account, offline forever, 265+ titles, and 48-Hour Money-Back Guarantee.
+                  Directly to your Steam account, offline forever, 370+ titles, and 48-Hour Money-Back Guarantee.
                 </p>
               </div>
             </div>
@@ -421,7 +421,7 @@ export default async function HomePage() {
                 </span>
                 <span className="text-[10px] text-[#5ba32b] font-mono font-bold">READY</span>
               </div>
-              <h3 className="font-bold text-white text-xs sm:text-sm group-hover:text-[#5ba32b] transition-colors">Play 265+ Titles On Your Steam Account Directly</h3>
+              <h3 className="font-bold text-white text-xs sm:text-sm group-hover:text-[#5ba32b] transition-colors">Play 370+ Titles On Your Steam Account Directly</h3>
               <p className="text-[11px] text-[#8f98a0] leading-relaxed">
                 Follow the 10-minute visual guide. Play story modes offline with local saves on your Steam account directly without getting kicked off.
               </p>
@@ -457,17 +457,17 @@ export default async function HomePage() {
         <div className="border-b border-[#2a475e] pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h2 className="text-xl sm:text-2xl font-black text-white tracking-wide">
-              GET 265 GAMES OF YOUR CHOICE FOR ₹300
+              GET 370+ GAMES OF YOUR CHOICE FOR ₹300
             </h2>
             <p className="text-xs text-[#8f98a0] mt-0.5">
-              All 265+ blockbuster titles below are included directly on your Steam account. No individual purchases needed.
+              All 370+ blockbuster titles below are included directly on your Steam account. No individual purchases needed.
             </p>
           </div>
           <Link
             href="/catalog"
             className="text-xs font-bold text-[#66c0f4] hover:underline flex items-center gap-1 self-start sm:self-auto"
           >
-            Browse All 265+ Titles <ChevronRight className="w-3.5 h-3.5" />
+            Browse All 370+ Titles <ChevronRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -529,7 +529,7 @@ export default async function HomePage() {
           <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#1a9fff]/10 rounded-full blur-3xl pointer-events-none animate-steam-pulse" />
 
           <h2 className="relative text-xl sm:text-3xl font-black text-white tracking-wide">
-            Ready to Play Over 265+ PC Games Directly on Your Steam Account?
+            Ready to Play Over 370+ PC Games Directly on Your Steam Account?
           </h2>
           <p className="relative text-xs sm:text-sm text-[#c7d5e0] max-w-2xl mx-auto leading-relaxed">
             Get the full setup walkthrough, complete game library access, and play directly to your Steam account forever without paying thousands or fighting for shared accounts.
@@ -556,7 +556,7 @@ export default async function HomePage() {
                 href="/checkout"
                 className="btn-steam-cta text-sm px-8 py-3.5 rounded-sm font-bold shadow-ctaGlow inline-flex items-center gap-2 text-white hover:scale-105 active:scale-95 transition-transform"
               >
-                <span>Get 265 Games of Your Choice for ₹300</span>
+                <span>Get 370+ Games of Your Choice for ₹300</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
             )}

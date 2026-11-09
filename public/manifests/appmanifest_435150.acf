@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"435150"
+	"Universe"		"1"
+	"name"		"Divinity: Original Sin 2 - Definitive Edition"
+	"StateFlags"		"4"
+	"installdir"		"Divinity: Original Sin 2 - Definitive Edition"
+	"LastUpdated"		"1794241105"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

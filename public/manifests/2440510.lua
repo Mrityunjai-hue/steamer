@@ -1,6 +1,6 @@
 -- LuaTools / Steamer manifest plugin script
 -- AppID: 2440510
--- Title: Forza Motorsport
+-- Title: Final Fantasy VII Rebirth
 -- Target Directory: Steam/config/stplug-in/ or Steam/config/lua/
 
 addappid(2440510)

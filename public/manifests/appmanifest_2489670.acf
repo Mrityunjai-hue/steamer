@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2489670"
+	"Universe"		"1"
+	"name"		"Mafia: The Old Country"
+	"StateFlags"		"4"
+	"installdir"		"Mafia: The Old Country"
+	"LastUpdated"		"1794241034"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

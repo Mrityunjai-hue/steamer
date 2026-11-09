@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1715500"
+	"Universe"		"1"
+	"name"		"Crysis Remastered Trilogy"
+	"StateFlags"		"4"
+	"installdir"		"Crysis Remastered Trilogy"
+	"LastUpdated"		"1794241106"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

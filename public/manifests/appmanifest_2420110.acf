@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2420110"
+	"Universe"		"1"
+	"name"		"Horizon Forbidden West Complete Edition"
+	"StateFlags"		"4"
+	"installdir"		"Horizon Forbidden West Complete Edition"
+	"LastUpdated"		"1794241075"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

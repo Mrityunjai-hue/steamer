@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1643320"
+	"Universe"		"1"
+	"name"		"S.T.A.L.K.E.R. 2: Heart of Chornobyl"
+	"StateFlags"		"4"
+	"installdir"		"S.T.A.L.K.E.R. 2: Heart of Chornobyl"
+	"LastUpdated"		"1794241090"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

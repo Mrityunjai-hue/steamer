@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2183900"
+	"Universe"		"1"
+	"name"		"Warhammer 40,000: Space Marine 2"
+	"StateFlags"		"4"
+	"installdir"		"Warhammer 40,000: Space Marine 2"
+	"LastUpdated"		"1794241090"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

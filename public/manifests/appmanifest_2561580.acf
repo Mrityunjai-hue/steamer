@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2561580"
+	"Universe"		"1"
+	"name"		"Horizon Zero Dawn Remastered"
+	"StateFlags"		"4"
+	"installdir"		"Horizon Zero Dawn Remastered"
+	"LastUpdated"		"1794241075"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

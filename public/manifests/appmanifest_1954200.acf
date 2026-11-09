@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1954200"
+	"Universe"		"1"
+	"name"		"Kena: Bridge of Spirits"
+	"StateFlags"		"4"
+	"installdir"		"Kena: Bridge of Spirits"
+	"LastUpdated"		"1794241101"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

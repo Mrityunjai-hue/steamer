@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2246340"
+	"Universe"		"1"
+	"name"		"Monster Hunter Wilds"
+	"StateFlags"		"4"
+	"installdir"		"Monster Hunter Wilds"
+	"LastUpdated"		"1794241084"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

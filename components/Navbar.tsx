@@ -135,7 +135,7 @@ export default function Navbar() {
               className="hidden lg:flex items-center gap-2 px-3 py-1 bg-[#16202d] border border-emerald-500/40 rounded-full text-xs font-bold text-emerald-400 hover:border-emerald-400 transition-all shadow-sm h-8"
             >
               <span className="w-2 h-2 rounded-full bg-[#5ba32b] animate-pulse" />
-              <span>₹300 All-Access • 265+ Titles</span>
+              <span>₹300 All-Access • 370+ Titles</span>
             </Link>
           )}
 
@@ -224,7 +224,7 @@ export default function Navbar() {
                 Renew Setup Window &rarr;
               </Link>
             ) : (
-              <span className="font-bold text-[#5ba32b]">₹300 Instant Unlock (265+ Titles)</span>
+              <span className="font-bold text-[#5ba32b]">₹300 Instant Unlock (370+ Titles)</span>
             )}
           </div>
 

@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"632470"
+	"Universe"		"1"
+	"name"		"Disco Elysium: The Final Cut"
+	"StateFlags"		"4"
+	"installdir"		"Disco Elysium: The Final Cut"
+	"LastUpdated"		"1794241105"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

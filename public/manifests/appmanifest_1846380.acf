@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1846380"
+	"Universe"		"1"
+	"name"		"Need for Speed Unbound"
+	"StateFlags"		"4"
+	"installdir"		"Need for Speed Unbound"
+	"LastUpdated"		"1794241076"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

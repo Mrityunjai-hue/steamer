@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1687950"
+	"Universe"		"1"
+	"name"		"Persona 5 Royal"
+	"StateFlags"		"4"
+	"installdir"		"Persona 5 Royal"
+	"LastUpdated"		"1794241097"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

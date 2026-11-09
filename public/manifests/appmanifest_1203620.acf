@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"1203620"
+	"Universe"		"1"
+	"name"		"Enshrouded"
+	"StateFlags"		"4"
+	"installdir"		"Enshrouded"
+	"LastUpdated"		"1794241096"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}
