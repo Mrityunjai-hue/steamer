@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 300; // 5 minutes cache for blazing fast performance
 
 export async function GET(req: NextRequest) {
@@ -31,7 +32,7 @@ export async function GET(req: NextRequest) {
       ],
     });
 
-    // 2. Filter/prioritize by requested year
+    // 2. Filter strictly by requested year (NEVER fill with mismatched old years)
     let yearFiltered: typeof allGames = [];
     if (yearParam === "ALL_TIME") {
       yearFiltered = [...allGames];
@@ -40,13 +41,6 @@ export async function GET(req: NextRequest) {
         if (!g.releaseDate) return false;
         return g.releaseDate.includes(yearParam);
       });
-
-      // If we need more to reach 100, add top remaining games
-      if (yearFiltered.length < 100) {
-        const existingIds = new Set(yearFiltered.map((g) => g.id));
-        const remaining = allGames.filter((g) => !existingIds.has(g.id));
-        yearFiltered = [...yearFiltered, ...remaining].slice(0, 100);
-      }
     }
 
     // 3. Category adjustments / sorting
@@ -60,46 +54,63 @@ export async function GET(req: NextRequest) {
       yearFiltered.sort((a, b) => (b.steamPriceINR || 0) - (a.steamPriceINR || 0));
     }
 
-    // Ensure exactly up to 100 games
-    const top100 = yearFiltered.slice(0, 100);
+    // Up to 100 top titles for this year
+    const curatedGames = yearFiltered.slice(0, 100);
+    const totalCount = curatedGames.length;
 
-    // 4. Split into Steam's exact 4 Tiers:
-    // Platinum: 1st - 12th (12 items)
-    // Gold: 13th - 24th (12 items)
-    // Silver: 25th - 50th (26 items)
-    // Bronze: 51st - 100th (50 items)
-    const platinum = top100.slice(0, 12);
-    const gold = top100.slice(12, 24);
-    const silver = top100.slice(24, 50);
-    const bronze = top100.slice(50, 100);
+    // 4. Split proportionally into Steam's exact 4 Tiers:
+    // When totalCount >= 100: Platinum: 12, Gold: 12, Silver: 26, Bronze: 50
+    // When totalCount < 100: allocate proportionally so all titles are genuinely from this year
+    let pCount = Math.min(12, Math.max(1, Math.round(totalCount * 0.2)));
+    let gCount = Math.min(12, Math.max(1, Math.round(totalCount * 0.25)));
+    let sCount = Math.min(26, Math.max(1, Math.round(totalCount * 0.28)));
+    
+    if (totalCount >= 100) {
+      pCount = 12;
+      gCount = 12;
+      sCount = 26;
+    }
+
+    const platinum = curatedGames.slice(0, pCount);
+    const gold = curatedGames.slice(pCount, pCount + gCount);
+    const silver = curatedGames.slice(pCount + gCount, pCount + gCount + sCount);
+    const bronze = curatedGames.slice(pCount + gCount + sCount);
+
+    const pEnd = platinum.length;
+    const gStart = pEnd + 1;
+    const gEnd = pEnd + gold.length;
+    const sStart = gEnd + 1;
+    const sEnd = gEnd + silver.length;
+    const bStart = sEnd + 1;
+    const bEnd = totalCount;
 
     return NextResponse.json(
       {
         year: yearParam,
         category: categoryParam,
-        total: top100.length,
+        total: totalCount,
         tiers: {
           platinum: {
             title: "PLATINUM",
-            subtitle: "1ST - 12TH SORTED RANDOMLY",
+            subtitle: `1ST - ${pEnd}TH SORTED RANDOMLY`,
             count: platinum.length,
             games: platinum,
           },
           gold: {
             title: "GOLD",
-            subtitle: "13TH - 24TH SORTED RANDOMLY",
+            subtitle: `${gStart}TH - ${gEnd}TH SORTED RANDOMLY`,
             count: gold.length,
             games: gold,
           },
           silver: {
             title: "SILVER",
-            subtitle: "25TH - 50TH SORTED RANDOMLY",
+            subtitle: `${sStart}TH - ${sEnd}TH SORTED RANDOMLY`,
             count: silver.length,
             games: silver,
           },
           bronze: {
             title: "BRONZE",
-            subtitle: "51ST - 100TH SORTED RANDOMLY",
+            subtitle: `${bStart}TH - ${bEnd}TH SORTED RANDOMLY`,
             count: bronze.length,
             games: bronze,
           },

@@ -20,7 +20,7 @@ interface GameItem {
 }
 
 export default function CatalogPage() {
-  const [activeView, setActiveView] = useState<"BEST_OF_YEAR" | "ALL_GAMES">("BEST_OF_YEAR");
+  const [activeView, setActiveView] = useState<"BEST_OF_YEAR" | "ALL_GAMES">("ALL_GAMES");
   const [games, setGames] = useState<GameItem[]>([]);
   const [seriesList, setSeriesList] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -159,7 +159,7 @@ export default function CatalogPage() {
                 GET 390+ GAMES FOR ₹300 ({totalGames || 399} TITLES)
               </h2>
               <p className="text-xs sm:text-sm text-[#8f98a0]">
-                Search and filter through our full vault of {totalGames || "370+"} offline-ready single-player PC games.
+                Search and filter through our full vault of {totalGames || "400+"} offline-ready single-player PC games.
               </p>
             </div>
 
@@ -200,7 +200,7 @@ export default function CatalogPage() {
           <div className="bg-[#1b2838] border border-[#2a475e] rounded-sm p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow">
             <div className="space-y-0.5 text-center sm:text-left">
               <div className="inline-flex items-center gap-1.5 text-[#5ba32b] text-[11px] font-bold uppercase">
-                <span>● 370+ Titles Included</span>
+                <span>● 400+ Titles Included</span>
               </div>
               <p className="text-sm font-bold text-white">
                 Stop paying thousands for individual titles. Learn the setup once and play on your Steam account directly forever.
@@ -213,7 +213,7 @@ export default function CatalogPage() {
               href="/checkout"
               className="btn-steam-cta px-5 py-2.5 rounded-sm text-xs font-bold whitespace-nowrap shadow-ctaGlow"
             >
-              Get 370+ Games for ₹300
+              Get 400+ Games for ₹300
             </a>
           </div>
 
