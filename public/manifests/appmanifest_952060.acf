@@ -2,10 +2,10 @@
 {
 	"appid"		"952060"
 	"Universe"		"1"
-	"name"		"Resident Evil 3: Nemesis (1999)"
+	"name"		"Resident Evil 3"
 	"StateFlags"		"4"
-	"installdir"		"Resident Evil 3: Nemesis (1999)"
-	"LastUpdated"		"1794241072"
+	"installdir"		"Resident Evil 3"
+	"LastUpdated"		"1794242636"
 	"UpdateResult"		"0"
 	"BytesToDownload"		"0"
 	"BytesDownloaded"		"0"

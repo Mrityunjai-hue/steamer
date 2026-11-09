@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"2113900"
+	"Universe"		"1"
+	"name"		"STRANGER OF PARADISE FINAL FANTASY ORIGIN"
+	"StateFlags"		"4"
+	"installdir"		"STRANGER OF PARADISE FINAL FANTASY ORIGIN"
+	"LastUpdated"		"1794242632"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

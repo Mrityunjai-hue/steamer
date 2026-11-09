@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"202750"
+	"Universe"		"1"
+	"name"		"Alan Wake's American Nightmare"
+	"StateFlags"		"4"
+	"installdir"		"Alan Wake's American Nightmare"
+	"LastUpdated"		"1794242629"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

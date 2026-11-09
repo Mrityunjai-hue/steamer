@@ -109,10 +109,10 @@ export default function CatalogPage() {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[#2a475e]/70 pb-5">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2">
-            STEAM VAULT CATALOG ({totalGames || 371} TITLES)
+            STEAM VAULT CATALOG ({totalGames || 399} TITLES)
           </h1>
           <p className="text-xs sm:text-sm text-[#8f98a0]">
-            Browse official Steam Best of the Year rankings or search our entire vault of 370+ single-player PC games.
+            Browse official Steam Best of the Year rankings or search our entire vault of 390+ single-player PC games.
           </p>
         </div>
 
@@ -139,7 +139,7 @@ export default function CatalogPage() {
             }`}
           >
             <LayoutGrid className="w-4 h-4" />
-            <span>All Games ({totalGames || 371})</span>
+            <span>All Games ({totalGames || 399})</span>
           </button>
         </div>
       </div>
@@ -156,7 +156,7 @@ export default function CatalogPage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2a475e]/60 pb-6">
             <div>
               <h2 className="text-xl sm:text-2xl font-black text-white tracking-wide">
-                GET 370+ GAMES FOR ₹300 ({totalGames || 371} TITLES)
+                GET 390+ GAMES FOR ₹300 ({totalGames || 399} TITLES)
               </h2>
               <p className="text-xs sm:text-sm text-[#8f98a0]">
                 Search and filter through our full vault of {totalGames || "370+"} offline-ready single-player PC games.

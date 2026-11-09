@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"377840"
+	"Universe"		"1"
+	"name"		"FINAL FANTASY IX"
+	"StateFlags"		"4"
+	"installdir"		"FINAL FANTASY IX"
+	"LastUpdated"		"1794242632"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

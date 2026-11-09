@@ -1,0 +1,22 @@
+"AppState"
+{
+	"appid"		"474960"
+	"Universe"		"1"
+	"name"		"Quantum Break"
+	"StateFlags"		"4"
+	"installdir"		"Quantum Break"
+	"LastUpdated"		"1794242634"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"AutoUpdateBehavior"		"1"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+}

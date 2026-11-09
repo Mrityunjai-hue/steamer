@@ -2,10 +2,10 @@
 {
 	"appid"		"108710"
 	"Universe"		"1"
-	"name"		"Alan Wake 1"
+	"name"		"Alan Wake"
 	"StateFlags"		"4"
-	"installdir"		"Alan Wake 1"
-	"LastUpdated"		"1794241001"
+	"installdir"		"Alan Wake"
+	"LastUpdated"		"1794242629"
 	"UpdateResult"		"0"
 	"BytesToDownload"		"0"
 	"BytesDownloaded"		"0"
