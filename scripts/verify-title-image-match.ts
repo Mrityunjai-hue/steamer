@@ -15,12 +15,15 @@ const EXACT_STEAM_APPIDS: Record<string, string> = {
   "subnautica 2": "1962700",
   "mages arena": "2679710",
   "mage arena": "2679710",
-  "battlefield 6": "2727850",
-  "the witcher 4": "2762040",
-  "phantom blade zero": "1407200",
-  "f1 25": "3139550",
-  "max payne 1 & 2 remake": "2612430",
-  "jurassic world evolution 3": "2956840",
+  "battlefield 6": "/images/capsules/battlefield-6.jpg",
+  "the witcher 4": "/images/capsules/witcher-4.jpg",
+  "phantom blade zero": "/images/capsules/phantom-blade-zero.jpg",
+  "f1 25": "/images/capsules/f1-25.jpg",
+  "max payne 1 & 2 remake": "/images/capsules/max-payne-remake.jpg",
+  "jurassic world evolution 3": "/images/capsules/jurassic-world-evolution-3.jpg",
+  "elden ring: nightreign": "/images/capsules/elden-ring-nightreign.jpg",
+  "resident evil (1996)": "/images/capsules/resident-evil-1996.jpg",
+  "resident evil 2 (1998)": "/images/capsules/resident-evil-2-1998.jpg",
   "red dead redemption": "2668510",
   "red dead redemption 2": "1174180",
   "mortal kombat 1": "1971870",
@@ -91,7 +94,18 @@ async function main() {
       where: { title: { equals: titleKey, mode: "insensitive" } },
     });
     for (const g of games) {
-      if (g.steamAppId !== exactId || !g.headerImage?.includes(exactId)) {
+      if (exactId.startsWith("/")) {
+        if (g.headerImage !== exactId || g.capsuleImage !== exactId) {
+          await prisma.game.update({
+            where: { id: g.id },
+            data: {
+              headerImage: exactId,
+              capsuleImage: exactId,
+            },
+          });
+          console.log(`🎯 Exact fix: "${g.title}" -> Real local artwork (${exactId})`);
+        }
+      } else if (g.steamAppId !== exactId || !g.headerImage?.includes(exactId)) {
         const newHeader = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${exactId}/header.jpg`;
         const newCapsule = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${exactId}/capsule_231x87.jpg`;
         await prisma.game.update({

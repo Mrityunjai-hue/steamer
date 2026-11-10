@@ -128,55 +128,55 @@ const VERIFIED_STEAM_APPIDS: Record<string, string> = {
   "mage arena": "2679710",
 };
 
-// Custom high-res capsule artwork for titles without official Steam store pages yet
+// Real high-res artwork capsules for upcoming/special titles
 const CUSTOM_CAPSULES: Record<string, { appId: string; image: string }> = {
   "battlefield 6": {
     appId: "custom-battlefield-6",
-    image: "/images/capsules/battlefield-6.svg",
+    image: "/images/capsules/battlefield-6.jpg",
   },
   "jurassic world evolution 3": {
     appId: "custom-jurassic-world-evolution-3",
-    image: "/images/capsules/jurassic-world-evolution-3.svg",
+    image: "/images/capsules/jurassic-world-evolution-3.jpg",
   },
   "f1 25": {
     appId: "custom-f1-25",
-    image: "/images/capsules/f1-25.svg",
+    image: "/images/capsules/f1-25.jpg",
   },
   "f1 25: 2026 season edition": {
     appId: "custom-f1-25",
-    image: "/images/capsules/f1-25.svg",
+    image: "/images/capsules/f1-25.jpg",
   },
   "max payne 1 & 2 remake": {
     appId: "custom-max-payne-1---2-remake",
-    image: "/images/capsules/max-payne-remake.svg",
+    image: "/images/capsules/max-payne-remake.jpg",
   },
   "the witcher 4": {
     appId: "custom-the-witcher-4--polaris-",
-    image: "/images/capsules/witcher-4.svg",
+    image: "/images/capsules/witcher-4.jpg",
   },
   "the witcher 4 (polaris)": {
     appId: "custom-the-witcher-4--polaris-",
-    image: "/images/capsules/witcher-4.svg",
+    image: "/images/capsules/witcher-4.jpg",
   },
   "elden ring: nightreign": {
     appId: "custom-elden-ring-nightreign",
-    image: "/images/capsules/elden-ring-nightreign.svg",
+    image: "/images/capsules/elden-ring-nightreign.jpg",
   },
   "elden ring nightreign": {
     appId: "custom-elden-ring-nightreign",
-    image: "/images/capsules/elden-ring-nightreign.svg",
+    image: "/images/capsules/elden-ring-nightreign.jpg",
   },
   "phantom blade zero": {
     appId: "custom-phantom-blade-zero",
-    image: "/images/capsules/phantom-blade-zero.svg",
+    image: "/images/capsules/phantom-blade-zero.jpg",
   },
   "resident evil (1996)": {
     appId: "custom-resident-evil--1996-",
-    image: "/images/capsules/resident-evil-1996.svg",
+    image: "/images/capsules/resident-evil-1996.jpg",
   },
   "resident evil 2 (1998)": {
     appId: "custom-resident-evil-2--1998-",
-    image: "/images/capsules/resident-evil-2-1998.svg",
+    image: "/images/capsules/resident-evil-2-1998.jpg",
   },
 };
 
