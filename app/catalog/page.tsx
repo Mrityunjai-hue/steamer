@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import GameCard from "@/components/GameCard";
 import BestOfYearShowcase from "@/components/BestOfYearShowcase";
 import { Search, Filter, RefreshCw, ChevronLeft, ChevronRight, SlidersHorizontal, X, Trophy, LayoutGrid, Sparkles } from "lucide-react";
@@ -35,6 +35,7 @@ export default function CatalogPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [totalGames, setTotalGames] = useState(0);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const isFirstMount = useRef(true);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -78,6 +79,20 @@ export default function CatalogPage() {
     fetchGames();
   }, [fetchGames]);
 
+  // When changing pages, ensure smooth scroll directly to the top of the first game area
+  useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+    if (!loading && typeof window !== "undefined") {
+      const el = document.getElementById("catalog-first-game-anchor") || document.getElementById("catalog-games-anchor");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [page, loading]);
+
   const clearFilters = () => {
     setSearch("");
     setSelectedTier("");
@@ -92,11 +107,9 @@ export default function CatalogPage() {
   const changePage = (newPage: number) => {
     setPage(newPage);
     if (typeof window !== "undefined") {
-      const el = document.getElementById("catalog-games-anchor");
+      const el = document.getElementById("catalog-first-game-anchor") || document.getElementById("catalog-games-anchor");
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }
   };
@@ -368,8 +381,11 @@ export default function CatalogPage() {
 
         {/* Game Grid Section */}
         <div className="md:col-span-3 space-y-5">
+          {/* First game area scroll target anchor */}
+          <div id="catalog-first-game-anchor" className="scroll-mt-24" />
+
           {/* Top Pagination & Active Filters Ribbon */}
-          <div id="catalog-games-anchor" className="bg-[#171a21] border border-[#2a475e]/60 rounded-lg p-3 sm:p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm scroll-mt-20">
+          <div id="catalog-games-anchor" className="bg-[#171a21] border border-[#2a475e]/60 rounded-lg p-3 sm:p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm scroll-mt-24">
             <div className="flex flex-wrap items-center gap-2 text-xs text-[#8f98a0]">
               <span>
                 Showing <strong className="text-white">{totalGames === 0 ? 0 : (page - 1) * 24 + 1}–{Math.min(page * 24, totalGames)}</strong> of{" "}
@@ -411,8 +427,9 @@ export default function CatalogPage() {
               </div>
             )}
           </div>
+          <div className="min-h-[650px]">
           {loading ? (
-            <div className="py-24 flex flex-col items-center justify-center space-y-3">
+            <div className="py-24 min-h-[400px] flex flex-col items-center justify-center space-y-3">
               <RefreshCw className="w-8 h-8 text-[#66c0f4] animate-spin" />
               <p className="text-xs text-[#8f98a0]">Loading Steamer vault catalog...</p>
             </div>
@@ -477,6 +494,7 @@ export default function CatalogPage() {
             </>
           )}
           </div>
+        </div>
         </div>
         </div>
       )}

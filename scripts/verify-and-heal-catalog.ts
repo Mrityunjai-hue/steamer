@@ -37,7 +37,6 @@ const DISALLOWED_TITLES = [
 
 // Explicit verified Steam App IDs for known blockbusters
 const VERIFIED_STEAM_APPIDS: Record<string, string> = {
-  "battlefield 6": "2727850",
   "borderlands 4": "1285190",
   "borderlands 3": "397540",
   "borderlands 2": "49520",
@@ -45,13 +44,8 @@ const VERIFIED_STEAM_APPIDS: Record<string, string> = {
   "subnautica": "264710",
   "alan wake": "108710",
   "alan wake's american nightmare": "202750",
-  "max payne 1 & 2 remake": "2612430",
   "max payne 3": "204100",
-  "the witcher 4": "2762040",
   "the witcher 3: wild hunt": "292030",
-  "phantom blade zero": "1407200",
-  "f1 25": "3139550",
-  "jurassic world evolution 3": "2956840",
   "mortal kombat 1": "1971870",
   "mortal kombat 11": "976310",
   "mortal kombat x": "307780",
@@ -85,8 +79,6 @@ const VERIFIED_STEAM_APPIDS: Record<string, string> = {
   "ghost of tsushima": "2215430",
   "cyberpunk 2077": "1091500",
   "elden ring": "1245620",
-  "elden ring: nightreign": "2778580",
-  "elden ring nightreign": "2778580",
   "baldur's gate 3": "1086940",
   "black myth: wukong": "2358720",
   "sekiro: shadows die twice": "814380",
@@ -98,10 +90,10 @@ const VERIFIED_STEAM_APPIDS: Record<string, string> = {
   "resident evil 4 (remake)": "2050650",
   "resident evil 4": "2050650",
   "resident evil 2 (remake)": "883710",
-  "resident evil 3 remake": "952070",
+  "resident evil 3 remake": "952060",
   "resident evil village": "1196590",
   "resident evil 7: biohazard": "418370",
-  "street fighter 6": "1794960",
+  "street fighter 6": "1364780",
   "doom eternal": "782330",
   "doom (2016)": "379720",
   "doom: the dark ages": "3017860",
@@ -116,15 +108,76 @@ const VERIFIED_STEAM_APPIDS: Record<string, string> = {
   "call of duty: black ops 7": "1938090",
   "clair obscur: expedition 33": "1903340",
   "inzoi": "2456740",
-  "stellar blade": "3443310",
-  "mafia: the old country": "2987820",
+  "stellar blade": "3489700",
+  "mafia: the old country": "1941540",
   "final fantasy vii rebirth": "2909400",
   "metal gear solid delta: snake eater": "2417610",
-  "wuchang: fallen feathers": "2813640",
+  "wuchang: fallen feathers": "2277560",
+  "anno 117: pax romana": "3274580",
+  "split fiction": "2001120",
+  "dispatch": "2592160",
+  "atelier yumia": "3123410",
+  "like a dragon: pirate yakuza in hawaii": "3061810",
+  "broken arrow": "1604270",
+  "euro truck simulator 2: nordic horizons": "2780810",
+  "killing floor 3": "1430190",
+  "two point museum": "2185060",
   "a way out": "1222700",
   "it takes two": "1426210",
   "mages arena": "2679710",
   "mage arena": "2679710",
+};
+
+// Custom high-res capsule artwork for titles without official Steam store pages yet
+const CUSTOM_CAPSULES: Record<string, { appId: string; image: string }> = {
+  "battlefield 6": {
+    appId: "custom-battlefield-6",
+    image: "/images/capsules/battlefield-6.svg",
+  },
+  "jurassic world evolution 3": {
+    appId: "custom-jurassic-world-evolution-3",
+    image: "/images/capsules/jurassic-world-evolution-3.svg",
+  },
+  "f1 25": {
+    appId: "custom-f1-25",
+    image: "/images/capsules/f1-25.svg",
+  },
+  "f1 25: 2026 season edition": {
+    appId: "custom-f1-25",
+    image: "/images/capsules/f1-25.svg",
+  },
+  "max payne 1 & 2 remake": {
+    appId: "custom-max-payne-1---2-remake",
+    image: "/images/capsules/max-payne-remake.svg",
+  },
+  "the witcher 4": {
+    appId: "custom-the-witcher-4--polaris-",
+    image: "/images/capsules/witcher-4.svg",
+  },
+  "the witcher 4 (polaris)": {
+    appId: "custom-the-witcher-4--polaris-",
+    image: "/images/capsules/witcher-4.svg",
+  },
+  "elden ring: nightreign": {
+    appId: "custom-elden-ring-nightreign",
+    image: "/images/capsules/elden-ring-nightreign.svg",
+  },
+  "elden ring nightreign": {
+    appId: "custom-elden-ring-nightreign",
+    image: "/images/capsules/elden-ring-nightreign.svg",
+  },
+  "phantom blade zero": {
+    appId: "custom-phantom-blade-zero",
+    image: "/images/capsules/phantom-blade-zero.svg",
+  },
+  "resident evil (1996)": {
+    appId: "custom-resident-evil--1996-",
+    image: "/images/capsules/resident-evil-1996.svg",
+  },
+  "resident evil 2 (1998)": {
+    appId: "custom-resident-evil-2--1998-",
+    image: "/images/capsules/resident-evil-2-1998.svg",
+  },
 };
 
 async function checkUrl(url: string): Promise<boolean> {
@@ -210,8 +263,16 @@ export async function healCatalog() {
     let targetAppId = g.steamAppId;
     let targetImage = g.headerImage;
 
-    // A. Check verified map first
-    if (VERIFIED_STEAM_APPIDS[lower]) {
+    // A. Check custom capsules for unreleased/specials first
+    if (CUSTOM_CAPSULES[lower]) {
+      const custom = CUSTOM_CAPSULES[lower];
+      if (targetAppId !== custom.appId || targetImage !== custom.image) {
+        targetAppId = custom.appId;
+        targetImage = custom.image;
+        needsUpdate = true;
+      }
+    } else if (VERIFIED_STEAM_APPIDS[lower]) {
+      // B. Check verified Steam AppID map
       const expectedId = VERIFIED_STEAM_APPIDS[lower];
       if (targetAppId !== expectedId || !targetImage?.includes(expectedId)) {
         targetAppId = expectedId;
